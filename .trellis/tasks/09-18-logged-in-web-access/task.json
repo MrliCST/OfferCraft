@@ -3,7 +3,7 @@
   "name": "logged-in-web-access",
   "title": "登录态网页访问：长截图 + 抓取正文",
   "description": "让项目能带登录态访问网页：配置了 Chrome 调试端口就接管已登录的浏览器，配置了用户数据目录就用该 profile 启动，都没配就退回现有无头截图。在此基础上提供两个 LLM 工具——整页长截图、抓取页面正文。",
-  "status": "in_progress",
+  "status": "completed",
   "dev_type": null,
   "scope": null,
   "package": null,
@@ -11,7 +11,7 @@
   "creator": "lyz",
   "assignee": "lyz",
   "createdAt": "2026-09-18",
-  "completedAt": null,
+  "completedAt": "2026-09-18",
   "branch": "main",
   "base_branch": "main",
   "worktree_path": null,
@@ -21,6 +21,6 @@
   "children": [],
   "parent": null,
   "relatedFiles": [],
-  "notes": "",
+  "notes": "实现 BrowserSessionProvider（CDP/STORED/PROFILE/HEADLESS 四模式）+ LoginStateStore（登录态存档注入）。实测知识星球：存档恢复与 CDP 接管均抓到 10071 字，无头与持久化 profile 抓不到。全量测试 18 通过 4 跳过。",
   "meta": {}
 }

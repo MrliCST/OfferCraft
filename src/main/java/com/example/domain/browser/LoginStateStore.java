@@ -26,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
  *   <li>{@code storage-state-session.json} —— 自定义格式，存 sessionStorage。
  *       Playwright 的 storageState 不含这部分，只能自己提取、自己注入。</li>
  * </ul>
- */
+ *
  * <p>由 {@link BrowserConfig} 注册成 bean（不标 @Component 是刻意的：它和 Playwright 一样属于
  * 浏览器那一层的基础设施，放在一起好找，测试里只加载 BrowserConfig 也能拿到）。
  */

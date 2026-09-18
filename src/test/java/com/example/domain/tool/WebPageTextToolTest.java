@@ -55,7 +55,7 @@ class WebPageTextToolTest {
     void fetchText_truncatesWhenTooLong() {
         // 阈值压到 50 字逼出截断分支；直接 new 一个工具实例，不去改容器里的配置
         WebPageTextTool smallLimitTool =
-                new WebPageTextTool(provider, new BrowserSessionProperties(null, null, null, 50));
+                new WebPageTextTool(provider, new BrowserSessionProperties(null, null, null, true, 50));
 
         String result = smallLimitTool.fetchText(URL);
         System.out.println("===== 截断到 50 字 =====");
