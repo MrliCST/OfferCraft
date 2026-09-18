@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: com.example.domain.browser.BrowserSessionProviderTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 6.439 s <<< FAILURE! -- in com.example.domain.browser.BrowserSessionProviderTest
+com.example.domain.browser.BrowserSessionProviderTest.noLoginConfigured_fallsBackToHeadless -- Time elapsed: 2.658 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: HEADLESS
+ but was: STORED
+	at com.example.domain.browser.BrowserSessionProviderTest.noLoginConfigured_fallsBackToHeadless(BrowserSessionProviderTest.java:47)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.example.domain.browser.BrowserSessionProviderTest.userDataDirConfigured_startsWithThatProfile(Path) -- Time elapsed: 1.903 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: PROFILE
+ but was: STORED
+	at com.example.domain.browser.BrowserSessionProviderTest.userDataDirConfigured_startsWithThatProfile(BrowserSessionProviderTest.java:76)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

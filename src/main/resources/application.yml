@@ -1,0 +1,103 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: JLRADemo
+
+  # 本地密钥文件，放在仓库外（~/.config/JLRADemo/secret.yml，600）。
+  # 为什么不用环境变量：VS Code 的 Testing 面板是 extension host 拉起的 JVM，继承的是桌面会话的环境，
+  # 拿不到终端里 export 的东西；而 .xsessionrc 要注销重登才生效，还只管 X11（Wayland 下直接不读）。
+  # 改成读文件后，终端、VS Code、IDEA、java -jar 走的都是同一份配置，不依赖任何登录会话。
+  # optional: 表示文件不存在也不报错，那时回落去读环境变量 DEEPSEEK_WIN_KEY。
+  config:
+    import: optional:file:${user.home}/.config/JLRADemo/secret.yml
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${PG_HOST:localhost}:${PG_PORT:5432}/${PG_DATABASE:jlra_demo}
+    username: postgres
+    password: 20260917
+
+  # 启动时执行建表脚本，CREATE TABLE IF NOT EXISTS 是幂等的，可以反复跑
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema.sql
+
+# 网页长截图工具（domain/tool/WebScreenshotTool）的参数。
+# 视口 1280 宽是折中值：再窄会把桌面版页面压成移动端版，再宽长图体积涨得快。
+screenshot:
+  # 默认保存目录，模型没指定目录时存这里；不存在会自动创建
+  default-dir: ${user.home}/图片/Long photos
+  # chrome = 用系统装好的 Google Chrome，省得再下一份 Chromium；清空则用 Playwright 自带的
+  channel: chrome
+  viewport-width: 1280
+  viewport-height: 800
+  # 打开页面的超时，弱网或慢站可以适当调大
+  navigation-timeout-ms: 60000
+  # 滚动触发懒加载：每次下滚 600px、停 120ms，到底后再等 1500ms 收尾
+  scroll-step-px: 600
+  scroll-delay-ms: 120
+  settle-timeout-ms: 1500
+  # 最多滚多少步，防无限流页面把循环拖死（600px × 400 步 ≈ 24 万 px，够用了）
+  max-scroll-rounds: 400
+  # 滚完是否再等网络空闲。多数站不需要，默认关；开着会更全但慢几秒
+  wait-network-idle: false
+
+# 登录态访问网页（domain/browser/BrowserSessionProvider）。
+# 两种来源按优先级二选一；**都没配就走上面的无头模式（未登录）**，跟没这个功能时一模一样。
+browser:
+  session:
+    # 优先级 1：接管你已经打开、并且登录好的 Chrome。
+    #   先用这条命令启动 Chrome（端口随便换，两边一致就行）：
+    #     /usr/bin/google-chrome --remote-debugging-port=9222 &
+    #   然后自己在这个浏览器里登录好，程序接管后看到的就是登录后的内容。
+    #   代价：会在你浏览器上开一个标签页，用完自动关掉（不会关掉浏览器本身）。
+    #   ⚠️ 坑 1：Chrome 136+ 在**默认**用户数据目录下会直接忽略这个参数，端口根本不监听。
+    #      必须用非默认的 --user-data-dir 启动，否则配了也连不上（用下面那个目录启动即可）。
+    #   ⚠️ 坑 2：有些站点把登录态放 sessionStorage，窗口一关就没 —— 所以这个浏览器必须一直开着，
+    #      程序是"接管"它，不是重启它。重启窗口等于重新登录。
+    # cdp-endpoint: http://127.0.0.1:9222
+    #
+    # 优先级 2：用这个用户数据目录启动，登录态就存在目录里，适合无人值守（当前用的就是它）。
+    #   指向的是从日常 profile 复制出来的一份副本（含登录 cookie），跟正在用的 Chrome 不冲突。
+    #   ⚠️ 副本是快照：原 Chrome 里新登录或刷新 token 后，要重新复制一次才同步得上。
+    user-data-dir: ~/.config/google-chrome-jlra
+    # 登录态存档：**推荐方案**。登录成功后把 cookie / localStorage / sessionStorage 抄到这个文件，
+    # 之后**无头**抓取就能带登录态，不必再养一个常开的浏览器（实测抓到 10071 字，与接管时一致）。
+    #   怎么存：在登录好的浏览器里跑一次
+    #     mvn test -Dtest='LoggedInAccessVerificationTest#saveState' \
+    #              -Djunit.jupiter.conditions.deactivate=org.junit.*DisabledCondition
+    #   过期了（抓回来又是登录页）就重新存一次。
+    storage-state-file: ~/.config/JLRADemo/storage-state.json
+    #
+    # profile 模式是否无头。**实测必须 false**：headless 下知识星球直接不给登录态（页面回到登录二维码），
+    # 改成有头后立刻能抓到 2109 字的真实内容。代价是抓取时会弹一个 Chrome 窗口。
+    #   不想看到窗口：用 xvfb-run 跑（虚拟显示），例如 xvfb-run -a mvn spring-boot:run
+    profile-headless: false
+    # 抓正文的截断字数
+    max-text-chars: 8000
+
+mybatis-plus:
+  configuration:
+    # 下划线字段自动映射到驼峰属性（memory_id -> memoryId）
+    map-underscore-to-camel-case: true
+    # 打印执行的 SQL，排查持久化问题时很有用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+
+# 模型连接参数。模型 bean 的装配在 domain/clientllm/DeepSeekModelConfig，温度等采样策略写在那边的常量里，
+# 所以这里只放"连哪儿、用什么模型"这类环境相关的东西。
+# 键名故意避开 langchain4j.open-ai.*：那段一旦出现，starter 的自动配置就会再造一份同款模型 bean，与领域层的重复。
+llm:
+  deepseek:
+    base-url: https://api.deepseek.com
+    model-name: deepseek-flash
+    # key 不写进文件。取值顺序：OS 环境变量 DEEPSEEK_WIN_KEY > ~/.config/JLRADemo/secret.yml。
+    # 变量名用下划线不用横杠 —— 横杠在 bash 里不是合法标识符，export 会直接报
+    # "not a valid identifier"，这也是"明明设了却读不到"的一个典型来源。
+    api-key: ${DEEPSEEK_WIN_KEY}

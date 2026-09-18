@@ -1,0 +1,9 @@
+{
+    // 改了 pom.xml 后弹通知，由你决定何时重建 classpath。
+    // 默认值就是 interactive，之前被误设为 automatic —— 那会在依赖还没下载完时
+    // 静默更新一次，把残缺的 classpath 固化下来，且不会重试。
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.import.maven.enabled": true,
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.maven.downloadSources": true
+}

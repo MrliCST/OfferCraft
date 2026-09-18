@@ -1,0 +1,12 @@
+# Created at 2026-09-17T22:17:26.572
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream 'BEWARE: your OS is not officially supported by Playwright; downloading fallback build for ubuntu24.04-x64.'.
+
+# Created at 2026-09-17T22:17:26.576
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream 'Downloading Chromium 143.0.7499.4 (playwright build v1200)[2m from https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1200/chromium-linux.zip[22m'.
+
+# Created at 2026-09-17T22:17:29.539
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '|                                                                                |   0% of 164.7 MiB'.
+
+# Created at 2026-09-17T22:22:29.947
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '|■■■■■■■■                                                                        |  10% of 164.7 MiB'.
+
