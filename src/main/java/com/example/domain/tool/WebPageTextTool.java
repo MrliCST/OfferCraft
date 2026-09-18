@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.domain.browser.BrowserSessionProperties;
 import com.example.domain.browser.BrowserSessionProvider;
+import com.example.domain.browser.CrawlThrottle;
 import com.example.domain.browser.PageSession;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.PlaywrightException;
@@ -51,6 +52,8 @@ public class WebPageTextTool {
         log.info("抓取正文：url={}", url);
         long start = System.currentTimeMillis();
 
+        // 限流 + 限频：导航前占该域名一个许可并做高斯随机延迟（抓取结束后在 finally 归还）
+        CrawlThrottle.beforeCrawl(url);
         try (PageSession session = provider.open(url)) {
             Page page = session.page();
 
@@ -72,6 +75,8 @@ public class WebPageTextTool {
         } catch (Exception e) {
             log.warn("抓取正文失败：{}", url, e);
             return "读取网页失败（" + url + "）：" + e.getMessage();
+        } finally {
+            CrawlThrottle.afterCrawl(url);
         }
     }
 

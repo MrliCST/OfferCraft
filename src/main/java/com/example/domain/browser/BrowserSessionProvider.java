@@ -127,7 +127,7 @@ public class BrowserSessionProvider {
                     ? browser.newContext()
                     : browser.contexts().get(0);
             Page page = context.newPage();
-            navigate(page, url);
+            beginCrawl(page, url, false);
             return new PageSession(PageSession.Mode.CDP, page, browser, "已登录浏览器（接管 " + endpoint + "）");
         } catch (RuntimeException e) {
             // 开页面失败时连接也得断开，否则会残留一个连着的 driver
@@ -157,7 +157,7 @@ public class BrowserSessionProvider {
             }
 
             Page page = context.newPage();
-            navigate(page, url);
+            beginCrawl(page, url, true);
             return new PageSession(PageSession.Mode.STORED, page, browser,
                     "已登录浏览器（存档 " + store.stateFile() + "）");
         } catch (RuntimeException e) {
@@ -175,7 +175,7 @@ public class BrowserSessionProvider {
         try {
             Page page = browser.newPage(new Browser.NewPageOptions()
                     .setViewportSize(screenshotProperties.viewportWidth(), screenshotProperties.viewportHeight()));
-            navigate(page, url);
+            beginCrawl(page, url, true);
             return new PageSession(PageSession.Mode.HEADLESS, page, browser, "无头浏览器（未登录）");
         } catch (RuntimeException e) {
             browser.close();
@@ -191,5 +191,16 @@ public class BrowserSessionProvider {
             page.close();
             throw new IllegalStateException("打不开页面 " + url + "：" + e.getMessage());
         }
+    }
+
+    /**
+     * 开爬前的统一准备：自动化模式（存档 / 无头）拦掉无用资源以提速；接管模式（CDP）不拦，
+     * 避免干扰用户正在用的浏览器。随机延迟放在 {@link CrawlThrottle#beforeCrawl} 里，由调用方在开页面前触发。
+     */
+    private void beginCrawl(Page page, String url, boolean automated) {
+        if (automated) {
+            CrawlThrottle.blockUselessResources(page);
+        }
+        navigate(page, url);
     }
 }

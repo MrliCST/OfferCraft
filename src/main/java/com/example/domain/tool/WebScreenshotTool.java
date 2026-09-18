@@ -14,6 +14,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.stereotype.Component;
 
 import com.example.domain.browser.BrowserSessionProvider;
+import com.example.domain.browser.CrawlThrottle;
 import com.example.domain.browser.PageSession;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.PlaywrightException;
@@ -121,6 +122,8 @@ public class WebScreenshotTool {
         log.info("长截图：url={}，dir={}", url, dir);
         long start = System.currentTimeMillis();
 
+        // 限流 + 限频：导航前占该域名一个许可并做高斯随机延迟（抓取结束后在 finally 归还）
+        CrawlThrottle.beforeCrawl(url);
         try {
             // URL 校验在 provider 里做过了，这里直接用
             Path targetDir = resolveDir(dir);
@@ -146,6 +149,8 @@ public class WebScreenshotTool {
             log.warn("长截图失败：{}", url, e);
             return "截图失败（" + url + "）：" + e.getMessage()
                     + "。可以让用户换个能正常访问的 URL，或换一个你有写权限的保存目录再试。";
+        } finally {
+            CrawlThrottle.afterCrawl(url);
         }
     }
 
