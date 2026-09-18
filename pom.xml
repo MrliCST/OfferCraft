@@ -21,6 +21,7 @@
         <mybatis-plus.version>3.5.17</mybatis-plus.version>
         <postgresql.version>42.7.13</postgresql.version>
         <playwright.version>1.57.0</playwright.version>
+        <exec-maven-plugin.version>3.5.0</exec-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -99,6 +100,20 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <!-- 跑 LoginStateCapture：登录态存档用。
+                 默认 mainClass 写死成它，是为了让命令短到能记住：
+                   mvn -o -q compile exec:java
+                 想传参数就用 -Dexec.args（端口、输出目录、只存某个站）。
+                 不放在 Spring 里跑，是因为存档常常发生在数据库还没起来的时候。 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
+                <configuration>
+                    <mainClass>com.example.domain.browser.LoginStateCapture</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

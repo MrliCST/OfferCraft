@@ -33,10 +33,10 @@ public class BrowserConfig {
     /** driver 认的开关：值不是 "0"/"false" 就跳过浏览器下载 */
     private static final String SKIP_BROWSER_DOWNLOAD = "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD";
 
-    /** 登录态存档的读写器。跟 Playwright 放一起：测试里只加载本类也能拿到它 */
+    /** 站点名单的路由：URL → 该用哪份登录态存档 */
     @Bean
-    public LoginStateStore loginStateStore(BrowserSessionProperties sessionProperties) {
-        return new LoginStateStore(sessionProperties);
+    public SiteLoginRegistry siteLoginRegistry(BrowserSessionProperties sessionProperties) {
+        return new SiteLoginRegistry(sessionProperties);
     }
 
     @Bean(destroyMethod = "close")

@@ -60,22 +60,26 @@ browser:
     #      程序是"接管"它，不是重启它。重启窗口等于重新登录。
     # cdp-endpoint: http://127.0.0.1:9222
     #
-    # 优先级 2：用这个用户数据目录启动，登录态就存在目录里，适合无人值守（当前用的就是它）。
-    #   指向的是从日常 profile 复制出来的一份副本（含登录 cookie），跟正在用的 Chrome 不冲突。
-    #   ⚠️ 副本是快照：原 Chrome 里新登录或刷新 token 后，要重新复制一次才同步得上。
-    user-data-dir: ~/.config/google-chrome-jlra
-    # 登录态存档：**推荐方案**。登录成功后把 cookie / localStorage / sessionStorage 抄到这个文件，
-    # 之后**无头**抓取就能带登录态，不必再养一个常开的浏览器（实测抓到 10071 字，与接管时一致）。
-    #   怎么存：在登录好的浏览器里跑一次
-    #     mvn test -Dtest='LoggedInAccessVerificationTest#saveState' \
-    #              -Djunit.jupiter.conditions.deactivate=org.junit.*DisabledCondition
+    # 优先级 2：站点名单（**推荐，当前用的就是它**）。只有名单里的站点才带登录态，其余一律匿名。
+    #   登录成功后把 cookie / localStorage / sessionStorage 抄成一份存档，之后无头抓取再灌回去，
+    #   不用养一个常开的浏览器（实测知识星球抓到 10071 字，与接管时一致）。
+    #   怎么存：先用带调试端口的 Chrome 登录好，然后跑一条命令，它会把浏览器里所有站点各存一份：
+    #     mvn -o -q compile exec:java
     #   过期了（抓回来又是登录页）就重新存一次。
-    storage-state-file: ~/.config/JLRADemo/storage-state.json
     #
-    # profile 模式是否无头。**实测必须 false**：headless 下知识星球直接不给登录态（页面回到登录二维码），
-    # 改成有头后立刻能抓到 2109 字的真实内容。代价是抓取时会弹一个 Chrome 窗口。
-    #   不想看到窗口：用 xvfb-run 跑（虚拟显示），例如 xvfb-run -a mvn spring-boot:run
-    profile-headless: false
+    #   host 两种写法：
+    #     wx.zsxq.com   精确匹配，只管这一个主机
+    #     .zsxq.com     点号开头，管 zsxq.com 及所有子域
+    #   刻意不自动补 www. / m. 之类 —— 猜错比不猜更糟，要用哪个就明确写出来。
+    #
+    #   state-file 可以不写，那就落在 ~/.config/JLRADemo/state/<host>.json。
+    sites:
+      - host: wx.zsxq.com
+        state-file: ~/.config/JLRADemo/state/wx.zsxq.com.json
+      - host: i.zhaopin.com
+        state-file: ~/.config/JLRADemo/state/i.zhaopin.com.json
+    #
+    # 名单外的站点一律走无头匿名（白名单策略：名单外不给登录态）。
     # 抓正文的截断字数
     max-text-chars: 8000
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.domain.browser.LoggedInAccessVerificationTest" time="12.831" tests="1" errors="0" skipped="0" failures="0" flakes="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.domain.browser.LoggedInAccessVerificationTest" time="0.004" tests="3" errors="0" skipped="3" failures="0" flakes="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -14,9 +14,8 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CN"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/lyz/code/demo/JLRADemo/target/surefire/surefirebooter-20260918155638088_3.jar /home/lyz/code/demo/JLRADemo/target/surefire 2026-09-18T15-56-37_967-jvmRun1 surefire-20260918155638088_1tmp surefire_0-20260918155638088_2tmp"/>
+    <property name="sun.java.command" value="/home/lyz/code/demo/JLRADemo/target/surefire/surefirebooter-20260918173027573_3.jar /home/lyz/code/demo/JLRADemo/target/surefire 2026-09-18T17-30-26_933-jvmRun1 surefire-20260918173027573_1tmp surefire_0-20260918173027573_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="LoggedInAccessVerificationTest#fetchWithStoredState"/>
     <property name="surefire.test.class.path" value="/home/lyz/code/demo/JLRADemo/target/test-classes:/home/lyz/code/demo/JLRADemo/target/classes:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter-webflux/3.5.16/spring-boot-starter-webflux-3.5.16.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter/3.5.16/spring-boot-starter-3.5.16.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot/3.5.16/spring-boot-3.5.16.jar:/home/lyz/.m2/repository/org/springframework/spring-context/6.2.19/spring-context-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/spring-aop/6.2.19/spring-aop-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/spring-expression/6.2.19/spring-expression-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.5.16/spring-boot-starter-logging-3.5.16.jar:/home/lyz/.m2/repository/ch/qos/logback/logback-classic/1.5.34/logback-classic-1.5.34.jar:/home/lyz/.m2/repository/ch/qos/logback/logback-core/1.5.34/logback-core-1.5.34.jar:/home/lyz/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.24.3/log4j-to-slf4j-2.24.3.jar:/home/lyz/.m2/repository/org/apache/logging/log4j/log4j-api/2.24.3/log4j-api-2.24.3.jar:/home/lyz/.m2/repository/org/slf4j/jul-to-slf4j/2.0.18/jul-to-slf4j-2.0.18.jar:/home/lyz/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/lyz/.m2/repository/org/yaml/snakeyaml/2.4/snakeyaml-2.4.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.5.16/spring-boot-starter-json-3.5.16.jar:/home/lyz/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.21.4/jackson-datatype-jdk8-2.21.4.jar:/home/lyz/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.21.4/jackson-datatype-jsr310-2.21.4.jar:/home/lyz/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.21.4/jackson-module-parameter-names-2.21.4.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter-reactor-netty/3.5.16/spring-boot-starter-reactor-netty-3.5.16.jar:/home/lyz/.m2/repository/io/projectreactor/netty/reactor-netty-http/1.2.18/reactor-netty-http-1.2.18.jar:/home/lyz/.m2/repository/io/netty/netty-codec-http/4.1.135.Final/netty-codec-http-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-common/4.1.135.Final/netty-common-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-buffer/4.1.135.Final/netty-buffer-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-transport/4.1.135.Final/netty-transport-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-codec/4.1.135.Final/netty-codec-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-handler/4.1.135.Final/netty-handler-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-codec-http2/4.1.135.Final/netty-codec-http2-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-resolver-dns/4.1.135.Final/netty-resolver-dns-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-resolver/4.1.135.Final/netty-resolver-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-codec-dns/4.1.135.Final/netty-codec-dns-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-resolver-dns-native-macos/4.1.135.Final/netty-resolver-dns-native-macos-4.1.135.Final-osx-x86_64.jar:/home/lyz/.m2/repository/io/netty/netty-resolver-dns-classes-macos/4.1.135.Final/netty-resolver-dns-classes-macos-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-transport-native-epoll/4.1.135.Final/netty-transport-native-epoll-4.1.135.Final-linux-x86_64.jar:/home/lyz/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.135.Final/netty-transport-native-unix-common-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-transport-classes-epoll/4.1.135.Final/netty-transport-classes-epoll-4.1.135.Final.jar:/home/lyz/.m2/repository/io/projectreactor/netty/reactor-netty-core/1.2.18/reactor-netty-core-1.2.18.jar:/home/lyz/.m2/repository/io/netty/netty-handler-proxy/4.1.135.Final/netty-handler-proxy-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-codec-socks/4.1.135.Final/netty-codec-socks-4.1.135.Final.jar:/home/lyz/.m2/repository/org/springframework/spring-web/6.2.19/spring-web-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/spring-beans/6.2.19/spring-beans-6.2.19.jar:/home/lyz/.m2/repository/io/micrometer/micrometer-observation/1.15.12/micrometer-observation-1.15.12.jar:/home/lyz/.m2/repository/io/micrometer/micrometer-commons/1.15.12/micrometer-commons-1.15.12.jar:/home/lyz/.m2/repository/org/springframework/spring-webflux/6.2.19/spring-webflux-6.2.19.jar:/home/lyz/.m2/repository/io/projectreactor/reactor-core/3.7.19/reactor-core-3.7.19.jar:/home/lyz/.m2/repository/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4.jar:/home/lyz/.m2/repository/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j/1.20.0/langchain4j-1.20.0.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-core/1.20.0/langchain4j-core-1.20.0.jar:/home/lyz/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/lyz/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar:/home/lyz/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.21.4/jackson-core-2.21.4.jar:/home/lyz/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.21.4/jackson-databind-2.21.4.jar:/home/lyz/.m2/repository/org/apache/opennlp/opennlp-tools/2.5.11/opennlp-tools-2.5.11.jar:/home/lyz/.m2/repository/org/slf4j/slf4j-api/2.0.18/slf4j-api-2.0.18.jar:/home/lyz/.m2/repository/io/smallrye/reactive/mutiny-zero/1.3.1/mutiny-zero-1.3.1.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-spring-boot-starter/1.20.0-beta30/langchain4j-spring-boot-starter-1.20.0-beta30.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-open-ai-spring-boot-starter/1.20.0-beta30/langchain4j-open-ai-spring-boot-starter-1.20.0-beta30.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-open-ai/1.20.0/langchain4j-open-ai-1.20.0.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-http-client/1.20.0/langchain4j-http-client-1.20.0.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-reactive-streaming/1.20.0-beta30/langchain4j-reactive-streaming-1.20.0-beta30.jar:/home/lyz/.m2/repository/com/knuddels/jtokkit/1.1.0/jtokkit-1.1.0.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-http-client-spring-restclient/1.20.0-beta30/langchain4j-http-client-spring-restclient-1.20.0-beta30.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-spring-boot3-starter/3.5.17/mybatis-plus-spring-boot3-starter-3.5.17.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus/3.5.17/mybatis-plus-3.5.17.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-core/3.5.17/mybatis-plus-core-3.5.17.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-annotation/3.5.17/mybatis-plus-annotation-3.5.17.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-spring/3.5.17/mybatis-plus-spring-3.5.17.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-extension/3.5.17/mybatis-plus-extension-3.5.17.jar:/home/lyz/.m2/repository/org/mybatis/mybatis/3.5.19/mybatis-3.5.19.jar:/home/lyz/.m2/repository/org/mybatis/mybatis-spring/3.0.5/mybatis-spring-3.0.5.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-spring-boot-autoconfigure/3.5.17/mybatis-plus-spring-boot-autoconfigure-3.5.17.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-spring-boot-native-image/3.5.17/mybatis-plus-spring-boot-native-image-3.5.17.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.5.16/spring-boot-autoconfigure-3.5.16.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.5.16/spring-boot-starter-jdbc-3.5.16.jar:/home/lyz/.m2/repository/com/zaxxer/HikariCP/6.3.3/HikariCP-6.3.3.jar:/home/lyz/.m2/repository/org/springframework/spring-jdbc/6.2.19/spring-jdbc-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/spring-tx/6.2.19/spring-tx-6.2.19.jar:/home/lyz/.m2/repository/org/postgresql/postgresql/42.7.13/postgresql-42.7.13.jar:/home/lyz/.m2/repository/org/checkerframework/checker-qual/3.55.1/checker-qual-3.55.1.jar:/home/lyz/.m2/repository/com/microsoft/playwright/playwright/1.57.0/playwright-1.57.0.jar:/home/lyz/.m2/repository/com/google/code/gson/gson/2.13.2/gson-2.13.2.jar:/home/lyz/.m2/repository/com/google/errorprone/error_prone_annotations/2.41.0/error_prone_annotations-2.41.0.jar:/home/lyz/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/lyz/.m2/repository/com/microsoft/playwright/driver/1.57.0/driver-1.57.0.jar:/home/lyz/.m2/repository/com/microsoft/playwright/driver-bundle/1.57.0/driver-bundle-1.57.0.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.5.16/spring-boot-starter-test-3.5.16.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-test/3.5.16/spring-boot-test-3.5.16.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.5.16/spring-boot-test-autoconfigure-3.5.16.jar:/home/lyz/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/home/lyz/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.5/jakarta.xml.bind-api-4.0.5.jar:/home/lyz/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.4/jakarta.activation-api-2.1.4.jar:/home/lyz/.m2/repository/net/minidev/json-smart/2.5.2/json-smart-2.5.2.jar:/home/lyz/.m2/repository/net/minidev/accessors-smart/2.5.2/accessors-smart-2.5.2.jar:/home/lyz/.m2/repository/org/ow2/asm/asm/9.7.1/asm-9.7.1.jar:/home/lyz/.m2/repository/org/assertj/assertj-core/3.27.7/assertj-core-3.27.7.jar:/home/lyz/.m2/repository/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.jar:/home/lyz/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/home/lyz/.m2/repository/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar:/home/lyz/.m2/repository/org/junit/jupiter/junit-jupiter/5.12.2/junit-jupiter-5.12.2.jar:/home/lyz/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.12.2/junit-jupiter-api-5.12.2.jar:/home/lyz/.m2/repository/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar:/home/lyz/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/lyz/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.12.2/junit-jupiter-params-5.12.2.jar:/home/lyz/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.12.2/junit-jupiter-engine-5.12.2.jar:/home/lyz/.m2/repository/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.jar:/home/lyz/.m2/repository/org/mockito/mockito-core/5.17.0/mockito-core-5.17.0.jar:/home/lyz/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar:/home/lyz/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/lyz/.m2/repository/org/mockito/mockito-junit-jupiter/5.17.0/mockito-junit-jupiter-5.17.0.jar:/home/lyz/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/home/lyz/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/lyz/.m2/repository/org/springframework/spring-core/6.2.19/spring-core-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/spring-jcl/6.2.19/spring-jcl-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/spring-test/6.2.19/spring-test-6.2.19.jar:/home/lyz/.m2/repository/org/xmlunit/xmlunit-core/2.10.4/xmlunit-core-2.10.4.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/home/lyz"/>
@@ -32,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="FILE_LOG_CHARSET" value="UTF-8"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="/home/lyz/code/demo/JLRADemo/target/surefire/surefirebooter-20260918155638088_3.jar"/>
+    <property name="surefire.real.class.path" value="/home/lyz/code/demo/JLRADemo/target/surefire/surefirebooter-20260918173027573_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.19+10-1-24.04.2-Ubuntu"/>
     <property name="user.name" value="lyz"/>
@@ -43,14 +42,13 @@
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
     <property name="localRepository" value="/home/lyz/.m2/repository"/>
     <property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-17"/>
-    <property name="junit.jupiter.conditions.deactivate" value="org.junit.*DisabledCondition"/>
     <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="com.zaxxer.hikari.pool_number" value="1"/>
     <property name="java.version" value="17.0.19"/>
     <property name="user.dir" value="/home/lyz/code/demo/JLRADemo"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="138072"/>
-    <property name="failIfNoTests" value="false"/>
+    <property name="PID" value="194250"/>
     <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
     <property name="native.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
@@ -62,45 +60,13 @@
     <property name="java.class.version" value="61.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[JLRADemo] "/>
   </properties>
-  <testcase name="fetchWithStoredState" classname="com.example.domain.browser.LoggedInAccessVerificationTest" time="8.557">
-    <system-out><![CDATA[===== 存档恢复 =====
-来源：已登录浏览器（存档 /home/lyz/.config/JLRADemo/storage-state.json）
-标题：拿个offer-开源&项目实战-知识星球
-正文 10071 字，前 400 字：
-笔记
-管理后台
-榜单
-可以发优惠券了哦
-所有星球 · 最新动态
-44
-创建/管理的星球
-加入的星球
-拿个offer-开源&项目实战
-更多优质星球：
-畅销榜
-实力榜
-续期榜
-更多优质内容：
-点击发表主题...
- 写文章
-最新
-精华
-🤩晒个offer
-💡RagentAI
-📃技术问答
-🧱oneThread问答
-🌊牛券问答
-🔗短链接问答
-🚚12306问答
-🌈面试相关
-🔥自我介绍
-💫优质面经
-🧐技术分享
-只看星主
-问答
-置顶
-「图片」
-#📌星球通知 和大家同步两件事情，分别是 Ragent 1.1.0 版本发布，以及 2.0 Agent 架构开发。 第一件事，Ragent 1.1.0 正式发布。 1.1.0 可以理解为我目前对 RAG 优化的 Max 版本。这个版本基本把 RAG 场景中的检索、分块等核心能力，优化到了一个相对通用且强大的程度，同时引入了多模态、多路检索、关键
-]]></system-out>
+  <testcase name="fetchWithStoredState" classname="com.example.domain.browser.LoggedInAccessVerificationTest" time="0.0">
+    <skipped message="依赖本机登录好的浏览器，手动验证时才打开"/>
+  </testcase>
+  <testcase name="saveState" classname="com.example.domain.browser.LoggedInAccessVerificationTest" time="0.0">
+    <skipped message="依赖本机登录好的浏览器，手动验证时才打开"/>
+  </testcase>
+  <testcase name="checkCdp" classname="com.example.domain.browser.LoggedInAccessVerificationTest" time="0.0">
+    <skipped message="依赖本机登录好的浏览器，手动验证时才打开"/>
   </testcase>
 </testsuite>

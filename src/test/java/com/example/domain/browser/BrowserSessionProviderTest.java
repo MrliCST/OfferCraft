@@ -1,6 +1,8 @@
 package com.example.domain.browser;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -31,8 +33,8 @@ class BrowserSessionProviderTest {
     private static final String URL = "https://www.example.com";
 
     /**
-     * 指向一个不存在的存档文件：本机真的存过档（~/.config/JLRADemo/storage-state.json），
-     * 而存档的优先级高于 profile、高于无头，不隔离的话这几个用例会全部跑到存档模式上去。
+     * 指向一个不存在的存档文件：本机真的存过档（~/.config/JLRADemo/state/*.json），
+     * 而存档的优先级高于无头，不隔离的话这几个用例会全部跑到存档模式上去。
      */
     private static final String NO_STATE = "/tmp/no-such-storage-state.json";
 
@@ -44,7 +46,7 @@ class BrowserSessionProviderTest {
 
     @Test
     void noLoginConfigured_fallsBackToHeadless() {
-        BrowserSessionProvider provider = provider(new BrowserSessionProperties(null, null, NO_STATE, null, 0));
+        BrowserSessionProvider provider = provider(BrowserSessionProperties.of(null, 0));
 
         try (PageSession session = provider.open(URL)) {
             System.out.println("===== 未配登录态 =====");
@@ -60,7 +62,7 @@ class BrowserSessionProviderTest {
     @Test
     void cdpConfiguredButChromeNotListening_reportsHumanReadableError() {
         BrowserSessionProvider provider =
-                provider(new BrowserSessionProperties("http://127.0.0.1:9222", null, NO_STATE, null, 0));
+                provider(BrowserSessionProperties.of("http://127.0.0.1:9222", 0));
 
         System.out.println("===== 配了端口但 Chrome 没开调试端口 =====");
         assertThatThrownBy(() -> provider.open(URL))
@@ -70,35 +72,68 @@ class BrowserSessionProviderTest {
     }
 
     @Test
-    void userDataDirConfigured_startsWithThatProfile(@TempDir Path tmp) {
-        Path profile = tmp.resolve("profile");
-        BrowserSessionProvider provider =
-                provider(new BrowserSessionProperties(null, profile.toString(), NO_STATE, true, 0));
+    void siteNotInList_staysAnonymous(@TempDir Path tmp) throws Exception {
+        // 名单里配的是别的站，本站该老老实实走匿名 —— 白名单的核心语义
+        Path state = fakeStateFile(tmp, "other.com");
+        BrowserSessionProvider provider = provider(new BrowserSessionProperties(null, 0, List.of(new BrowserSessionProperties.SiteLogin("other.com", state.toString()))));
 
         try (PageSession session = provider.open(URL)) {
-            System.out.println("===== 配了用户数据目录 =====");
+            System.out.println("===== 名单外的站点 =====");
             System.out.println("模式=" + session.mode() + "，来源=" + session.source());
 
-            assertThat(session.mode()).isEqualTo(PageSession.Mode.PROFILE);
+            assertThat(session.mode()).isEqualTo(PageSession.Mode.HEADLESS);
+            assertThat(session.mode().isLoggedIn()).isFalse();
+            assertThat(session.source()).contains("未登录");
+        }
+    }
+
+    @Test
+    void siteInList_usesItsOwnStateFile(@TempDir Path tmp) throws Exception {
+        Path state = fakeStateFile(tmp, "www.example.com");
+        BrowserSessionProvider provider = provider(new BrowserSessionProperties(null, 0, List.of(new BrowserSessionProperties.SiteLogin("www.example.com", state.toString()))));
+
+        try (PageSession session = provider.open(URL)) {
+            System.out.println("===== 命中站点名单 =====");
+            System.out.println("模式=" + session.mode() + "，来源=" + session.source());
+
+            assertThat(session.mode()).isEqualTo(PageSession.Mode.STORED);
             assertThat(session.mode().isLoggedIn()).isTrue();
-            assertThat(session.source()).contains("profile");
-            // 目录不存在时应当被自动创建
-            assertThat(profile).exists();
-            assertThat(session.page().title()).isNotBlank();
+            // 用的是这一站自己的存档文件，不是全局那份
+            assertThat(session.source()).contains("www.example.com.json");
+        }
+    }
+
+    @Test
+    void siteInListButStateMissing_fallsBackToAnonymous(@TempDir Path tmp) {
+        // 配了名单但还没存档是很常见的中间状态，不该让抓取直接失败
+        Path notSaved = tmp.resolve("www.example.com.json");
+        BrowserSessionProvider provider = provider(new BrowserSessionProperties(null, 0, List.of(new BrowserSessionProperties.SiteLogin("www.example.com", notSaved.toString()))));
+
+        try (PageSession session = provider.open(URL)) {
+            assertThat(session.mode()).isEqualTo(PageSession.Mode.HEADLESS);
         }
     }
 
     @Test
     void rejectsNonHttpUrl() {
-        BrowserSessionProvider provider = provider(new BrowserSessionProperties(null, null, NO_STATE, null, 0));
+        BrowserSessionProvider provider = provider(BrowserSessionProperties.of(null, 0));
 
         assertThatThrownBy(() -> provider.open("file:///etc/passwd"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("http");
     }
 
+    /** 造一份内容是空的合法存档，够 Playwright 加载，用来验证"用了哪份文件"而不是真登录 */
+    private static Path fakeStateFile(Path dir, String host) throws Exception {
+        Files.createDirectories(dir);
+        Path main = dir.resolve(host + ".json");
+        Files.writeString(main, "{\"cookies\":[],\"origins\":[]}");
+        Files.writeString(dir.resolve(host + "-session.json"), "{}");
+        return main;
+    }
+
     private BrowserSessionProvider provider(BrowserSessionProperties sessionProperties) {
         return new BrowserSessionProvider(playwright, sessionProperties, screenshotProperties,
-                new LoginStateStore(sessionProperties));
+                new SiteLoginRegistry(sessionProperties));
     }
 }

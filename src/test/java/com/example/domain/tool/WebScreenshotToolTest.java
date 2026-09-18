@@ -42,7 +42,7 @@ class WebScreenshotToolTest {
 
     /** 内容够长、国内能直连 */
     /** 内容够长、国内能直连。用公开页面是刻意的：这个用例验的是"截图对不对"，不该依赖登录态 */
-    private static final String URL = "https://www.runoob.com/html/html-tutorial.html";
+    private static final String URL = "https://xiaoyuan.zhaopin.com/";
     /**
      * 从回报文本里抠出文件路径：取"已保存到 "和紧跟着的中文左括号之间的内容。
      * 不能按空白截断 —— 默认目录叫 "Long photos"，路径里本来就有空格。

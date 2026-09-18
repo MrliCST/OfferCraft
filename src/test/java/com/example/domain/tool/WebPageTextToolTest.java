@@ -26,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class WebPageTextToolTest {
 
     /** 用公开页面：这个用例验的是"能不能抓"，不该依赖登录态（登录态由 LoggedInAccessVerificationTest 单独看） */
-    private static final String URL = "https://www.example.com";
+    private static final String URL = "https://xiaoyuan.zhaopin.com/";
 
     @Autowired
     private WebPageTextTool tool;
@@ -55,7 +55,7 @@ class WebPageTextToolTest {
     void fetchText_truncatesWhenTooLong() {
         // 阈值压到 50 字逼出截断分支；直接 new 一个工具实例，不去改容器里的配置
         WebPageTextTool smallLimitTool =
-                new WebPageTextTool(provider, new BrowserSessionProperties(null, null, null, true, 50));
+                new WebPageTextTool(provider, BrowserSessionProperties.of(null, 50));
 
         String result = smallLimitTool.fetchText(URL);
         System.out.println("===== 截断到 50 字 =====");

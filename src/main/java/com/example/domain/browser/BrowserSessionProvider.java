@@ -1,9 +1,8 @@
 package com.example.domain.browser;
 
 import java.net.URI;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.Optional;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -23,14 +22,18 @@ import lombok.extern.slf4j.Slf4j;
  * 负责"用什么浏览器、带不带登录态"打开一个页面。上层工具（截图、抓正文）只拿到 {@link PageSession}，
  * 不关心背后是接管来的还是自己起的。
  *
- * <p>三种模式，按优先级取第一个配了的：
+ * <p>三种模式，按优先级取第一个成立的：
  * <ol>
  *   <li><b>CDP</b>：配了 {@code browser.session.cdp-endpoint} —— 接管用户已经打开并登录好的 Chrome，
  *       用的是用户当前的会话，最灵活；代价是会在用户浏览器上开一个标签页。</li>
- *   <li><b>PROFILE</b>：配了 {@code browser.session.user-data-dir} —— 用这个用户数据目录启动，
- *       登录态存在目录里，适合无人值守；代价是该目录不能被另一个 Chrome 同时占用。</li>
- *   <li><b>HEADLESS</b>：都没配 —— 跟以前一样无头启动，未登录。</li>
+ *   <li><b>STORED</b>：URL 的 host 命中 {@code browser.session.sites} 名单，且该站的存档已存在 ——
+ *       无头启动并把存档灌回去，不用养常开浏览器；代价是登录态会过期（过期了重新存一次档）。</li>
+ *   <li><b>HEADLESS</b>：以上都不成立 —— 名单外的站点，或者压根没配名单，一律无头匿名。</li>
  * </ol>
+ *
+ * <p>用哪个存档由 {@link SiteLoginRegistry} 说了算，本类只管拿到路径后怎么起浏览器。
+ * 名单没命中时返回空，本类就当这个站不需要登录态 —— 这就是"没配置就无头"的全部实现。
+ * 刻意<b>没有</b>"名单外也给登录态"的开关：那等于把登录态发给任意站点，风险远大于方便。
  *
  * <p>接管模式刻意不调用 {@code setViewportSize}：连的是用户正在用的浏览器，视口就是窗口大小，
  * 强行改会真的改动用户窗口尺寸（走 CDP 的 Emulation），用户能看见窗口跳一下。
@@ -47,7 +50,7 @@ public class BrowserSessionProvider {
     private final Playwright playwright;
     private final BrowserSessionProperties sessionProperties;
     private final ScreenshotProperties screenshotProperties;
-    private final LoginStateStore loginStateStore;
+    private final SiteLoginRegistry siteLoginRegistry;
 
     /**
      * 打开指定页面。
@@ -60,14 +63,37 @@ public class BrowserSessionProvider {
      */
     public PageSession open(String url) {
         String safeUrl = requireHttpUrl(url);
-        PageSession session = switch (pickMode()) {
-            case CDP -> openOverCdp(safeUrl);
-            case STORED -> openWithStoredState(safeUrl);
-            case PROFILE -> openWithProfile(safeUrl);
-            case HEADLESS -> openHeadless(safeUrl);
-        };
+        PageSession session = openByPolicy(safeUrl);
         log.info("打开页面 {}，来源：{}", safeUrl, session.source());
         return session;
+    }
+
+    /**
+     * 按优先级选一种打开方式。判断顺序里，站点名单优先于匿名无头。
+     *
+     * <p>名单命中但存档文件不存在时，<b>不报错</b>，只打一条 warning 然后走匿名无头：
+     * 配了名单说明你打算用登录态，但还没存档是很常见的中间状态，让抓取直接失败太粗暴。
+     */
+    private PageSession openByPolicy(String url) {
+        if (sessionProperties.hasCdp()) {
+            return openOverCdp(url);
+        }
+
+        Optional<Path> stateFile = siteLoginRegistry.stateFileFor(url);
+        if (stateFile.isPresent()) {
+            LoginStateStore store = new LoginStateStore(stateFile.get());
+            if (store.exists()) {
+                return openWithStoredState(url, store);
+            }
+            // 名单里有这个站，但还没存过档 —— 很常见的中间状态，不报错，直接按匿名无头处理。
+            // 想用存档的话：在带调试端口的 Chrome 里登录好之后跑 mvn -o -q compile exec:java
+            log.warn("{} 在名单里，但存档 {} 还没存过，改用匿名无头。"
+                            + "想用存档的话：登录好之后跑 mvn -o -q compile exec:java",
+                    SiteLoginRegistry.hostOf(url), store.stateFile());
+        }
+
+        // 名单外的站点，或者压根没配名单：一律匿名无头
+        return openHeadless(url);
     }
 
     /** 只放行 http/https：别让模型拿着 file:// 或 javascript: 去开页面 */
@@ -81,26 +107,6 @@ public class BrowserSessionProvider {
             throw new IllegalArgumentException("只支持 http/https 地址，收到的是：" + trimmed);
         }
         return trimmed;
-    }
-
-    /**
-     * 按配置挑模式。顺序是有讲究的：
-     * CDP（实时接管，最准）→ 存档（无头恢复，最省事）→ profile 目录 → 无头。
-     *
-     * <p>存档排在 profile 前面，是因为存档是"登录成功那一刻抄下来的快照"，
-     * 而 profile 目录里的 cookie 会过期、也可能被 Chrome 判坏丢掉（踩过）。
-     */
-    private PageSession.Mode pickMode() {
-        if (sessionProperties.hasCdp()) {
-            return PageSession.Mode.CDP;
-        }
-        if (loginStateStore.exists()) {
-            return PageSession.Mode.STORED;
-        }
-        if (sessionProperties.hasUserDataDir()) {
-            return PageSession.Mode.PROFILE;
-        }
-        return PageSession.Mode.HEADLESS;
     }
 
     /** 接管用户已经打开的 Chrome。注意：这里的 close() 只断开连接，不会关掉用户的浏览器 */
@@ -134,7 +140,7 @@ public class BrowserSessionProvider {
      * 用存档恢复登录态：无头启动，但把 cookie / localStorage / sessionStorage 灌回去。
      * 不用养一个常开的浏览器，也不用每次扫码 —— 代价是登录态会过期，过期了重新存一次档。
      */
-    private PageSession openWithStoredState(String url) {
+    private PageSession openWithStoredState(String url, LoginStateStore store) {
         Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
                 .setChannel(screenshotProperties.channel())
                 .setHeadless(true));
@@ -142,10 +148,10 @@ public class BrowserSessionProvider {
         try {
             Browser.NewContextOptions options = new Browser.NewContextOptions()
                     .setViewportSize(screenshotProperties.viewportWidth(), screenshotProperties.viewportHeight());
-            loginStateStore.applyTo(options);   // cookie（含 HttpOnly）+ localStorage
+            store.applyTo(options);   // cookie（含 HttpOnly）+ localStorage
 
             BrowserContext context = browser.newContext(options);
-            String initScript = loginStateStore.sessionStorageInitScript();
+            String initScript = store.sessionStorageInitScript();
             if (!initScript.isBlank()) {
                 context.addInitScript(initScript);  // sessionStorage：页面加载前就填好
             }
@@ -153,40 +159,9 @@ public class BrowserSessionProvider {
             Page page = context.newPage();
             navigate(page, url);
             return new PageSession(PageSession.Mode.STORED, page, browser,
-                    "已登录浏览器（存档 " + loginStateStore.stateFile() + "）");
+                    "已登录浏览器（存档 " + store.stateFile() + "）");
         } catch (RuntimeException e) {
             browser.close();
-            throw e;
-        }
-    }
-
-    /** 用指定的用户数据目录启动，登录态就在这个目录里 */
-    private PageSession openWithProfile(String url) {
-        Path dir = expand(sessionProperties.userDataDir());
-        try {
-            Files.createDirectories(dir);
-        } catch (Exception e) {
-            throw new IllegalStateException("用户数据目录没法创建：" + dir + "，原因：" + e.getMessage());
-        }
-
-        BrowserContext context;
-        try {
-            context = playwright.chromium().launchPersistentContext(dir, new BrowserType.LaunchPersistentContextOptions()
-                    .setChannel(screenshotProperties.channel())
-                    .setHeadless(sessionProperties.useHeadlessProfile())
-                    .setViewportSize(screenshotProperties.viewportWidth(), screenshotProperties.viewportHeight()));
-        } catch (PlaywrightException e) {
-            throw new IllegalStateException("用用户数据目录 " + dir + " 启动 Chrome 失败，"
-                    + "多半是这个目录正被另一个 Chrome 占用（同一份 profile 不能同时开两次）。"
-                    + "原始错误：" + e.getMessage());
-        }
-
-        try {
-            Page page = context.newPage();
-            navigate(page, url);
-            return new PageSession(PageSession.Mode.PROFILE, page, context, "已登录浏览器（profile " + dir + "）");
-        } catch (RuntimeException e) {
-            context.close();
             throw e;
         }
     }
@@ -216,14 +191,5 @@ public class BrowserSessionProvider {
             page.close();
             throw new IllegalStateException("打不开页面 " + url + "：" + e.getMessage());
         }
-    }
-
-    /** 支持 ~ 开头的家目录写法 */
-    private static Path expand(String dir) {
-        String path = dir.trim();
-        if (path.startsWith("~")) {
-            path = System.getProperty("user.home") + path.substring(1);
-        }
-        return Paths.get(path).toAbsolutePath().normalize();
     }
 }
