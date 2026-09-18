@@ -1,0 +1,89 @@
+[ {
+  "column" : "只看星主",
+  "author" : "马丁",
+  "authorRole" : "星主",
+  "publishedAt" : "2026-09-16 23:28",
+  "content" : "《AI大模型Ragent项目》——Ragent 2.0项目启动与数据初始化\n\n前两篇把 Agent 的基本概念讲清楚了，这一篇先把 Ragent 2.0 跑起来。\n整体启动方式和 1.0 差不多，主要多了数据库重建、比特严选数据初始化和 MCP Server。Elasticsearch、LightRAG、LangFuse 都是可选项，用到对应能力时再启动。\n有一条启动顺序需要提前记住：MCP Server 必须先于 RagentApp ...\n\n《AI大模型Ragent项目》——Ragent 2.0项目启动与数据初始化",
+  "topicTags" : [ ],
+  "likeUsers" : [ "jivhgfh", "。", "岂可再", "27届Byte选手" ],
+  "starMasterReplied" : false,
+  "replies" : [ {
+    "commenter" : "27届Byte选手",
+    "text" : "马哥太强了！",
+    "time" : "2026-09-16 23:30"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "只看星主",
+  "author" : "马丁",
+  "authorRole" : "星主",
+  "publishedAt" : "2026-09-16 20:37",
+  "content" : "《AI大模型Ragent项目》——Agent提示词不在代码里，改完怎么到达模型\n\n上一篇结尾留了个尾巴：管理员在控制台按下保存，新人设要经过哪些缓存和重建，才真正到达模型。这一篇把这条路走完。\n顺着走会发现，路上的东西多半不在代码里。一个智能体长什么样、它在哪个档位下用哪几段提示词、改了之后什么时候算数，全在库里和控制台上。所以本篇顺带把一件事说清楚：Ragent 2.0 在 Agent 档下，哪些东西写在代码里，哪些不写，两边如何协作。 ...\n\n《AI大模型Ragent项目》——Agent提示词不在代码里，改完怎么到达模型",
+  "topicTags" : [ ],
+  "likeUsers" : [ "jivhgfh", "。", "Stephen" ],
+  "starMasterReplied" : false,
+  "replies" : [ ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "只看星主",
+  "author" : "马丁",
+  "authorRole" : "星主",
+  "publishedAt" : "2026-09-16 20:35",
+  "content" : "《AI大模型Ragent项目》——引入 AgentScope，Ragent 用了什么、建了什么.md\n\n上一篇走完选型，AgentScope Java 2.0 在三个候选里更符合咱们的需求。把依赖加进 pom，用 ReActAgent.Builder 几行代码就能建出一个 Agent。比特严选那句话丢进去：\n我上周买的 AirPods Pro 左耳突然没声音了，放回充电盒也没用，你帮我看看是不是坏了，要是修不好我想退。\n循环真的转了三圈。查订单拿到签收时间，查 ...\n\n《AI大模型Ragent项目》——引入 AgentScope，Ragent 用了什么、建了什么.md",
+  "topicTags" : [ ],
+  "likeUsers" : [ "jivhgfh", "。" ],
+  "starMasterReplied" : true,
+  "replies" : [ {
+    "commenter" : "先森",
+    "text" : "这文档也乱了，看力竭了，怎么有些用框架的东西，有些又自己补充改一下，感觉目前这个阶段，老实用框架的内容做就挺好的。强行说框架存在哪些不足，然后自己手搓，有点勉强吧。感觉以后再升级可以考虑，目前每一必要考虑那么多手搓的部分吧。",
+    "time" : "2026-09-18 01:47"
+  }, {
+    "commenter" : "先森",
+    "text" : "这文档谁看得懂，框架图也没有",
+    "time" : "2026-09-18 01:48"
+  }, {
+    "commenter" : "马丁",
+    "text" : "如果觉得哪里勉强的可以指出来",
+    "time" : "2026-09-18 08:00"
+  }, {
+    "commenter" : "马丁",
+    "text" : "我再补下",
+    "time" : "2026-09-18 08:00"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "只看星主",
+  "author" : "马丁",
+  "authorRole" : "星主",
+  "publishedAt" : "2026-09-14 23:11",
+  "content" : "《AI大模型Ragent项目》——为什么Ragent不再手写ReAct模型\n\n上一篇把 Agent 拆成了大脑、工具、记忆、规划四个部件，比特严选的十一类任务也按循环圈数分了四级。篇末那张地图把后面五章的去向都标好了，从这一篇开始进 Ragent 真实源码。\n第一个问题不是循环怎么写，而是循环由谁来写。\n序章拿 AirPods Pro 左耳无声想退那个三星任务演过一遍 ReAct 循环：查订单拿签收时间，查当前日期算窗口，窗口还在就发 ...\n\n《AI大模型Ragent项目》——为什么Ragent不再手写ReAct模型",
+  "topicTags" : [ ],
+  "likeUsers" : [ "岂可再", "jivhgfh", "KayChiu", "index" ],
+  "starMasterReplied" : false,
+  "replies" : [ {
+    "commenter" : "。",
+    "text" : "终于上react了",
+    "time" : "2026-09-14 23:16"
+  }, {
+    "commenter" : "范特西",
+    "text" : "催更",
+    "time" : "2026-09-15 15:03"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "只看星主",
+  "author" : "马丁",
+  "authorRole" : "星主",
+  "publishedAt" : "2026-09-14 22:43",
+  "content" : "《AI大模型Ragent项目》——Agent 架构全景：大脑、工具、记忆、规划\n\n上一篇把 RAG 和 Agent 的边界划清楚了：Agent 比 RAG 多了一条从观察回到思考的边，能自己决定查什么、查几次、什么时候收手。篇末那段消息序列，也让你看到了循环转三圈的时候上下文长什么样。\n但盯着那段序列看，多半会冒出一连串问号：\n那个负责想的东西到底是谁，它凭什么知道下一步该干啥？\n工具是怎么挂上去的，模型又怎么知道有哪些工具可用？\n一路往 ...\n\n《AI大模型Ragent项目》——Agent 架构全景：大脑、工具、记忆、规划",
+  "topicTags" : [ ],
+  "likeUsers" : [ "KayChiu", "岂可再", "jivhgfh", "index", "名修", "冲国小将", "。", "小叶" ],
+  "starMasterReplied" : false,
+  "replies" : [ ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+} ]

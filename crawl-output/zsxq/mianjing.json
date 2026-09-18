@@ -1,0 +1,133 @@
+[ {
+  "column" : "优质面经",
+  "author" : "Jäger",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-09-03 15:56",
+  "content" : "小红书 AI Native 全栈 日常 面经 8.18一面 8.26二面 横向一周 主动要求释放简历 \n\n一面：55min\n1. ArrayList 底层实现、默认容量、懒初始化、扩容机制\n2.  HashMap 1.7 / 1.8 区别\n3.  HashMap 为什么树化、Hash 冲突后的查询复杂度\n4.  HashM ...\n\n小红书 AI Native 全栈 日常 面经 8.18一面 8.26二面 横向一周 主动要求释放简历",
+  "topicTags" : [ "\uD83D\uDCAB优质面经", "\uD83C\uDF08面试相关" ],
+  "likeUsers" : [ "kohaka", "Iridescent*", "Judy", "混完3个月就算成功", "没有名字", "心火", "余", "一定要努力努力努力", "马丁", "alO*" ],
+  "starMasterReplied" : false,
+  "replies" : [ {
+    "commenter" : "zcs",
+    "text" : "27的吗，好厉害",
+    "time" : "2026-09-14 13:17"
+  }, {
+    "commenter" : "Jäger",
+    "text" : "28的",
+    "time" : "2026-09-14 14:04"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "优质面经",
+  "author" : "Jäger",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-08-14 17:15",
+  "content" : "快手 效果营销 日常  一面面经（54min）\n\n自我介绍\n当前年级、学校是否允许实习、能够连续实习多久？\nRAG 项目的两层意图识别流程是怎么设计的？\n为什么需要两层意图识别？第一层和第二层分别解决什么问题？\n意图识别中的相关度阈值是如何确定的？\n大模型的相关度分数是否稳定？如何限制模型进行打分？\n有没有考虑将两层意图识 ...\n\n快手 效果营销 日常  一面面经（54min）",
+  "topicTags" : [ "\uD83D\uDCAB优质面经", "\uD83C\uDF08面试相关" ],
+  "likeUsers" : [ "领悟", "你在瞅什魔", "岂可再", "习嗯哼", "神经衰弱", "阳zero", "看见我的洋了吗", "Zenith", "澐", "范特西" ],
+  "starMasterReplied" : false,
+  "replies" : [ {
+    "commenter" : "习嗯哼",
+    "text" : "没手撕吗",
+    "time" : "2026-08-23 12:08"
+  }, {
+    "commenter" : "Rafael",
+    "text" : "请教一下这个双层意图识别是怎么设计的",
+    "time" : "2026-09-06 17:40"
+  }, {
+    "commenter" : "Jäger",
+    "text" : "我是做成了第一层只识别system和rag判断是否要进入二层知识库节点打分，之后根据分数综合评判走定向还是兜底还是系统还是引导",
+    "time" : "2026-09-07 21:23"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "优质面经",
+  "author" : "Jäger",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-08-11 15:50",
+  "content" : "百度-内容营销和广告 日常一面面经（1h）\n\n1.rag项目背景&功能介绍（吟唱）\n2.（项目）意图识别流程\n3.问题改写内容加载机制\n4.大模型回答预算分配\n5.优惠券项目背景&功能介绍（依旧吟唱）\n6.因为构建优惠券需要承担对应的预算，类似满减优惠券是否带有预算限制？没有的话思路是什么？\n7.责任链校验怎么做的，责任链中的结点如何设定的？\n8.为什么不把优惠券创建融合入责任链？\n9.HashMap1.7\\1.8区别\n10.MySQL 事务特性\n11innodb.如何支持事务特性？\n12.JVM内存模型\n13.哪些部分会导致内存溢出？为什么？\n14.redis持久化机制\n15.持久化机制特性\n16.lc 24 两两交换链表结点\n\n#\uD83C\uDF08面试相关  #\uD83D\uDCAB优质面经",
+  "topicTags" : [ "\uD83C\uDF08面试相关", "\uD83D\uDCAB优质面经" ],
+  "likeUsers" : [ "你在瞅什魔", "混完3个月就算成功", "没有名字", "马丁", "fA*or", "苏三" ],
+  "starMasterReplied" : false,
+  "replies" : [ {
+    "commenter" : "一定要努力努力努力",
+    "text" : "大模型预算分配这里怎那么回答的呀？想请教一下",
+    "time" : "2026-08-11 22:15"
+  }, {
+    "commenter" : "Jäger",
+    "text" : "我的大概思路是复用token计数器统计输入的token量，然后预留20%左右的token；固定保留系统提示词，问题；优先保留检索分块（实在超过可以按rerank排序选择一定比例）然后剩余分配给摘要和最近N轮（最近N轮超的话按照完整对话截断）",
+    "time" : "2026-08-11 23:02"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "优质面经",
+  "author" : "红鲤鱼",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-06-15 23:27",
+  "content" : "求大佬们点评一下这个简历\n\n\n#\uD83C\uDF08面试相关  #\uD83D\uDCAB优质面经",
+  "topicTags" : [ "\uD83C\uDF08面试相关", "\uD83D\uDCAB优质面经" ],
+  "likeUsers" : [ "弗弗西斯" ],
+  "starMasterReplied" : false,
+  "replies" : [ {
+    "commenter" : "剑覅",
+    "text" : "为啥实习/项目不介绍一下，都不知道你做的什么业务。还有真的精通吗。项目太多就删掉一些呗，感觉有点专门挤一页，大不了两页呗。真的有点难看，第一眼看了后，有点不想再看下去的感觉，可以在超级简历稍微美化一下，增加一点颜色。",
+    "time" : "2026-06-16 09:40"
+  }, {
+    "commenter" : "一切随缘",
+    "text" : "o神是谁",
+    "time" : "2026-06-16 17:06"
+  }, {
+    "commenter" : "蓝海",
+    "text" : "这是真实习嘛？怎么感觉做的内容都还挺大的",
+    "time" : "2026-06-24 21:04"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "优质面经",
+  "author" : "桂圆有喜了",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-16 22:42",
+  "content" : "上岸经验分享\n\n\t\t上岸了北京某大厂（应该算大厂吧）的软件开发，分享一些面经，希望对大家有所帮助！\n\t\t我是非科班，通信转码，背景是双9硕，之前没有实习经历，所以简历上就是项目经历占大头，ai项目用的是一个别地方来的ai项目，因为当时马哥的ai项目还没完工，所以不是马哥这里的，我就不多介绍了；然后传统后端项目用的是马哥这里 ...\n\n上岸经验分享",
+  "topicTags" : [ "\uD83C\uDF08面试相关", "\uD83E\uDD29晒个offer", "\uD83D\uDCAB优质面经" ],
+  "likeUsers" : [ "Stephen", "yii", "Chang", "万里晴空", "l.", "知我", "吨叽会长大", "y01234", "栖", "SaySaySEE" ],
+  "starMasterReplied" : false,
+  "replies" : [ {
+    "commenter" : "红烧小白兔",
+    "text" : "大佬",
+    "time" : "2026-04-16 23:30"
+  }, {
+    "commenter" : "桂圆有喜了",
+    "text" : "非佬非佬",
+    "time" : "2026-04-17 08:39"
+  }, {
+    "commenter" : "范特西",
+    "text" : "26届还是27届？",
+    "time" : "2026-04-17 14:16"
+  }, {
+    "commenter" : "Felixxx",
+    "text" : "求推 ai 项目",
+    "time" : "2026-04-17 14:52"
+  }, {
+    "commenter" : "桂圆有喜了",
+    "text" : "27届的",
+    "time" : "2026-04-17 20:12"
+  }, {
+    "commenter" : "范特西",
+    "text" : "27届直接拿的offer么？不是实习offer？",
+    "time" : "2026-04-17 20:13"
+  }, {
+    "commenter" : "桂圆有喜了",
+    "text" : "是实习offer，我的表述有误，抱歉哈",
+    "time" : "2026-04-17 20:14"
+  }, {
+    "commenter" : "范特西",
+    "text" : "懂了，谢谢回答",
+    "time" : "2026-04-17 20:14"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+} ]
