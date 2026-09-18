@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.service.AIChatServiceStreamTest" time="13.955" tests="1" errors="0" skipped="0" failures="0" flakes="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.service.AIChatServiceStreamTest" time="13.662" tests="1" errors="0" skipped="0" failures="0" flakes="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -14,7 +14,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CN"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/lyz/code/demo/JLRADemo/target/surefire/surefirebooter-20260918153751320_3.jar /home/lyz/code/demo/JLRADemo/target/surefire 2026-09-18T15-37-51_025-jvmRun1 surefire-20260918153751320_1tmp surefire_0-20260918153751320_2tmp"/>
+    <property name="sun.java.command" value="/home/lyz/code/demo/JLRADemo/target/surefire/surefirebooter-20260918155218124_3.jar /home/lyz/code/demo/JLRADemo/target/surefire 2026-09-18T15-52-17_929-jvmRun1 surefire-20260918155218124_1tmp surefire_0-20260918155218124_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/lyz/code/demo/JLRADemo/target/test-classes:/home/lyz/code/demo/JLRADemo/target/classes:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter-webflux/3.5.16/spring-boot-starter-webflux-3.5.16.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter/3.5.16/spring-boot-starter-3.5.16.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot/3.5.16/spring-boot-3.5.16.jar:/home/lyz/.m2/repository/org/springframework/spring-context/6.2.19/spring-context-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/spring-aop/6.2.19/spring-aop-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/spring-expression/6.2.19/spring-expression-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.5.16/spring-boot-starter-logging-3.5.16.jar:/home/lyz/.m2/repository/ch/qos/logback/logback-classic/1.5.34/logback-classic-1.5.34.jar:/home/lyz/.m2/repository/ch/qos/logback/logback-core/1.5.34/logback-core-1.5.34.jar:/home/lyz/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.24.3/log4j-to-slf4j-2.24.3.jar:/home/lyz/.m2/repository/org/apache/logging/log4j/log4j-api/2.24.3/log4j-api-2.24.3.jar:/home/lyz/.m2/repository/org/slf4j/jul-to-slf4j/2.0.18/jul-to-slf4j-2.0.18.jar:/home/lyz/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/lyz/.m2/repository/org/yaml/snakeyaml/2.4/snakeyaml-2.4.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.5.16/spring-boot-starter-json-3.5.16.jar:/home/lyz/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.21.4/jackson-datatype-jdk8-2.21.4.jar:/home/lyz/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.21.4/jackson-datatype-jsr310-2.21.4.jar:/home/lyz/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.21.4/jackson-module-parameter-names-2.21.4.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter-reactor-netty/3.5.16/spring-boot-starter-reactor-netty-3.5.16.jar:/home/lyz/.m2/repository/io/projectreactor/netty/reactor-netty-http/1.2.18/reactor-netty-http-1.2.18.jar:/home/lyz/.m2/repository/io/netty/netty-codec-http/4.1.135.Final/netty-codec-http-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-common/4.1.135.Final/netty-common-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-buffer/4.1.135.Final/netty-buffer-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-transport/4.1.135.Final/netty-transport-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-codec/4.1.135.Final/netty-codec-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-handler/4.1.135.Final/netty-handler-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-codec-http2/4.1.135.Final/netty-codec-http2-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-resolver-dns/4.1.135.Final/netty-resolver-dns-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-resolver/4.1.135.Final/netty-resolver-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-codec-dns/4.1.135.Final/netty-codec-dns-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-resolver-dns-native-macos/4.1.135.Final/netty-resolver-dns-native-macos-4.1.135.Final-osx-x86_64.jar:/home/lyz/.m2/repository/io/netty/netty-resolver-dns-classes-macos/4.1.135.Final/netty-resolver-dns-classes-macos-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-transport-native-epoll/4.1.135.Final/netty-transport-native-epoll-4.1.135.Final-linux-x86_64.jar:/home/lyz/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.135.Final/netty-transport-native-unix-common-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-transport-classes-epoll/4.1.135.Final/netty-transport-classes-epoll-4.1.135.Final.jar:/home/lyz/.m2/repository/io/projectreactor/netty/reactor-netty-core/1.2.18/reactor-netty-core-1.2.18.jar:/home/lyz/.m2/repository/io/netty/netty-handler-proxy/4.1.135.Final/netty-handler-proxy-4.1.135.Final.jar:/home/lyz/.m2/repository/io/netty/netty-codec-socks/4.1.135.Final/netty-codec-socks-4.1.135.Final.jar:/home/lyz/.m2/repository/org/springframework/spring-web/6.2.19/spring-web-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/spring-beans/6.2.19/spring-beans-6.2.19.jar:/home/lyz/.m2/repository/io/micrometer/micrometer-observation/1.15.12/micrometer-observation-1.15.12.jar:/home/lyz/.m2/repository/io/micrometer/micrometer-commons/1.15.12/micrometer-commons-1.15.12.jar:/home/lyz/.m2/repository/org/springframework/spring-webflux/6.2.19/spring-webflux-6.2.19.jar:/home/lyz/.m2/repository/io/projectreactor/reactor-core/3.7.19/reactor-core-3.7.19.jar:/home/lyz/.m2/repository/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4.jar:/home/lyz/.m2/repository/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j/1.20.0/langchain4j-1.20.0.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-core/1.20.0/langchain4j-core-1.20.0.jar:/home/lyz/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/lyz/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar:/home/lyz/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.21.4/jackson-core-2.21.4.jar:/home/lyz/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.21.4/jackson-databind-2.21.4.jar:/home/lyz/.m2/repository/org/apache/opennlp/opennlp-tools/2.5.11/opennlp-tools-2.5.11.jar:/home/lyz/.m2/repository/org/slf4j/slf4j-api/2.0.18/slf4j-api-2.0.18.jar:/home/lyz/.m2/repository/io/smallrye/reactive/mutiny-zero/1.3.1/mutiny-zero-1.3.1.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-spring-boot-starter/1.20.0-beta30/langchain4j-spring-boot-starter-1.20.0-beta30.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-open-ai-spring-boot-starter/1.20.0-beta30/langchain4j-open-ai-spring-boot-starter-1.20.0-beta30.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-open-ai/1.20.0/langchain4j-open-ai-1.20.0.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-http-client/1.20.0/langchain4j-http-client-1.20.0.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-reactive-streaming/1.20.0-beta30/langchain4j-reactive-streaming-1.20.0-beta30.jar:/home/lyz/.m2/repository/com/knuddels/jtokkit/1.1.0/jtokkit-1.1.0.jar:/home/lyz/.m2/repository/dev/langchain4j/langchain4j-http-client-spring-restclient/1.20.0-beta30/langchain4j-http-client-spring-restclient-1.20.0-beta30.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-spring-boot3-starter/3.5.17/mybatis-plus-spring-boot3-starter-3.5.17.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus/3.5.17/mybatis-plus-3.5.17.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-core/3.5.17/mybatis-plus-core-3.5.17.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-annotation/3.5.17/mybatis-plus-annotation-3.5.17.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-spring/3.5.17/mybatis-plus-spring-3.5.17.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-extension/3.5.17/mybatis-plus-extension-3.5.17.jar:/home/lyz/.m2/repository/org/mybatis/mybatis/3.5.19/mybatis-3.5.19.jar:/home/lyz/.m2/repository/org/mybatis/mybatis-spring/3.0.5/mybatis-spring-3.0.5.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-spring-boot-autoconfigure/3.5.17/mybatis-plus-spring-boot-autoconfigure-3.5.17.jar:/home/lyz/.m2/repository/com/baomidou/mybatis-plus-spring-boot-native-image/3.5.17/mybatis-plus-spring-boot-native-image-3.5.17.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.5.16/spring-boot-autoconfigure-3.5.16.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.5.16/spring-boot-starter-jdbc-3.5.16.jar:/home/lyz/.m2/repository/com/zaxxer/HikariCP/6.3.3/HikariCP-6.3.3.jar:/home/lyz/.m2/repository/org/springframework/spring-jdbc/6.2.19/spring-jdbc-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/spring-tx/6.2.19/spring-tx-6.2.19.jar:/home/lyz/.m2/repository/org/postgresql/postgresql/42.7.13/postgresql-42.7.13.jar:/home/lyz/.m2/repository/org/checkerframework/checker-qual/3.55.1/checker-qual-3.55.1.jar:/home/lyz/.m2/repository/com/microsoft/playwright/playwright/1.57.0/playwright-1.57.0.jar:/home/lyz/.m2/repository/com/google/code/gson/gson/2.13.2/gson-2.13.2.jar:/home/lyz/.m2/repository/com/google/errorprone/error_prone_annotations/2.41.0/error_prone_annotations-2.41.0.jar:/home/lyz/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/lyz/.m2/repository/com/microsoft/playwright/driver/1.57.0/driver-1.57.0.jar:/home/lyz/.m2/repository/com/microsoft/playwright/driver-bundle/1.57.0/driver-bundle-1.57.0.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.5.16/spring-boot-starter-test-3.5.16.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-test/3.5.16/spring-boot-test-3.5.16.jar:/home/lyz/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.5.16/spring-boot-test-autoconfigure-3.5.16.jar:/home/lyz/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/home/lyz/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.5/jakarta.xml.bind-api-4.0.5.jar:/home/lyz/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.4/jakarta.activation-api-2.1.4.jar:/home/lyz/.m2/repository/net/minidev/json-smart/2.5.2/json-smart-2.5.2.jar:/home/lyz/.m2/repository/net/minidev/accessors-smart/2.5.2/accessors-smart-2.5.2.jar:/home/lyz/.m2/repository/org/ow2/asm/asm/9.7.1/asm-9.7.1.jar:/home/lyz/.m2/repository/org/assertj/assertj-core/3.27.7/assertj-core-3.27.7.jar:/home/lyz/.m2/repository/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.jar:/home/lyz/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/home/lyz/.m2/repository/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar:/home/lyz/.m2/repository/org/junit/jupiter/junit-jupiter/5.12.2/junit-jupiter-5.12.2.jar:/home/lyz/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.12.2/junit-jupiter-api-5.12.2.jar:/home/lyz/.m2/repository/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar:/home/lyz/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/lyz/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.12.2/junit-jupiter-params-5.12.2.jar:/home/lyz/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.12.2/junit-jupiter-engine-5.12.2.jar:/home/lyz/.m2/repository/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.jar:/home/lyz/.m2/repository/org/mockito/mockito-core/5.17.0/mockito-core-5.17.0.jar:/home/lyz/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar:/home/lyz/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/lyz/.m2/repository/org/mockito/mockito-junit-jupiter/5.17.0/mockito-junit-jupiter-5.17.0.jar:/home/lyz/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/home/lyz/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/lyz/.m2/repository/org/springframework/spring-core/6.2.19/spring-core-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/spring-jcl/6.2.19/spring-jcl-6.2.19.jar:/home/lyz/.m2/repository/org/springframework/spring-test/6.2.19/spring-test-6.2.19.jar:/home/lyz/.m2/repository/org/xmlunit/xmlunit-core/2.10.4/xmlunit-core-2.10.4.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="FILE_LOG_CHARSET" value="UTF-8"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="/home/lyz/code/demo/JLRADemo/target/surefire/surefirebooter-20260918153751320_3.jar"/>
+    <property name="surefire.real.class.path" value="/home/lyz/code/demo/JLRADemo/target/surefire/surefirebooter-20260918155218124_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.19+10-1-24.04.2-Ubuntu"/>
     <property name="user.name" value="lyz"/>
@@ -48,7 +48,7 @@
     <property name="user.dir" value="/home/lyz/code/demo/JLRADemo"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="123176"/>
+    <property name="PID" value="134422"/>
     <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
     <property name="native.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
@@ -60,56 +60,57 @@
     <property name="java.class.version" value="61.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[JLRADemo] "/>
   </properties>
-  <testcase name="stream" classname="com.example.service.AIChatServiceStreamTest" time="13.941">
+  <testcase name="stream" classname="com.example.service.AIChatServiceStreamTest" time="13.645">
     <system-out><![CDATA[===== 提问：用大白话讲讲 Spring Boot 的自动配置是怎么生效的。 =====
 
 【思考】
-The user asks again about Spring Boot auto-configuration. I already gave a full answer. I should give the explanation again, in plain language, with the same structure. Keep it fresh but essentially the same content. Should I just repeat? The user re-asked the same question. I'll give a good answer again — plain language, conclusion first, step by step, examples, complete runnable code, pitfalls. Maybe vary slightly but keep quality. No tools needed.
+The user is asking the same question as before, about Spring Boot auto-configuration. I already answered this thoroughly in a previous turn. I should answer again — but should I just repeat? The user is asking the same question again. Honestly, since the previous answer exists, I should give the answer. But I shouldn't just copy verbatim... Actually, it's fine to give a solid answer. Let me just answer the question well. Maybe I can present it a bit differently/freshly but keep it complete and correct.
 
-I'll write a thorough answer. Let me make it well-organized and consistent.
+Let me write a good answer. Include the conclusion first, then step by step, with runnable code, key comments, and pitfalls.
 
-Actually, I should be careful: repeating the exact same giant answer may be fine, but perhaps slightly more concise and refocused. I'll produce a solid answer covering the same ground—it's the same question, so same content is appropriate. Let me write it in my own way, complete code, pitfalls.
+One thing I should be careful about: accuracy on the version details. Let me be careful:
+- Spring Boot 2.7 introduced `@AutoConfiguration` annotation and the new `AutoConfiguration.imports` file. In 2.7, the new file is supported and `spring.factories` still works (deprecated for auto-config). In Spring Boot 3.0, `spring.factories` support for auto-configuration was removed.
+- `@AutoConfiguration` = `@Configuration(proxyBeanMethods = false)` + `@AutoConfigureBefore/After`.
+- `@SpringBootApplication` includes `@EnableAutoConfiguration`.
+- `AutoConfigurationImportSelector` — actually in 2.7+ it's `AutoConfigurationImportSelector` which delegates to `ImportCandidates.load(...)`.
+- Version of spring-boot-starter-parent — I'll use 3.2.5 with Java 17, consistent with earlier. Fine.
 
-Let me structure:
+I should be honest that the earlier turn already answered this, but the instruction says don't be chatty/客套. I'll just answer. Maybe one line noting this was covered before and I'll re-give it in a slightly tighter form? The instruction says "别跑题，只回答用户问的那件事" — so just answer. I'll answer, maybe with a brief note. Actually simplest: just answer well.
 
-结论 first.
+Let me write it. I'll keep the good structure and correct details. I'll make the code complete and runnable.
 
-术语一句话（Bean、容器、自动配置类、条件注解、类路径、starter）
+I need to double-check the debug property: `debug=true` in application.properties prints the auto-configuration report. Yes.
 
-一、启动那几秒的流程
-二、清单文件（版本表）
-三、常用条件注解表
-四、动手造一个最小例子（完整代码，能跑）
-五、验证"你定义了它就退让"
-六、真实例子（web / datasource）对照
-七、怎么看清单文件
-八、踩坑点
-收尾
+Also `--debug` as command line arg works.
 
-Keep code complete and runnable. Good.
+Let me also double check: `@ConditionalOnMissingBean` on a `@Bean` method inside an auto-configuration - ordering matters. Yes, that's why `@AutoConfigureBefore/After` and `@AutoConfigureOrder` exist.
+
+Also worth noting: in Spring Boot 3, `spring-boot-starter` includes spring-boot-autoconfigure, spring-boot-starter-logging, spring-core, snakeyaml. Yes.
+
+Let me write the answer.
 【回答】
-结论先摆出来：**Spring Boot 的自动配置就干三件事——启动时去翻一份"清单文件"，清单上登记着一堆别人早就写好的配置类；它挨个给这些类做"条件判断"；条件满足了就顺手把对象替你造好放进容器。你一行配置没写就能跑，不是你厉害，是别人把配置写好了，Spring Boot 只负责"看情况挑着用"。**
+结论先摆出来：**Spring Boot 自动配置，说白了就是启动时翻一份"清单文件"，清单上登记着一堆别人早就写好的配置类；Spring Boot 挨个给它们做"条件判断"，条件满足了就顺手把对象替你创建好，放进容器。你一行配置都没写却能跑，不是你厉害，是别人把配置提前写好了，Spring Boot 只负责"看情况挑着用"。**
 
-打个比方，Spring Boot 就是个**智能管家**。你搬进新家（项目启动），它不问你想要啥，就自己看：
+打个比方，它就是你家请的**智能管家**。你搬进新家（项目启动），它不问你想要啥，自己先转一圈：
 
-- 看见你买了洗衣机（引了 web 依赖）→ 自动接水管、装地漏（配好 Tomcat 和 Spring MVC）
-- 发现你自己已经装了净水器（你自己定义了同类型的对象）→ 那我不装了，让着你
-- 你家压根没洗碗机（依赖没引）→ 这事我不掺和
+- 看见你买了洗衣机（引了 web 依赖）→ 自动给你接水管、装地漏（配好 Tomcat 和 Spring MVC）
+- 发现你自己已经装了净水器（你自己定义了同类对象）→ 那我不装了，让着你
+- 你家压根没买洗碗机（依赖没引）→ 这事我不管
 
-管家手上那张"检查清单"，对应到代码里就是**条件注解**。
+管家手里那张"检查清单"，在代码里就叫**条件注解**。
 
-先把几个词用一句话说清（第一次听也能懂）：
+先把几个词用一句话说清，第一次听也能懂：
 
-- **Bean**：交给 Spring 容器创建和管理的对象。你自己 `new` 的不算。
+- **Bean**：交给 Spring 容器创建和管理的对象。你自己 `new` 出来的不算。
 - **Spring 容器**：装 Bean 的大盒子。启动时往里放，用的时候从里拿。
-- **自动配置类**：Spring Boot 提前写好的 Java 类，作用就一个——帮你创建某些 Bean。
+- **自动配置类**：Spring Boot 提前写好的配置类，作用是帮你创建某些 Bean。
 - **条件注解**：写在类或方法上的判断条件，比如"项目里有某个类才生效""你没自己定义才生效"。
-- **类路径**：Maven 下载回来的那堆 jar 包，程序运行时能直接用的东西。
-- **starter**：依赖套装，引一个等于引一串相关 jar。`spring-boot-starter-web` 一次把 web 那一套都带进来。
+- **类路径**：Maven 下载回来那堆 jar 包，程序运行时能直接用的东西。
+- **starter**：依赖套装，引一个等于引一串相关 jar。`spring-boot-starter-web` 一次把 web 那一套全带进来。
 
 ---
 
-## 一、启动那几秒里，到底走了哪几步
+## 一、启动那几秒里，发生了这七步
 
 1. 启动类上写了 `@SpringBootApplication`。
 2. 这个注解**里面包着** `@EnableAutoConfiguration`——自动配置的总开关。
@@ -117,9 +118,9 @@ Keep code complete and runnable. Good.
 4. 它翻遍项目依赖的**每一个 jar 包**，把藏在里面的清单文件找出来，登记过的配置类名字全读出来。
 5. 这些类**不是全都生效**，Spring Boot 挨个做条件判断。
 6. 判断通过的，执行它里面的 `@Bean` 方法，对象进容器。
-7. 于是你 `@Autowired`（自动注入，就是"从容器里把对象塞给我"）就能拿到了。
+7. 于是你写 `@Autowired`（自动注入，就是"从容器里把对象塞给我"）就能拿到了。
 
-这就是全部原理，剩下的都是细节。
+原理就这么点，剩下的都是细节。
 
 ---
 
@@ -127,17 +128,17 @@ Keep code complete and runnable. Good.
 
 | Spring Boot 版本 | 清单文件位置 |
 |---|---|
-| 3.x，以及 2.7 及以后 | `META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports` |
+| 2.7 及以后（含 3.x） | `META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports` |
 | 2.6 及更早 | `META-INF/spring.factories`，键名是 `org.springframework.boot.autoconfigure.EnableAutoConfiguration` |
 
-> 说准确点：2.7 是过渡版本，两种写法都认；**3.0 起只认 `.imports`，老写法直接删了**。照着三年前的老教程做死活跑不通，十次有八次栽在这。
+> 说准确点：2.7 是过渡版本，两种写法都认；**3.0 起只认 `.imports`，老写法直接删掉了**。照着三年前的老教程做死活跑不通，十次有八次栽在这。
 
 常用条件注解，大白话版：
 
 | 注解 | 意思 |
 |---|---|
 | `@ConditionalOnClass` | 项目里有某个类，才生效 |
-| `@ConditionalOnMissingBean` | 你没自己定义这个 Bean，我才创建 |
+| `@ConditionalOnMissingBean` | 你自己没定义这个 Bean，我才创建 |
 | `@ConditionalOnBean` | 容器里已经有某个 Bean，我才生效 |
 | `@ConditionalOnProperty` | 某个配置项满足条件，才生效 |
 | `@ConditionalOnWebApplication` | 当前是 Web 项目，才生效 |
@@ -150,7 +151,7 @@ Keep code complete and runnable. Good.
 
 环境：Spring Boot 3.2.5 + Java 17。
 
-> 电脑上只有 Java 8？把父版本改成 `2.7.18`，`java.version` 改成 `1.8`，代码不用动。
+> 电脑上只有 Java 8？把父工程版本改成 `2.7.18`，`java.version` 改成 `1.8`，代码一个字不用动。
 
 目录结构：
 
@@ -179,7 +180,7 @@ autoconfig-demo/
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- 父工程：统一管好各依赖的版本号，所以下面写依赖能省掉 version -->
+    <!-- 父工程：统一管好各依赖的版本号，所以下面的依赖能省掉 version -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -327,7 +328,7 @@ mvn spring-boot:run
 启动后拿到的 MyService: 我是自动配置帮你创建的
 ```
 
-**证据就在这**：整个 `DemoApplication` 里你没写过一句创建 `MyService` 的代码，可 `runner` 的参数就是拿到了它。链条是——读清单文件 → 加载 `MyAutoConfiguration` → 条件都满足 → `@Bean` 方法执行 → `MyService` 进容器。
+**证据就在这**：整个 `DemoApplication` 里你没写过一句创建 `MyService` 的代码，可 `runner` 的参数就是拿到了它。整条链条是——读清单文件 → 加载 `MyAutoConfiguration` → 条件全满足 → `@Bean` 方法执行 → `MyService` 进容器。
 
 ---
 
@@ -382,7 +383,7 @@ public class DemoApplication {
 
 ---
 
-## 五、拿真实的例子对一遍，原理一模一样
+## 五、拿真实例子对一遍，原理一模一样
 
 你加了：
 
@@ -423,17 +424,17 @@ spring.datasource.password=123456
 org/springframework/boot/spring-boot-autoconfigure/3.2.5/spring-boot-autoconfigure-3.2.5.jar
 ```
 
-把 `.jar` 改成 `.zip` 解压，进 `META-INF/spring/` 目录，看那个 `.imports` 文件——一行一个自动配置类的名字，一共一百多行。**Spring Boot 一百多套自动配置，全登记在这一张表上。**
+把 `.jar` 改成 `.zip` 解压，进 `META-INF/spring/` 目录，看那个 `.imports` 文件——一行一个自动配置类的名字，一百多行。**Spring Boot 一百多套自动配置，全登记在这一张表上。**
 
 ---
 
 ## 七、踩坑点，直接点破
 
-1. **自动配置不是猜的，是靠"看"。** 看依赖在不在、看配置有没有、看你有没有自己定义。三个条件对不上，它一动不动。
+1. **自动配置不是猜的，是靠"看"。** 看依赖在不在、看配置有没有、看你有没有自己定义。三样对不上，它一动不动。
 
-2. **清单文件位置随版本变。** 3.x 和 2.7+ 用 `.imports`；2.6 及更早用 `spring.factories`。老教程最容易死这。
+2. **清单文件位置随版本变。** 2.7 及以后用 `.imports`；2.6 及更早用 `spring.factories`。老教程最容易死这。
 
-3. **自己写的自动配置类，别放在启动类的扫描范围里。** 启动类默认扫自己所在包及其子包。你要是把它塞进 `com.example.app` 下面，它会被普通组件扫描加载一次，又被清单文件加载一次，可能重复、报错或行为诡异。**单独放一个包，只让清单文件去加载它。**
+3. **自己写的自动配置类，别放在启动类的扫描范围里。** 启动类默认扫自己所在包及其子包。你要是把它塞进 `com.example.app` 下面，它会被普通组件扫描加载一次，又被清单文件加载一次，可能重复、报错、行为诡异。**单独放一个包，只让清单文件去加载它。**
 
 4. **"我配了但没生效"，第一件事是看条件评估报告。** 命令行加：
 
@@ -447,7 +448,7 @@ org/springframework/boot/spring-boot-autoconfigure/3.2.5/spring-boot-autoconfigu
    debug=true
    ```
 
-   启动日志会多出一份 **Condition Evaluation Report**（条件评估报告），分"匹配上了"和"没匹配上"两拨，逐条告诉你哪个自动配置为什么没生效。排查这类问题这招最省时间，比瞎猜强一百倍。
+   启动日志会多出一份 **Condition Evaluation Report**（条件评估报告），分"匹配上了"和"没匹配上"两拨，逐条告诉你哪个自动配置为什么没生效。排查这类问题，这招最省时间，比瞎猜强一百倍。
 
 5. **想覆盖自动配置的 Bean，Bean 名字最好也对上。** 多数地方类型对上就行，但有一部分自动配置是按 Bean 名字找的，名字不对就覆盖不掉。稳妥做法：自定义 Bean 时名字取得和自动配置里一样。
 
@@ -464,7 +465,7 @@ org/springframework/boot/spring-boot-autoconfigure/3.2.5/spring-boot-autoconfigu
 **Spring Boot 自动配置 = 读清单文件 + 做条件判断 + 满足就替你创建 Bean。你满足了它才出手，你自己定义了它就退让。**
 
 它一点都不神秘，就是把"看情况帮你配置"这件事写成了代码而已。
-===== done，正文 9432 字，耗时 13918ms =====
+===== done，正文 9427 字，耗时 13626ms =====
 ]]></system-out>
   </testcase>
 </testsuite>

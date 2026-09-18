@@ -1,0 +1,21 @@
+# Maven 构建产物：每次 mvn 都会变，提交上去只会让 diff 永远脏
+target/
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.classpath
+.project
+
+# 日志与临时文件
+*.log
+*.dumpstream
+*.dump
+
+# 系统
+.DS_Store
+Thumbs.db

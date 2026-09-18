@@ -1,0 +1,7 @@
+com/example/service/AIChatServiceChatTest.class
+com/example/domain/tool/WebScreenshotToolTest.class
+com/example/service/AIChatServiceScreenshotTest.class
+com/example/domain/browser/LoggedInAccessVerificationTest.class
+com/example/domain/browser/BrowserSessionProviderTest.class
+com/example/service/AIChatServiceStreamTest.class
+com/example/domain/tool/WebPageTextToolTest.class
