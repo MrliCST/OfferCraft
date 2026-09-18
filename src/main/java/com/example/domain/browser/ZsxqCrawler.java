@@ -1,12 +1,13 @@
 package com.example.domain.browser;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -19,13 +20,19 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
 /**
- * 知识星球圈子爬虫：按栏目（话题 chip）各爬 5 篇帖，保存结构化 JSON。
- * 用法: java ...ZsxqCrawler [输出目录]
- * 输出: <输出目录>/<columnKey>.json，每文件含 5 篇 CrawledPost。
+ * 知识星球圈子爬虫：按栏目（话题 chip）各爬 N 篇帖，保存结构化 JSON。
+ * 用法: java ...ZsxqCrawler [输出目录] [每栏篇数]
+ * 输出: <输出目录>/<columnKey>.json，每文件含 N 篇 CrawledPost。
+ *
+ * 本次修复（2026-09-18）：
+ *  - 星主长文截断：feed 预览约 260 字，遇「查看详情」则开新页取完整正文。
+ *  - 图片 src 采集：帖子正文 + 回复里的 &lt;img&gt; 全部收集（清洗阶段按 Q1 过滤）。
+ *  - 补齐 post_id（从 /topic/&lt;id&gt; 解析）与 source_url（详情页 URL）。
  */
 public final class ZsxqCrawler {
 
     private static final String GROUP_URL = "https://wx.zsxq.com/group/51121244585524";
+    private static final String BASE_URL = "https://wx.zsxq.com";
 
     /** 栏目 = 侧边栏 chip 文案（contains 匹配）。 */
     private static final Map<String, String> COLUMNS = new LinkedHashMap<>();
@@ -39,10 +46,12 @@ public final class ZsxqCrawler {
     }
 
     private static final String STAR_MASTER = "马丁";
+    private static final int DEFAULT_PER_COLUMN = 5;
 
     public static void main(String[] args) throws Exception {
         String outDir = args.length > 0 ? args[0]
                 : System.getProperty("user.home") + "/code/demo/JLRADemo/crawl-output/zsxq";
+        int perColumn = args.length > 1 ? Integer.parseInt(args[1]) : DEFAULT_PER_COLUMN;
         Files.createDirectories(Path.of(outDir));
 
         LoginStateStore store = new LoginStateStore("~/.config/JLRADemo/state/wx.zsxq.com.json");
@@ -82,18 +91,18 @@ public final class ZsxqCrawler {
                     page.evaluate("() => window.scrollTo(0, document.body.scrollHeight)");
                     Thread.sleep(1200);
                     visible = page.querySelectorAll("app-topic[type='flow']").size();
-                    if (visible >= 5) {
+                    if (visible >= perColumn) {
                         break;
                     }
                 }
 
                 List<ElementHandle> topics = page.querySelectorAll("app-topic[type='flow']");
-                System.out.println("  该栏目可见帖子数: " + topics.size() + (visible < 5 ? "  (不足5，可能栏目加载失败)" : ""));
+                System.out.println("  该栏目可见帖子数: " + topics.size() + (visible < perColumn ? "  (不足" + perColumn + ")" : ""));
                 List<CrawledPost> posts = new ArrayList<>();
-                int n = Math.min(5, topics.size());
+                int n = Math.min(perColumn, topics.size());
                 for (int i = 0; i < n; i++) {
                     try {
-                        posts.add(extractPost(topics.get(i), chipText));
+                        posts.add(extractPost(topics.get(i), chipText, context));
                     } catch (Exception e) {
                         System.out.println("  帖子 " + (i + 1) + " 提取失败: " + e.getMessage());
                     }
@@ -111,7 +120,7 @@ public final class ZsxqCrawler {
         System.out.println("\n全部栏目爬取完成，输出目录: " + outDir);
     }
 
-    private static CrawledPost extractPost(ElementHandle topic, String column) throws Exception {
+    private static CrawledPost extractPost(ElementHandle topic, String column, BrowserContext context) throws Exception {
         CrawledPost p = new CrawledPost();
         p.column = column;
 
@@ -125,9 +134,6 @@ public final class ZsxqCrawler {
             } else {
                 p.authorRole = "星友";
             }
-            if (STAR_MASTER.equals(p.author)) {
-                p.authorRole = "星主";
-            }
         }
 
         // 时间
@@ -136,7 +142,32 @@ public final class ZsxqCrawler {
             p.publishedAt = date.innerText().trim();
         }
 
-        // 正文（长帖展开）
+        // post_id + 详情 URL：优先 topic-id 属性，否则从 /topic/<id> 链接解析
+        String topicIdAttr = topic.getAttribute("topic-id");
+        if (topicIdAttr != null && !topicIdAttr.isEmpty()) {
+            p.postId = topicIdAttr;
+        }
+        String detailUrl = null;
+        boolean hasViewDetail = false;
+        for (ElementHandle a : topic.querySelectorAll("a")) {
+            String href = a.getAttribute("href");
+            if (href == null) continue;
+            String abs = toAbsolute(href);
+            if (p.postId == null && href.contains("/topic/")) {
+                p.postId = parseTopicId(href);
+            }
+            if (containsText(a, "查看详情")) {
+                hasViewDetail = true;
+                if (detailUrl == null) detailUrl = abs;
+            } else if (detailUrl == null && href.contains("/topic/")) {
+                detailUrl = abs;
+            }
+        }
+        if (detailUrl != null) {
+            p.sourceUrl = detailUrl;
+        }
+
+        // 正文（先尝试 feed 内「展开全部」）
         ElementHandle showAll = topic.querySelector(".showAll");
         if (showAll != null) {
             try {
@@ -145,9 +176,22 @@ public final class ZsxqCrawler {
             } catch (Exception ignored) {
             }
         }
-        ElementHandle content = topic.querySelector(".talk-content-container .content");
-        if (content != null) {
-            p.content = content.innerText().trim();
+        ElementHandle contentEl = topic.querySelector(".talk-content-container .content");
+        if (contentEl != null) {
+            p.content = contentEl.innerText().trim();
+        }
+
+        // 星主长文截断：feed 预览不全，遇「查看详情」开新页取完整正文（不干扰 feed 页面）
+        boolean truncated = hasViewDetail;
+        if (truncated && context != null) {
+            DetailResult d = openDetail(context, detailUrl);
+            if (d.content != null && !d.content.isEmpty()) {
+                p.content = d.content;
+            }
+            p.imageUrls.addAll(d.images);
+        } else {
+            // 未走详情页：直接在 feed 采图片（正文 + 回复）
+            p.imageUrls.addAll(collectImages(topic.querySelectorAll(".talk-content-container img, .comment-box img")));
         }
 
         // 话题标签
@@ -197,6 +241,114 @@ public final class ZsxqCrawler {
         return p;
     }
 
+    private static boolean containsText(ElementHandle el, String needle) {
+        try {
+            String t = el.textContent();
+            return t != null && t.contains(needle);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /** 开新页取详情页完整正文 + 图片（不干扰 feed 页面）。 */
+    private static DetailResult openDetail(BrowserContext context, String detailUrl) {
+        List<String> imgs = new ArrayList<>();
+        String content = null;
+        Page dp = context.newPage();
+        try {
+            CrawlThrottle.beforeCrawl(detailUrl);
+            dp.navigate(detailUrl);
+            try {
+                dp.waitForSelector(".talk-content-container .content",
+                        new Page.WaitForSelectorOptions().setTimeout(8000));
+            } catch (Exception ignored) {
+                // 详情页结构可能不同，继续尝试读取
+            }
+            Thread.sleep(1500); // 等懒加载图片渲染
+            ElementHandle c = dp.querySelector(".talk-content-container .content");
+            if (c != null) {
+                // 详情页若仍折叠，点展开
+                ElementHandle sa = dp.querySelector(".showAll");
+                if (sa != null) {
+                    try {
+                        sa.click();
+                        Thread.sleep(400);
+                    } catch (Exception ignored) {
+                    }
+                }
+                ElementHandle c2 = dp.querySelector(".talk-content-container .content");
+                if (c2 != null) {
+                    content = c2.innerText().trim();
+                }
+            }
+            imgs.addAll(collectImages(dp.querySelectorAll(".talk-content-container img")));
+        } catch (Exception e) {
+            System.out.println("    详情页提取失败: " + e.getMessage());
+        } finally {
+            try {
+                CrawlThrottle.afterCrawl(detailUrl);
+            } catch (Exception ignored) {
+            }
+            dp.close();
+        }
+        return new DetailResult(content, imgs);
+    }
+
+    /** 收集 &lt;img&gt; 的 src（优先 data-src，兼容懒加载），过滤 data: 与相对路径归一。 */
+    private static List<String> collectImages(List<ElementHandle> imgs) {
+        Set<String> out = new LinkedHashSet<>();
+        for (ElementHandle img : imgs) {
+            String dataSrc = img.getAttribute("data-src");
+            String src = img.getAttribute("src");
+            String url = (dataSrc != null && !dataSrc.isEmpty()) ? dataSrc : src;
+            if (url == null || url.isEmpty()) {
+                continue;
+            }
+            if (url.startsWith("data:")) {
+                continue;
+            }
+            if (!url.startsWith("http://") && !url.startsWith("https://")) {
+                url = toAbsolute(url);
+            }
+            out.add(url);
+        }
+        return new ArrayList<>(out);
+    }
+
+    private static String parseTopicId(String url) {
+        String marker = "/topic/";
+        int i = url.indexOf(marker);
+        if (i < 0) {
+            return null;
+        }
+        String rest = url.substring(i + marker.length());
+        int end = rest.indexOf('/');
+        if (end < 0) {
+            end = rest.length();
+        }
+        int q = rest.indexOf('?');
+        if (q >= 0 && q < end) {
+            end = q;
+        }
+        return rest.substring(0, end);
+    }
+
+    private static String toAbsolute(String href) {
+        if (href == null) {
+            return null;
+        }
+        if (href.startsWith("http://") || href.startsWith("https://")) {
+            return href;
+        }
+        if (href.startsWith("//")) {
+            return "https:" + href;
+        }
+        if (href.startsWith("/")) {
+            return BASE_URL + href;
+        }
+        return BASE_URL + "/" + href;
+    }
+
     private static void clickChip(Page page, String name) {
         for (int attempt = 0; attempt < 3; attempt++) {
             for (ElementHandle el : page.querySelectorAll("div.item, a.item, li.item, span.item")) {
@@ -221,6 +373,8 @@ public final class ZsxqCrawler {
     /** 爬取到的帖子（与清洗管道设计对齐：topic_key / published_at / authority 预留）。 */
     public static class CrawledPost {
         public String column;
+        public String postId;               // 帖子 ID（从 /topic/<id> 解析），对应 raw_post.post_id
+        public String sourceUrl;            // 详情页 URL，对应 cleaned_doc.source_url
         public String author;
         public String authorRole;          // 星主 / 星友
         public String publishedAt;
@@ -228,6 +382,7 @@ public final class ZsxqCrawler {
         public List<String> topicTags = new ArrayList<>();
         public List<String> likeUsers = new ArrayList<>();
         public boolean starMasterReplied;   // Rule 2 信号：星主是否回复
+        public List<String> imageUrls = new ArrayList<>();  // 正文 + 回复图片 src（Q1 在清洗阶段过滤）
         public List<CrawledReply> replies = new ArrayList<>();
         // 清洗阶段填充
         public String topicKey;             // e.g. RagentAI / 技术问答
@@ -238,5 +393,16 @@ public final class ZsxqCrawler {
         public String commenter;
         public String text;
         public String time;
+    }
+
+    /** 详情页提取结果（完整正文 + 图片）。 */
+    private static class DetailResult {
+        final String content;
+        final List<String> images;
+
+        DetailResult(String content, List<String> images) {
+            this.content = content;
+            this.images = images;
+        }
     }
 }
