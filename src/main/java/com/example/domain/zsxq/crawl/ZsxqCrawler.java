@@ -21,6 +21,8 @@ import com.microsoft.playwright.Playwright;
 
 import com.example.domain.browser.CrawlThrottle;
 import com.example.domain.browser.LoginStateStore;
+import com.example.domain.zsxq.model.CrawledPost;
+import com.example.domain.zsxq.model.CrawledReply;
 import com.example.domain.zsxq.normalize.HtmlToMarkdown;
 
 /**
