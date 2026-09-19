@@ -28,18 +28,29 @@ import com.example.domain.zsxq.normalize.HtmlToMarkdown;
 
 /**
  * 知识星球圈子爬虫：按栏目（话题 chip）各爬 N 篇帖，保存结构化 JSON。
- * 用法: java ...ZsxqCrawler [输出目录] [每栏篇数]
+ * 用法: java ...ZsxqCrawler [输出目录] [每栏篇数] [栏目key，逗号分隔，留空=全部]
  * 输出: <输出目录>/<columnKey>.json，每文件含 N 篇 CrawledPost。
+ * 例：只爬「只看星主」栏最近 3 篇
+ *      java ...ZsxqCrawler crawl-output/zsxq-smoke 3 starmaster
  *
  * 本次修复（2026-09-18）：
  *  - 星主长文截断：feed 预览约 260 字，遇「查看详情」则开新页取完整正文。
  *  - 图片 src 采集：帖子正文 + 回复里的 &lt;img&gt; 全部收集（清洗阶段按 Q1 过滤）。
  *  - 补齐 post_id（从 /topic/&lt;id&gt; 解析）与 source_url（详情页 URL）。
+ *
+ * 本次修复（2026-09-19，小样本验收暴露）：
+ *  - 星主长文的全文不在 /topic/ 详情页，而在 feed 里的文章页链接
+ *    articles.zsxq.com/id_xxx.html（页面 h1=标题、.content=正文、正文内 img 才是真图，
+ *    页面其余 img 是水印/头像/二维码）。旧代码只认 /topic/，导致 postId/sourceUrl 全 null、
+ *    正文永远停在 270 字预览。现在文章页链接优先：取全文 + 正文图 + h1 标题。
+ *  - 文章页必须带登录态打开，否则跳 wx.zsxq.com/login，所以复用同一个 BrowserContext。
  */
 public final class ZsxqCrawler {
 
     private static final String GROUP_URL = "https://wx.zsxq.com/group/51121244585524";
     private static final String BASE_URL = "https://wx.zsxq.com";
+    /** 星主长文的文章页域名：全文、标题、正文图都在这里，且 URL 里的 id 是稳定血缘键。 */
+    private static final String ARTICLE_HOST = "articles.zsxq.com";
 
     /** 栏目 = 侧边栏 chip 文案（contains 匹配）。 */
     private static final Map<String, String> COLUMNS = new LinkedHashMap<>();
@@ -55,12 +66,14 @@ public final class ZsxqCrawler {
     private static final String STAR_MASTER = "马丁";
     private static final int DEFAULT_PER_COLUMN = 5;
 
-    /** 详情页提取结果（完整正文 + 图片）。 */
+    /** 详情页提取结果（标题 + 完整正文 + 图片）。 */
     private static class DetailResult {
+        final String title;
         final String content;
         final List<String> images;
 
-        DetailResult(String content, List<String> images) {
+        DetailResult(String title, String content, List<String> images) {
+            this.title = title;
             this.content = content;
             this.images = images;
         }
@@ -72,6 +85,7 @@ public final class ZsxqCrawler {
         String outDir = args.length > 0 ? args[0]
                 : System.getProperty("user.home") + "/code/demo/JLRADemo/crawl-output/zsxq";
         int perColumn = args.length > 1 ? Integer.parseInt(args[1]) : DEFAULT_PER_COLUMN;
+        Set<String> onlyColumns = parseColumns(args.length > 2 ? args[2] : null);
         Files.createDirectories(Path.of(outDir));
         //登陆态：路径由 host 推导，不手抄字符串 —— 手抄的那份跟站点名单各记一份，
         //改名单时不会跟着变，而且错了不报错，只是静默退化成匿名抓取
@@ -105,6 +119,9 @@ public final class ZsxqCrawler {
             //遍历帖子
             for (Map.Entry<String, String> col : COLUMNS.entrySet()) {
                 String key = col.getKey();
+                if (!onlyColumns.isEmpty() && !onlyColumns.contains(key)) {
+                    continue;
+                }
                 String chipText = col.getValue();
                 System.out.println("\n##### 栏目: " + chipText + " #####");
                 clickChip(page, chipText);
@@ -145,6 +162,21 @@ public final class ZsxqCrawler {
         System.out.println("\n全部栏目爬取完成，输出目录: " + outDir);
     }
 
+    /** 解析「只爬这些栏目」参数：逗号分隔的 column key，空串表示不过滤。 */
+    private static Set<String> parseColumns(String spec) {
+        Set<String> out = new LinkedHashSet<>();
+        if (spec == null || spec.isBlank()) {
+            return out;
+        }
+        for (String s : spec.split(",")) {
+            String k = s.trim();
+            if (!k.isEmpty()) {
+                out.add(k);
+            }
+        }
+        return out;
+    }
+
     //提取帖子的结构画信息，封装为CrawledPost对象。
     private static CrawledPost extractPost(ElementHandle topic, String column, BrowserContext context) throws Exception {
         CrawledPost p = new CrawledPost();
@@ -174,11 +206,20 @@ public final class ZsxqCrawler {
             p.postId = topicIdAttr;
         }
         String detailUrl = null;
+        String articleUrl = null;   // 文章页：星主长文的全文在这里
         boolean hasViewDetail = false;
         for (ElementHandle a : topic.querySelectorAll("a")) {
             String href = a.getAttribute("href");
             if (href == null) continue;
             String abs = toAbsolute(href);
+            if (abs.contains(ARTICLE_HOST)) {
+                if (articleUrl == null) {
+                    articleUrl = abs;
+                }
+                if (p.postId == null) {
+                    p.postId = parseArticleId(abs);
+                }
+            }
             if (p.postId == null && href.contains("/topic/")) {
                 p.postId = parseTopicId(href);
             }
@@ -188,6 +229,10 @@ public final class ZsxqCrawler {
             } else if (detailUrl == null && href.contains("/topic/")) {
                 detailUrl = abs;
             }
+        }
+        // 文章页优先于 /topic/ 详情页：前者才有全文，后者只是 feed 同款预览
+        if (articleUrl != null) {
+            detailUrl = articleUrl;
         }
         if (detailUrl != null) {
             p.sourceUrl = detailUrl;
@@ -207,12 +252,15 @@ public final class ZsxqCrawler {
             p.content = HtmlToMarkdown.toMarkdown(contentEl.innerHTML());
         }
 
-        // 星主长文截断：feed 预览不全，遇「查看详情」开新页取完整正文（不干扰 feed 页面）
-        boolean truncated = hasViewDetail;
+        // 星主长文截断：feed 只有预览，全文在文章页（或 /topic/ 详情页）里
+        boolean truncated = hasViewDetail || articleUrl != null;
         if (truncated && context != null) {
             DetailResult d = openDetail(context, detailUrl);
             if (d.content != null && !d.content.isEmpty()) {
-                p.content = d.content;
+                // 文章页的 .content 不含标题，标题在 h1，补回去保证入库后有标题
+                p.content = (d.title != null && !d.title.isEmpty())
+                        ? "# " + d.title + "\n\n" + d.content
+                        : d.content;
             }
             p.imageUrls.addAll(d.images);
         } else {
@@ -276,22 +324,31 @@ public final class ZsxqCrawler {
         }
     }
 
-    /** 开新页取详情页完整正文 + 图片（不干扰 feed 页面）。 */
+    /** 开新页取详情页完整正文 + 图片（不干扰 feed 页面）。文章页必须带登录态，故复用同一 context。 */
     private static DetailResult openDetail(BrowserContext context, String detailUrl) {
         List<String> imgs = new ArrayList<>();
         String content = null;
+        String title = null;
         Page dp = context.newPage();
         try {
             CrawlThrottle.beforeCrawl(detailUrl);
             dp.navigate(detailUrl);
             try {
-                dp.waitForSelector(".talk-content-container .content",
+                dp.waitForSelector(".talk-content-container .content, .content",
                         new Page.WaitForSelectorOptions().setTimeout(8000));
             } catch (Exception ignored) {
                 // 详情页结构可能不同，继续尝试读取
             }
             Thread.sleep(1500); // 等懒加载图片渲染
+            ElementHandle h1 = dp.querySelector("h1");
+            if (h1 != null) {
+                title = h1.innerText().trim();
+            }
+            // 文章页正文在 .content；老详情页在 .talk-content-container .content
             ElementHandle c = dp.querySelector(".talk-content-container .content");
+            if (c == null) {
+                c = dp.querySelector(".content");
+            }
             if (c != null) {
                 // 详情页若仍折叠，点展开
                 ElementHandle sa = dp.querySelector(".showAll");
@@ -302,12 +359,10 @@ public final class ZsxqCrawler {
                     } catch (Exception ignored) {
                     }
                 }
-                ElementHandle c2 = dp.querySelector(".talk-content-container .content");
-                if (c2 != null) {
-                    content = HtmlToMarkdown.toMarkdown(c2.innerHTML());
-                }
+                content = HtmlToMarkdown.toMarkdown(c.innerHTML());
+                // 只取正文容器内的图：页面其他 img 是水印 / 头像 / 底部二维码
+                imgs.addAll(collectImages(c.querySelectorAll("img")));
             }
-            imgs.addAll(collectImages(dp.querySelectorAll(".talk-content-container img")));
         } catch (Exception e) {
             System.out.println("    详情页提取失败: " + e.getMessage());
         } finally {
@@ -317,7 +372,7 @@ public final class ZsxqCrawler {
             }
             dp.close();
         }
-        return new DetailResult(content, imgs);
+        return new DetailResult(title, content, imgs);
     }
 
     /** 收集 &lt;img&gt; 的 src（优先 data-src，兼容懒加载），过滤 data: 与相对路径归一。 */
@@ -340,6 +395,24 @@ public final class ZsxqCrawler {
         }
         return new ArrayList<>(out);
     }
+    /** 从文章页 URL 提取文章 id（.../id_u32qjplonsiw.html → id_u32qjplonsiw）：星主长文的稳定血缘键。 */
+    private static String parseArticleId(String url) {
+        int i = url.indexOf("/id_");
+        if (i < 0) {
+            return null;
+        }
+        String rest = url.substring(i + 1);
+        int dot = rest.indexOf('.');
+        if (dot > 0) {
+            rest = rest.substring(0, dot);
+        }
+        int q = rest.indexOf('?');
+        if (q > 0) {
+            rest = rest.substring(0, q);
+        }
+        return rest.isEmpty() ? null : rest;
+    }
+
     //解析帖子id
     private static String parseTopicId(String url) {
         String marker = "/topic/";

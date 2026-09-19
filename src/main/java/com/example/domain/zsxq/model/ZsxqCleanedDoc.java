@@ -9,6 +9,7 @@ import java.util.List;
 public class ZsxqCleanedDoc {
 
     public String docId;
+    public String rawPostId;           // 血缘外键 → zsxq_raw_post.post_id（帖子稳定 id，可溯源重跑）
     public String topicKey;
     public String postType;            // tech_article / interview_qa / architecture_note / resource_share / member_post
     public String author;
