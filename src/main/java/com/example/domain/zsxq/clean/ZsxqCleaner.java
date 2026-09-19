@@ -1,8 +1,5 @@
 package com.example.domain.zsxq.clean;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +10,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.example.domain.zsxq.classify.ZsxqTopicGuardConfig;
+import com.example.domain.zsxq.io.ZsxqSampleIo;
 import com.example.domain.zsxq.model.CrawledPost;
 import com.example.domain.zsxq.model.ZsxqCleanedDoc;
 import com.example.domain.zsxq.model.ZsxqCleaningResult;
@@ -41,41 +39,18 @@ public final class ZsxqCleaner {
                      new AnnotationConfigApplicationContext(ZsxqTopicGuardConfig.class, ZsxqCleaningService.class)) {
             ZsxqCleaningService svc = ctx.getBean(ZsxqCleaningService.class);
 
-            List<CrawledPost> all = load(inDir, om);
+            List<CrawledPost> all = ZsxqSampleIo.readRawPosts(inDir, om);
             System.out.println("S1 载入原始帖子: " + all.size() + " 篇（来自 " + inDir + "）");
 
             ZsxqCleaningResult result = svc.run(all);
 
-            om.writeValue(Path.of(outFile).toFile(), result.kept());
-            om.writeValue(Path.of(inDir, "drops.json").toFile(), result.dropped());
+            ZsxqSampleIo.writeJson(outFile, result.kept(), om);
+            ZsxqSampleIo.writeJson(inDir + "/drops.json", result.dropped(), om);
             System.out.println("S7 入库题库: " + result.kept().size() + " 篇 -> " + outFile);
             System.out.println("   丢弃: " + result.dropped().size() + " 篇 -> " + inDir + "/drops.json");
 
             printStats(result);
         }
-    }
-
-    /** 读 S1 各栏目 JSON（跳过 question-bank.json / drops.json），并回填 column 字段。 */
-    private static List<CrawledPost> load(String inDir, ObjectMapper om) throws Exception {
-        List<CrawledPost> all = new ArrayList<>();
-        try (var stream = Files.list(Path.of(inDir))) {
-            stream.filter(p -> p.toString().endsWith(".json"))
-                    .filter(p -> !p.getFileName().toString().equals("question-bank.json")
-                            && !p.getFileName().toString().equals("drops.json"))
-                    .forEach(p -> {
-                        try {
-                            CrawledPost[] arr = om.readValue(p.toFile(), CrawledPost[].class);
-                            for (var post : arr) {
-                                post.column = post.column == null
-                                        ? p.getFileName().toString().replace(".json", "") : post.column;
-                                all.add(post);
-                            }
-                        } catch (Exception e) {
-                            throw new RuntimeException("读栏目文件失败: " + p, e);
-                        }
-                    });
-        }
-        return all;
     }
 
     private static void printStats(ZsxqCleaningResult result) {

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.example.domain.zsxq.io.ZsxqSampleIo;
 import com.example.domain.zsxq.model.CrawledPost;
 import com.example.domain.zsxq.model.ZsxqCleanedDoc;
 import com.example.domain.zsxq.model.ZsxqDropRecord;
@@ -33,9 +34,9 @@ public final class ZsxqEvalRunner {
             PipelineEvaluator evaluator = ctx.getBean(PipelineEvaluator.class);
             EvalReportRenderer renderer = ctx.getBean(EvalReportRenderer.class);
 
-            List<CrawledPost> raw = loadRaw(inDir, om);
-            List<ZsxqCleanedDoc> kept = loadList(Path.of(inDir, "question-bank.json"), ZsxqCleanedDoc[].class, om);
-            List<ZsxqDropRecord> dropped = loadList(Path.of(inDir, "drops.json"), ZsxqDropRecord[].class, om);
+            List<CrawledPost> raw = ZsxqSampleIo.readRawPosts(inDir, om);
+            List<ZsxqCleanedDoc> kept = ZsxqSampleIo.readDocs(inDir, om);
+            List<ZsxqDropRecord> dropped = ZsxqSampleIo.readDrops(inDir, om);
 
             PipelineMetrics m = evaluator.evaluate(raw, kept, dropped);
             String md = renderer.render(m, inDir);
@@ -52,38 +53,4 @@ public final class ZsxqEvalRunner {
         }
     }
 
-    /** 读各栏目原始 JSON（跳过清洗产物 question-bank.json / drops.json），并回填 column。 */
-    private static List<CrawledPost> loadRaw(String inDir, ObjectMapper om) throws Exception {
-        List<CrawledPost> all = new ArrayList<>();
-        try (var stream = Files.list(Path.of(inDir))) {
-            stream.filter(p -> p.toString().endsWith(".json"))
-                    .filter(p -> !p.getFileName().toString().equals("question-bank.json")
-                            && !p.getFileName().toString().equals("drops.json"))
-                    .forEach(p -> {
-                        try {
-                            CrawledPost[] arr = om.readValue(p.toFile(), CrawledPost[].class);
-                            for (CrawledPost post : arr) {
-                                post.column = post.column == null
-                                        ? p.getFileName().toString().replace(".json", "") : post.column;
-                                all.add(post);
-                            }
-                        } catch (Exception e) {
-                            throw new RuntimeException("读栏目文件失败: " + p, e);
-                        }
-                    });
-        }
-        return all;
-    }
-
-    private static <T> List<T> loadList(Path file, Class<T[]> type, ObjectMapper om) {
-        if (!Files.exists(file)) {
-            return List.of();
-        }
-        try {
-            return List.of(om.readValue(file.toFile(), type));
-        } catch (Exception e) {
-            System.out.println("读取失败（按空处理）: " + file + " -> " + e.getMessage());
-            return List.of();
-        }
-    }
 }

@@ -1,8 +1,10 @@
 package com.example.domain.zsxq.normalize;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import com.example.domain.zsxq.model.CrawledPost;
@@ -60,6 +62,54 @@ public final class PostIdentity {
             out.add(p);
         }
         return out;
+    }
+
+    /**
+     * 把同一篇帖的两种 id 统一成官方 topic_id，返回「旧 id → 规范 id」的映射。
+     *
+     * <p>为什么会有两种 id：星主长文/部分帖在 DOM 里只能拿到文章页链接
+     * （{@code articles.zsxq.com/id_xxx.html}，postId 就是 {@code id_xxx}），
+     * 而 B2 的 API 索引给的是数字型 {@code topic_id}。同一篇帖在不同栏目可能拿到不同形态的 id，
+     * 结果就是库里同一篇存成两行、外键各指一边。
+     *
+     * <p>规范：一律以数字型 topic_id 为准（它可溯源 {@code wx.zsxq.com/topic/<id>}，
+     * 文章页 URL 本来就已经记在 source_url 里，不靠 postId 承载）。
+     *
+     * @return 被改动的 id 的映射（old → new），调用方拿它去修 cleaned_doc.raw_post_id 这类外键
+     */
+    public static Map<String, String> unifyPostIds(List<CrawledPost> posts) {
+        Map<String, List<CrawledPost>> groups = new LinkedHashMap<>();
+        for (CrawledPost p : posts) {
+            groups.computeIfAbsent(fingerprint(p.author, p.publishedAt, p.content), k -> new ArrayList<>()).add(p);
+        }
+        Map<String, String> remap = new LinkedHashMap<>();
+        for (List<CrawledPost> group : groups.values()) {
+            if (group.size() < 2) {
+                continue;
+            }
+            String canonical = null;
+            for (CrawledPost p : group) {
+                if (isTopicId(p.postId)) {
+                    canonical = p.postId;
+                    break;
+                }
+            }
+            if (canonical == null) {
+                continue;
+            }
+            for (CrawledPost p : group) {
+                if (p.postId != null && !p.postId.equals(canonical)) {
+                    remap.put(p.postId, canonical);
+                    p.postId = canonical;
+                }
+            }
+        }
+        return remap;
+    }
+
+    /** 官方 topic_id 是纯数字；文章页 id 形如 id_xxx。 */
+    public static boolean isTopicId(String postId) {
+        return postId != null && !postId.isBlank() && postId.chars().allMatch(Character::isDigit);
     }
 
     private static String normalize(String s) {

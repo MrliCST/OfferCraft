@@ -109,3 +109,12 @@ llm:
     # 变量名用下划线不用横杠 —— 横杠在 bash 里不是合法标识符，export 会直接报
     # "not a valid identifier"，这也是"明明设了却读不到"的一个典型来源。
     api-key: ${DEEPSEEK_WIN_KEY}
+  # 向量化（S7）：百炼 text-embedding-v3，走 OpenAI 兼容端点，所以复用 langchain4j 的 OpenAiEmbeddingModel。
+  # 维度写死 1024 —— schema 里 zsxq_chunk.embedding 就是 vector(1024)，两边必须一致，
+  # 改维度要先改表（hnsw 索引绑列类型，得先删索引再 ALTER）。
+  # key 取值顺序：DASHSCOPE_API_KEY > BAILIAN_API_KEY（本机 ragent 用的就是后者，同一份密钥）。
+  dashscope:
+    base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    model-name: text-embedding-v3
+    dimensions: 1024
+    api-key: ${DASHSCOPE_API_KEY:${BAILIAN_API_KEY:}}
