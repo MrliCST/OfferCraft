@@ -1,3 +1,0 @@
-{"file": ".trellis/spec/backend/browser-automation.md", "reason": "本次改动的直接对象（R4 要改它三处），同时是 browser 包行为的权威描述：R1 的配置迁移与 R3 的存档路径去重都必须与它保持一致，且它第 9-10 行的「唯一入口」规则正是 R4.2 要给例外的地方"}
-{"file": ".trellis/spec/guides/index.md", "reason": "Pre-Modification Rule（改任何值前先 grep -r）是 R1 与 R3 的实现纪律，implement.md 步骤 1.1 与 2.1 直接依赖它；另含「修改任何常量或 config 字段」的触发条件"}
-{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "R3 的立论依据：识别重复实现、消除第二份。R1 是同一母题的变体——同一个策略（正文截断字数）在错误的地方被表达"}

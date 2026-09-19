@@ -22,3 +22,13 @@ Thumbs.db
 
 # CLI 用的 classpath 缓存等临时文件
 tmp/
+
+# 本地 AI 工具链：agents / commands / hooks / skills / 脚本，以及工具自己的
+# 版本号与模板哈希（.trellis/.version、.template-hashes.json）—— 这些由工具生成和
+# 管理，每次升级都会整片改写，提交上去只会让 diff 长期脏，跟项目代码无关。
+.claude/
+.trellis/
+
+# 注意：.workbuddy/ 刻意不忽略。里面是项目的工作日志与长期笔记
+# （memory/YYYY-MM-DD.md 和 MEMORY.md），记的是设计取舍和踩过的坑，
+# 属于跨会话要保留的决策依据，不是工具缓存。
