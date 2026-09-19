@@ -18,6 +18,7 @@ import com.example.domain.zsxq.model.PostType;
 import com.example.domain.zsxq.model.ZsxqCleanedDoc;
 import com.example.domain.zsxq.model.ZsxqCleaningResult;
 import com.example.domain.zsxq.model.ZsxqDropRecord;
+import com.example.domain.zsxq.normalize.PostIdentity;
 
 /**
  * 帖子转题库清洗服务（S2–S6，Spring Boot 规范：纯逻辑、只收注入、不碰 IO/建模型）。
@@ -41,13 +42,14 @@ public class ZsxqCleaningService {
         this.guard = guard;
     }
 
-    /** 编排 S2 分类 → S3 字段 → Q2 聚资 → S5 串联 → S6 抑版。 */
+    /** 编排 S0 跨栏去重 → S2 分类 → S3 字段 → Q2 聚资 → S5 串联 → S6 抑版。 */
     public ZsxqCleaningResult run(List<CrawledPost> all) {
+        List<CrawledPost> posts = PostIdentity.dedupe(all);   // S0：同一帖在多栏目重复只留一份
         List<ZsxqCleanedDoc> kept = new ArrayList<>();
         List<ZsxqDropRecord> dropped = new ArrayList<>();
         List<ZsxqCleanedDoc> resourceShares = new ArrayList<>();
         int idx = 0;
-        for (CrawledPost p : all) {
+        for (CrawledPost p : posts) {
             Classification c = guard.classify(p);
             if (c.drop) {
                 dropped.add(new ZsxqDropRecord(p.column, p.author, p.publishedAt, c.reason));
@@ -87,7 +89,7 @@ public class ZsxqCleaningService {
         d.sourceUrl = p.sourceUrl;
         d.ingestAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
         d.superseded = false;
-        d.authorityScore = c.authorityScore;
+        d.authorityScore = authorityWithGuard(c.authorityScore, p.authorRole, c.starMasterAnswer);
         d.starMasterVerified = c.starMasterVerified;
 
         switch (c.postType) {
@@ -108,12 +110,36 @@ public class ZsxqCleaningService {
                 d.content = p.content;
                 d.keepImages = false;            // Q1 星友图全剥离
             }
+            case PEER_INTERVIEW -> {
+                d.content = p.content;           // 面经真题原文全留（题目侧语料）
+                d.keepImages = false;            // Q1 星友图全剥离
+            }
             default -> {                          // RESOURCE_SHARE 等：图剥离
                 d.content = p.content;
                 d.keepImages = false;
             }
         }
         return d;
+    }
+
+    /**
+     * 权威分护栏：没有马丁实质作答的星友内容，一律封顶 0.1。
+     *
+     * <p>为什么需要：权威分是按 post_type 推的（{@link PostType#defaultAuthority()}），
+     * 而类型闸只看内容不看身份——星友的提问帖里提到「架构 / RAG / 2.0」，就可能被判成
+     * architecture_note 白拿 0.9。
+     *
+     * <p>为什么有例外：马丁在回复里给了实质解答（{@link Classification} 已据此给到 0.9）是
+     * 高分的正当来源，那条回复才是这篇的核心价值，不能再压回 0.1。所以这里只拦「无权威作答却拿高分」。
+     */
+    private static double authorityWithGuard(double score, String authorRole, String starMasterAnswer) {
+        if (starMasterAnswer != null && starMasterAnswer.length() >= 60) {
+            return score;                       // 马丁实质作答：权威来源正当
+        }
+        if ("星主".equals(authorRole)) {
+            return score;
+        }
+        return Math.min(score, 0.1);
     }
 
     /** Q2 资源分享聚合。 */

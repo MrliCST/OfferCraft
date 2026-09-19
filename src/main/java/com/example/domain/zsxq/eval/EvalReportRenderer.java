@@ -35,7 +35,9 @@ public class EvalReportRenderer {
     private void appendOverview(StringBuilder sb, PipelineMetrics m) {
         sb.append("## 一、总览\n\n");
         sb.append("| 指标 | 值 |\n|---|---|\n");
-        sb.append("| 采集帖子 | ").append(m.totalPosts).append(" 篇 |\n");
+        sb.append("| 采集原始条数 | ").append(m.rawPosts).append(" 条 |\n");
+        sb.append("| 去重后独立帖 | ").append(m.totalPosts).append(" 篇（跨栏目重复 ")
+          .append(m.rawPosts - m.totalPosts).append(" 条，同一帖会出现在多个栏目）|\n");
         sb.append("| 入库文档 | ").append(m.keptDocs).append(" 篇 |\n");
         sb.append("| 丢弃 | ").append(m.droppedDocs).append(" 篇（丢弃率 ")
           .append(String.format("%.1f%%", m.dropRate())).append("）|\n");
@@ -133,8 +135,9 @@ public class EvalReportRenderer {
             sb.append('\n');
         }
         sb.append("> 判定口径：血缘键 / 源链接必须 100% 覆盖；正文低于 ")
-          .append(PipelineEvaluator.TRUNCATED_THRESHOLD).append(" 字视为疑似截断；")
-          .append("身份与分类结果矛盾（星主判 member_post、星友拿 0.9 分）视为分类可疑。\n");
+          .append(PipelineEvaluator.TRUNCATED_THRESHOLD).append(" 字且带预览特征才判疑似截断；")
+          .append("星主被判 member_post、或星友在没有马丁实质作答的情况下拿到 0.9 分，视为分类可疑")
+          .append("（马丁在回复里给了实质解答而拿 0.9 是正当的，不算）。\n");
     }
 
     private static String formatTypes(Map<String, Integer> types) {

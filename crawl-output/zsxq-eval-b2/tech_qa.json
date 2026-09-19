@@ -1,0 +1,116 @@
+[ {
+  "column" : "技术问答",
+  "postId" : "82258258551184422",
+  "sourceUrl" : "https://wx.zsxq.com/topic/82258258551184422",
+  "author" : "北梦",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-09-16 22:36",
+  "content" : "感谢马哥的短链接让我找到了java实习，做了三个多月。 星球已经续费一年了。 今年刚毕业，离开那家公司，签了另一家公司，做的不是技术，做的咨询顾问，已经工作两个月了。 目前工作跟着项目走，公司租房，工作内容比较杂，做过数据同步、数仓建设、指标梳理、SQL 这些，目前都是参与其中执行的层面，技术上的东西做得不算多。 现在还在试用期（6个月），到手 4k～5k 左右。基本每天早上 8:30 上班，晚上 9～10 点下班，感觉还是挺累的，后续听说一直也是这个工作强度，也有点想离职。 我的打算是这样的，有时间就去重拾技术上的东西，然后去学习agent项目，修改简历，先待着。[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDD25自我介绍](https://wx.zsxq.com/tags/\uD83D\uDD25自我介绍/28885124581521)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDD25自我介绍" ],
+  "likeUsers" : [ "Feg" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/Fv8LqaPfsKT01Zg6sV5xGsCiC5dF?imageMogr2/auto-orient/thumbnail/750x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:XXY6w7Wyy_a-1k75CwUXsj8w0qY=", "https://wx.zsxq.com/assets_dweb/images/emoji/坏笑.png" ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "技术这一块规划没问题，离职时间建议咱再慎重些。因为如果毕业后3或者6个月出来找工作，很容易让HR认为是因为能力不足被开掉的。我的建议是，情况允许的话，待够至少7-8个月最好了。 其次，建议找到后再离职，因为谁也不知道这个行情找工作需要多久，脱产找工作的心理压力相对来说会更多一些。如果有一份工作再找的话，准备面试以及过程中会更轻松些。这是我的一些见解，希望对咱有帮助。",
+    "time" : "2026-09-16 23:07"
+  }, {
+    "commenter" : "北梦",
+    "text" : "好，谢谢马哥![](assets_dweb/images/emoji/坏笑.png \"坏笑\")![](assets_dweb/images/emoji/坏笑.png \"坏笑\")",
+    "time" : "2026-09-17 08:37"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : "14425518851255222",
+  "sourceUrl" : "https://wx.zsxq.com/topic/14425518851255222",
+  "author" : "习嗯哼",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-09-09 20:25",
+  "content" : "马哥，你好，我目前在北京某保险公司业财和销管中台系统开发实习，这边入职快一周了，目前已经拿到中台项目代码，不过CodeBuddy的license还没有分配下来，看代码只能靠自己啃，理解业务逻辑会慢一些。平时大部分时间不算特别忙，只有上线阶段会比较紧张。想请教下您，我平时可以通过哪些方式积累业务思想、提升自己？比如日常看代码、梳理业务、学习沉淀，再就是下班想学习agent相关的，但每次找着路线就没了信心，会怀疑自己，求解惑[#\uD83D\uDD25自我介绍](https://wx.zsxq.com/tags/\uD83D\uDD25自我介绍/28885124581521) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDD25自我介绍", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "小龙猫" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "才入职一周，不用着急，先把手上的项目吃透比学一堆新技术更重要。 平时看代码别深入细节，可以围绕一个具体业务流程去看，比如需求从哪里进来、经过哪些服务、数据怎么流转、最后落到哪些表。每周搞懂一个小流程，顺手记下业务规则、关键代码和自己的疑问，慢慢就能积累起来。也可以多问问同事，这个需求为什么要这么做，培养业务思维。 Agent 学习就是跟着一个项目入手，Ragent 2.0 预计这周五周六开始发第一批文档，跟着学就好。然后再去极客时间、网上一些Agent项目，比如pi、deepseek、opencode这些利用AI学习，入门并不复杂。",
+    "time" : "2026-09-09 22:19"
+  }, {
+    "commenter" : "习嗯哼",
+    "text" : "好的，谢谢马哥",
+    "time" : "2026-09-09 22:39"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : "45548821851154188",
+  "sourceUrl" : "https://wx.zsxq.com/topic/45548821851154188",
+  "author" : "澐",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-09-08 16:21",
+  "content" : "马哥能问一您下平时AI coding的大概流程以及和AI对话的方式吗，面试经常被问到，自己没在工作环境下使用过AI，今天美团面试就问了如果在工作中使用AI哪些步骤可以依靠AI,哪些步骤得人工为主，我自己思考回答的比较宽泛，看面试官好像对我的答案不太满意，想问问马哥平时AI怎么用的和这类题怎么回答比较好",
+  "topicTags" : [ "\uD83C\uDF08面试相关", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "明叶", "没有名字", "Iridescent*" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "其实AI Coding现在比较热门的两个范式，SDD和TDD，我用的比较多的是SDD，这个整体要讲就太多了，推荐个开源系统可以参考下：[Trellis - Trellis Doc](https://docs.trytrellis.app/zh \"Trellis%20-%20Trellis%20Doc\") 后续面试可以基于SDD的逻辑讲AI Coding。",
+    "time" : "2026-09-08 22:20"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : "22255414512885821",
+  "sourceUrl" : "https://wx.zsxq.com/topic/22255414512885821",
+  "author" : "D~D",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-08-06 20:13",
+  "content" : "马哥，想请问下关于Ragent项目学习的方式。马上要秋招，准备简历上加Ragent项目，之前6月份把这个项目的文档大概过了一遍，可能理解的不是很透彻。现在 7 8月在暑期实习，只能晚上花点时间改改简历，学习一下项目，现在感觉对项目没有太多印象了，后续可以怎么学习，对着简历的点一个一个搞懂嘛，推荐怎么继续学习 [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDCA1RagentAI" ],
+  "likeUsers" : [ "九州" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "建议是全项目核心内容都看看，因为面试官不一定完全按照简历上写的问。如果时间有限，简历上写哪些优先保障。具体学习参考：[《AI大模型Ragent项目》------如何学习AI项目？](https://t.zsxq.com/tJKcd \"%E3%80%8AAI%E5%A4%A7%E6%A8%A1%E5%9E%8BRagent%E9%A1%B9%E7%9B%AE%E3%80%8B%E2%80%94%E2%80%94%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0AI%E9%A1%B9%E7%9B%AE%EF%BC%9F\")",
+    "time" : "2026-08-06 20:31"
+  }, {
+    "commenter" : "D~D",
+    "text" : "谢谢马哥",
+    "time" : "2026-08-06 20:49"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : "14422112218825242",
+  "sourceUrl" : "https://wx.zsxq.com/topic/14422112218825242",
+  "author" : "南河",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-07-24 19:26",
+  "content" : "马哥，当前记忆方案中，加载近8轮消息，累积3轮触发压缩，那么最多存在3 轮的信息空窗。我的想法是：既然摘要表保存了水位线，那么我们每次不固定取近8轮消息，而是取水位线以上的所有消息，这样就不会有消息空窗了，只不过多一次mysql查询，你觉得这样做合理吗？[#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "一定要努力努力努力",
+    "text" : "我觉得比较合理，但是为什么会多一次数据库查询呢？",
+    "time" : "2026-07-25 10:22"
+  }, {
+    "commenter" : "南河",
+    "text" : "不需要多一次查询，但是要串行查询，要先查询摘要表，拿到上一次被压缩的最后一条消息的id，然后才能查历史消息表，拿到没有被压缩的全部历史消息",
+    "time" : "2026-07-25 14:07"
+  }, {
+    "commenter" : "马丁",
+    "text" : "我没太理解问题，不过可以看下最新的代码，后面有位同学提交了个 PR 优化了之前的压缩方案 [fix(memory): 避免摘要窗口每轮滑动都调用 LLM by KDB-Wind · Pull ...](https://github.com/nageoffer/ragent/pull/56 \"fix(memory)%3A%20%E9%81%BF%E5%85%8D%E6%91%98%E8%A6%81%E7%AA%97%E5%8F%A3%E6%AF%8F%E8%BD%AE%E6%BB%91%E5%8A%A8%E9%83%BD%E8%B0%83%E7%94%A8%20LLM%20by%20KDB-Wind%20%C2%B7%20Pull%20...\") 理论上现在的这种算是比较常见的，感觉再优化的必要性不大，除非是做成记忆压缩插件，根据不同的场景选择类型。",
+    "time" : "2026-07-25 21:06"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+} ]

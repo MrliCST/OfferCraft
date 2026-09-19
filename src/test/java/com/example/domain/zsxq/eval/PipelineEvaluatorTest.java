@@ -104,7 +104,9 @@ class PipelineEvaluatorTest {
         p.author = "马丁";
         p.authorRole = role;
         p.publishedAt = "2026-09-18 22:22";
-        p.content = "x".repeat(contentLen);
+        // 正文带上 postId：这几条合成帖的作者和时间都一样，正文再一样就会被去重当成同一篇
+        String tag = postId + " ";
+        p.content = (tag + "x".repeat(Math.max(1, contentLen))).substring(0, contentLen);
         return p;
     }
 
