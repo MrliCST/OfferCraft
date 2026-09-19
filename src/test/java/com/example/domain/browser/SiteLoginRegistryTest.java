@@ -93,6 +93,6 @@ class SiteLoginRegistryTest {
 
     private static SiteLoginRegistry registry(SiteLogin... sites) {
         return new SiteLoginRegistry(
-                new BrowserSessionProperties(null, 0, List.of(sites)));
+                new BrowserSessionProperties(null, List.of(sites)));
     }
 }

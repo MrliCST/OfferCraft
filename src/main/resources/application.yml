@@ -45,6 +45,12 @@ screenshot:
   # 滚完是否再等网络空闲。多数站不需要，默认关；开着会更全但慢几秒
   wait-network-idle: false
 
+# 抓网页正文（domain/tool/WebPageTextTool）。跟上面的 screenshot.* 是兄弟工具，
+# 各自管自己的键：截图管"画面怎么存"，这里管"文字留多少"。
+web-text:
+  # 正文截断字数，超过就截断并在返回值里注明原文长度。不截断会把模型上下文撑爆
+  max-chars: 8000
+
 # 登录态访问网页（domain/browser/BrowserSessionProvider）。
 # 两种来源按优先级二选一；**都没配就走上面的无头模式（未登录）**，跟没这个功能时一模一样。
 browser:
@@ -80,8 +86,6 @@ browser:
         state-file: ~/.config/JLRADemo/state/i.zhaopin.com.json
     #
     # 名单外的站点一律走无头匿名（白名单策略：名单外不给登录态）。
-    # 抓正文的截断字数
-    max-text-chars: 8000
 
 mybatis-plus:
   configuration:

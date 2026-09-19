@@ -1,0 +1,148 @@
+[ {
+  "column" : "精华",
+  "postId" : "id_hrrlaj6wpecj",
+  "sourceUrl" : "https://articles.zsxq.com/id_hrrlaj6wpecj.html",
+  "author" : "Jäger",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-09-03 15:56",
+  "content" : "# 小红书 AI Native 全栈 日常 面经 8.18一面 8.26二面 横向一周 主动要求释放简历\n\n一面：55min\n\n1. ArrayList 底层实现、默认容量、懒初始化、扩容机制\n\n2. HashMap 1.7 / 1.8 区别\n\n3. HashMap 为什么树化、Hash 冲突后的查询复杂度\n\n4. HashMap 头插 / 尾插以及并发环链问题\n\n5. ConcurrentHashMap 1.7 / 1.8 区别\n\n6. ConcurrentHashMap CAS + synchronized 实现\n\n7. CAS 原理、ABA、自旋问题\n\n8. MySQL 一条 SQL 的完整执行流程（从连接器层面开始讲述）\n\n9. 联合索引 (A,B,C)，查询条件 C,B,A 是否走索引\n\n10. 覆盖索引与回表\n\n11. InnoDB 与 MyISAM 区别\n\n12. redo log 与 binlog 区别\n\n13. redo log + binlog 两阶段提交\n\n14. Redis / MySQL 查询性能量级\n\n15. 为什么使用 Redis，Redis 对系统吞吐和 DB 保护的价值\n\n16. Redis 挂了怎么办？\n\n17. Redis 故障后 MySQL 被打爆如何限流、熔断、降级\n\n18. 场景：第三方服务不稳定，如何通过 MQ 暂存与重试\n\n19. MQ 重试导致流量放大怎么办？\n\n20. 固定限流无法适应第三方动态容量怎么办？（这时候没了解TCP拥塞没答上来，只说出了大概思想） TCP 拥塞控制 / 自适应限流思想\n\n22. DB + MQ 如何保证一致性（引出下面的事务消息）\n\n23. RocketMQ 事务消息 / Half Message\n\n24. RocketMQ 事务回查机制本地消息表实现思路\n\n25. Redis 锁 TTL 到期但业务没有结束怎么办？\n\n26. Redisson WatchDog\n\n27. Redisson 可重入锁如何实现\n\n28. 23 种设计模式知道哪些？ （比较熟悉 责任链、策略、模板方法、单例、工厂模式）\n\n29 按照Bean生命周期给这几个设计模式分一下类（我按照创建 使用 销毁层面分了一下）\n\n30. 为什么需要设计模式\n\n31. 观察者模式知道吗\n\n32. 反问团队业务\n\n<br />\n\n二面：20min\n\n1. 自我介绍\n\n2. 优惠券项目背景及功能\n\n3. RAG 知识库项目背景及整体流程\n\n4. 文档分块怎么做的\n\n5. 项目中进行了什么优化？（向量前置化、摘要优化）\n\n6. 多轮对话为什么需要 指代消解？指代消解是什么问题能够具体讲一下吗\n\n7. 简历里面的最近 N 轮 + Summary 的上下文管理机制是怎么做的？/上下文膨胀问题你是怎么解决的\n\n8. 业界的上下文管理机制你有了解吗？（ 说了一下Claude Code 的五层管理 以及 层级摘要策略）\n\n9. 自己有没有使用 AI Coding / Agent 做实际产品\n\n10. 模型如何判断调用哪个 Skill\n\n11. 除了用户显示指定skill，模型还有什么调用skill方式？\n\n12. 算法题一道（链表删除倒数结点），写完说了复杂度 O(n)\n\n13. 反问团队技术栈\n\n14. 反问实习生参与内容\n\n<br />\n\n一面面试官人很好，很会引导而且很有耐心，能让你发挥出来，可惜没缘分了。一面全答上来7分钟就过了，结果二面全答上来卡了一周都没结果，直接主动让hr释放简历了\uD83D\uDE14\n\n8月份面试是几个认识的同学里面最多而且开始面试也是最早的，以为能够直接美美实习了，结果两个认识的同学都去实习了，自己还在被卡着。只能说自己有面试的运气没有offer运气了。╮(╯▽╰)╭\n\n之前百度也是，聊的氛围不错，基本上都能答到点子上，面试官也都很有耐心，但是就是被横向了。\n\n<br />",
+  "topicTags" : [ "\uD83D\uDCAB优质面经", "\uD83C\uDF08面试相关" ],
+  "likeUsers" : [ "kohaka", "Iridescent*", "Judy", "混完3个月就算成功", "没有名字", "心火", "余", "一定要努力努力努力", "马丁", "alO*" ],
+  "starMasterReplied" : false,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "zcs",
+    "text" : "27的吗，好厉害",
+    "time" : "2026-09-14 13:17"
+  }, {
+    "commenter" : "Jäger",
+    "text" : "28的![](assets_dweb/images/emoji/流泪.png \"流泪\")",
+    "time" : "2026-09-14 14:04"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "精华",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "马丁",
+  "authorRole" : "星主",
+  "publishedAt" : "2026-08-12 23:02",
+  "content" : "[#\uD83D\uDCCC星球通知](https://wx.zsxq.com/tags/\uD83D\uDCCC星球通知/51121258182254) 和大家同步两件事情，分别是 Ragent 1.1.0 版本发布，以及 2.0 Agent 架构开发。 第一件事，Ragent 1.1.0 正式发布。 1.1.0 可以理解为我目前对 RAG 优化的 Max 版本。这个版本基本把 RAG 场景中的检索、分块等核心能力，优化到了一个相对通用且强大的程度，同时引入了多模态、多路检索、关键词检索、知识图谱检索、分块增强等核心特性，以及一系列围绕检索效果和整体 RAG 链路的优化。 后续在 RAG 方向上，1.1.0 会作为一个相对完整和稳定的版本继续使用。接下来，我的主要精力会逐步转向 Ragent 2.0 的 Agent 能力开发。 1.1.0 版本发布明细参考： [Ragent AI 1.1.0 \\| 拿个offer-AI Agent实战课](https://nageoffer.com/ragent/release-notes/v1.1.0/ \"Ragent%20AI%201.1.0%20%7C%20%E6%8B%BF%E4%B8%AAoffer-AI%20Agent%E5%AE%9E%E6%88%98%E8%AF%BE\") 第二件事，Ragent 2.0 Agent 架构正在开发。 近期我正在集中更新 Ragent Agent 相关代码，项目结构和功能都会有比较大的调整。等整体代码稳定后，会正式演进到 2.0 架构。 现阶段如果大家正在跟着课程学习，建议继续切换到 1.0.0 分支。目前课程资料也都是以 1.0.0 分支为准，这样可以避免受到近期代码调整的影响。 也有同学觉得 Ragent 进度有点慢。但在我看来，慢也是一种快，相比\"快速做完\"，我更希望把事情做深、做透。大家可以看看市面上一些付费 RAG 项目，无论是架构设计还是细节打磨，真正能做到 Ragent 这个程度的并不多。我更希望通过这个项目，帮大家打开技术视野，而不只是做一个能跑的 Demo。虽然技术一直在迭代，真正做过 AI Agent 的同学应该也知道，核心技术几乎没怎么变过。和 Java 一个道理。 另外，为了确定 2.0 的技术路线，我比较和测试了 Spring AI、LangChain4j、AgentScope4j 等多个 AI 框架。而且并不是简单看看 API、对比一下功能列表，而是真正结合业务场景，从 Multi-Agent、DAG、Graph、Skills 等多个维度进行实际开发和验证。经过这一轮比较之后，目前已经有一个框架在整体表现上胜出，Ragent 2.0 后续的 Agent 架构和技术路线也逐渐清晰了。 目前整体开发进展比较顺利，预计本周内会有一个不错的阶段性成果。敬请期待。",
+  "topicTags" : [ "\uD83D\uDCCC星球通知" ],
+  "likeUsers" : [ "jivhgfh", "单车", "MoJo黄大仙\uD83C\uDF4B", "追星星的boy", "小龙猫", "乐", "涿野夕凉丶", "我", "云雀恭弥", "大飞" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/Fk0jxNKl_S06DlLIal6SD656dNCO?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:m7Zo8oxIfMDVdz1nKhTRRy3gUtU=", "https://images.zsxq.com/FoQw7e4qWA2yDmxOglFOOnZWY6nu?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:KBTHqKAsjSy8zcx9l_x21LqpAH4=", "https://images.zsxq.com/Fq2RL5RtkLK5B8x0TvrFbQRkTGbe?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:B5EOHMO9SDnC9oWuesraacBEMWQ=", "https://images.zsxq.com/Fg_BYjYTBXza-KKMznvRV3HsHlOs?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:eNpy02PjMzGd6rENaJlCn-3-FoM=", "https://images.zsxq.com/FvC_IxGnrwspU9QDxTG3uixVQCGL?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:XWJ9J4IwvhrmSLFPa9O9llMU3OY=", "https://images.zsxq.com/FpbxBUb8mAURQRHvY-dAPKBsrjBv?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:WkdbThOOVsRX0ihx89wlXiaWSqQ=", "https://wx.zsxq.com/assets_dweb/images/emoji/发呆.png", "https://wx.zsxq.com/assets_dweb/images/emoji/色.png", "https://wx.zsxq.com/assets_dweb/images/emoji/大哭.png" ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "星球的PK功能我也是第一次用，大家觉得我最终选了 SpringAI 或 LangChan4j 的，可以扣1或者选择红方；认为选了 AgentScope4j的，扣2选择蓝方。",
+    "time" : "2026-08-12 23:03"
+  }, {
+    "commenter" : "Health.",
+    "text" : "感觉进度有点慢 这段写了两遍？![](assets_dweb/images/emoji/发呆.png \"发呆\")",
+    "time" : "2026-08-12 23:05"
+  }, {
+    "commenter" : "海边的Kurisu",
+    "text" : "期待Agent版本![](assets_dweb/images/emoji/色.png \"色\")简历又可以升级了（马哥倒数第二段码子的时候是不是重复了）",
+    "time" : "2026-08-12 23:06"
+  }, {
+    "commenter" : "马丁",
+    "text" : "哈哈，让 AI 优化了下，原文忘删了。已改正。",
+    "time" : "2026-08-12 23:06"
+  }, {
+    "commenter" : "马丁",
+    "text" : "已更新，也可以理解重要事情说两遍![](assets_dweb/images/emoji/大哭.png \"大哭\")",
+    "time" : "2026-08-12 23:06"
+  }, {
+    "commenter" : "hi",
+    "text" : "感觉是agentscope",
+    "time" : "2026-08-12 23:18"
+  }, {
+    "commenter" : "余",
+    "text" : "马哥，现在1.1.0版本是一个RAG的完整版本吗，除了没有Agent外已经完全了吧。有两个问题马哥： 1、已经学过1.0.0的基础之上，通过AI学习目前的1.1.0是否可行 2、马哥能稍微更新下1.1.0的简历技巧吗",
+    "time" : "2026-08-12 23:27"
+  }, {
+    "commenter" : "Jaryarbn",
+    "text" : "1.1.0更新的内容后面也会有教程吧？",
+    "time" : "2026-08-12 23:28"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "精华",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "Ricky",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-08-12 06:07",
+  "content" : "马哥马哥，文档真的非常详细！对于 RAG 的主流程和各个关键决策点，我都已经大致理解并且整理了很丰富的笔记，目前从 User Query 输入到最后的 Prompt 拼接及 SSE 流式输出，这条主路线我已经能顺下来了。 但我现在想从源码层面去深挖更多细节时，遇到了一个很大的瓶颈：**项目的架构分层非常严格且细致** 。 我以前做过的项目通常是一个模块就一两个文件，而这个项目分层非常深（比如从 bootstrap 到 ragent -\\> rag -\\> service -\\> ratelimit -\\> ChatQueueLimiter）。每次我在读源码时，为了搞懂一个逻辑，就必须在很多层、很多个文件之间频繁跳转。加上每个文件的代码量都不小，跳着跳着我个人的\"Context Window\"就彻底撑爆了，很难在脑海里建立起一个全局的、高维度的流程视图。 我原本的解决思路是：**尝试自己手写一个简化版的 Demo，只复现核心功能，以此来强制自己掌握源码** 。但实际操作下来发现根本搞不定------经常为了复现一个上层逻辑，顺藤摸瓜地引入了隔了好几层、极为底层的代码，写到最后又变成了无脑的复制粘贴，不然项目根本跑不起来（哭）。 比如我能说出来多路检索引擎的顺序，分流kb和mcp，kb用两层的context pool和outer retrieve pool来下放任务到inner retrieve pool的linked blocked queue，将channel的搜索结果合并到list\\<searchchannelresults\\>，经过post executor中的打平排序去重模块和reranker模块，最后拿到final reranked results来build context，mcp则是开机扫描application.yaml中的server，对于每个server建立连接、注册mcp client、发现server中的工具并为每个工具创建和注册executor，对mcp intent解析出绑定的tool id，去注册表找tool的executor，从executor提取tool definition，从intent拿custom prompt，将这些参数丢入mcp param extractor 的llm来提取一次参数再丢到executor中正式提取结果并构建mcp context，把kb context和mcp context结合起来（分类讨论kb和mcp以及混合情况下的topp和temp区别以及原理）传到下一步去拼prompt 我的理解就到源码主架构下的一层/两层的范畴，但是再往下讲怎么实现的，用了什么api，代码怎么写，我就掌握不住/忘记了，个别mcp这种不是非常复杂的模块还能背一下，但是比如流式调用这种又有thread，又有并发，又有okhttp，又有redisson，task manager，各种handler，等等等等，或许我能讲得清他们每一个对于整个模块的作用是什么，但是当我尝试把他们按照调用顺序拼接时，就很容易混淆，或者发现想要总结他们无从起手 所以想请教一下马哥，面对这种情况，我具体想问清两个问题： **面试的掌握边界在哪？** 因为我要投递的是**社招/正式岗位** 而不是实习，我没有把握去隐瞒这是一个开源项目。如果面试官知道这是开源项目，或者要求我手写伪代码（Pseudocode）实现核心逻辑，我需要对源码掌握到什么粒度（比如要到类名/函数名级别，还是只需掌握核心设计模式和数据结构）才算合格？ **如何打破\"无法 1:1 复刻就心里没底\"的困境？** 如果我无法做到把这个项目 1:0.5 甚至 1:1 地独立手写复刻出来并上线，我该如何准备，才能在面试官不断逼问底层实现细节时显得足够专业、不像只是跑通了别人的开源代码？面对这种多层架构，有没有更高效的\"读源码/拆源码\"方法论？ 谢谢马哥！！ （因为原文写完显得有些意图模糊，让ai帮我复述总结了下我的问题）",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI" ],
+  "likeUsers" : [ "我系边个", "离弦", "章北海", "涿野夕凉丶", "微信用户", "心染", "Zenith", "马丁", "一定要努力努力努力", "。" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "你的掌握边界不应该是能\"默写\"整个项目，而应该是能对核心链路深入掌握。 社招面试中，类名、函数名、具体 API 通常不是重点，没有面试官会问你哪个函数名是什么。真正需要掌握的是：数据如何流转，为什么这样分层，关键数据结构是什么，并发和线程模型怎样，异常、超时、限流、降级如何处理，以及替换某个设计会有什么后果。核心模块最好能写出不依赖项目框架的伪代码，例如多路检索、结果合并与重排、MCP 工具调用、SSE 流式消费、限流队列。伪代码不必还原所有 Handler 和 Manager，但必须体现任务提交、状态管理、结果聚合、异常处理和资源释放。 你可以把掌握程度分成三档： 1. 主链路要能按调用顺序讲清并写伪代码； 2. 关键机制要能解释线程、队列、缓存、注册表等实现原理； 3. 普通胶水代码只需知道职责和接口，不需要背类名。 面试官继续追问时，可以明确区分：这是项目原有实现、这是我实际读过和验证过的部分、如果让我重新实现，我会这样设计。这种边界感比假装全部独立开发更专业。 不要做 1:1 复刻。大型项目大量代码解决的是工程集成问题（比如为了确保回答更具有质量，做了大量意图识别书、提示词工程以及深度检索等），不是核心算法。更有效的方法是做纵向切片 Demo：保留真实接口和核心数据结构，把数据库、Redisson、LLM、MCP Server 等外部依赖替换成内存实现或 Mock。一次只复现一条闭环，例如 Query → 并行检索 → 聚合 → 重排 → Context，或者流式请求 → Chunk 回调 → 状态更新 → SSE 输出。能独立实现核心控制流，就已经证明你理解了，不需要把整个基础设施搬过来。 读源码时，每条链路只记录六件事：入口、输入、输出、状态存在哪里、线程在哪里切换、失败后怎么办。每个模块再压缩成一张调用顺序表，不要抄代码。比如流式模块重点不是记住所有 Handler 名称，而是搞清楚：谁创建任务，谁持有连接，OkHttp 回调在哪个线程执行，Chunk 如何进入队列或状态机，SSE 谁负责发送，取消和异常如何向两端传播，Redisson 保存什么状态。 最后用三级追问训练自己：先用一分钟讲业务流程，再用三分钟讲关键实现，最后回答并发安全、超时、失败恢复和替代方案。能稳定回答到第三级，并现场写出核心伪代码，就足以摆脱\"只是跑通开源项目\"的印象。真正拉开差距的不是记住源码，而是能够解释设计、指出问题，并给出自己的取舍。 再或者简单一些，可以使用 SpringAI2.0 或者 LangChain4j 执行下类似的逻辑，可以适当简化其中的处理细节，将核心主干执行下来，用来辅助理解。比如：[GitHub - nageoffer/tinyrag: 基于 Spring AI 构建的企业内部知识...](https://github.com/nageoffer/tinyrag \"GitHub%20-%20nageoffer%2Ftinyrag%3A%20%E5%9F%BA%E4%BA%8E%20Spring%20AI%20%E6%9E%84%E5%BB%BA%E7%9A%84%E4%BC%81%E4%B8%9A%E5%86%85%E9%83%A8%E7%9F%A5%E8%AF%86...\")",
+    "time" : "2026-08-12 22:28"
+  }, {
+    "commenter" : "Ricky",
+    "text" : "好的，谢谢马哥，我会先用纸笔重新把两条链路（rag和文件上传）列出来，然后每个模块的出入口按照你提供的几个状态记录一遍试试！",
+    "time" : "2026-08-13 03:22"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "精华",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "D_",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-08-05 16:55",
+  "content" : "**如何 Vibe Learning 更好地学习项目代码？**以牛券为例：《牛券oneCoupon视频教学》第06小节：基于责任链模式创建优惠券模板 1.拉取包含完整git链路的代码。 2.确定需要学习的内容，给AI充足的上下文。 这里我直接把马哥在第六小节的那一篇文章，复制扔给了我的codex。 为什么： AI只是能读代码，但是它对于一些重点的把握没有马哥那么细致，可能一些重点的内容，AI并不觉得是重点，它默认你会了（如缓存预热的设置key和过期时间两步操作的原子性问题）。 3.询问ai跳转到哪个分支开始入手看代码演化逻辑： 例如：\"根据该文章提到的需要学习的内容，告诉我怎么进行学习，跳转到哪个分支，先学习和看哪些代码，后续怎么动手实践\"。 4.根据AI给出的顺序，逐步进行学习和理解。 5.一边学习，一边提问，一边输出：你随时可以复制代码片段，让AI给你进行讲解。对于不懂的地方，你可以进行连续追问，直到你到达一个你能理解的基层原理。 6.在分支的学习完毕之后，输出你的理解比如： 问题的背景：是我们在service服务里面塞入了参数的非空校验、枚举类型校验、业务逻辑校验、优惠券模板的入库和缓存预热逻辑。后续我们需要添加新的业务逻辑或者相关参数校验的逻辑，会把这个service服务类塞得越来越臃肿，难以维护。 于是我们设计一组责任链，这一组责任链上的每一个处理器可以按照优先级顺序对进来的请求进行处理，性能好的处理器优先达到一个快速失败的效果。 每一个处理器只负责自己职责范围内的业务逻辑校验。 后续如果要新增校验逻辑，我们只要新增一个处理器，设置合适的业务标识和优先级顺序，然后在处理器里面的handler写自己的业务逻辑. 7.动手实践。 7.1 跑通业务流程 7.2 打断点 跟请求 7.3 自己新增一个处理器和校验规则，尝试跑通。 7.4 切换回原始分支 自己完整构建一下责任链。",
+  "topicTags" : [ ],
+  "likeUsers" : [ "明叶", "throw new *", "訉", "luv sic", "Echo", "浅汐ざ", "吨叽会长大", "Rach", "神", "LS～Dipper" ],
+  "starMasterReplied" : false,
+  "imageUrls" : [ "https://images.zsxq.com/FpgRaU1D3pwIcSAZw_r21E_ag9HN?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:-qqjYoUy-OIVuosg6n02tXnLOiE=", "https://images.zsxq.com/FhBz-IdKVolr0KO1yNGvdOV4YUq7?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:1QYpUA9Ghz3L6dVnmcsqZx6XLyQ=", "https://images.zsxq.com/FghRJyWLuzsq4dyjkW6Ejnlmdd5G?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:KGX5hluqTAlyKT-nrwBugQNvvhc=" ],
+  "replies" : [ {
+    "commenter" : "甜梦守护者",
+    "text" : "大佬，怎么把文章直接扔给 Codex 呢？直接复制吗？",
+    "time" : "2026-08-09 02:58"
+  }, {
+    "commenter" : "D_",
+    "text" : "是的.",
+    "time" : "2026-08-09 22:09"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "精华",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "D_",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-07-28 19:36",
+  "content" : "马哥，请教一下几个问题： 1.这个ragent后续的迭代方向是哪些部分？ 比如：记忆系统？（目前我看应该就是会话级记忆用于改写和摘要）。 2.我想自己Vibe一个agent 项目，但是找不到需求/具体场景应该怎么做，我去boss看了相关的岗位JD ,很少有提到业务场景，几乎都是类似： \"1.负责企业级Agent标准产品底座建设，通过理解行业痛点，沉淀共性能力，抽象为可复用的标准化产品底座，进 行架构设计到研发落地全栈工作。 2.负责核心模块的工程化建设，涵盖任务规划、记忆模块、知识工程、多智能体协作等，并抽象为统一技术框架， 标品底座、解决方案为上层业务提供可复用的技术底座。 3.负责Agent效果评估体系建设，并能通过Prompt优化、工程链路优化、模型优化等手段持续迭代，进行效果优 化。 4.负责Agent前沿技术跟踪、进行工程化落地、快速转化为业务能力，保持技术方案的先进性与差异化竞争力。\" 这样的描述，没法判断我需要一个做一个什么样的agent 可以约到面试。 希望马哥可以指点一下我具体可以有什么样的动作去哪里收集信息补齐我目前的差距。 3.马哥之前提到的agentic agent后续大概什么时候完成更新",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI" ],
+  "likeUsers" : [ "Grace", "九州", "小龙猫" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://wx.zsxq.com/assets_dweb/images/emoji/抱拳.png" ],
+  "replies" : [ {
+    "commenter" : "D_",
+    "text" : "另外马哥怎么看待现在的agent 开发和后端/全栈开发，我觉得后端全栈化是肯定的，但是未来全栈开发还是agent开发是主流就有点不太确定了，以后全栈开发的需求还大吗",
+    "time" : "2026-07-28 21:09"
+  }, {
+    "commenter" : "马丁",
+    "text" : "现在正在做的 Ragent 的内容是知识图谱（完成）、关键字检索（完成）、RAG最后精修（进行中）、Agentic RAG（进行中，大概率采用 AgentScope），预计在月底初步上一版，花一周时间再持续打磨下代码。 现在企业内用的比较多的 Agent 产品，数据智能体（Text2SQL）、类似于淘宝智能助手（能问答、筛选商品等）、SRE 运维智能体（排查问题、自动运维发现问题）、产研一体化平台（基于历史产品 PRD、项目反推业务文档，帮助产品和开发进行提效等，这个命题就太大了，不太合适所有人），其他的也会有，可能就是一些场景化的了，就不再过多叙述。 Ragent 的话，我觉得做到 ReAct 就可以了，再多一些就是把上下文工程和记忆做进去（部分 Harness），不打算实现非常复杂，因为我还是要把它作为一个通用智能体概念。更复杂的 Harness 我会留到下个项目，虽然还没有定好要做哪个类型的（现在有两个选项打架，我再思考下）。",
+    "time" : "2026-07-29 20:40"
+  }, {
+    "commenter" : "马丁",
+    "text" : "后端全栈是趋势，我觉得有两个契机： 1. AI 能够很好识别前端样式 UI 等代码，后端不需要花大功夫微调。因为现在后端写很细节的前端，根本写不来。 2. 大公司进一步废除前端工种，Push 后端学习前端知识。 相反，我感觉 Agent 开发不适合很多小公司，因为场景有限，最多也就内部提效，更多还是适合中大公司。这有点像高并发只存在中大公司一样，小公司更多是为了满足业务需求。",
+    "time" : "2026-07-29 20:42"
+  }, {
+    "commenter" : "D_",
+    "text" : "感谢马哥解答！![](assets_dweb/images/emoji/抱拳.png \"抱拳\")",
+    "time" : "2026-07-29 21:43"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+} ]

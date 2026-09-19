@@ -72,7 +72,12 @@ public class ZsxqCleaningService {
     /** S3 规范字段 + 权威分 + 校验 + Q1 图片策略；消费 S2 的 Classification。 */
     private ZsxqCleanedDoc toDoc(CrawledPost p, Classification c, int idx) {
         ZsxqCleanedDoc d = new ZsxqCleanedDoc();
-        d.docId = "zsxq-" + (p.column == null ? "x" : p.column) + "-" + idx;
+        // doc_id 必须稳定：优先用帖子血缘键 postId（重跑不变、可幂等入库），
+        // 拿不到 postId 才退化为「栏目+序号」——那种 id 重跑就会飘，只是保底
+        d.docId = "zsxq-" + (p.postId == null || p.postId.isEmpty()
+                ? (p.column == null ? "x" : p.column) + "-" + idx
+                : p.postId);
+        d.rawPostId = p.postId;
         d.topicKey = deriveTopicKey(p);
         d.postType = c.postType.name().toLowerCase();
         d.author = p.author;

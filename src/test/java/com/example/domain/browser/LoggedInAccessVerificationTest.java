@@ -81,7 +81,7 @@ class LoggedInAccessVerificationTest {
     /** 用存档恢复（无头，不用养浏览器）—— 存档之后用这个验证是否真的带登录态 */
     @Test
     void fetchWithStoredState() {
-        BrowserSessionProperties props = new BrowserSessionProperties(null, 0, List.of(BrowserSessionProperties.SiteLogin.of("wx.zsxq.com")));
+        BrowserSessionProperties props = new BrowserSessionProperties(null, List.of(BrowserSessionProperties.SiteLogin.of("wx.zsxq.com")));
         try (PageSession session = provider(props).open(ZSXQ_GROUP)) {
             Page page = session.page();
             page.waitForTimeout(3000);
@@ -101,7 +101,7 @@ class LoggedInAccessVerificationTest {
     }
 
     private static BrowserSessionProperties propsCdp() {
-        return BrowserSessionProperties.of(CDP, 0);
+        return BrowserSessionProperties.of(CDP);
     }
 
     private static void printResult(String label, PageSession session, Page page) {

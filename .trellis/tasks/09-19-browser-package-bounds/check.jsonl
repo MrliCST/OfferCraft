@@ -1,0 +1,2 @@
+{"file": ".trellis/spec/backend/browser-automation.md", "reason": "验收 R4/AC9：核对 spec 三处改动与代码现状一致，并确认「唯一入口」的 CLI 例外段读起来是决定而非遗漏；同时它是判定 R1（配置键改名）与 R3（存档路径不变）是否真的没改变已文档化行为的基准"}
+{"file": ".trellis/spec/guides/index.md", "reason": "验收时用 Pre-Modification Rule 反查是否遗留旧键/旧常量引用；并借「Verifying AI Cross-Review Results」一节识别误报——尤其 R2 被有意降级为文档、以及 CrawlThrottle 的最小实现是作者有意的设计，两者都不该被当成缺陷报回来"}

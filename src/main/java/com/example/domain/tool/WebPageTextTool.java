@@ -1,8 +1,8 @@
 package com.example.domain.tool;
 
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import com.example.domain.browser.BrowserSessionProperties;
 import com.example.domain.browser.BrowserSessionProvider;
 import com.example.domain.browser.CrawlThrottle;
 import com.example.domain.browser.PageSession;
@@ -24,16 +24,17 @@ import lombok.extern.slf4j.Slf4j;
  * <p>取 {@code innerText("body")} 而不是 {@code content()}：后者连 script、style 一起给，
  * 几千行标签塞回模型纯属浪费上下文；innerText 得到的是渲染后用户真正看得见的文字。
  *
- * <p>正文会按 {@code browser.session.max-text-chars} 截断 —— 长文章动辄几万字，
+ * <p>正文会按 {@code web-text.max-chars} 截断 —— 长文章动辄几万字，
  * 不截断会直接把模型上下文撑爆。截断时如实告知原文长度，让模型知道这是节选。
  */
 @Slf4j
 @Component
 @RequiredArgsConstructor
+@EnableConfigurationProperties(WebPageTextProperties.class)
 public class WebPageTextTool {
 
     private final BrowserSessionProvider provider;
-    private final BrowserSessionProperties properties;
+    private final WebPageTextProperties properties;
 
     /**
      * 抓取网页标题与正文。
@@ -60,7 +61,7 @@ public class WebPageTextTool {
             String title = safeTitle(page);
             String text = safeBodyText(page);
 
-            int max = properties.maxTextChars();
+            int max = properties.maxChars();
             boolean truncated = text.length() > max;
             String body = truncated ? text.substring(0, max) : text;
 

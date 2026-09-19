@@ -46,7 +46,7 @@ class BrowserSessionProviderTest {
 
     @Test
     void noLoginConfigured_fallsBackToHeadless() {
-        BrowserSessionProvider provider = provider(BrowserSessionProperties.of(null, 0));
+        BrowserSessionProvider provider = provider(BrowserSessionProperties.of(null));
 
         try (PageSession session = provider.open(URL)) {
             System.out.println("===== 未配登录态 =====");
@@ -62,7 +62,7 @@ class BrowserSessionProviderTest {
     @Test
     void cdpConfiguredButChromeNotListening_reportsHumanReadableError() {
         BrowserSessionProvider provider =
-                provider(BrowserSessionProperties.of("http://127.0.0.1:9222", 0));
+                provider(BrowserSessionProperties.of("http://127.0.0.1:9222"));
 
         System.out.println("===== 配了端口但 Chrome 没开调试端口 =====");
         assertThatThrownBy(() -> provider.open(URL))
@@ -75,7 +75,7 @@ class BrowserSessionProviderTest {
     void siteNotInList_staysAnonymous(@TempDir Path tmp) throws Exception {
         // 名单里配的是别的站，本站该老老实实走匿名 —— 白名单的核心语义
         Path state = fakeStateFile(tmp, "other.com");
-        BrowserSessionProvider provider = provider(new BrowserSessionProperties(null, 0, List.of(new BrowserSessionProperties.SiteLogin("other.com", state.toString()))));
+        BrowserSessionProvider provider = provider(new BrowserSessionProperties(null, List.of(new BrowserSessionProperties.SiteLogin("other.com", state.toString()))));
 
         try (PageSession session = provider.open(URL)) {
             System.out.println("===== 名单外的站点 =====");
@@ -90,7 +90,7 @@ class BrowserSessionProviderTest {
     @Test
     void siteInList_usesItsOwnStateFile(@TempDir Path tmp) throws Exception {
         Path state = fakeStateFile(tmp, "www.example.com");
-        BrowserSessionProvider provider = provider(new BrowserSessionProperties(null, 0, List.of(new BrowserSessionProperties.SiteLogin("www.example.com", state.toString()))));
+        BrowserSessionProvider provider = provider(new BrowserSessionProperties(null, List.of(new BrowserSessionProperties.SiteLogin("www.example.com", state.toString()))));
 
         try (PageSession session = provider.open(URL)) {
             System.out.println("===== 命中站点名单 =====");
@@ -107,7 +107,7 @@ class BrowserSessionProviderTest {
     void siteInListButStateMissing_fallsBackToAnonymous(@TempDir Path tmp) {
         // 配了名单但还没存档是很常见的中间状态，不该让抓取直接失败
         Path notSaved = tmp.resolve("www.example.com.json");
-        BrowserSessionProvider provider = provider(new BrowserSessionProperties(null, 0, List.of(new BrowserSessionProperties.SiteLogin("www.example.com", notSaved.toString()))));
+        BrowserSessionProvider provider = provider(new BrowserSessionProperties(null, List.of(new BrowserSessionProperties.SiteLogin("www.example.com", notSaved.toString()))));
 
         try (PageSession session = provider.open(URL)) {
             assertThat(session.mode()).isEqualTo(PageSession.Mode.HEADLESS);
@@ -116,7 +116,7 @@ class BrowserSessionProviderTest {
 
     @Test
     void rejectsNonHttpUrl() {
-        BrowserSessionProvider provider = provider(BrowserSessionProperties.of(null, 0));
+        BrowserSessionProvider provider = provider(BrowserSessionProperties.of(null));
 
         assertThatThrownBy(() -> provider.open("file:///etc/passwd"))
                 .isInstanceOf(IllegalArgumentException.class)
