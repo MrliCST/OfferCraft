@@ -1,4 +1,4 @@
-package com.example.domain.browser;
+package com.example.domain.zsxq;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,7 +19,8 @@ import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
-import com.example.domain.browser.HtmlToMarkdown;
+import com.example.domain.browser.CrawlThrottle;
+import com.example.domain.browser.LoginStateStore;
 
 /**
  * 知识星球圈子爬虫：按栏目（话题 chip）各爬 N 篇帖，保存结构化 JSON。

@@ -1,4 +1,4 @@
-package com.example.domain.browser;
+package com.example.domain.zsxq;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

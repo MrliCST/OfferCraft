@@ -103,6 +103,12 @@
 - **S6 Version Suppress**：同 `topic_key` 内 newer 覆盖 older 事实冲突。
 - **S7 Emit**：输出题库 JSON（见 §7）供 RAG 检索。
 
+> **代码组织（2026-09-19）**：管道代码已独立成 domain 包 `com.example.domain.zsxq`
+> （`ZsxqCrawler` / `ZsxqCleaner` / `ZsxqExplore` / `HtmlToMarkdown`），与浏览器基建
+> `com.example.domain.browser`（`BrowserSessionProvider` / `CrawlThrottle` / `LoginStateStore`
+> 等**通用浏览器能力**）解耦。`zsxq` 包单向依赖 `browser` 基建，`browser` 包不反向依赖管道；
+> 后续 S2–S7 的分类 / 落库 / 向量化类也落在 `zsxq` 包内。
+
 ---
 
 ## 7. 题库输出 Schema（每篇一条）

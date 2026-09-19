@@ -1,4 +1,4 @@
-package com.example.domain.browser;
+package com.example.domain.zsxq;
 
 import java.util.List;
 import java.util.Map;
@@ -9,6 +9,8 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+
+import com.example.domain.browser.LoginStateStore;
 
 /**
  * 一次性探查（第六轮）：dump 单帖 app-topic 内部结构（去水印）。

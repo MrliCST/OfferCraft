@@ -1,4 +1,4 @@
-package com.example.domain.browser;
+package com.example.domain.zsxq;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
