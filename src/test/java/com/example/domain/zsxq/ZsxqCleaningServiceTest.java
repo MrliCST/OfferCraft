@@ -117,8 +117,7 @@ class ZsxqCleaningServiceTest {
     }
 
     /** 同一篇帖出现在两个栏目，只能入库一次。 */
-    @Test
-    void samePostInTwoColumns_ingestedOnce() {
+    @Test    void samePostInTwoColumns_ingestedOnce() {
         CrawledPost a = member("百度二面 介绍一下秒杀领券流程？redis 失败以后怎么办？手撕：数组奇偶排序");
         a.column = "面试相关";
         a.postId = "111";
@@ -146,5 +145,54 @@ class ZsxqCleaningServiceTest {
             assertTrue(hasKey ? guard instanceof LangchainTopicGuard : guard instanceof HeuristicTopicGuard,
                     "轻量上下文应直接装配分类闸，而非启动 WebFlux 容器");
         }
+    }
+
+    /**
+     * 话题标签是分类不是主题：同一个标签下的帖子是不同的主题，不能互相抑制。
+     * 这条是踩坑回归 —— 按标签分组抑制时，「面试相关」栏 6 篇面经被标掉 5 篇。
+     */
+    @Test
+    void sameTagDifferentTopics_notSuppressed() {
+        ZsxqCleaningService svc = new ZsxqCleaningService(
+                post -> new Classification(PostType.PEER_INTERVIEW, "测试", "", ""));
+        CrawledPost baidu1 = member("百度一面： 介绍一下xxx是一个什么平台？用户都是哪些人？ 80W用户是如何统计的");
+        baidu1.column = "面试相关";
+        baidu1.author = "范特西";
+        baidu1.topicTags = List.of("🌈面试相关", "💫优质面经");
+        baidu1.publishedAt = "2026-09-10 10:00";
+        CrawledPost baidu2 = member("百度二面 介绍一下秒杀领券流程？ 有没有做异常处理？ 强依赖redis？");
+        baidu2.column = "面试相关";
+        baidu2.author = "范特西";
+        baidu2.topicTags = List.of("🌈面试相关", "💫优质面经");
+        baidu2.publishedAt = "2026-09-11 10:00";
+
+        ZsxqCleaningResult r = svc.run(List.of(baidu1, baidu2));
+
+        assertEquals(2, r.kept().size());
+        assertEquals(0, r.kept().stream().filter(d -> d.superseded).count());
+    }
+
+    /** 同一批次里出现「同一篇的修订版」才算版本：同作者 + 开头对得上 → 旧的被抑制。 */
+    @Test
+    void sameAuthorRevisedHead_olderSuperseded() {
+        ZsxqCleaningService svc = new ZsxqCleaningService(
+                post -> new Classification(PostType.TECH_ARTICLE, "测试", "", ""));
+        CrawledPost v1 = member("《Ragent 2.0 项目结构说明》\n\n第一版：目录结构先这么定。".repeat(3));
+        v1.column = "只看星主";
+        v1.author = "马丁";
+        v1.authorRole = "星主";
+        v1.publishedAt = "2026-08-01 10:00";
+        CrawledPost v2 = member("《Ragent 2.0 项目结构说明》\n\n第二版：目录结构改了，模块拆细了。".repeat(3));
+        v2.column = "只看星主";
+        v2.author = "马丁";
+        v2.authorRole = "星主";
+        v2.publishedAt = "2026-08-15 10:00";
+
+        ZsxqCleaningResult r = svc.run(List.of(v1, v2));
+
+        assertEquals(2, r.kept().size());
+        assertEquals(1, r.kept().stream().filter(d -> d.superseded).count());
+        assertEquals("2026-08-01 10:00",
+                r.kept().stream().filter(d -> d.superseded).findFirst().orElseThrow().publishedAt);
     }
 }

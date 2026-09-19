@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Service;
@@ -189,28 +190,95 @@ public class ZsxqCleaningService {
         }
     }
 
-    /** S6 版本抑制：同 topic_key 内，较新覆盖较旧（标记 superseded）。 */
+    /**
+     * S6 版本抑制：判析「同一批帖里，后一篇是否是对前一篇的修订」。
+     *
+     * <p><b>2026-09-19 重写。</b>原实现是「同 topic_key 内 newer 覆盖 older」，跑真实样本后
+     * 发现这个前提根本不成立 —— 话题标签是<b>分类</b>不是<b>主题</b>：
+     * 「💡RagentAI」下有 6 篇不同人提的不同问题，「🌈面试相关」下有 5 场不同的面试。
+     * 按标签抑制的后果是「面试相关」栏 6 篇面经被标掉 5 篇，而那正是最该留存的面经真题。
+     *
+     * <p>所以判据换成<b>内容维度</b>：正文开头的重合度。同一篇长文被修订后再发一次，
+     * 开头几十字基本不变；不同主题的帖子开头就分岔了。同作者是前置条件
+     * （不同的面经往往由同一个 star 反复发，只比正文会误判）。
+     *
+     * <p>系列篇不算版本：{@code 系列串联} 已经把相邻篇目的 series_prev/next 串起来了，
+     * 那是「同一系列的上下文相邻」，不是「同一篇的新旧版本」，不能互相抑制。
+     */
     private void suppressVersions(List<ZsxqCleanedDoc> docs) {
-        Map<String, List<ZsxqCleanedDoc>> byKey = new LinkedHashMap<>();
-        for (ZsxqCleanedDoc d : docs) {
-            byKey.computeIfAbsent(d.topicKey, k -> new ArrayList<>()).add(d);
-        }
-        for (List<ZsxqCleanedDoc> group : byKey.values()) {
-            if (group.size() <= 1) {
+        List<ZsxqCleanedDoc> sorted = new ArrayList<>(docs);
+        sorted.sort(Comparator.comparing(d -> parseDate(d.publishedAt)));
+        for (int i = 0; i < sorted.size(); i++) {
+            ZsxqCleanedDoc older = sorted.get(i);
+            if (older.superseded) {
                 continue;
             }
-            group.sort(Comparator.comparing(d -> parseDate(d.publishedAt)));
-            for (int i = 0; i < group.size() - 1; i++) {
-                group.get(i).superseded = true; // 旧的标为被覆盖
+            for (int j = i + 1; j < sorted.size(); j++) {
+                ZsxqCleanedDoc newer = sorted.get(j);
+                if (!newer.superseded && isRevision(older, newer)) {
+                    older.superseded = true;   // 旧的标为被覆盖，保留新的
+                    break;
+                }
             }
         }
     }
 
+    /** 新版正文开头要跟旧版重合到这么多字，才认作同一篇的修订。 */
+    private static final int REVISION_HEAD_CHARS = 30;
+    /** 开头重合度的下限（比例）：30 字里至少一半对得上。 */
+    private static final double REVISION_HEAD_RATIO = 0.5;
+
+    private static boolean isRevision(ZsxqCleanedDoc older, ZsxqCleanedDoc newer) {
+        if (!Objects.equals(authorOf(older), authorOf(newer))) {
+            return false;
+        }
+        if (Objects.equals(older.seriesId, newer.seriesId) && older.seriesId != null) {
+            return false;   // 同一系列的相邻篇，不是版本
+        }
+        String a = head(older.content);
+        String b = head(newer.content);
+        if (a.isEmpty() || b.isEmpty()) {
+            return false;
+        }
+        int n = Math.min(a.length(), b.length());
+        if (n < REVISION_HEAD_CHARS) {
+            // 太短的帖子没法靠开头判断，只能要求高度相似
+            return n > 0 && a.equals(b);
+        }
+        int same = 0;
+        for (int i = 0; i < REVISION_HEAD_CHARS; i++) {
+            if (a.charAt(i) == b.charAt(i)) {
+                same++;
+            }
+        }
+        return same >= REVISION_HEAD_CHARS * REVISION_HEAD_RATIO;
+    }
+
+    /** 正文开头，去掉图片和空白（改版时往往只是换了个封面图）。 */
+    private static String head(String content) {
+        if (content == null) {
+            return "";
+        }
+        return content.replaceAll("!\\[[^\\]]*\\]\\([^)]*\\)", "")
+                .replaceAll("\\s+", "")
+                .substring(0, Math.min(160, content.replaceAll("\\s+", "").length()));
+    }
+
+    private static String authorOf(ZsxqCleanedDoc d) {
+        return d.author == null ? "" : d.author;
+    }
+
+    /**
+     * 主题键：取第一个话题标签，仅作展示 / 拉取用。
+     *
+     * <p>没有话题标签时返回 {@code null}。<b>不要拿栏目名兜底</b>——标签是分类不是主题，
+     * 拿它做分组会把整个栏目当成一个主题（这条踩过坑，见 {@link #suppressVersions}）。
+     */
     private String deriveTopicKey(CrawledPost p) {
         if (p.topicTags != null && !p.topicTags.isEmpty()) {
             return p.topicTags.get(0).replaceAll("[^一-龥A-Za-z0-9]", "");
         }
-        return p.column == null ? "未分类" : p.column;
+        return null;
     }
 
     private LocalDateTime parseDate(String s) {
