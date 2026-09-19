@@ -55,11 +55,16 @@ public class ZsxqVectorConfig {
 
     @Bean
     public EmbeddingModel zsxqEmbeddingModel() {
-        String apiKey = firstNonBlank(env.getProperty("llm.dashscope.api-key"), env.getProperty("DASHSCOPE_API_KEY"));
+        String apiKey = firstNonBlank(
+                env.getProperty("llm.dashscope.api-key"),
+                env.getProperty("DASHSCOPE_API_KEY"),
+                // 本机 ragent 项目就用的这个名字，值一样（百炼兼容端点，1024 维）——
+                // 不强制再导出一次 DASHSCOPE_API_KEY，两个名字都认
+                env.getProperty("BAILIAN_API_KEY"));
         if (apiKey == null || apiKey.isBlank()) {
             // 早点说清楚缺什么，比让接口返回 401 再让人猜强
-            throw new IllegalStateException("缺少 DASHSCOPE_API_KEY："
-                    + "写在 ~/.config/JLRADemo/secret.yml 里（仓库外，权限 600），或直接用环境变量导出。");
+            throw new IllegalStateException("缺少百炼密钥：设 DASHSCOPE_API_KEY 或 BAILIAN_API_KEY 环境变量，"
+                    + "或写在 ~/.config/JLRADemo/secret.yml 里（仓库外，权限 600）。");
         }
         return OpenAiEmbeddingModel.builder()
                 .apiKey(apiKey)
