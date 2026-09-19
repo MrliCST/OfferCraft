@@ -425,3 +425,37 @@ java -cp "target/classes:$(cat tmp/cp.txt)" \
   这个判别的收益不大，**建议降级为可选**（等全量爬取看到更多噪声图再定）。
 - **正文 Markdown 里的图片没换成 `![description](url)`**：设计文档 §4 的「引用方式」这条未落地。
   当前正文里仍是 `![](url)`（alt 为空）。要做的话是在 S1/S3 之间插一步，用 description 回填 alt。
+
+### 10.10 alt 回填的完整链路（2026-09-19 补，老板发现产物没同步）
+
+**踩的坑**：`--backfill` 最初只改数据库 `cleaned_doc.content`，**不动落盘的 `question-bank.json`**。
+老板翻产物时发现还是 `![图片.png]`，库里改了、文件没改 —— 两边割裂。
+
+**修正**：回填落到两处，两边都要做。
+
+| 位置 | 谁来做 | 场景 |
+|---|---|---|
+| `cleaned_doc.content`（库） | `ZsxqImageService#backfillAlts`（`--backfill`） | 库是向量化/检索的数据源 |
+| `question-bank.json`（盘） | `ZsxqAltBackfillCli [样本目录]` | 产物是评估器/人看的直接输入 |
+
+**为什么没有合成一个动作**：库和盘是两条独立的产出路径，改库不会回写文件（Ingestor 只有单向的盘→库）。
+与其让 `--backfill` 偷偷同时干两件事，不如各给一个明确入口。
+
+**更根本的修法（已做）**：把回填接进清洗链本体 ——
+`ZsxqCleaningService.run(posts, imageDescriptions)` 新增重载，清洗末尾自动回填。
+这样「清洗 → 产物」这一步产出的就已经是回填过的正文，从源头避免半成品。
+空的 `Map.of()` 表示「还没跑 describe」，此时原样保留、不阻塞清洗。
+
+**管道顺序（重要）**：
+```
+S1 爬取 → S2 清洗（可带 imageDescriptions 回填）→ S3 落库
+                              ↓
+                      S4 register → describe（调视觉模型）→ embed
+                              ↓
+                    重跑 S7 向量化（正文变了必须重算块）
+```
+`backfill` 改了正文 ⇒ **必须重算受影响文档的 chunk**，否则向量库里还是旧文本
+（实测：回填 5 篇后 chunk 里仍是 `![图片.png]`，删掉这 5 篇的块重跑向量化才同步，174 → 177 块）。
+
+**另一个坑**：`EmbeddingModel` 一开始是构造器强依赖，导致「纯回填」（不调 embedding）
+也必须先有百炼密钥才能建 bean。改成 `@Lazy` 后，没有 embedding 密钥也能跑回填。

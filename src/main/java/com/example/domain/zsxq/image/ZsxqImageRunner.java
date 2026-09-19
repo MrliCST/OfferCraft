@@ -16,16 +16,20 @@ import com.example.domain.zsxq.vector.ZsxqVectorConfig;
 /**
  * S4 图片概括的 CLI 入口：只做 IO 编排 —— 读样本目录、登记图片、调概括、打印统计。
  *
- * <p>用法: java ...ZsxqImageRunner [样本目录] [本批概括多少张，默认 20]
+ * <p>用法: java ...ZsxqImageRunner [样本目录] [本批处理多少，默认 20]
  * 例：java ...ZsxqImageRunner crawl-output/zsxq-eval-b2 5
  *
- * <p>两步分开跑，对应 {@link ZsxqImageService} 的两个动作：
+ * <p>动作分开跑，对应 {@link ZsxqImageService} 的各个动作：
  * <pre>
- *   --register   只登记（从原始帖的 imageUrls  + 清洗结果的 keepImages 生成 zsxq_image 行）
+ *   --register   只登记（从原始帖的 imageUrls + 清洗结果的 keepImages 生成 zsxq_image 行）
  *   --describe   只概括（挑 description 为空的图跑视觉模型）
  *   --embed      只补向量（描述已有但 embedding 为空）
+ *   --backfill   只回填 alt（把正文 ![](url) 的 alt 换成描述）
  *   （不给参数）  登记 + 概括 一起跑
  * </pre>
+ *
+ * <p>顺序有依赖：<b>describe 必须先跑完，backfill 才有描述可填</b>。
+ * backfill 幂等（改过的不再命中），插在管道末尾即可。
  *
  * <p>前置：
  * <ul>
@@ -64,6 +68,7 @@ public final class ZsxqImageRunner {
             boolean doRegister = action.isEmpty() || "--register".equals(action);
             boolean doDescribe = action.isEmpty() || "--describe".equals(action);
             boolean doEmbed = "--embed".equals(action);
+            boolean doBackfill = "--backfill".equals(action);
 
             if (doRegister) {
                 List<CrawledPost> raw = ZsxqSampleIo.readRawPosts(inDir, ZsxqSampleIo.prettyMapper());
@@ -88,6 +93,15 @@ public final class ZsxqImageRunner {
             if (doEmbed) {
                 int n = svc.fillMissingEmbeddings(limit);
                 System.out.println("补齐向量: " + n + " 张");
+            }
+
+            if (doBackfill) {
+                int n = svc.backfillAlts(limit);
+                System.out.println("回填正文图片 alt: " + n + " 篇文档");
+                if (n == 0) {
+                    System.out.println("没有需要回填的文档——要么都已经回填过，要么图还没 describe。");
+                }
+                System.out.println("（回填幂等：改过的正文不再命中「alt 是文件名」的待处理条件）");
             }
         }
     }

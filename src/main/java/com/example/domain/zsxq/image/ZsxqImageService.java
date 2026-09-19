@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -68,10 +69,16 @@ public class ZsxqImageService {
     private final ZsxqImageContentFactory imageContentFactory;
     private final EmbeddingModel embeddingModel;
 
+    /**
+     * {@code embeddingModel} 标 {@link Lazy}：它只在「写描述时顺手做向量」这条路上用得到，
+     * 而 {@link #backfillAlts} / {@link #allDescriptions}（纯改 alt）根本不需要它。
+     * 不懒加载的话，跑一次纯回填也得先有个能用的百炼密钥 —— 明明不调 embedding 接口，
+     * 却因为建不出 bean 而失败，是很别扭的耦合。
+     */
     public ZsxqImageService(JdbcTemplate zsxqJdbcTemplate,
                             ZsxqImageDescriberAi zsxqImageDescriber,
                             ZsxqImageContentFactory zsxqImageContentFactory,
-                            EmbeddingModel zsxqEmbeddingModel) {
+                            @Lazy EmbeddingModel zsxqEmbeddingModel) {
         this.jdbc = zsxqJdbcTemplate;
         this.describer = zsxqImageDescriber;
         this.imageContentFactory = zsxqImageContentFactory;
@@ -235,6 +242,95 @@ public class ZsxqImageService {
         }
         return n;
     }
+
+    /**
+     * 把 {@code cleaned_doc.content} 里图片的 alt 换成多模态概括（S4 「引用方式」）。
+     *
+     * <p>S1 转出来的是 {@code ![图片.png](url)} —— alt 是文件名，没价值。
+     * 回填成 {@code ![一张 Agent 调用 RAG 的流程图](url)}，正文本身就能被人读懂图的含义。
+     *
+     * <p><b>幂等</b>：只处理内容里还有「alt 等于文件名或为空」这类图的文档。
+     * 已经回填过的文档，其内容不再命中「待处理」条件，重跑不会重复写。
+     * 判定方式见 {@link #DOCS_NEEDING_BACKFILL}。
+     *
+     * <p>匹配用 URL 而不是顺序 —— 实测 {@code seq} 与正文里的图片顺序<b>对不上</b>，
+     * 按位置配会张冠李戴。详见 {@link MarkdownImageAltBackfiller}。
+     *
+     * @param limit 本批最多处理多少篇文档
+     * @return 实际更新的文档数
+     */
+    public int backfillAlts(int limit) {
+        List<Object[]> docs = jdbc.query(DOCS_NEEDING_BACKFILL,
+                (rs, i) -> new Object[]{rs.getString("doc_id"), rs.getString("content")}, limit);
+
+        int updated = 0;
+        for (Object[] d : docs) {
+            String docId = (String) d[0];
+            String content = (String) d[1];
+            Map<String, String> urlToDesc = descriptionsOf(docId);
+            if (urlToDesc.isEmpty()) {
+                continue;   // 这篇的图还没概括，等 describe 跑完再来
+            }
+            String filled = MarkdownImageAltBackfiller.backfill(content, urlToDesc);
+            if (!filled.equals(content)) {
+                // content 是 TEXT，直接覆盖；doc_id 是主键，重跑幂等
+                jdbc.update("UPDATE cleaned_doc SET content = ? WHERE doc_id = ?", filled, docId);
+                updated++;
+            }
+        }
+        return updated;
+    }
+
+    /** 该文档「图片 URL → 描述」的映射（只取有描述的）。 */
+    private Map<String, String> descriptionsOf(String docId) {
+        return jdbc.query(
+                "SELECT original_url, description FROM zsxq_image "
+                        + "WHERE doc_id = ? AND original_url IS NOT NULL AND description IS NOT NULL",
+                rs -> {
+                    Map<String, String> m = new java.util.HashMap<>();
+                    while (rs.next()) {
+                        m.put(rs.getString("original_url"), rs.getString("description"));
+                    }
+                    return m;
+                },
+                docId);
+    }
+
+    /**
+     * 全库「图片 URL → 描述」的映射，给处理<b>落盘 JSON 产物</b>的场景用
+     * （见 {@link ZsxqAltBackfillCli}）——那里没有 docId 上下文，只能按 URL 全局匹配。
+     *
+     * <p>同一 URL 在库里只有一行（同一张图被多帖引用时会各存一份，但描述一致），
+     * 所以直接用 put 覆盖也没问题。
+     */
+    public Map<String, String> allDescriptions() {
+        return jdbc.query(
+                "SELECT original_url, description FROM zsxq_image "
+                        + "WHERE original_url IS NOT NULL AND description IS NOT NULL",
+                rs -> {
+                    Map<String, String> m = new java.util.HashMap<>();
+                    while (rs.next()) {
+                        m.put(rs.getString("original_url"), rs.getString("description"));
+                    }
+                    return m;
+                });
+    }
+
+    /**
+     * 待回填的文档：正文里存在「alt 是空、或以图片扩展名结尾」的图片引用。
+     *
+     * <p>这是「还没回填过」的判据。S1 的 flexmark 会把图 alt 填成文件名（{@code 图片.png}），
+     * 回填后 alt 变成描述文本（不带扩展名），自然就不再命中。
+     * <p>用正则而非「取所有含图的文档」是为了让重跑不浪费——
+     * 全量阶段文档上千篇，不能每次都把所有正文捞出来比一遍。
+     */
+    private static final String DOCS_NEEDING_BACKFILL = """
+            SELECT doc_id, content FROM cleaned_doc
+            WHERE superseded = FALSE
+              AND content ~ '!\\[[^]]*\\.(png|jpg|jpeg|gif|webp|bmp)\\s*\\]\\('
+            ORDER BY doc_id
+            LIMIT ?
+            """;
 
     public int countImages() {
         return jdbc.queryForObject("SELECT count(*) FROM zsxq_image", Integer.class);
