@@ -24,6 +24,7 @@ import com.example.domain.browser.LoginStateStore;
 import com.example.domain.browser.SiteLoginRegistry;
 import com.example.domain.zsxq.model.CrawledPost;
 import com.example.domain.zsxq.model.CrawledReply;
+import com.example.domain.zsxq.normalize.ContentImages;
 import com.example.domain.zsxq.normalize.HtmlToMarkdown;
 
 /**
@@ -398,7 +399,13 @@ public final class ZsxqCrawler {
         return new DetailResult(title, content, imgs);
     }
 
-    /** 收集 &lt;img&gt; 的 src（优先 data-src，兼容懒加载），过滤 data: 与相对路径归一。 */
+    /**
+     * 收集正文 &lt;img&gt; 的 src（优先 data-src，兼容懒加载），归一成绝对 URL 后
+     * <b>只留正文图</b>（见 {@link ContentImages}）。
+     *
+     * <p>非正文图（表情、头像、水印、二维码）在这里就挡掉，不进 {@code imageUrls} ——
+     * 这些图后面会被登记、概括、向量化，一路都是白花的钱；污染源在采集层就该在采集层堵。
+     */
     private static List<String> collectImages(List<ElementHandle> imgs) {
         Set<String> out = new LinkedHashSet<>();
         for (ElementHandle img : imgs) {
@@ -413,6 +420,9 @@ public final class ZsxqCrawler {
             }
             if (!url.startsWith("http://") && !url.startsWith("https://")) {
                 url = toAbsolute(url);
+            }
+            if (!ContentImages.isContentImage(url)) {
+                continue;                      // 表情/头像/水印：不是正文内容
             }
             out.add(url);
         }

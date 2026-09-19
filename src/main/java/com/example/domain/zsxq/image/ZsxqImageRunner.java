@@ -17,24 +17,26 @@ import com.example.domain.zsxq.vector.ZsxqVectorConfig;
  * S4 图片概括的 CLI 入口：只做 IO 编排 —— 读样本目录、登记图片、调概括、打印统计。
  *
  * <p>用法: java ...ZsxqImageRunner [样本目录] [本批处理多少，默认 20]
- * 例：java ...ZsxqImageRunner crawl-output/zsxq-eval-b2 5
+ * 例：java ...ZsxqImageRunner crawl-output/zsxq-eval-b2 5 --describe
  *
- * <p>动作分开跑，对应 {@link ZsxqImageService} 的各个动作：
+ * <p><b>图片是与正文解耦的异步支线</b>，动作分开跑，对应 {@link ZsxqImageService} 的各步：
  * <pre>
- *   --register   只登记（从原始帖的 imageUrls + 清洗结果的 keepImages 生成 zsxq_image 行）
- *   --describe   只概括（挑 description 为空的图跑视觉模型）
- *   --embed      只补向量（描述已有但 embedding 为空）
- *   --backfill   只回填 alt（把正文 ![](url) 的 alt 换成描述）
+ *   --register   登记（从原始帖的 imageUrls + 清洗结果的 keepImages 生成 zsxq_image 行）
+ *   --describe   概括（挑 description 为空的图跑视觉模型）
+ *   --embed      补向量（描述已有但 embedded_at 为空）
  *   （不给参数）  登记 + 概括 一起跑
  * </pre>
  *
- * <p>顺序有依赖：<b>describe 必须先跑完，backfill 才有描述可填</b>。
- * backfill 幂等（改过的不再命中），插在管道末尾即可。
+ * <p>顺序有依赖：<b>register → describe → embed</b>，前者是后者的输入。
+ * 但三步都幂等、都能断点续跑，中断后重跑会接着上次的位置继续。
+ *
+ * <p>不再有 {@code --backfill}：正文里的图片只留标识，描述不回填、不重算 chunk。
+ * 图片的召回走 {@code zsxq_image.embedding} 这条独立通路。
  *
  * <p>前置：
  * <ul>
  *   <li>S3 已落库（cleaned_doc / zsxq_raw_post 有数据）；</li>
- *   <li>库表已建好（schema.sql，含 zsxq_image.doc_id 列）；</li>
+ *   <li>库表已建好（schema.sql，含 zsxq_image.doc_id / embedded_at 列）；</li>
  *   <li>{@code DEEPSEEK_WIN_KEY}（视觉模型）与 {@code DASHSCOPE_API_KEY / BAILIAN_API_KEY}
  *       （描述向量化）都在环境里，或写在 {@code ~/.config/JLRADemo/secret.yml}。</li>
  * </ul>
@@ -68,7 +70,6 @@ public final class ZsxqImageRunner {
             boolean doRegister = action.isEmpty() || "--register".equals(action);
             boolean doDescribe = action.isEmpty() || "--describe".equals(action);
             boolean doEmbed = "--embed".equals(action);
-            boolean doBackfill = "--backfill".equals(action);
 
             if (doRegister) {
                 List<CrawledPost> raw = ZsxqSampleIo.readRawPosts(inDir, ZsxqSampleIo.prettyMapper());
@@ -91,17 +92,13 @@ public final class ZsxqImageRunner {
             }
 
             if (doEmbed) {
+                System.out.println("补向量前: 已描述 " + svc.countDescribed() + " 张，其中已向量化 "
+                        + svc.countEmbedded() + " 张，待补 " + svc.countPendingEmbedding() + " 张");
                 int n = svc.fillMissingEmbeddings(limit);
-                System.out.println("补齐向量: " + n + " 张");
-            }
-
-            if (doBackfill) {
-                int n = svc.backfillAlts(limit);
-                System.out.println("回填正文图片 alt: " + n + " 篇文档");
+                System.out.println("本次补齐图片向量: " + n + " 张，剩余待补 " + svc.countPendingEmbedding() + " 张");
                 if (n == 0) {
-                    System.out.println("没有需要回填的文档——要么都已经回填过，要么图还没 describe。");
+                    System.out.println("没有待补向量的图——要么都已经向量化过，要么图还没 describe。");
                 }
-                System.out.println("（回填幂等：改过的正文不再命中「alt 是文件名」的待处理条件）");
             }
         }
     }

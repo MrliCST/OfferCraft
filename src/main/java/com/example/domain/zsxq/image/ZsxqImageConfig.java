@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import dev.langchain4j.data.message.ImageContent;
 import dev.langchain4j.model.chat.ChatModel;
@@ -41,9 +42,12 @@ public class ZsxqImageConfig {
     private static final Duration TIMEOUT = Duration.ofSeconds(180);
 
     private final Environment env;
+    private final JdbcTemplate jdbc;
 
-    public ZsxqImageConfig(Environment env) {
+    /** jdbc 由 {@code ZsxqIngestConfig} 提供，两个配置类要一起注册进上下文。 */
+    public ZsxqImageConfig(Environment env, JdbcTemplate zsxqJdbcTemplate) {
         this.env = env;
+        this.jdbc = zsxqJdbcTemplate;
     }
 
     @Bean
@@ -89,6 +93,20 @@ public class ZsxqImageConfig {
     @Bean
     public ZsxqImageContentFactory zsxqImageContentFactory() {
         return ImageContent::from;
+    }
+
+    /**
+     * 图片召回的向量库适配层。
+     *
+     * <p><b>返回具体类型而不是 {@code EmbeddingStore<TextSegment>} 接口</b>：
+     * 文本侧的 {@code ZsxqVectorConfig#zsxqChunkStore} 已经注册了同类型的 bean，
+     * 这里再暴露一个同类型 bean 会让「按类型注入」产生歧义（两个候选，容器不知道该给哪个）。
+     * 检索侧（{@link ZsxqImageSearchService}）依赖的是具体类，注入无歧义；
+     * 将来真要接官方 retriever 时，用 {@code @Qualifier} 或按名注入即可。
+     */
+    @Bean
+    public ZsxqImageEmbeddingStore zsxqImageStore() {
+        return new ZsxqImageEmbeddingStore(jdbc);
     }
 
     private static String firstNonBlank(String... candidates) {

@@ -21,9 +21,14 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  *
  * <p>连接参数从 Environment 读（系统属性 / 环境变量 / 命令行 -D 都行），默认值跟
  * {@code application.yml} 的 spring.datasource 保持一致，避免两套配置各写一份。
+ * <b>密码两处必须同时改</b>：这里和 application.yml，改一处就会出现「应用里能跑、
+ * CLI 里认证失败」的错位（踩过：默认值停在 postgres，实际已是 20260917）。
  */
 @Configuration
 public class ZsxqIngestConfig {
+
+    /** 与 application.yml 的 spring.datasource.password 保持一致。 */
+    private static final String DEFAULT_PG_PASSWORD = "20260917";
 
     @Bean
     public DataSource zsxqDataSource(Environment env) {
@@ -31,7 +36,7 @@ public class ZsxqIngestConfig {
         String port = env.getProperty("PG_PORT", "5432");
         String db = env.getProperty("PG_DATABASE", "jlra_demo");
         String user = env.getProperty("PG_USER", "postgres");
-        String password = env.getProperty("PG_PASSWORD", "postgres");
+        String password = env.getProperty("PG_PASSWORD", DEFAULT_PG_PASSWORD);
 
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("org.postgresql.Driver");

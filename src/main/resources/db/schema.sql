@@ -100,6 +100,7 @@ CREATE TABLE IF NOT EXISTS zsxq_image (
   description  TEXT,
   kept         BOOLEAN,
   embedding    vector(1024),
+  embedded_at  TIMESTAMPTZ,
   ingest_at    TIMESTAMPTZ DEFAULT now()
 );
 CREATE INDEX IF NOT EXISTS idx_zsxq_image_post_id ON zsxq_image (post_id);
@@ -165,6 +166,25 @@ END $$;
 CREATE INDEX IF NOT EXISTS idx_zsxq_image_doc_id ON zsxq_image (doc_id);
 -- 待概括的图：有地址、没描述。部分索引，避免全表扫
 CREATE INDEX IF NOT EXISTS idx_zsxq_image_pending ON zsxq_image (id) WHERE description IS NULL;
+
+-- ============================================================
+-- 结构迁移：zsxq_image 补 embedded_at（向量化的完成标记）
+-- 与 zsxq_chunk.embedded_at 语义对齐：NULL 表示「该向量化还没跑或没跑成」，
+-- 断点续跑就挑这些。注意判据是 embedded_at IS NULL 而不是 embedding IS NULL ——
+-- 后者在「已 describe 但 embedding 接口抖了」时无法与「还没 describe」区分。
+-- 存量数据回填：已有向量的行补上时间戳，否则会被当成待办重跑一遍。
+-- ============================================================
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns
+                    WHERE table_name = 'zsxq_image' AND column_name = 'embedded_at') THEN
+        ALTER TABLE zsxq_image ADD COLUMN embedded_at TIMESTAMPTZ;
+        UPDATE zsxq_image SET embedded_at = COALESCE(ingest_at, now()) WHERE embedding IS NOT NULL;
+    END IF;
+END $$;
+-- 待补向量的图：有描述、还没向量
+CREATE INDEX IF NOT EXISTS idx_zsxq_image_embed_pending
+    ON zsxq_image (id) WHERE description IS NOT NULL AND embedded_at IS NULL;
 
 -- 索引在迁移之后建：迁移里可能刚把索引删掉，这里保证最终存在
 CREATE INDEX IF NOT EXISTS idx_cleaned_doc_embedding ON cleaned_doc USING hnsw (embedding vector_cosine_ops);

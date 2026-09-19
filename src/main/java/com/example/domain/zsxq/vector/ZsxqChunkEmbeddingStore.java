@@ -102,14 +102,14 @@ public class ZsxqChunkEmbeddingStore implements EmbeddingStore<TextSegment> {
                     double score = rs.getDouble("score");
                     TextSegment segment = TextSegment.from(rs.getString("content"),
                             dev.langchain4j.data.document.Metadata.from(java.util.Map.<String, Object>of(
-                                    "doc_id", rs.getString("doc_id"),
-                                    "chunk_id", rs.getString("chunk_id"),
-                                    "heading", rs.getString("heading") == null ? "" : rs.getString("heading"),
-                                    "post_type", rs.getString("post_type"),
-                                    "author", rs.getString("author"),
+                                    "doc_id", nullToEmpty(rs.getString("doc_id")),
+                                    "chunk_id", nullToEmpty(rs.getString("chunk_id")),
+                                    "heading", nullToEmpty(rs.getString("heading")),
+                                    "post_type", nullToEmpty(rs.getString("post_type")),
+                                    "author", nullToEmpty(rs.getString("author")),
                                     "authority_score", rs.getDouble("authority_score"),
-                                    "topic_key", rs.getString("topic_key"),
-                                    "source_url", rs.getString("source_url"))));
+                                    "topic_key", nullToEmpty(rs.getString("topic_key")),
+                                    "source_url", nullToEmpty(rs.getString("source_url")))));
                     return new EmbeddingMatch<TextSegment>(score, rs.getString("chunk_id"), null, segment);
                 },
                 vector, vector, maxResults);
@@ -182,5 +182,18 @@ public class ZsxqChunkEmbeddingStore implements EmbeddingStore<TextSegment> {
             sb.append(v[i]);
         }
         return sb.append(']').toString();
+    }
+
+    /**
+     * NULL → 空串。SQL 里 heading / post_type / topic_key / source_url 都可能为 NULL
+     * （无标题的块、未打标签的帖……），而 {@code Map.of(...)} <b>不接受 null 值</b>，
+     * 直接放进去会 NPE。
+     *
+     * <p>踩过的坑：这个 NPE 躺在文本召回路线上很久没暴露 —— 之前只验过「有 heading 的块」，
+     * 一旦命中任何无标题块就整条查询炸掉。空串语义上也比 null 干净：
+     * 上层拿到的元数据永远是「有值但可能为空」，不用到处判空。
+     */
+    private static String nullToEmpty(String s) {
+        return s == null ? "" : s;
     }
 }

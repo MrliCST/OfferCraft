@@ -4,16 +4,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Service;
 
 import com.example.domain.zsxq.classify.TopicGuard;
-import com.example.domain.zsxq.image.MarkdownImageAltBackfiller;
 import com.example.domain.zsxq.model.Classification;
 import com.example.domain.zsxq.model.CrawledPost;
 import com.example.domain.zsxq.model.PostType;
@@ -44,24 +41,16 @@ public class ZsxqCleaningService {
         this.guard = guard;
     }
 
-    /** 编排 S0 跨栏去重 → S2 分类 → S3 字段 → Q2 聚资 → S5 串联 → S6 抑版 → S4 图片描述回填。 */
-    public ZsxqCleaningResult run(List<CrawledPost> all) {
-        return run(all, Map.of());
-    }
-
     /**
-     * 带图片描述跑清洗。
+     * 编排 S0 跨栏去重 → S2 分类 → S3 字段 → Q2 聚资 → S5 串联 → S6 抑版。
      *
-     * <p>{@code imageDescriptions} 是「图片 URL → 多模态概括」。传进来的话，S4 会把正文里
-     * {@code ![图片.png](url)} 的 alt 换成描述 —— 见 {@link ZsxqCleaningResult} 之后。
-     * 图片描述的<b>生成</b>发生在 S4 的图片服务里（要调视觉模型，跑在清洗之后），
-     * 所以这里是「有则用、没有就留原样」，不阻塞清洗本身。
-     *
-     * <p>为什么回填放在清洗末尾而不是另起一步：alt 属于正文的一部分，
-     * 应该在「正文定稿」的同一次处理里完成（S5 串联 / S6 抑版都可能改正文），
-     * 拆成两步会出现「清洗完的产物还得再加工一次」的半成品状态。
+     * <p><b>正文里不回填图片描述</b>（2026-09-19 拍）：图片的多模态描述走独立的异步支线
+     * （{@code ZsxqImageService} 的 登记 → 概括 → 向量化），正文只保留
+     * {@code ![图片.png](url)} 这个标识。理由是不必为几张图把整篇 chunk 作废重跑，
+     * 且描述独立成向量后召回中心更准。所以这里处理完的 {@code content} 就是最终正文，
+     * 可以直接落库、直接切块向量化。
      */
-    public ZsxqCleaningResult run(List<CrawledPost> all, Map<String, String> imageDescriptions) {
+    public ZsxqCleaningResult run(List<CrawledPost> all) {
         List<CrawledPost> posts = PostIdentity.dedupe(all);   // S0：同一帖在多栏目重复只留一份
         List<ZsxqCleanedDoc> kept = new ArrayList<>();
         List<ZsxqDropRecord> dropped = new ArrayList<>();
@@ -86,26 +75,7 @@ public class ZsxqCleaningService {
         }
         linkSeries(kept);          // S5 系列串联
         suppressVersions(kept);    // S6 版本抑制
-        backfillImageAlts(kept, imageDescriptions);   // S4 图片描述回填 alt
         return new ZsxqCleaningResult(kept, dropped);
-    }
-
-    /**
-     * S4 收尾：把正文里图片的 alt 换成多模态概括。
-     *
-     * <p>只处理 {@code keepImages} 的文档 —— 图被剥离的文档（星友帖）本来就不该有图注。
-     * 没有描述的图（还没跑 describe、或概括失败）原样保留，不报错、不阻塞。
-     */
-    private void backfillImageAlts(List<ZsxqCleanedDoc> docs, Map<String, String> imageDescriptions) {
-        if (imageDescriptions == null || imageDescriptions.isEmpty()) {
-            return;
-        }
-        for (ZsxqCleanedDoc d : docs) {
-            if (!d.keepImages || d.content == null) {
-                continue;
-            }
-            d.content = MarkdownImageAltBackfiller.backfill(d.content, imageDescriptions);
-        }
     }
 
     /** S3 规范字段 + 权威分 + 校验 + Q1 图片策略；消费 S2 的 Classification。 */

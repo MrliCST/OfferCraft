@@ -19,3 +19,6 @@ target/
 # 系统
 .DS_Store
 Thumbs.db
+
+# CLI 用的 classpath 缓存等临时文件
+tmp/

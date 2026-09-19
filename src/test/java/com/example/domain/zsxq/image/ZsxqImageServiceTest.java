@@ -25,47 +25,17 @@ import dev.langchain4j.service.AiServices;
 /**
  * S4 图片概括的可单测逻辑。
  *
- * <p>三块：
+ * <p>两块：
  * <ol>
- *   <li>非正文图过滤 —— {@link ZsxqImageService#isNonContent}（表情/图标不能当正文图送模型）；</li>
  *   <li>向量字面量拼装 —— {@link ZsxqImageService#toVectorLiteral}（格式错了 PG 直接拒）；</li>
  *   <li>概括器的 AiService 接口形态 —— 用 fake 模型验证「图片真的被送进消息」，
  *       这是最容易踩坑的一处（裸 {@code ImageContent} 参数在<b>运行期</b>才报配置错）。</li>
  * </ol>
+ *
+ * <p>非正文图的判定测试不在这里 —— 判定逻辑已迁到 S1 的 {@code ContentImages}，
+ * 覆盖见 {@code ContentImagesTest}。
  */
 class ZsxqImageServiceTest {
-
-    // ---------- 非正文图过滤 ----------
-
-    @Test
-    void emojiImage_isNotContent() {
-        // 实测样本里就有这条：站点静态资源，不是帖子正文图
-        assertTrue(ZsxqImageService.isNonContent(
-                "https://wx.zsxq.com/assets_dweb/images/emoji/抱拳.png"));
-    }
-
-    @Test
-    void inlineDataUri_isNotContent() {
-        assertTrue(ZsxqImageService.isNonContent("data:image/png;base64,iVBORw0KGgo="));
-    }
-
-    @Test
-    void blankAndNull_areNotContent() {
-        assertTrue(ZsxqImageService.isNonContent(null));
-        assertTrue(ZsxqImageService.isNonContent("   "));
-    }
-
-    @Test
-    void articleImage_isContent() {
-        assertFalse(ZsxqImageService.isNonContent(
-                "https://article-images.zsxq.com/FmWQbPcF2WNqd3SI2Se3NINdg0m_"));
-    }
-
-    @Test
-    void cdnImage_isContent() {
-        assertFalse(ZsxqImageService.isNonContent(
-                "https://images.zsxq.com/FhBz-IdKVolr0KO1yNGvdOV4YUq7?imageMogr2/auto-orient"));
-    }
 
     // ---------- 向量字面量 ----------
 

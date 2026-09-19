@@ -423,39 +423,110 @@ java -cp "target/classes:$(cat tmp/cp.txt)" \
 - **`kind` 字段仍为空**：设计文档 §4 说要判 `kind ∈ {flowchart, architecture, meme, photo, other}`，
   当前是「星主图全留」的粗策略，还没做 kind 判别。考虑到实测概括质量很高、非正文图已按 URL 前缀过滤掉，
   这个判别的收益不大，**建议降级为可选**（等全量爬取看到更多噪声图再定）。
-- **正文 Markdown 里的图片没换成 `![description](url)`**：设计文档 §4 的「引用方式」这条未落地。
-  当前正文里仍是 `![](url)`（alt 为空）。要做的话是在 S1/S3 之间插一步，用 description 回填 alt。
+- **正文图片描述不回填**（2026-09-19 定的，取代了原先「回填 `![description](url)`」的设想）：
+  正文只保留 `![图片.png](url)` 标识，图片描述走独立向量通路。详见 §11。
 
-### 10.10 alt 回填的完整链路（2026-09-19 补，老板发现产物没同步）
+---
 
-**踩的坑**：`--backfill` 最初只改数据库 `cleaned_doc.content`，**不动落盘的 `question-bank.json`**。
-老板翻产物时发现还是 `![图片.png]`，库里改了、文件没改 —— 两边割裂。
+## 11. 图片支线与正文主干道解耦（2026-09-19 重构，取代 §10.10）
 
-**修正**：回填落到两处，两边都要做。
+### 11.1 为什么要改：原设计的一次冗余
 
-| 位置 | 谁来做 | 场景 |
+原设计（§10.10）里图片描述要**回填进正文**，然后正文进向量库 ⇒ 描述被 embed 两遍
+（一遍独立进 `zsxq_image.embedding`，一遍混在 chunk 里进 `zsxq_chunk.embedding`）。
+更麻烦的是：**任何一篇正文被改动，它的 chunk 就得整篇重算**，
+而图片概括是异步的（慢、按量计费），等于把「慢操作」的完成时间绑到了「快管道」上。
+
+### 11.2 新策略：两条独立跑道
+
+| | 正文主干道 | 图片异步支线 |
 |---|---|---|
-| `cleaned_doc.content`（库） | `ZsxqImageService#backfillAlts`（`--backfill`） | 库是向量化/检索的数据源 |
-| `question-bank.json`（盘） | `ZsxqAltBackfillCli [样本目录]` | 产物是评估器/人看的直接输入 |
+| 输入 | S1 抽图 → S3 落库 | 落库后单独触发 |
+| 步骤 | S2 清洗 → S3 落库 → S7 切块向量化 | register → describe → embed |
+| 产物 | `cleaned_doc` + `zsxq_chunk` | `zsxq_image` |
+| 召回通路 | `ZsxqChunkEmbeddingStore` | `ZsxqImageEmbeddingStore` |
+| 图片在其中的角色 | 只留标识 `![图片.png](url)` | 描述独立成向量 |
 
-**为什么没有合成一个动作**：库和盘是两条独立的产出路径，改库不会回写文件（Ingestor 只有单向的盘→库）。
-与其让 `--backfill` 偷偷同时干两件事，不如各给一个明确入口。
+**关键取舍**：不回填描述，所以**主干道永远不用为图片重跑**；
+图片的召回中心是「这张图本身」，不被周围文字稀释。
 
-**更根本的修法（已做）**：把回填接进清洗链本体 ——
-`ZsxqCleaningService.run(posts, imageDescriptions)` 新增重载，清洗末尾自动回填。
-这样「清洗 → 产物」这一步产出的就已经是回填过的正文，从源头避免半成品。
-空的 `Map.of()` 表示「还没跑 describe」，此时原样保留、不阻塞清洗。
+### 11.3 过滤前置（这是老板点出来的真问题）
 
-**管道顺序（重要）**：
+**原状**：`isNonContent` 写在 S4 的 `registerImages` 里 —— 图片 URL 已经进了
+`CrawledPost.imageUrls`、原始帖也落了库，才在下游筛。等于让下游擦上游的屁股。
+
+**现状**：过滤前移到 **S1**，抽图那一刻就挡掉：
+- 新增 `normalize/ContentImages`（纯函数，无 Spring 依赖）；
+- 判据从「黑名单排 `wx.zsxq.com/assets*`」换成**域名白名单**
+  （`images.zsxq.com` / `article-images.zsxq.com`）—— 站点换路径前缀也不会漏；
+- `ZsxqCrawler.collectImages` 与 `HtmlToMarkdown.normalizeImages` 都接上，
+  后者直接 `img.remove()`，非正文图连 Markdown 都进不去；
+- `ZsxqImageService.isNonContent` 保留但**降级为兜底断言**，委托给 `ContentImages`。
+
+### 11.4 断点续跑：`zsxq_image.embedded_at`
+
+与 `zsxq_chunk.embedded_at` 语义对齐，`NULL` = 该向量化还没跑或没跑成。
+判据刻意**不用** `embedding IS NULL` —— 那无法区分「已 describe 但向量没做」和
+「压根还没 describe」。schema 迁移时给存量行回填了时间戳（否则会被当待办重跑一遍）。
+
+### 11.5 register 必须保住已花的钱（实测踩出来的）
+
+**坑**：`registerImages` 是「先删后插」保证重跑不堆积，但**描述和向量是被一起删掉的**。
+实测跑一次 `--register`，25 张图的描述全清空，等于白花一遍视觉模型的调用费。
+
+**修法**：重插前按 URL 快照旧的 `description / embedding / embedded_at`，插入时填回。
+只有真正新增的图（或换了 URL 的图）才需要重新概括。验证：register 前后都是「25 有描述 / 25 有向量」。
+
+### 11.6 踩出来的一个文本召回 P0 bug
+
+`ZsxqChunkEmbeddingStore.search` 的元数据用 `Map.of(...)` 组装，而 SQL 里
+`heading / post_type / topic_key / source_url` **都可能为 NULL** —— `Map.of` 不接受 null 值，
+一旦命中无标题块就整个查询抛 NPE。之前只验过「有 heading 的块」所以没暴露。
+已统一走 `nullToEmpty()`。**这条是全量爬取前必须修掉的**，否则任何一次文本召回都可能炸。
+
+### 11.7 验收结果（2026-09-19）
+
+**过滤前置**：`ContentImagesTest` 10 例全绿（含真实表情 URL、带括号的签名参数、端口/userinfo 解析）。
+
+**图片支线三步**：
+- `--register`：25 张，重跑行数不变，**描述/向量完整保住**（修复后）；
+- `--describe`：25/25 成功、0 失败，全部带向量；
+- `--embed`：模拟丢 3 张向量 → 识别「待补 3 张」→ 补完「剩余 0 张」。
+
+**双跑道召回**（都命中正确目标）：
+
+| 跑道 | 查询 | Top1 分数 |
+|---|---|---|
+| 图片 | 初始化流程有哪些步骤 | 0.790 |
+| 图片 | 订单创建的工具调用长什么样 | 0.576 |
+| 文本 | 初始化流程有哪些步骤 | 0.650 |
+| 文本 | ReAct 循环的中间件拦截点在哪 | 0.689 |
+
+**残留清理**：库 5 篇 + 落盘 13 篇正文还原成 `![图片.png]`，
+删掉受影响 chunk 重跑 ⇒ 174 块 / 23 含图块 / **0 个非文件名 alt** / 0 未嵌入。
+
+**测试**：92 例，zsxq 相关全绿；仅剩 4 条既有无关失败（3 条 `AIChatService*` 上下文加载、
+1 条 `WebPageTextToolTest` 外部抓取）。
+
+### 11.8 CLI 用法
+
+```bash
+# 正文主干道
+java -cp "target/classes:$(cat tmp/cp.txt)" com.example.domain.zsxq.vector.ZsxqVectorizer [篇数]
+
+# 图片支线（三步可分别重跑，都幂等、都断点续跑）
+java -cp "target/classes:$(cat tmp/cp.txt)" \
+  com.example.domain.zsxq.image.ZsxqImageRunner [样本目录] [数量] [--register|--describe|--embed]
+
+# 图片召回自检
+java -cp "target/classes:$(cat tmp/cp.txt)" \
+  com.example.domain.zsxq.image.ZsxqImageSearchCli [查询1] [查询2] ...
 ```
-S1 爬取 → S2 清洗（可带 imageDescriptions 回填）→ S3 落库
-                              ↓
-                      S4 register → describe（调视觉模型）→ embed
-                              ↓
-                    重跑 S7 向量化（正文变了必须重算块）
-```
-`backfill` 改了正文 ⇒ **必须重算受影响文档的 chunk**，否则向量库里还是旧文本
-（实测：回填 5 篇后 chunk 里仍是 `![图片.png]`，删掉这 5 篇的块重跑向量化才同步，174 → 177 块）。
 
-**另一个坑**：`EmbeddingModel` 一开始是构造器强依赖，导致「纯回填」（不调 embedding）
-也必须先有百炼密钥才能建 bean。改成 `@Lazy` 后，没有 embedding 密钥也能跑回填。
+### 11.9 遗留
+
+- **`kind` 字段仍为空**：同 §10.9，建议降级为可选。
+- **图片与 chunk 之间没有映射键**：命中一个文本块时找不出「这个块引用了哪几张图」
+  （反之亦然）。要做得多建一层映射，或靠正文里的 URL 反查。
+- **`ZsxqIngestConfig` 的 PG 密码默认值曾与应用 yml 漂移**（`postgres` vs `20260917`），
+  表现为「应用里能跑、CLI 认证失败」。已对齐，并在类注释里标注「两处必须同时改」。
