@@ -65,4 +65,21 @@ public class DeepSeekModelConfig {
                 .logResponses(false)
                 .build();
     }
+
+    /**
+     * 分类/抽取闸专用：低温度、确定性。知识星球帖子分类（S2 Topic Guard）和 Q4 金句抽取要求稳定输出，
+     * 不能沿用聊天模型 1.3 的创造性温度。复用同一套连接参数，只把采样策略压到 0.1。
+     */
+    @Bean
+    public OpenAiChatModel deepseekClassifyModel() {
+        return OpenAiChatModel.builder()
+                .apiKey(properties.apiKey())
+                .baseUrl(properties.baseUrl())
+                .modelName(properties.modelName())
+                .temperature(0.1)
+                .timeout(TIMEOUT)
+                .logRequests(true)
+                .logResponses(true)
+                .build();
+    }
 }

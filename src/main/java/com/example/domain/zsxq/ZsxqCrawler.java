@@ -51,16 +51,57 @@ public final class ZsxqCrawler {
     private static final String STAR_MASTER = "马丁";
     private static final int DEFAULT_PER_COLUMN = 5;
 
+    /*三个静态内部类：1. 爬取到的帖子（与清洗管道设计对齐：topic_key / published_at / authority 预留）。 */
+    public static class CrawledPost {
+        public String column;
+        public String postId;               // 帖子 ID（从 /topic/<id> 解析），对应 raw_post.post_id
+        public String sourceUrl;            // 详情页 URL，对应 cleaned_doc.source_url
+        public String author;
+        public String authorRole;          // 星主 / 星友
+        public String publishedAt;
+        public String content;
+        public List<String> topicTags = new ArrayList<>();
+        public List<String> likeUsers = new ArrayList<>();
+        public boolean starMasterReplied;   // Rule 2 信号：星主是否回复
+        public List<String> imageUrls = new ArrayList<>();  // 正文 + 回复图片 src（Q1 在清洗阶段过滤）
+        public List<CrawledReply> replies = new ArrayList<>();
+        // 清洗阶段填充
+        public String topicKey;             // e.g. RagentAI / 技术问答
+        public double authorityScore;       // 0.9 星主 / 0.1 星友（待清洗管道赋值）
+    }
+
+    public static class CrawledReply {
+        public String commenter;
+        public String text;
+        public String time;
+    }
+
+    /** 详情页提取结果（完整正文 + 图片）。 */
+    private static class DetailResult {
+        final String content;
+        final List<String> images;
+
+        DetailResult(String content, List<String> images) {
+            this.content = content;
+            this.images = images;
+        }
+    }
+    
+    //入口方法：
     public static void main(String[] args) throws Exception {
+        
         String outDir = args.length > 0 ? args[0]
                 : System.getProperty("user.home") + "/code/demo/JLRADemo/crawl-output/zsxq";
         int perColumn = args.length > 1 ? Integer.parseInt(args[1]) : DEFAULT_PER_COLUMN;
         Files.createDirectories(Path.of(outDir));
-
+        //登陆态
         LoginStateStore store = new LoginStateStore("~/.config/JLRADemo/state/wx.zsxq.com.json");
+        //格式化输出带缩进的 json
         ObjectMapper om = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
+        //跳过下载chrome内核，直接用本地chrome浏览器
         Map<String, String> env = Map.of("PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD", "1");
+        //
         try (Playwright pw = Playwright.create(new Playwright.CreateOptions().setEnv(env))) {
             Browser browser = pw.chromium().launch(new BrowserType.LaunchOptions()
                     .setChannel("chrome")
@@ -76,11 +117,11 @@ public final class ZsxqCrawler {
             }
 
             Page page = context.newPage();
-
+            //爬虫限流
             CrawlThrottle.beforeCrawl(GROUP_URL);
             page.navigate(GROUP_URL);
             Thread.sleep(5000);
-
+            //遍历帖子
             for (Map.Entry<String, String> col : COLUMNS.entrySet()) {
                 String key = col.getKey();
                 String chipText = col.getValue();
@@ -123,6 +164,7 @@ public final class ZsxqCrawler {
         System.out.println("\n全部栏目爬取完成，输出目录: " + outDir);
     }
 
+    //提取帖子的结构画信息，封装为CrawledPost对象。
     private static CrawledPost extractPost(ElementHandle topic, String column, BrowserContext context) throws Exception {
         CrawledPost p = new CrawledPost();
         p.column = column;
@@ -317,7 +359,7 @@ public final class ZsxqCrawler {
         }
         return new ArrayList<>(out);
     }
-
+    //解析帖子id
     private static String parseTopicId(String url) {
         String marker = "/topic/";
         int i = url.indexOf(marker);
@@ -335,7 +377,7 @@ public final class ZsxqCrawler {
         }
         return rest.substring(0, end);
     }
-
+    //URL 归一化，把相对链接补成全链接
     private static String toAbsolute(String href) {
         if (href == null) {
             return null;
@@ -351,7 +393,7 @@ public final class ZsxqCrawler {
         }
         return BASE_URL + "/" + href;
     }
-
+    //点击函数：
     private static void clickChip(Page page, String name) {
         for (int attempt = 0; attempt < 3; attempt++) {
             for (ElementHandle el : page.querySelectorAll("div.item, a.item, li.item, span.item")) {
@@ -373,39 +415,4 @@ public final class ZsxqCrawler {
         System.out.println("  未找到 chip: " + name);
     }
 
-    /** 爬取到的帖子（与清洗管道设计对齐：topic_key / published_at / authority 预留）。 */
-    public static class CrawledPost {
-        public String column;
-        public String postId;               // 帖子 ID（从 /topic/<id> 解析），对应 raw_post.post_id
-        public String sourceUrl;            // 详情页 URL，对应 cleaned_doc.source_url
-        public String author;
-        public String authorRole;          // 星主 / 星友
-        public String publishedAt;
-        public String content;
-        public List<String> topicTags = new ArrayList<>();
-        public List<String> likeUsers = new ArrayList<>();
-        public boolean starMasterReplied;   // Rule 2 信号：星主是否回复
-        public List<String> imageUrls = new ArrayList<>();  // 正文 + 回复图片 src（Q1 在清洗阶段过滤）
-        public List<CrawledReply> replies = new ArrayList<>();
-        // 清洗阶段填充
-        public String topicKey;             // e.g. RagentAI / 技术问答
-        public double authorityScore;       // 0.9 星主 / 0.1 星友（待清洗管道赋值）
-    }
-
-    public static class CrawledReply {
-        public String commenter;
-        public String text;
-        public String time;
-    }
-
-    /** 详情页提取结果（完整正文 + 图片）。 */
-    private static class DetailResult {
-        final String content;
-        final List<String> images;
-
-        DetailResult(String content, List<String> images) {
-            this.content = content;
-            this.images = images;
-        }
-    }
 }

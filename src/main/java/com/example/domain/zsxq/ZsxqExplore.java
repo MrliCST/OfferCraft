@@ -13,6 +13,7 @@ import com.microsoft.playwright.Playwright;
 import com.example.domain.browser.LoginStateStore;
 
 /**
+ * 调试探测脚本
  * 一次性探查（第六轮）：dump 单帖 app-topic 内部结构（去水印）。
  */
 public final class ZsxqExplore {
