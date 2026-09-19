@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.example.domain.zsxq.model.CrawledPost;
 import com.example.domain.zsxq.model.ZsxqCleanedDoc;
 import com.example.domain.zsxq.model.ZsxqDropRecord;
+import com.example.domain.zsxq.normalize.PostIdentity;
 
 /**
  * 清洗管道指标计算（纯逻辑，不碰 IO）：把一次运行的原始帖 + 入库文档 + 丢弃记录
@@ -31,8 +32,11 @@ public class PipelineEvaluator {
     public PipelineMetrics evaluate(List<CrawledPost> raw,
                                     List<ZsxqCleanedDoc> kept,
                                     List<ZsxqDropRecord> dropped) {
+        // 同一篇帖会出现在多个栏目，指标必须按独立帖算，否则丢弃率/覆盖率被重复样本带偏
+        List<CrawledPost> posts = PostIdentity.dedupe(raw);
         PipelineMetrics m = new PipelineMetrics();
-        m.totalPosts = raw.size();
+        m.rawPosts = raw.size();
+        m.totalPosts = posts.size();
         m.keptDocs = kept.size();
         m.droppedDocs = dropped.size();
         collectCleaned(m, kept);
@@ -55,7 +59,7 @@ public class PipelineEvaluator {
 
         Map<String, ColumnMetrics> byCol = new LinkedHashMap<>();
         Map<String, List<Integer>> lensByCol = new LinkedHashMap<>();
-        for (CrawledPost p : raw) {
+        for (CrawledPost p : posts) {
             String col = p.column == null || p.column.isEmpty() ? "(未标栏目)" : p.column;
             ColumnMetrics cm = byCol.computeIfAbsent(col, k -> new ColumnMetrics());
             cm.column = col;
@@ -142,10 +146,16 @@ public class PipelineEvaluator {
         if ("星主".equals(p.authorRole) && "member_post".equals(d.postType)) {
             m.anomalies.add(new MetricAnomaly("CLASSIFY_SUSPECT", cm.column, p.author, p.publishedAt,
                     "星主帖被判为 member_post（应为 tech_article / architecture_note）"));
-        } else if ("星友".equals(p.authorRole) && d.authorityScore >= 0.9) {
+        } else if ("星友".equals(p.authorRole) && d.authorityScore >= 0.9 && !hasSubstantiveAnswer(d)) {
+            // 星友帖拿 0.9 有两种成因：马丁在回复里给了实质解答（正当，那才是这篇的价值），
+            // 或被误判成 architecture_note 白拿高分（要报）。只看分数会误报，得看有没有权威作答。
             m.anomalies.add(new MetricAnomaly("CLASSIFY_SUSPECT", cm.column, p.author, p.publishedAt,
-                    "星友帖拿到 " + d.authorityScore + " 权威分（应为 0.1）"));
+                    "星友帖拿到 " + d.authorityScore + " 权威分，但没有马丁的实质作答（多半误判成 architecture_note）"));
         }
+    }
+
+    private static boolean hasSubstantiveAnswer(ZsxqCleanedDoc d) {
+        return d.starMasterAnswer != null && d.starMasterAnswer.length() >= 60;
     }
 
     /**

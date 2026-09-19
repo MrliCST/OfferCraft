@@ -1,0 +1,136 @@
+[ {
+  "column" : "RagentAI",
+  "postId" : "14425425551124482",
+  "sourceUrl" : "https://wx.zsxq.com/topic/14425425551124482",
+  "author" : "阳zero",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-09-17 16:25",
+  "content" : "马哥，可以先把2.0简历模板出了吗，想先投着再说",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI" ],
+  "likeUsers" : [ "D~D", "极星", "注意安全", "PKQ", "弗弗西斯" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "弗弗西斯",
+    "text" : "支持",
+    "time" : "2026-09-17 18:07"
+  }, {
+    "commenter" : "PKQ",
+    "text" : "支持",
+    "time" : "2026-09-17 19:03"
+  }, {
+    "commenter" : "PKQ",
+    "text" : "先出简历模板提炼难点亮点，学的时候也有方向",
+    "time" : "2026-09-17 19:05"
+  }, {
+    "commenter" : "极星",
+    "text" : "支持",
+    "time" : "2026-09-17 22:32"
+  }, {
+    "commenter" : "马丁",
+    "text" : "可以的。最近几天把一些核心代码再优化一波，应该就可以出一版了。再稍等几天。",
+    "time" : "2026-09-17 22:47"
+  }, {
+    "commenter" : "阳zero",
+    "text" : "好滴",
+    "time" : "2026-09-18 00:27"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "RagentAI",
+  "postId" : "14425425528552852",
+  "sourceUrl" : "https://wx.zsxq.com/topic/14425425528552852",
+  "author" : "马*围棋",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-09-17 13:48",
+  "content" : "马哥这个2.0要先去学一下agentscope框架吗",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "我个人觉得必要性不大，单纯从 ReActAgent 角度上说，底层很多都是为了实现 ReAct 相关功能堆砌的代码。目前我看下来，更多还是围绕 AI Agent 业务层会更多点，Skills、短中长期记忆、Agent 上下文工程等等。",
+    "time" : "2026-09-17 22:47"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "RagentAI",
+  "postId" : "45548548482211418",
+  "sourceUrl" : "https://wx.zsxq.com/topic/45548548482211418",
+  "author" : "先森",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-09-17 02:24",
+  "content" : "[#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) 马哥最近可以出一些文档吗？把记忆系统和可观测性的文章出一出，最近秋招真的急哭了[@马丁](https://wx.zsxq.com/footprint/111821842118582?group_id=51121244585524)",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI" ],
+  "likeUsers" : [ "PKQ", "w", "岂可再" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马*围棋",
+    "text" : "同问",
+    "time" : "2026-09-17 13:49"
+  }, {
+    "commenter" : "马丁",
+    "text" : "可以的。明天预计会发两篇文章，一个是RAG如何成为Tool的，一个是Agent核心流程概览。搞定后可以先更新一波记忆相关的文章。",
+    "time" : "2026-09-17 22:35"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "RagentAI",
+  "postId" : "82258818511555422",
+  "sourceUrl" : "https://wx.zsxq.com/topic/82258818511555422",
+  "author" : "生鱼忧患死鱼安乐",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-09-12 22:57",
+  "content" : "[#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) 马哥，问一下咱们agent里有权限过滤嘛？比如公司用一个rag功能，人事只能看到或者问答到她看到的那部分权限的东西，部长也只能查到他所属的那些。如果有咱们agent里的文档上传，切分等的权限粒度是什么呀",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "这个咱们没做，但是在基础篇里讲解过，切分后的文档 Chunk 里加上元数据就好了。这部分代码属于常规业务，写起来繁琐但是没有难度，就没有增加复杂度了。",
+    "time" : "2026-09-12 23:26"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "RagentAI",
+  "postId" : "45548814888142828",
+  "sourceUrl" : "https://wx.zsxq.com/topic/45548814888142828",
+  "author" : "局外人",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-09-10 11:36",
+  "content" : "[@马丁](https://wx.zsxq.com/footprint/111821842118582?group_id=51121244585524) 马哥，Ragagent项目感觉是不是意图识别与记忆管理部分还是需要优化一下。 我现在面试几轮下来，总体感觉，意图检索树，滑动窗口，记忆摘要这些面试官甚至都不愿意深入追问，感觉这些设计在他们眼里都非常平庸。尤其是Agent开发岗。",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI" ],
+  "likeUsers" : [ "闲情抛掷久", "一加一等于三", "Y", "Zenith", "PKQ", "靖默YZD", "局外人" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "当前，Ragent 正基于 AgentScope 框架，围绕 React、上下文管理、短中长期记忆、SKills设计、写操作工具确认机制、Langfuse链路追踪编写 v2 版本，基本上是当前企业落地里比较主流的架构。明后天会有一批文章发布，可以等下。 关于项目认知： 单从项目本身看，面试官的理解角度差异很大------无论你如何呈现，在一些人眼中可能都只是玩具。真正优秀的面试官会深挖项目背后的设计决策与权衡，以此评估你的真实能力；而水平有限的面试官，则可能只停留在表面否定。 我们的应对策略： 因此，我们的核心思路是主动讲清项目的亮点与深度，例如： ▪ 底层 AI 模型的编排机制； ▪ 融合关键字、向量与图谱的 RRF 检索策略； ▪ 精细化的 Chunk 处理（涵盖 PDF、Markdown 及多模态解析）； ▪ 性能层面的并行调用优化； ▪ 测评准确率的验证方法； ▪ v2的就先不说了； ▪ 等等。 AI 领域的大多数能力都具备通用性。若面试官对上述内容不感兴趣------既然他能通过你的简历，说明已认可你的基础履历，转向他关注的其他方向沟通交流即可。",
+    "time" : "2026-09-10 18:52"
+  }, {
+    "commenter" : "马丁",
+    "text" : "对了，代码已经提交了，main分支，拉下来就能看。",
+    "time" : "2026-09-10 18:53"
+  }, {
+    "commenter" : "局外人",
+    "text" : "感谢马哥耐心回复，这是我利用此项目面试后的几点想法。我确实感觉这个项目我还是理解了，但是就是用来面试差点意思。 1. 底层 AI 模型的编排机制现在langchain框架可以轻松实现。本项目无非就是使用策略模式手搓出来，没啥技术难度。 2. 融合关键字、向量的RRF策略太普遍了，属于人人都会了。这也谈不上啥亮眼实现。知识图谱是项目新引入的吗？之前没有，我之后去看看。 3. 还有我觉得最大缺陷就是当前项目记忆管理做的很一般，短期记忆滑动窗口，长期记忆做摘要。我感觉这个策略设计得太粗糙了。记忆管理这是当前面试官最喜欢问的地方，这种策略面试现场几句话就可以讲完，感觉没法打动面试官的，这样一种粗糙设计策略我感觉只能起到减分的作用。还有意图识别也是类似。",
+    "time" : "2026-09-11 00:00"
+  }, {
+    "commenter" : "马丁",
+    "text" : "项目面向是所有基础的同学，如果你觉得简单，可以挖掘一些其他场景。现阶段AI知识平权比较严重，技术风口也在不断变更，以前觉得能做闭环就不错了，现在就得往前继续推进一步。所以Ragent2.0代码也已经发布了，可以基于最新去看。 做项目也不是说一定要技术写的天花乱坠，能在合适场景下落地适合的技术很重要。",
+    "time" : "2026-09-11 00:09"
+  }, {
+    "commenter" : "先森",
+    "text" : "看现在的最新agent代码，已经使用agentscope的ai模型编排了，感觉这个部分确实没有必要手搓，都是通用的东西",
+    "time" : "2026-09-11 15:13"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+} ]

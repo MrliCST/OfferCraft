@@ -108,6 +108,46 @@ class TopicGuardTest {
         assertTrue(c.drop);
     }
 
+    // ---- 2026-09-19 策略修正：面经真题低权保留，不丢弃 ----
+
+    @Test
+    void heuristic_realInterview_keptAtLowAuthority() {
+        // 真实样本：百度二面真题 + 手撕 + SQL，没有马丁回答
+        Classification c = new HeuristicTopicGuard().classify(
+                member("百度二面 介绍一下秒杀领券流程？redis 失败以后怎么办？"
+                        + "手撕：数组排序奇数在前偶数在后。sql：查前三个月排名前十的用户"));
+        assertEquals(PostType.PEER_INTERVIEW, c.postType);
+        assertFalse(c.drop, "面经真题属于题目侧语料，不能丢");
+        assertEquals(0.1, c.authorityScore, 1e-9);
+    }
+
+    @Test
+    void heuristic_interviewWithOfferWord_stillKept() {
+        // 「上岸/横向」这类词和真题写在同一篇里时，不能因为命中丢弃词就把题目一起丢掉
+        Classification c = new HeuristicTopicGuard().classify(
+                member("小红书一面：1.ArrayList 扩容 2.HashMap 树化 3.CAS 原理。横向一周，已主动要求释放简历"));
+        assertEquals(PostType.PEER_INTERVIEW, c.postType);
+        assertFalse(c.drop);
+    }
+
+    @Test
+    void heuristic_topicTagLink_notMistakenForResourceShare() {
+        // 正文末尾挂的是星球自己的话题标签链接，不算站外资源分享
+        Classification c = new HeuristicTopicGuard().classify(
+                member("CVTE一面：微服务怎么拆分？手撕：Shuffle 洗牌算法。"
+                        + " #优质面经[https://wx.zsxq.com/tags/x/123]"));
+        assertEquals(PostType.PEER_INTERVIEW, c.postType);
+    }
+
+    @Test
+    void heuristic_pureBragWithoutQuestions_dropped() {
+        // 只有结果陈述、没有任何题目 → 仍是丢弃
+        Classification c = new HeuristicTopicGuard().classify(
+                member("上岸了北京某大厂，感谢马丁这半年的指导！"));
+        assertEquals(PostType.OFF_TOPIC, c.postType);
+        assertTrue(c.drop);
+    }
+
     // ---- LLM 闸：用 fake 模型验证 AiService 解析 ----
 
     static class FakeModel implements ChatModel {

@@ -15,8 +15,10 @@ import com.example.domain.zsxq.classify.LangchainTopicGuard;
 import com.example.domain.zsxq.classify.TopicGuard;
 import com.example.domain.zsxq.classify.ZsxqTopicGuardConfig;
 import com.example.domain.zsxq.clean.ZsxqCleaningService;
+import com.example.domain.zsxq.model.Classification;
 import com.example.domain.zsxq.model.CrawledPost;
 import com.example.domain.zsxq.model.CrawledReply;
+import com.example.domain.zsxq.model.PostType;
 import com.example.domain.zsxq.model.ZsxqCleanedDoc;
 import com.example.domain.zsxq.model.ZsxqCleaningResult;
 
@@ -83,6 +85,50 @@ class ZsxqCleaningServiceTest {
         assertEquals(0.9, d.authorityScore, 1e-9);
         assertEquals(true, d.keepImages);
         assertEquals(true, d.starMasterVerified);
+    }
+
+    /** 星友帖即便被判成「架构金句」，权威分也要被身份护栏压到 0.1。 */
+    @Test
+    void memberPostAuthority_cappedAtLowScore() {
+        CrawledPost p = member("聊聊 2.0 的架构选型，我觉得 RAG 这一块应该重构一下");
+        ZsxqCleaningService svc = new ZsxqCleaningService(post -> new Classification(
+                PostType.ARCHITECTURE_NOTE, "测试：星友帖被判成架构金句", "", "金句"));
+
+        ZsxqCleaningResult r = svc.run(List.of(p));
+
+        assertEquals(1, r.kept().size());
+        assertEquals(0.1, r.kept().get(0).authorityScore, 1e-9);
+    }
+
+    /** 星友提问 + 马丁实质作答：权威来源正当，这篇按 0.9 计（价值在马丁的答里）。 */
+    @Test
+    void memberAsked_martinAnswered_authorityFromAnswer() {
+        CrawledPost p = member("马哥，Ragent 的意图识别与记忆管理是不是还要优化？面试官觉得这些设计平庸");
+        ZsxqCleaningService svc = new ZsxqCleaningService(post -> new Classification(
+                PostType.INTERVIEW_QA, "测试：星友问 + 马丁实质答",
+                "当前，Ragent 正基于 AgentScope 框架，围绕 React、上下文管理、短中长期记忆、Skills 设计、"
+                        + "写操作工具确认机制、Langfuse 链路追踪编写 v2 版本，基本上是当前企业落地里比较主流的架构。",
+                ""));
+
+        ZsxqCleaningResult r = svc.run(List.of(p));
+
+        assertEquals(1, r.kept().size());
+        assertEquals(0.9, r.kept().get(0).authorityScore, 1e-9);
+    }
+
+    /** 同一篇帖出现在两个栏目，只能入库一次。 */
+    @Test
+    void samePostInTwoColumns_ingestedOnce() {
+        CrawledPost a = member("百度二面 介绍一下秒杀领券流程？redis 失败以后怎么办？手撕：数组奇偶排序");
+        a.column = "面试相关";
+        a.postId = "111";
+        CrawledPost b = member("百度二面 介绍一下秒杀领券流程？redis 失败以后怎么办？手撕：数组奇偶排序");
+        b.column = "优质面经";
+        b.postId = "111";
+
+        ZsxqCleaningResult r = new ZsxqCleaningService(new HeuristicTopicGuard()).run(List.of(a, b));
+
+        assertEquals(1, r.kept().size(), "同一篇帖不该入库两次");
     }
 
     /** 轻量上下文冒烟：不 boot 整个 Spring Boot（无 WebFlux），按环境变量装配分类闸。 */

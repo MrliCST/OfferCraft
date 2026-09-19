@@ -11,7 +11,8 @@ import java.util.Map;
  */
 public class PipelineMetrics {
 
-    public int totalPosts;          // S0 采到的帖子总数
+    public int totalPosts;          // 去重后的独立帖数（指标都按这个算）
+    public int rawPosts;            // 爬取到的原始条数（含跨栏目重复）
     public int keptDocs;            // 清洗后入库篇数
     public int droppedDocs;         // 丢弃篇数
     public int seriesLinked;        // S5 串到系列里的篇数

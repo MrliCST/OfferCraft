@@ -25,7 +25,16 @@ public enum PostType {
     /** 星友原创（非明显无关）：低权保留(0.1)，不丢弃（§3 决策）。 */
     MEMBER_POST,
 
-    /** 无关/低价值（IDEA 快捷键、避雷、纯上岸吹水、星主无干货吐槽）：直接丢弃。 */
+    /**
+     * 星友面经真题：带具体公司/轮次/题目清单的真实面试记录（如「百度二面：…手撕：…」）。
+     *
+     * <p>2026-09-19 策略修正：Q3 原写「避雷/纯上岸直接丢弃」，结果 LLM 把这类真题帖当成
+     * 「纯上岸吹水」全丢了——但题目本身是面试题库最核心的语料，它属于<b>题目侧</b>，
+     * 不需要星主权威解答。现改为低权保留(0.1)：不丢弃、图片剥离、不参与系列串联。
+     */
+    PEER_INTERVIEW,
+
+    /** 无关/低价值（无具体题目信息的纯情绪/纯上岸炫耀、避雷吐槽、无关分享）：直接丢弃。 */
     OFF_TOPIC;
 
     /** 是否直接丢弃（不入库）。 */
@@ -40,6 +49,7 @@ public enum PostType {
             case INTERVIEW_QA -> 0.1;       // 帖子本体 0.1；star_master_answer 才是 0.9
             case RESOURCE_SHARE -> 0.3;     // Q2 聚合低权
             case MEMBER_POST -> 0.1;        // §3 低权保留
+            case PEER_INTERVIEW -> 0.1;     // 星友面经真题：低权保留，非权威
             case OFF_TOPIC -> 0.0;
         };
     }
@@ -60,6 +70,7 @@ public enum PostType {
             case "architecture_note", "architecturenote" -> ARCHITECTURE_NOTE;
             case "resource_share", "resourceshare" -> RESOURCE_SHARE;
             case "member_post", "memberpost" -> MEMBER_POST;
+            case "peer_interview", "peerinterview", "interview_experience" -> PEER_INTERVIEW;
             case "off_topic", "offtopic" -> OFF_TOPIC;
             default -> null;
         };

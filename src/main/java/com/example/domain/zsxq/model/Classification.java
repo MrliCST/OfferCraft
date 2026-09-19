@@ -20,13 +20,23 @@ public class Classification {
     public final double authorityScore;
     public final boolean starMasterVerified;
 
+    /**
+     * interview_qa 的权威来源不在帖子本体（那是星友的提问），而在马丁的回答里。
+     * 马丁给了实质回答，这一篇就按 0.9 计——检索命中它时，用户真正拿到的是马丁的权威解答。
+     * 「实质」沿用分类闸的口径：回答 >= 60 字，短到「可以的，等几天」那种不算。
+     */
+    private static final int SUBSTANTIVE_ANSWER_LEN = 60;
+
     public Classification(PostType postType, String reason, String starMasterAnswer, String architectureQuote) {
         this.postType = postType;
         this.drop = postType != null && postType.isDrop();
         this.reason = reason == null ? "" : reason;
         this.starMasterAnswer = starMasterAnswer == null ? "" : starMasterAnswer;
         this.architectureQuote = architectureQuote == null ? "" : architectureQuote;
-        this.authorityScore = postType == null ? 0.0 : postType.defaultAuthority();
+        boolean hasAuthoritativeAnswer = postType == PostType.INTERVIEW_QA
+                && this.starMasterAnswer.length() >= SUBSTANTIVE_ANSWER_LEN;
+        this.authorityScore = hasAuthoritativeAnswer ? 0.9
+                : (postType == null ? 0.0 : postType.defaultAuthority());
         this.starMasterVerified = postType != null && postType.defaultVerified();
     }
 
