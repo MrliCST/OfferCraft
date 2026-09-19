@@ -88,9 +88,12 @@ CREATE INDEX IF NOT EXISTS idx_cleaned_doc_superseded ON cleaned_doc (superseded
 CREATE INDEX IF NOT EXISTS idx_cleaned_doc_raw_post_id ON cleaned_doc (raw_post_id);
 
 -- 4) 图片血缘：0 存储，仅保留 original_url + 多模态概括，独立进向量库可召回查看
+--    doc_id 是指向 cleaned_doc 的血缘键（可为空：帖子被丢弃时图不登记）。
+--    有它才能「按文档重登记」（重跑先删该文档的图）和「从图回查权威分」。
 CREATE TABLE IF NOT EXISTS zsxq_image (
   id           BIGSERIAL PRIMARY KEY,
   post_id      TEXT REFERENCES zsxq_raw_post(post_id),
+  doc_id       TEXT REFERENCES cleaned_doc(doc_id) ON DELETE CASCADE,
   seq          INT,
   original_url TEXT,
   kind         TEXT,
@@ -100,6 +103,7 @@ CREATE TABLE IF NOT EXISTS zsxq_image (
   ingest_at    TIMESTAMPTZ DEFAULT now()
 );
 CREATE INDEX IF NOT EXISTS idx_zsxq_image_post_id ON zsxq_image (post_id);
+CREATE INDEX IF NOT EXISTS idx_zsxq_image_doc_id ON zsxq_image (doc_id);
 
 -- 5) 分块：星主长文实测 1.4~2.5 万字，远超 embedding 模型单次输入上限，
 --    整篇做一个向量会截断丢内容、且召回粒度太粗，所以按 Markdown 标题切成多块，
@@ -145,6 +149,22 @@ BEGIN
         ALTER TABLE zsxq_image ALTER COLUMN embedding TYPE vector(1024);
     END IF;
 END $$;
+
+-- ============================================================
+-- 结构迁移：zsxq_image 补 doc_id 血缘列
+-- 老库上表已存在，CREATE TABLE IF NOT EXISTS 不会补列，只能显式 ALTER。
+-- DO block 判列是否存在，幂等可反复跑。
+-- ============================================================
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns
+                    WHERE table_name = 'zsxq_image' AND column_name = 'doc_id') THEN
+        ALTER TABLE zsxq_image ADD COLUMN doc_id TEXT REFERENCES cleaned_doc(doc_id) ON DELETE CASCADE;
+    END IF;
+END $$;
+CREATE INDEX IF NOT EXISTS idx_zsxq_image_doc_id ON zsxq_image (doc_id);
+-- 待概括的图：有地址、没描述。部分索引，避免全表扫
+CREATE INDEX IF NOT EXISTS idx_zsxq_image_pending ON zsxq_image (id) WHERE description IS NULL;
 
 -- 索引在迁移之后建：迁移里可能刚把索引删掉，这里保证最终存在
 CREATE INDEX IF NOT EXISTS idx_cleaned_doc_embedding ON cleaned_doc USING hnsw (embedding vector_cosine_ops);

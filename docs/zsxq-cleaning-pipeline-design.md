@@ -300,3 +300,128 @@ CREATE INDEX ON zsxq_image (post_id);
 
 **教训**：`published_at` 做版本抑制这个需求本身是对的，但**判据必须落在内容上，不能落在分类字段上**。
 下一步做全量爬取时，同一篇帖的修订版会更常见，届时这个判据要拿真实数据复核一遍。
+
+---
+
+## 10. S4 图片概括落地（2026-09-19，已跑通 25/25）
+
+### 10.1 模型选择：实测定案
+
+原设计文档 §4 写的是「百炼 qwen-vl」。实测后改用 **DeepSeek 的 `deepseek-flash`**：
+
+| 型号 | 视觉能力 | 结论 |
+|---|---|---|
+| `deepseek-flash` | ✅ 原生多模态，左绿右蓝纯色块、黑底白字母 T 都能准确识别 | **采用** |
+| `deepseek-v4-pro` | ❌ 自称 "unsupported image" | 该型号不支持视觉 |
+
+注意：`/models` 接口里**没有 `DeepSeek-V4.1-Flash` 这个型号名**，实际可用的是 `deepseek-flash`。
+
+### 10.2 两个必须处理的坑
+
+1. **推理模型会「过度思考」吃光 token。** `deepseek-flash` 是推理型，看图时会先想一大段
+   ——实测一张 64×64 纯色图，输出 76 token 里 **74 个是 reasoning**，真正内容只占 2 个。
+   若 `max_tokens` 不放大，reasoning 会把额度吃光，结果 `finish_reason=length` 且 `content` 为空。
+   **对策**：`maxTokens(8000)`，并在 system prompt 里明确「直接输出描述，不要分析过程」。
+2. **AiService 的图片参数必须带注解。** 裸 `ImageContent` 参数会在**调用时**抛
+   `IllegalConfigurationException: The parameter 'arg1' ... must be annotated with either
+   UserMessage, V, MemoryId, or UserName`（`AiServiceValidation.validateParameters` 拦的）。
+   编译期完全看不出来。**正确形态**是给图片参数挂 `@UserMessage`：
+
+   ```java
+   @SystemMessage("...（概括规范）")
+   @UserMessage("请概括这张图片。")
+   String describe(@UserMessage ImageContent image);
+   ```
+
+   框架的 `DefaultAiServices.addContentsToUserMessage` 专门处理「`@UserMessage` 标注的
+   `Content` 型参数」，会把它收进消息 contents。也**不能**写成
+   `describe(@UserMessage String prompt, ImageContent image)` —— 第二个参数照样没注解。
+
+### 10.3 装配：为什么模型 bean 建了两份
+
+| 场景 | 装配方式 | 原因 |
+|---|---|---|
+| 应用内（Web 容器） | `DeepSeekModelConfig#deepseekVisionModel` + `@AiService` 自动装配 | 有 Boot 属性绑定，`@ConfigurationProperties` 能绑 yml |
+| CLI（批处理） | `ZsxqImageConfig#zsxqVisionModel` + `AiServices.builder(...)` 手工装配 | 轻量 `AnnotationConfigApplicationContext` **没有** Boot 属性绑定，也**没有** langchain4j starter 的 AiService 自动配置 |
+
+接口上仍保留 `@AiService` 注解，两条路共用同一个接口定义。这与 §11「S7 向量化」的双路装配是同一套路。
+
+### 10.4 非正文图过滤（实测踩出来的）
+
+样本里 39 张「图」有 **5 张是表情**（`wx.zsxq.com/assets_dweb/images/emoji/抱拳.png`）。
+这类站点静态资源不是帖子正文图，登记进来只会白花钱概括。过滤规则：
+
+- `wx.zsxq.com/assets*` → 站点静态资源（表情/图标），排除；
+- `data:` → 内联 data URI，排除。
+
+正文图来自 `images.zsxq.com`（CDN，带签名参数）和 `article-images.zsxq.com`（文章页正文图）。
+
+### 10.5 数据流与幂等
+
+```
+原始帖 imageUrls ──┐
+                   ├─→ registerImages() ─→ zsxq_image（description 为空）
+cleaned_doc        │                           │
+（keepImages 判定）─┘                           ↓
+                                    describePending() ─→ 视觉模型 ─→ description
+                                                          └─→ 嵌入模型 ─→ embedding
+```
+
+- **register 幂等**：同一 `docId` 的图**先删后插**，重跑行数不变（同 `ingestReplies` 套路）。
+- **describe 幂等**：只挑 `description IS NULL` 的图，断了重跑接着上次来，不重复花钱。
+- **单张失败不中断整批**：网络拉不到图 / 模型返回空 / 接口抖动，都只记日志跳过，下次重跑捡起来。
+- **描述与向量解耦**：embedding 失败不影响 description 落库（描述是花了钱换来的，不能丢），
+  向量留待 `fillMissingEmbeddings()` 单独补。
+
+### 10.6 schema 变更
+
+`zsxq_image` 补了 **`doc_id` 列**（`TEXT REFERENCES cleaned_doc(doc_id) ON DELETE CASCADE`）：
+- 有它才能「按文档重登记」（重跑先删该文档的图）；
+- 有它才能从图回查 `post_type` / `authority_score` 做加权（同 chunk 那套）。
+老库用 DO block 判列存在再 ALTER，幂等可反复跑。
+
+### 10.7 验收结果
+
+**register**：9 篇有图的帖 → 39 个 URL（含跨栏目重复）→ 去重去表情后 **25 张**登记入库，重跑仍 25 行。
+
+**describe**：25 张**全部成功，0 失败**，全部带上向量。概括质量抽样（远超预期，OCR 准确）：
+
+- [26] 「对比『原始闭环』与『Agent 化后』RAG 调用链的示意图。左侧『用户 → RAG → 用户』，
+  右侧『用户 → 主 Agent → RAG Tool → 主 Agent → 用户』，标注『主边界上移』『RAG 变为 Tool』
+  『边界必须重划』。底部结论：调用链一旦改变，系统边界、职责归属、封装位置都要随之调整。」
+- [44] 「一张『初始化流程（initializer）』的 12 步流程图……依次为：校验模板 checksum 与数量断言
+  → 登录主服务检查 Admin、PostgreSQL、Redis 与空间状态 → 清理文档、平台数据、业务数据与缓存
+  → 灌入 rag_ent_bit 演示数据 → …… → 输出 [initializer] SUCCESS。」
+- [39] 「AI Agent 执行下单流程的对话日志截图……优惠券码 PHONE-8000-500；TOOL create_order
+  耗时 16ms，订单号 88248，商品 iPhone 18 Pro 256GB 黑色 (MJT74CH/A) ×1，单价 9999.00。」
+
+**图片向量召回**（自然语言查图，6 个查询全部命中正确目标）：
+
+| 查询 | Top1 命中 | 分数 |
+|---|---|---|
+| Agent 调用 RAG 的链路是怎么走的 | RAG 调用链对比示意图 | 0.759 |
+| 多用户并发下工具状态不一致的问题 | 多用户工具状态错位示意图 | 0.746 |
+| 初始化流程有哪些步骤 | initializer 12 步流程图 | 0.793 |
+| 代码里缓存实例怎么获取的 | 缓存实例获取逻辑流程图 | 0.744 |
+| ReAct 循环的中间件拦截点在哪 | MiddlewareBase 五拦截点流程图 | 0.718 |
+| 订单创建的工具调用长什么样 | 下单流程对话日志截图 | 0.611 |
+
+分数梯度也健康（如「多用户并发」查询 Top1 0.746 vs Top2 0.567），说明描述文本的判别力够。
+
+### 10.8 CLI 用法
+
+```bash
+java -cp "target/classes:$(cat tmp/cp.txt)" \
+  com.example.domain.zsxq.image.ZsxqImageRunner [样本目录] [数量] [--register|--describe|--embed]
+```
+
+不给动作参数则 register + describe 一起跑。前置：S3 已落库、schema 已迁移、
+`DEEPSEEK_WIN_KEY`（视觉模型）与 `DASHSCOPE_API_KEY / BAILIAN_API_KEY`（描述向量化）在环境里。
+
+### 10.9 遗留
+
+- **`kind` 字段仍为空**：设计文档 §4 说要判 `kind ∈ {flowchart, architecture, meme, photo, other}`，
+  当前是「星主图全留」的粗策略，还没做 kind 判别。考虑到实测概括质量很高、非正文图已按 URL 前缀过滤掉，
+  这个判别的收益不大，**建议降级为可选**（等全量爬取看到更多噪声图再定）。
+- **正文 Markdown 里的图片没换成 `![description](url)`**：设计文档 §4 的「引用方式」这条未落地。
+  当前正文里仍是 `![](url)`（alt 为空）。要做的话是在 S1/S3 之间插一步，用 description 回填 alt。
