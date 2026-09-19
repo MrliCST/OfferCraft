@@ -1,6 +1,7 @@
 package com.example.domain.zsxq.classify;
 
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -24,13 +25,21 @@ import dev.langchain4j.service.AiServices;
  * <p>用 {@link ObjectProvider} 接 {@code deepseekClassifyModel} 是把「可选依赖」做对的关键：
  * 轻量上下文不注册 {@code DeepSeekModelConfig}，provider 取空也不报错，从而无需 {@code application.yml}
  * 绑定、也不启动任何 Web 容器，适合「跑一次、长期不动」的批量清洗 + 高频 AI 辅助测试。
+ *
+ * <p><b>{@code @Qualifier} 不能省。</b>{@code DeepSeekModelConfig} 里有两个同类型的
+ * {@link OpenAiChatModel} bean（{@code deepseekChatModel} 温度 1.3 用于聊天、{@code deepseekClassifyModel}
+ * 温度 0.1 用于分类）。{@link ObjectProvider} 是按<b>类型</b>取的，不写名字就会撞上
+ * {@code NoUniqueBeanDefinitionException} —— 而且是在容器刷新时炸，表现为整个应用起不来，
+ * 报错信息也只说"找到 2 个候选"，不会指向这里。加上名字后语义才跟上面第 1 条一致：
+ * 按名取，取不到返回 null，回退链照常走。
  */
 @Configuration
 public class ZsxqTopicGuardConfig {
 
     @Bean
     @Primary
-    public TopicGuard topicGuard(ObjectProvider<OpenAiChatModel> classifyModelProvider) {
+    public TopicGuard topicGuard(
+            @Qualifier("deepseekClassifyModel") ObjectProvider<OpenAiChatModel> classifyModelProvider) {
         OpenAiChatModel model = classifyModelProvider.getIfAvailable();
         if (model == null && hasDeepSeekKey()) {
             model = OpenAiChatModel.builder()
