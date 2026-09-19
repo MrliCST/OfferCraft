@@ -21,7 +21,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * <p>不连数据库也不调模型。跑在 test profile 下：控制台只留测试自己的打印。
  */
 @SpringBootTest(classes = {WebPageTextTool.class, BrowserSessionProvider.class, BrowserConfig.class})
-@EnableConfigurationProperties({ScreenshotProperties.class, BrowserSessionProperties.class})
+@EnableConfigurationProperties({ScreenshotProperties.class, BrowserSessionProperties.class,
+        WebPageTextProperties.class})
 @ActiveProfiles("test")
 class WebPageTextToolTest {
 
@@ -30,9 +31,6 @@ class WebPageTextToolTest {
 
     @Autowired
     private WebPageTextTool tool;
-
-    @Autowired
-    private BrowserSessionProperties properties;
 
     @Test
     void fetchText_returnsTitleAndBody() {
@@ -55,7 +53,7 @@ class WebPageTextToolTest {
     void fetchText_truncatesWhenTooLong() {
         // 阈值压到 50 字逼出截断分支；直接 new 一个工具实例，不去改容器里的配置
         WebPageTextTool smallLimitTool =
-                new WebPageTextTool(provider, BrowserSessionProperties.of(null, 50));
+                new WebPageTextTool(provider, new WebPageTextProperties(50));
 
         String result = smallLimitTool.fetchText(URL);
         System.out.println("===== 截断到 50 字 =====");

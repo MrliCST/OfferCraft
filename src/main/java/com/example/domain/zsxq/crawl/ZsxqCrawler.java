@@ -21,6 +21,7 @@ import com.microsoft.playwright.Playwright;
 
 import com.example.domain.browser.CrawlThrottle;
 import com.example.domain.browser.LoginStateStore;
+import com.example.domain.browser.SiteLoginRegistry;
 import com.example.domain.zsxq.model.CrawledPost;
 import com.example.domain.zsxq.model.CrawledReply;
 import com.example.domain.zsxq.normalize.HtmlToMarkdown;
@@ -72,8 +73,10 @@ public final class ZsxqCrawler {
                 : System.getProperty("user.home") + "/code/demo/JLRADemo/crawl-output/zsxq";
         int perColumn = args.length > 1 ? Integer.parseInt(args[1]) : DEFAULT_PER_COLUMN;
         Files.createDirectories(Path.of(outDir));
-        //登陆态
-        LoginStateStore store = new LoginStateStore("~/.config/JLRADemo/state/wx.zsxq.com.json");
+        //登陆态：路径由 host 推导，不手抄字符串 —— 手抄的那份跟站点名单各记一份，
+        //改名单时不会跟着变，而且错了不报错，只是静默退化成匿名抓取
+        LoginStateStore store = new LoginStateStore(
+                SiteLoginRegistry.defaultFileFor(SiteLoginRegistry.hostOf(GROUP_URL)));
         //格式化输出带缩进的 json
         ObjectMapper om = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 

@@ -12,11 +12,6 @@ mybatis-plus:
     # 测试换成完全不打日志的实现
     log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
 
-# 测试用无头：测试本身不依赖登录态，有头会弹一堆窗口出来，没必要
-browser:
-  session:
-    profile-headless: true
-
 logging:
   level:
     # 连库、执行 schema.sql、Hikari 那些 INFO 一并闭嘴。

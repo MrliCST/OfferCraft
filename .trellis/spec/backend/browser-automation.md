@@ -11,6 +11,19 @@
 
 三种模式按配置优先级（CDP 端点 → 存档注入 → 无头），没配就是无头，行为与没有该功能时一致。
 
+### 例外：确实需要 `BrowserContext` 的命令行脚本
+
+上面这条规则有两处**已知例外**。都不是图省事，是 `PageSession` 的能力边界决定的 ——
+它刻意只暴露 `page()`（连构造器都是包可见的），为的是让「谁能造会话」收敛到 Provider 一个入口：
+
+| 例外 | 为什么绕不过去 |
+|---|---|
+| `LoginStateCapture` | 要遍历 `browser.contexts()`，把**整个浏览器**里每个站点各存一份存档。这是「整个浏览器」视角，不是一个页面 |
+| `ZsxqCrawler` / `ZsxqExplore` | 要在**同一个 context 里另开标签页**取帖子详情（`openDetail(BrowserContext, ...)`），还要在 context 上挂 `addInitScript` 灌 sessionStorage。`PageSession` 给不了 context |
+
+新代码默认仍走 Provider。想开这个口子，先回答一句：**是不是真的需要 context 级能力？**
+只是「打开一个网页看看」，没有理由自己 `launch`。
+
 ---
 
 ## 三种模式的关闭语义不同（最容易出事的地方）
@@ -37,6 +50,21 @@
 2. **CDP 模式不要调 `page.setViewportSize()`。** 连的是用户正在用的浏览器，
    它会真的改动用户窗口大小（走 CDP Emulation），用户能看见窗口跳一下。截图宽度如实上报即可。
 3. **URL 校验放在 Provider 里**（只放行 http/https），工具层不要各写一遍。
+4. **`CrawlThrottle.beforeCrawl(url)` / `afterCrawl(url)` 必须成对，而且要用 `try/finally`。**
+   它内部是**按域名**计数的 `Semaphore`（每域名 2 个许可），`beforeCrawl` 用
+   `acquireUninterruptibly()` 拿许可 —— **没有超时**。占用的许可若没归还，该域名之后的每次抓取
+   都会永久卡死在 `acquire()` 上：进程不退出、不报错、不打日志，表现就是「程序没死但再也不动了」。
+
+   两个方向都会出事：
+
+   - 少了 `afterCrawl` → 许可泄漏，该域名的并发上限逐次掉到 0；
+   - 多了 `afterCrawl` → 裸 `release()` 不做校验，会把该域名的并发上限**永久调高**，限流静默失效。
+
+   注意许可是按 **host** 共享的：同一站点的列表页和详情页用的是同一个信号量。
+
+   > `ZsxqCrawler` 外层那对（`beforeCrawl(GROUP_URL)` … `afterCrawl(GROUP_URL)`）目前**没有**
+   > `try/finally`，只是因为「异常一路抛出 `main`、进程直接结束」才没暴露成故障。
+   > 一旦这段被挪进长驻进程或循环里，就会立刻变成真死锁。
 
 ---
 
@@ -133,5 +161,9 @@ Chrome 运行时，最新的 cookie 还在 `Cookies-wal` 里。只复制 `Cookie
 ## 抓正文
 
 取 `page.innerText("body")` 而不是 `page.content()`：后者连 script/style 一起给，
-白占模型上下文。正文按 `browser.session.max-text-chars`（默认 8000）截断，
+白占模型上下文。正文按 `web-text.max-chars`（默认 8000）截断，
 并在返回值里写明原文字数 —— 不截断会把模型上下文撑爆。
+
+> 这个键挂在 `web-text.*` 前缀下（`WebPageTextProperties`），**不在** `browser.session.*` 里。
+> 两个前缀管的是两件事：`browser.session.*` 决定「以什么身份打开网页」（能不能看到登录后的内容），
+> `web-text.*` 决定「看到的文字怎么处置」。改截断策略不该去动浏览器会话的配置类。

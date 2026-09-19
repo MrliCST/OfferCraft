@@ -11,6 +11,7 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
 import com.example.domain.browser.LoginStateStore;
+import com.example.domain.browser.SiteLoginRegistry;
 
 /**
  * 调试探测脚本
@@ -20,7 +21,9 @@ public final class ZsxqExplore {
 
     public static void main(String[] args) throws Exception {
         String url = "https://wx.zsxq.com/group/51121244585524";
-        LoginStateStore store = new LoginStateStore("~/.config/JLRADemo/state/wx.zsxq.com.json");
+        // 路径由 host 推导，跟站点名单走同一份规则，不手抄
+        LoginStateStore store = new LoginStateStore(
+                SiteLoginRegistry.defaultFileFor(SiteLoginRegistry.hostOf(url)));
 
         Map<String, String> env = Map.of("PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD", "1");
         try (Playwright pw = Playwright.create(new Playwright.CreateOptions().setEnv(env))) {
