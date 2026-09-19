@@ -14,13 +14,18 @@ import dev.langchain4j.model.chat.response.ChatResponse;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.service.AiServices;
 
-import com.example.domain.zsxq.ZsxqCrawler.CrawledPost;
-import com.example.domain.zsxq.ZsxqCrawler.CrawledReply;
+import com.example.domain.zsxq.classify.HeuristicTopicGuard;
+import com.example.domain.zsxq.classify.LangchainTopicGuard;
+import com.example.domain.zsxq.classify.TopicGuardAi;
+import com.example.domain.zsxq.model.Classification;
+import com.example.domain.zsxq.model.CrawledPost;
+import com.example.domain.zsxq.model.CrawledReply;
+import com.example.domain.zsxq.model.PostType;
 
 /**
  * S2 分类闸单测（离线，不加载 Spring / 不连 LLM）：
  *  - HeuristicTopicGuard：合成帖子覆盖六类。
- *  - LangchainTopicGuard：用 fake ChatLanguageModel 返回固定 JSON，验证 AiService 解析 + 字段抽取。
+ *  - LangchainTopicGuard：用 fake ChatModel 返回固定 JSON，验证 AiService 解析 + 字段抽取。
  */
 class TopicGuardTest {
 

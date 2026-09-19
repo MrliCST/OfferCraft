@@ -1,4 +1,4 @@
-package com.example.domain.zsxq;
+package com.example.domain.zsxq.model;
 
 /**
  * S2 分类闸的输出：一篇帖子归到的类型 + 抽取字段 + 权威分/校验。

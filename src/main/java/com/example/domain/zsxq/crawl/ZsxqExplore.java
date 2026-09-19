@@ -1,4 +1,4 @@
-package com.example.domain.zsxq;
+package com.example.domain.zsxq.crawl;
 
 import java.util.List;
 import java.util.Map;

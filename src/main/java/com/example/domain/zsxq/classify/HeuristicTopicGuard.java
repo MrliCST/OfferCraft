@@ -1,13 +1,13 @@
-package com.example.domain.zsxq;
+package com.example.domain.zsxq.classify;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.springframework.stereotype.Component;
-
-import com.example.domain.zsxq.ZsxqCrawler.CrawledPost;
-import com.example.domain.zsxq.ZsxqCrawler.CrawledReply;
+import com.example.domain.zsxq.model.Classification;
+import com.example.domain.zsxq.model.CrawledPost;
+import com.example.domain.zsxq.model.CrawledReply;
+import com.example.domain.zsxq.model.PostType;
 
 /**
  * S2 分类闸（启发式 / 正则版）—— 离线可用、确定性。
@@ -15,7 +15,6 @@ import com.example.domain.zsxq.ZsxqCrawler.CrawledReply;
  * 规则对齐 §2：星主技术长文=tech_article；星友问+星主权威答=interview_qa；星主含架构金句=architecture_note；
  * 星友分享外链资源=resource_share；星友原创=member_post（低权保留）；避雷/上岸/无关技术分享=off_topic（丢弃）。
  */
-@Component
 public class HeuristicTopicGuard implements TopicGuard {
 
     private static final String STAR_MASTER = "马丁";

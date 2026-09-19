@@ -1,4 +1,4 @@
-package com.example.domain.zsxq;
+package com.example.domain.zsxq.model;
 
 /**
  * S2 分类闸的输出类型（对齐设计文档 §2）。

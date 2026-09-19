@@ -1,6 +1,7 @@
-package com.example.domain.zsxq;
+package com.example.domain.zsxq.classify;
 
-import com.example.domain.zsxq.ZsxqCrawler.CrawledPost;
+import com.example.domain.zsxq.model.Classification;
+import com.example.domain.zsxq.model.CrawledPost;
 
 /**
  * S2 分类闸接口（Topic Guard）。输入一篇爬取的帖子，输出结构化 {@link Classification}。

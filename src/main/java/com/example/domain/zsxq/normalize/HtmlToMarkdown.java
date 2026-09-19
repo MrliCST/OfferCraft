@@ -1,4 +1,4 @@
-package com.example.domain.zsxq;
+package com.example.domain.zsxq.normalize;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

@@ -1,4 +1,4 @@
-package com.example.domain.zsxq;
+package com.example.domain.zsxq.classify;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -8,15 +8,10 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import dev.langchain4j.model.chat.ChatModel;
-import dev.langchain4j.model.openai.OpenAiChatModel;
-import dev.langchain4j.service.AiServices;
-
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
-
-import com.example.domain.zsxq.ZsxqCrawler.CrawledPost;
-import com.example.domain.zsxq.ZsxqCrawler.CrawledReply;
+import com.example.domain.zsxq.model.Classification;
+import com.example.domain.zsxq.model.CrawledPost;
+import com.example.domain.zsxq.model.CrawledReply;
+import com.example.domain.zsxq.model.PostType;
 
 /**
  * S2 分类闸（LLM 版，主交付）：基于 langchain4j AiService（{@link TopicGuardAi}，DeepSeek 低温度）做分类，
@@ -27,8 +22,6 @@ import com.example.domain.zsxq.ZsxqCrawler.CrawledReply;
  *
  * <p>喂给 LLM 的是精简视图（作者/身份/时间/标签/正文截断 4k/回复），避免整页超长正文撑爆上下文。
  */
-@Component
-@Primary
 public class LangchainTopicGuard implements TopicGuard {
 
     private final TopicGuardAi ai;
@@ -38,24 +31,6 @@ public class LangchainTopicGuard implements TopicGuard {
     public LangchainTopicGuard(TopicGuardAi ai, HeuristicTopicGuard fallback) {
         this.ai = ai;
         this.fallback = fallback;
-    }
-
-    /** CLI 用法：仅当环境变量 DEEPSEEK_WIN_KEY 存在时现建低温度模型；否则返回 null（调用方用启发式）。 */
-    public static LangchainTopicGuard fromEnv() {
-        String key = System.getenv("DEEPSEEK_WIN_KEY");
-        if (key == null || key.isBlank()) {
-            return null;
-        }
-        String base = System.getenv().getOrDefault("DEEPSEEK_BASE_URL", "https://api.deepseek.com");
-        String model = System.getenv().getOrDefault("DEEPSEEK_MODEL", "deepseek-chat");
-        ChatModel m = OpenAiChatModel.builder()
-                .apiKey(key)
-                .baseUrl(base)
-                .modelName(model)
-                .temperature(0.1)
-                .build();
-        TopicGuardAi ai = AiServices.create(TopicGuardAi.class, m);
-        return new LangchainTopicGuard(ai, new HeuristicTopicGuard());
     }
 
     @Override
