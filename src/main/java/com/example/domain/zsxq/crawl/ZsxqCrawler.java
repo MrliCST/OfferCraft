@@ -48,9 +48,15 @@ import com.example.domain.zsxq.normalize.HtmlToMarkdown;
 public final class ZsxqCrawler {
 
     private static final String GROUP_URL = "https://wx.zsxq.com/group/51121244585524";
+    private static final String GROUP_ID = GROUP_URL.substring(GROUP_URL.lastIndexOf('/') + 1);
     private static final String BASE_URL = "https://wx.zsxq.com";
     /** 星主长文的文章页域名：全文、标题、正文图都在这里，且 URL 里的 id 是稳定血缘键。 */
     private static final String ARTICLE_HOST = "articles.zsxq.com";
+    /**
+     * API 索引翻多少页（每页 20 篇）。定 40 页 ≈ 800 篇：样本阶段（每栏 5 篇）绰绰有余，
+     * 也让后面全量爬取不用回头改这里（真不够时日志会显示「累计」停在 800，再调大即可）。
+     */
+    private static final int DEFAULT_API_PAGES = 40;
 
     /** 栏目 = 侧边栏 chip 文案（contains 匹配）。 */
     private static final Map<String, String> COLUMNS = new LinkedHashMap<>();
@@ -116,6 +122,11 @@ public final class ZsxqCrawler {
             CrawlThrottle.beforeCrawl(GROUP_URL);
             page.navigate(GROUP_URL);
             Thread.sleep(5000);
+
+            // B2：先从 API 拉一份帖子索引。DOM 里没有星友帖的官方 id，只能靠它补血缘键 / 溯源链接
+            List<ApiTopic> apiTopics = new ZsxqApiTopics(context.request(), GROUP_ID).fetchAll(DEFAULT_API_PAGES);
+            System.out.println("API 索引: " + apiTopics.size() + " 篇");
+            TopicMatcher matcher = new TopicMatcher(apiTopics);
             //遍历帖子
             for (Map.Entry<String, String> col : COLUMNS.entrySet()) {
                 String key = col.getKey();
@@ -144,7 +155,7 @@ public final class ZsxqCrawler {
                 int n = Math.min(perColumn, topics.size());
                 for (int i = 0; i < n; i++) {
                     try {
-                        posts.add(extractPost(topics.get(i), chipText, context));
+                        posts.add(extractPost(topics.get(i), chipText, context, matcher));
                     } catch (Exception e) {
                         System.out.println("  帖子 " + (i + 1) + " 提取失败: " + e.getMessage());
                     }
@@ -178,7 +189,8 @@ public final class ZsxqCrawler {
     }
 
     //提取帖子的结构画信息，封装为CrawledPost对象。
-    private static CrawledPost extractPost(ElementHandle topic, String column, BrowserContext context) throws Exception {
+    private static CrawledPost extractPost(ElementHandle topic, String column,
+                                           BrowserContext context, TopicMatcher matcher) throws Exception {
         CrawledPost p = new CrawledPost();
         p.column = column;
 
@@ -311,6 +323,17 @@ public final class ZsxqCrawler {
         // 星主身份统一兜底
         if (p.author != null && p.author.contains(STAR_MASTER)) {
             p.authorRole = "星主";
+        }
+
+        // B2：用 API 索引补血缘键 / 溯源链接——星友帖的 DOM 里这两样都没有
+        if (matcher != null) {
+            ApiTopic api = matcher.match(p.author, p.publishedAt, p.content);
+            if (api != null) {
+                p.postId = api.topicId;    // 统一用官方 topic_id，星主帖与星友帖口径一致
+                if (p.sourceUrl == null || p.sourceUrl.isEmpty()) {
+                    p.sourceUrl = api.sourceUrl(BASE_URL);
+                }
+            }
         }
         return p;
     }
