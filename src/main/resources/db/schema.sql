@@ -78,11 +78,11 @@ CREATE TABLE IF NOT EXISTS cleaned_doc (
   keep_images          BOOLEAN,
   raw_post_id          TEXT REFERENCES zsxq_raw_post(post_id),
   source_url           TEXT,
-  embedding            vector(1536),
+  -- 分块后向量统一落在 zsxq_chunk，此列保留备用（将来若要整篇级召回或换回单向量方案）
+  embedding            vector(1024),
   superseded           BOOLEAN DEFAULT FALSE,
   ingest_at            TIMESTAMPTZ DEFAULT now()
 );
-CREATE INDEX IF NOT EXISTS idx_cleaned_doc_embedding ON cleaned_doc USING hnsw (embedding vector_cosine_ops);
 CREATE INDEX IF NOT EXISTS idx_cleaned_doc_keys ON cleaned_doc (topic_key, post_type, published_at);
 CREATE INDEX IF NOT EXISTS idx_cleaned_doc_superseded ON cleaned_doc (superseded) WHERE superseded = FALSE;
 CREATE INDEX IF NOT EXISTS idx_cleaned_doc_raw_post_id ON cleaned_doc (raw_post_id);
@@ -96,8 +96,56 @@ CREATE TABLE IF NOT EXISTS zsxq_image (
   kind         TEXT,
   description  TEXT,
   kept         BOOLEAN,
-  embedding    vector(1536),
+  embedding    vector(1024),
   ingest_at    TIMESTAMPTZ DEFAULT now()
 );
-CREATE INDEX IF NOT EXISTS idx_zsxq_image_embedding ON zsxq_image USING hnsw (embedding vector_cosine_ops);
 CREATE INDEX IF NOT EXISTS idx_zsxq_image_post_id ON zsxq_image (post_id);
+
+-- 5) 分块：星主长文实测 1.4~2.5 万字，远超 embedding 模型单次输入上限，
+--    整篇做一个向量会截断丢内容、且召回粒度太粗，所以按 Markdown 标题切成多块，
+--    短帖切成 1 块。检索走 chunk，命中后再回关联 cleaned_doc 取权威分做加权。
+--    embedded_at 为 NULL 表示还没向量化，断点续跑就挑这些。
+CREATE TABLE IF NOT EXISTS zsxq_chunk (
+  chunk_id     TEXT PRIMARY KEY,
+  doc_id       TEXT REFERENCES cleaned_doc(doc_id) ON DELETE CASCADE,
+  seq          INT,
+  heading      TEXT,
+  content      TEXT,
+  char_len     INT,
+  embedding    vector(1024),
+  embedded_at  TIMESTAMPTZ,
+  ingest_at    TIMESTAMPTZ DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_zsxq_chunk_embedding ON zsxq_chunk USING hnsw (embedding vector_cosine_ops);
+CREATE INDEX IF NOT EXISTS idx_zsxq_chunk_doc ON zsxq_chunk (doc_id);
+CREATE INDEX IF NOT EXISTS idx_zsxq_chunk_pending ON zsxq_chunk (doc_id) WHERE embedded_at IS NULL;
+
+-- ============================================================
+-- 维度迁移：1536 → 1024（百炼 text-embedding-v3 的维度）
+-- 表已存在时 CREATE TABLE IF NOT EXISTS 不会改列类型，只能显式 ALTER；
+-- 而 hnsw 索引绑定列类型，必须删了再建。用 DO block 判当前维度，幂等可反复跑。
+-- ============================================================
+DO $$
+DECLARE
+    cur_dim INT;
+BEGIN
+    SELECT atttypmod INTO cur_dim
+      FROM pg_attribute
+     WHERE attrelid = 'cleaned_doc'::regclass AND attname = 'embedding' AND attnum > 0;
+    IF cur_dim IS NOT NULL AND cur_dim <> 1024 THEN
+        DROP INDEX IF EXISTS idx_cleaned_doc_embedding;
+        ALTER TABLE cleaned_doc ALTER COLUMN embedding TYPE vector(1024);
+    END IF;
+
+    SELECT atttypmod INTO cur_dim
+      FROM pg_attribute
+     WHERE attrelid = 'zsxq_image'::regclass AND attname = 'embedding' AND attnum > 0;
+    IF cur_dim IS NOT NULL AND cur_dim <> 1024 THEN
+        DROP INDEX IF EXISTS idx_zsxq_image_embedding;
+        ALTER TABLE zsxq_image ALTER COLUMN embedding TYPE vector(1024);
+    END IF;
+END $$;
+
+-- 索引在迁移之后建：迁移里可能刚把索引删掉，这里保证最终存在
+CREATE INDEX IF NOT EXISTS idx_cleaned_doc_embedding ON cleaned_doc USING hnsw (embedding vector_cosine_ops);
+CREATE INDEX IF NOT EXISTS idx_zsxq_image_embedding ON zsxq_image USING hnsw (embedding vector_cosine_ops);

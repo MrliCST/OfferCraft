@@ -1,8 +1,10 @@
 package com.example.domain.zsxq.normalize;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
@@ -50,6 +52,28 @@ class PostIdentityTest {
     void identityPrefersPostId() {
         CrawledPost p = post("999", "某人", "2026-09-01 10:00", "栏目", "正文");
         assertEquals("id:999", PostIdentity.identityOf(p));
+    }
+
+    @Test
+    void samePostWithTwoIdForms_unifiedToTopicId() {
+        // 实测：同一篇帖在「精华」栏只能拿到文章页 id，在「优质面经」栏拿到官方 topic_id，
+        // 不归一的话库里会存成两行、外键各指一边
+        CrawledPost article = post("id_hrrlaj6wpecj", "Jäger", "2026-09-10 21:00", "精华", "小红书面经：一面手撕算法");
+        CrawledPost topic = post("14425514485851482", "Jäger", "2026-09-10 21:00", "优质面经", "小红书面经：一面手撕算法");
+
+        Map<String, String> remap = PostIdentity.unifyPostIds(List.of(article, topic));
+
+        assertEquals(Map.of("id_hrrlaj6wpecj", "14425514485851482"), remap);
+        assertEquals("14425514485851482", article.postId);
+        assertEquals(1, PostIdentity.dedupe(List.of(article, topic)).size());
+    }
+
+    @Test
+    void unifyPostIds_leavesSinglePostAlone() {
+        CrawledPost only = post("id_abc", "某人", "2026-09-01 10:00", "栏目", "正文");
+
+        assertTrue(PostIdentity.unifyPostIds(List.of(only)).isEmpty());
+        assertEquals("id_abc", only.postId);
     }
 
     private static CrawledPost post(String postId, String author, String at, String column, String content) {
