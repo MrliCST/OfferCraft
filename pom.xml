@@ -79,6 +79,23 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- HTML → Markdown：帖子正文归一化（S1），进程内、确定性、无损。
+             注意 artifactId 是 flexmark-html2md-converter（含 FlexmarkHtmlConverter 类），
+             不是 flexmark-html2md。 -->
+        <dependency>
+            <groupId>com.vladsch.flexmark</groupId>
+            <artifactId>flexmark-html2md-converter</artifactId>
+            <version>0.64.8</version>
+        </dependency>
+        <!-- HTML 归一化（S1 前置）：知识星球懒加载图同时带 src(占位) + data-src(真图)，
+             用 jsoup 把 data-src 提为唯一 src，避免 flexmark 把图渲染成 :文件名: 占位符。
+             jsoup 本就是 flexmark 的传递依赖，这里显式声明以锁定版本、便于直接调用 API。 -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.18.1</version>
+        </dependency>
+
         <!-- 无头浏览器：Playwright Java，给"网页长截图"工具用。
              走系统已安装的 Google Chrome（channel = chrome），不另外下载 Chromium 二进制。
              它自带 driver（driver-bundle 传递依赖），运行时会解到临时目录，不用手动 install。 -->

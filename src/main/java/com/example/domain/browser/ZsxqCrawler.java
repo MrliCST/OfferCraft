@@ -19,6 +19,8 @@ import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
+import com.example.domain.browser.HtmlToMarkdown;
+
 /**
  * 知识星球圈子爬虫：按栏目（话题 chip）各爬 N 篇帖，保存结构化 JSON。
  * 用法: java ...ZsxqCrawler [输出目录] [每栏篇数]
@@ -178,7 +180,7 @@ public final class ZsxqCrawler {
         }
         ElementHandle contentEl = topic.querySelector(".talk-content-container .content");
         if (contentEl != null) {
-            p.content = contentEl.innerText().trim();
+            p.content = HtmlToMarkdown.toMarkdown(contentEl.innerHTML());
         }
 
         // 星主长文截断：feed 预览不全，遇「查看详情」开新页取完整正文（不干扰 feed 页面）
@@ -222,7 +224,7 @@ public final class ZsxqCrawler {
                 rt = ci.querySelector(".text span.text");
             }
             if (rt != null) {
-                r.text = rt.innerText().trim();
+                r.text = HtmlToMarkdown.toMarkdown(rt.innerHTML());
             }
             ElementHandle tm = ci.querySelector(".operations .time");
             if (tm != null) {
@@ -278,7 +280,7 @@ public final class ZsxqCrawler {
                 }
                 ElementHandle c2 = dp.querySelector(".talk-content-container .content");
                 if (c2 != null) {
-                    content = c2.innerText().trim();
+                    content = HtmlToMarkdown.toMarkdown(c2.innerHTML());
                 }
             }
             imgs.addAll(collectImages(dp.querySelectorAll(".talk-content-container img")));

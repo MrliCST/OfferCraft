@@ -160,7 +160,7 @@
 ## 11. 技术选型（已定，2026-09-18）
 
 - **存储**：PostgreSQL + **pgvector**（与现有 Ragent 栈同为 PG，零新基础设施；向量主、ES 仅作可选 BM25 辅助）。MySQL 9.0+ 也可行但 pgvector 更成熟、且已在栈中。
-- **原帖→Markdown**：**flexmark-html2md**（HTML→MD 专用、进程内、确定性、无损）。MinerU 是 PDF/论文抽取器，形状不对，不用于网页帖。
+- **原帖→Markdown**：**flexmark-html2md-converter**（`com.vladsch.flexmark:flexmark-html2md-converter:0.64.8`，含 `FlexmarkHtmlConverter`；HTML→MD 专用、进程内、确定性、无损）。注意 Maven artifactId 是 `flexmark-html2md-converter` 而非 `flexmark-html2md`。MinerU 是 PDF/论文抽取器，形状不对，不用于网页帖。
 - **编排**：**Java 顺序管道**（S1–S7 线性执行），**不引入 LangGraph**（LangGraph 不提速、只增复杂度；价值在可恢复/分支/练手，本次不需要）。LLM 分类/金句闸用 **langchain4j `AiService`**（单点 LLM 调用，非自主 Agent 循环）。
 - 嵌入模型复用百炼/Qwen embedding（langchain4j `EmbeddingModel`，确定性调用，非 agentic）。
 
