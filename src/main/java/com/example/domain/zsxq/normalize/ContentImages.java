@@ -25,7 +25,7 @@ import java.util.Set;
  * 实测样本里 {@code wx.zsxq.com/assets_dweb/images/emoji/抱拳.png} 这类表情、
  * 以及头像/水印/二维码，全都不在上面这两个域下。
  *
- * <p>纯函数、不依赖 Spring 与浏览器 —— 采集层（{@code ZsxqCrawler}）和测试都能直接用。
+ * <p>纯函数、不依赖 Spring 与浏览器 —— 采集层（{@code ZsxqApiSource}）和测试都能直接用。
  */
 public final class ContentImages {
 

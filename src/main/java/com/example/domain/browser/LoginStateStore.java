@@ -120,6 +120,36 @@ public class LoginStateStore {
         return raw instanceof String s ? s : "{}";
     }
 
+    /**
+     * 从存档里按名字取一个 cookie 的值，取不到返回 null。
+     *
+     * <p>为什么需要它：存档本来只为"灌回无头浏览器"服务，但纯 HTTP 抓取（不用浏览器、
+     * 直接带 cookie 调接口）同样需要登录态，而且开销比开浏览器低一个数量级。
+     * 这类抓取走 {@code java.net.http} 或 OkHttp，没有 Playwright 的 context，
+     * 只能自己把 cookie 从存档里读出来塞进请求头。
+     *
+     * <p>刻意只做"按名字取值"这一件小事，不引入 HTTP 客户端依赖 ——
+     * 怎么发请求是调用方的事，本类只负责把凭证交出去。
+     */
+    public String cookieValue(String cookieName) {
+        if (!Files.exists(stateFile) || cookieName == null || cookieName.isBlank()) {
+            return null;
+        }
+        try {
+            com.fasterxml.jackson.databind.JsonNode root =
+                    new com.fasterxml.jackson.databind.ObjectMapper().readTree(stateFile.toFile());
+            for (com.fasterxml.jackson.databind.JsonNode c : root.path("cookies")) {
+                if (cookieName.equals(c.path("name").asText(null))) {
+                    String v = c.path("value").asText(null);
+                    return (v == null || v.isEmpty()) ? null : v;
+                }
+            }
+        } catch (Exception e) {
+            log.warn("从存档 {} 读取 cookie {} 失败：{}", stateFile, cookieName, e.getMessage());
+        }
+        return null;
+    }
+
     /** 支持 ~ 开头的家目录写法；没给路径时用全局存档 */
     public static Path expand(String file) {
         String path = (file == null || file.isBlank()) ? DEFAULT_STATE_FILE.toString() : file.trim();

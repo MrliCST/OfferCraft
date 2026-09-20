@@ -24,6 +24,18 @@ public final class CrawlThrottle {
     /** 单域名最大并行请求数（建议 1~2）。信号量控制，超过就排队等 */
     private static final int MAX_CONCURRENT_PER_DOMAIN = 2;
 
+    /**
+     * 拿许可的最长等待时间（秒）。超过就抛异常而不是无限等。
+     *
+     * <p>为什么必须有这个上限：许可只在 {@link #afterCrawl} 里归还，而调用方是在
+     * {@code finally} 里调的 —— 只要抓取那段代码真能走到 finally 就没问题。但实际踩过坑：
+     * Playwright 的 {@code navigate} 在页面永久白屏 / 连接被中间设备黑洞时会一直不返回，
+     * 于是 finally 也到不了，许可永远拿不回来。两个许可被两篇卡死的帖子占满之后，
+     * 整个爬虫就在 {@code acquire} 上静默睡死 —— 表现是 CPU 近 0、网络连接为 0、进程却活着。
+     * 有超时至少会炸出异常，让人看见「卡住了」，而不是无声无息地停在那儿。
+     */
+    private static final int ACQUIRE_TIMEOUT_SECONDS = 120;
+
     /** 高斯随机延迟的均值与标准差（毫秒）。围绕均值抖动，下限钳到 0 */
     private static final double DELAY_MEAN_MS = 1500.0;
     private static final double DELAY_STDDEV_MS = 700.0;
@@ -35,16 +47,30 @@ public final class CrawlThrottle {
     }
 
     /**
-     * 进入一次抓取前调用：拿该域名的许可（超了就阻塞等待），并做一次随机延迟。
-     * 必须和 {@link #afterCrawl} 成对：后者在抓取结束后归还许可。
+     * 进入一次抓取前调用：拿该域名的许可（超了就阻塞等待，最长 {@value #ACQUIRE_TIMEOUT_SECONDS} 秒），
+     * 并做一次随机延迟。必须和 {@link #afterCrawl} 成对：后者在抓取结束后归还许可。
+     *
+     * <p>拿不到许可时<b>抛异常而不是无限等</b>。调用方本来就在 try/catch 里抓单篇帖子的失败，
+     * 一篇卡死不该拖垮整个爬取 —— 抛出来正好被那层 catch 收走，记一条失败继续爬下一篇。
      */
     public static void beforeCrawl(String url) {
         String host = SiteLoginRegistry.hostOf(url);
         if (host.isEmpty()) {
             return;
         }
-        DOMAIN_SEMAPHORES.computeIfAbsent(host, h -> new Semaphore(MAX_CONCURRENT_PER_DOMAIN))
-                .acquireUninterruptibly();
+        try {
+            boolean acquired = DOMAIN_SEMAPHORES
+                    .computeIfAbsent(host, h -> new Semaphore(MAX_CONCURRENT_PER_DOMAIN))
+                    .tryAcquire(ACQUIRE_TIMEOUT_SECONDS, java.util.concurrent.TimeUnit.SECONDS);
+            if (!acquired) {
+                throw new IllegalStateException(
+                        "等待 " + host + " 抓取许可超时（" + ACQUIRE_TIMEOUT_SECONDS
+                                + "s），可能有页面卡死未归还许可");
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("等待 " + host + " 抓取许可时被中断", e);
+        }
         randomDelay();
     }
 

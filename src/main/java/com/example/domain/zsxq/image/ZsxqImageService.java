@@ -169,7 +169,7 @@ public class ZsxqImageService {
     /**
      * 表情/图标/内联 data URI 等非正文图，不登记。
      *
-     * <p><b>已降级为兜底断言</b>：主要防线在 S1 —— {@code ZsxqCrawler.collectImages} 与
+     * <p><b>已降级为兜底断言</b>：主要防线在 S1 —— {@code ZsxqArticleFetcher} 抽长文图、
      * {@link com.example.domain.zsxq.normalize.HtmlToMarkdown} 已经在抽图/转 Markdown 时就
      * 剔除了非正文图，正常数据流到这里不会有表情。留这一道是为了防「别处喂进来的脏列表」
      * （比如历史落盘的 JSON、或将来新增的采集入口），出现即说明上游有漏。

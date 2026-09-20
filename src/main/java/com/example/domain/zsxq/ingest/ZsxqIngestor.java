@@ -20,7 +20,7 @@ import com.example.domain.zsxq.model.ZsxqCleanedDoc;
  */
 public final class ZsxqIngestor {
 
-    /** 圈子 id，跟 ZsxqCrawler 里的 GROUP_URL 对应；命令行的第二个参数可以覆盖。 */
+    /** 圈子 id，跟 ZsxqApiCrawlCli 里的 GROUP_URL 对应；命令行的第二个参数可以覆盖。 */
     private static final String DEFAULT_GROUP_ID = "51121244585524";
 
     public static void main(String[] args) throws Exception {

@@ -1,15 +1,18 @@
 [ {
   "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
   "author" : "北梦",
   "authorRole" : "星友",
   "publishedAt" : "2026-09-16 22:36",
-  "content" : "感谢马哥的短链接让我找到了java实习，做了三个多月。\n星球已经续费一年了。\n今年刚毕业，离开那家公司，签了另一家公司，做的不是技术，做的咨询顾问，已经工作两个月了。\n目前工作跟着项目走，公司租房，工作内容比较杂，做过数据同步、数仓建设、指标梳理、SQL 这些，目前都是参与其中执行的层面，技术上的东西做得不算多。\n现在还在试用期（6个月），到手 4k～5k 左右。基本每天早上 8:30 上班，晚上 9～10 点下班，感觉还是挺累的，后续听说一直也是这个工作强度，也有点想离职。\n我的打算是这样的，有时间就去重拾技术上的东西，然后去学习agent项目，修改简历，先待着。#\uD83D\uDCC3技术问答  #\uD83D\uDD25自我介绍",
+  "content" : "感谢马哥的短链接让我找到了java实习，做了三个多月。 星球已经续费一年了。 今年刚毕业，离开那家公司，签了另一家公司，做的不是技术，做的咨询顾问，已经工作两个月了。 目前工作跟着项目走，公司租房，工作内容比较杂，做过数据同步、数仓建设、指标梳理、SQL 这些，目前都是参与其中执行的层面，技术上的东西做得不算多。 现在还在试用期（6个月），到手 4k～5k 左右。基本每天早上 8:30 上班，晚上 9～10 点下班，感觉还是挺累的，后续听说一直也是这个工作强度，也有点想离职。 我的打算是这样的，有时间就去重拾技术上的东西，然后去学习agent项目，修改简历，先待着。[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDD25自我介绍](https://wx.zsxq.com/tags/\uD83D\uDD25自我介绍/28885124581521)",
   "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDD25自我介绍" ],
   "likeUsers" : [ "Feg" ],
   "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/Fv8LqaPfsKT01Zg6sV5xGsCiC5dF?imageMogr2/auto-orient/thumbnail/750x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:XXY6w7Wyy_a-1k75CwUXsj8w0qY=" ],
   "replies" : [ {
     "commenter" : "马丁",
-    "text" : "技术这一块规划没问题，离职时间建议咱再慎重些。因为如果毕业后3或者6个月出来找工作，很容易让HR认为是因为能力不足被开掉的。我的建议是，情况允许的话，待够至少7-8个月最好了。\n其次，建议找到后再离职，因为谁也不知道这个行情找工作需要多久，脱产找工作的心理压力相对来说会更多一些。如果有一份工作再找的话，准备面试以及过程中会更轻松些。这是我的一些见解，希望对咱有帮助。",
+    "text" : "技术这一块规划没问题，离职时间建议咱再慎重些。因为如果毕业后3或者6个月出来找工作，很容易让HR认为是因为能力不足被开掉的。我的建议是，情况允许的话，待够至少7-8个月最好了。 其次，建议找到后再离职，因为谁也不知道这个行情找工作需要多久，脱产找工作的心理压力相对来说会更多一些。如果有一份工作再找的话，准备面试以及过程中会更轻松些。这是我的一些见解，希望对咱有帮助。",
     "time" : "2026-09-16 23:07"
   }, {
     "commenter" : "北梦",
@@ -20,16 +23,19 @@
   "authorityScore" : 0.0
 }, {
   "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
   "author" : "习嗯哼",
   "authorRole" : "星友",
   "publishedAt" : "2026-09-09 20:25",
-  "content" : "马哥，你好，我目前在北京某保险公司业财和销管中台系统开发实习，这边入职快一周了，目前已经拿到中台项目代码，不过CodeBuddy的license还没有分配下来，看代码只能靠自己啃，理解业务逻辑会慢一些。平时大部分时间不算特别忙，只有上线阶段会比较紧张。想请教下您，我平时可以通过哪些方式积累业务思想、提升自己？比如日常看代码、梳理业务、学习沉淀，再就是下班想学习agent相关的，但每次找着路线就没了信心，会怀疑自己，求解惑#\uD83D\uDD25自我介绍  #\uD83D\uDCC3技术问答",
+  "content" : "马哥，你好，我目前在北京某保险公司业财和销管中台系统开发实习，这边入职快一周了，目前已经拿到中台项目代码，不过CodeBuddy的license还没有分配下来，看代码只能靠自己啃，理解业务逻辑会慢一些。平时大部分时间不算特别忙，只有上线阶段会比较紧张。想请教下您，我平时可以通过哪些方式积累业务思想、提升自己？比如日常看代码、梳理业务、学习沉淀，再就是下班想学习agent相关的，但每次找着路线就没了信心，会怀疑自己，求解惑[#\uD83D\uDD25自我介绍](https://wx.zsxq.com/tags/\uD83D\uDD25自我介绍/28885124581521) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
   "topicTags" : [ "\uD83D\uDD25自我介绍", "\uD83D\uDCC3技术问答" ],
   "likeUsers" : [ "小龙猫" ],
   "starMasterReplied" : true,
+  "imageUrls" : [ ],
   "replies" : [ {
     "commenter" : "马丁",
-    "text" : "才入职一周，不用着急，先把手上的项目吃透比学一堆新技术更重要。\n\n平时看代码别深入细节，可以围绕一个具体业务流程去看，比如需求从哪里进来、经过哪些服务、数据怎么流转、最后落到哪些表。每周搞懂一个小流程，顺手记下业务规则、关键代码和自己的疑问，慢慢就能积累起来。也可以多问问同事，这个需求为什么要这么做，培养业务思维。\n\nAgent 学习就是跟着一个项目入手，Ragent 2.0 预计这周五周六开始发第一批文档，跟着学就好。然后再去极客时间、网上一些Agent项目，比如pi、deepseek、opencode这些利用AI学习，入门并不复杂。",
+    "text" : "才入职一周，不用着急，先把手上的项目吃透比学一堆新技术更重要。 平时看代码别深入细节，可以围绕一个具体业务流程去看，比如需求从哪里进来、经过哪些服务、数据怎么流转、最后落到哪些表。每周搞懂一个小流程，顺手记下业务规则、关键代码和自己的疑问，慢慢就能积累起来。也可以多问问同事，这个需求为什么要这么做，培养业务思维。 Agent 学习就是跟着一个项目入手，Ragent 2.0 预计这周五周六开始发第一批文档，跟着学就好。然后再去极客时间、网上一些Agent项目，比如pi、deepseek、opencode这些利用AI学习，入门并不复杂。",
     "time" : "2026-09-09 22:19"
   }, {
     "commenter" : "习嗯哼",
@@ -40,6 +46,8 @@
   "authorityScore" : 0.0
 }, {
   "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
   "author" : "澐",
   "authorRole" : "星友",
   "publishedAt" : "2026-09-08 16:21",
@@ -47,25 +55,29 @@
   "topicTags" : [ "\uD83C\uDF08面试相关", "\uD83D\uDCC3技术问答" ],
   "likeUsers" : [ "明叶", "没有名字", "Iridescent*" ],
   "starMasterReplied" : true,
+  "imageUrls" : [ ],
   "replies" : [ {
     "commenter" : "马丁",
-    "text" : "其实AI Coding现在比较热门的两个范式，SDD和TDD，我用的比较多的是SDD，这个整体要讲就太多了，推荐个开源系统可以参考下：Trellis - Trellis Doc\n后续面试可以基于SDD的逻辑讲AI Coding。",
+    "text" : "其实AI Coding现在比较热门的两个范式，SDD和TDD，我用的比较多的是SDD，这个整体要讲就太多了，推荐个开源系统可以参考下：[Trellis - Trellis Doc](https://docs.trytrellis.app/zh \"Trellis%20-%20Trellis%20Doc\") 后续面试可以基于SDD的逻辑讲AI Coding。",
     "time" : "2026-09-08 22:20"
   } ],
   "topicKey" : null,
   "authorityScore" : 0.0
 }, {
   "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
   "author" : "D~D",
   "authorRole" : "星友",
   "publishedAt" : "2026-08-06 20:13",
-  "content" : "马哥，想请问下关于Ragent项目学习的方式。马上要秋招，准备简历上加Ragent项目，之前6月份把这个项目的文档大概过了一遍，可能理解的不是很透彻。现在 7 8月在暑期实习，只能晚上花点时间改改简历，学习一下项目，现在感觉对项目没有太多印象了，后续可以怎么学习，对着简历的点一个一个搞懂嘛，推荐怎么继续学习 #\uD83D\uDCC3技术问答  #\uD83D\uDCA1RagentAI",
+  "content" : "马哥，想请问下关于Ragent项目学习的方式。马上要秋招，准备简历上加Ragent项目，之前6月份把这个项目的文档大概过了一遍，可能理解的不是很透彻。现在 7 8月在暑期实习，只能晚上花点时间改改简历，学习一下项目，现在感觉对项目没有太多印象了，后续可以怎么学习，对着简历的点一个一个搞懂嘛，推荐怎么继续学习 [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252)",
   "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDCA1RagentAI" ],
   "likeUsers" : [ "九州" ],
   "starMasterReplied" : true,
+  "imageUrls" : [ ],
   "replies" : [ {
     "commenter" : "马丁",
-    "text" : "建议是全项目核心内容都看看，因为面试官不一定完全按照简历上写的问。如果时间有限，简历上写哪些优先保障。具体学习参考：《AI大模型Ragent项目》——如何学习AI项目？",
+    "text" : "建议是全项目核心内容都看看，因为面试官不一定完全按照简历上写的问。如果时间有限，简历上写哪些优先保障。具体学习参考：[《AI大模型Ragent项目》------如何学习AI项目？](https://t.zsxq.com/tJKcd \"%E3%80%8AAI%E5%A4%A7%E6%A8%A1%E5%9E%8BRagent%E9%A1%B9%E7%9B%AE%E3%80%8B%E2%80%94%E2%80%94%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0AI%E9%A1%B9%E7%9B%AE%EF%BC%9F\")",
     "time" : "2026-08-06 20:31"
   }, {
     "commenter" : "D~D",
@@ -76,13 +88,16 @@
   "authorityScore" : 0.0
 }, {
   "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
   "author" : "南河",
   "authorRole" : "星友",
   "publishedAt" : "2026-07-24 19:26",
-  "content" : "马哥，当前记忆方案中，加载近8轮消息，累积3轮触发压缩，那么最多存在3 轮的信息空窗。我的想法是：既然摘要表保存了水位线，那么我们每次不固定取近8轮消息，而是取水位线以上的所有消息，这样就不会有消息空窗了，只不过多一次mysql查询，你觉得这样做合理吗？#\uD83D\uDCA1RagentAI  #\uD83D\uDCC3技术问答",
+  "content" : "马哥，当前记忆方案中，加载近8轮消息，累积3轮触发压缩，那么最多存在3 轮的信息空窗。我的想法是：既然摘要表保存了水位线，那么我们每次不固定取近8轮消息，而是取水位线以上的所有消息，这样就不会有消息空窗了，只不过多一次mysql查询，你觉得这样做合理吗？[#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
   "topicTags" : [ "\uD83D\uDCA1RagentAI", "\uD83D\uDCC3技术问答" ],
   "likeUsers" : [ ],
   "starMasterReplied" : true,
+  "imageUrls" : [ ],
   "replies" : [ {
     "commenter" : "一定要努力努力努力",
     "text" : "我觉得比较合理，但是为什么会多一次数据库查询呢？",
@@ -93,8 +108,1749 @@
     "time" : "2026-07-25 14:07"
   }, {
     "commenter" : "马丁",
-    "text" : "我没太理解问题，不过可以看下最新的代码，后面有位同学提交了个 PR 优化了之前的压缩方案 fix(memory): 避免摘要窗口每轮滑动都调用 LLM by KDB-Wind · Pull ...\n\n理论上现在的这种算是比较常见的，感觉再优化的必要性不大，除非是做成记忆压缩插件，根据不同的场景选择类型。",
+    "text" : "我没太理解问题，不过可以看下最新的代码，后面有位同学提交了个 PR 优化了之前的压缩方案 [fix(memory): 避免摘要窗口每轮滑动都调用 LLM by KDB-Wind · Pull ...](https://github.com/nageoffer/ragent/pull/56 \"fix(memory)%3A%20%E9%81%BF%E5%85%8D%E6%91%98%E8%A6%81%E7%AA%97%E5%8F%A3%E6%AF%8F%E8%BD%AE%E6%BB%91%E5%8A%A8%E9%83%BD%E8%B0%83%E7%94%A8%20LLM%20by%20KDB-Wind%20%C2%B7%20Pull%20...\") 理论上现在的这种算是比较常见的，感觉再优化的必要性不大，除非是做成记忆压缩插件，根据不同的场景选择类型。",
     "time" : "2026-07-25 21:06"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "David",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-07-22 00:36",
+  "content" : "准备明天面试，担心面试官让我列出所有指标，我会一下懵住了， \"搭建基于 RAGAS 的端到端 RAG 评测体系，覆盖检索、延迟、回答质量三大维度共 20+ 指标，支持 A/B Diff 对比与人工校正，驱动答案忠诚度（faithfulness）+10.3%、答案相关性 +8.0% 等关键指标持续迭代。\"， 20+指标有哪些？ [#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "X-in", "YLD" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/Fvp6wFpVkUGS58hJQgg9Qip6D_IU?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:SaCeUTSq9Yz8W-bMh6j-Zd3U8eE=" ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "20+指标只是彰显咱们做了很多，考虑了很多，但没必要都说，重点挑写到简历上的指标讲就好了。",
+    "time" : "2026-07-22 22:23"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "David",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-07-21 22:01",
+  "content" : "最近在改简历，看到\"基于 LLM 构建意图识别树，覆盖知识库问答、工具调用（MCP）、系统指令意图，低置信度时自动触发澄清反问，意图识别 Top-1 准确率达 90%+\"， 想问问什么是\"系统指令意图\"？[#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "系统指令意图，我举几个例子： 1. 你好呀，你是什么？ 2. 你是ChatGPT么？ 3. 你都能做什么功能呢？ 4. xxxxxxx 就是和业务意图无关的内容，然后基于咱们配置的一段提示词进行回复就好。识别出指令意图，就不需要再向下检索了，直接返回用户即可。",
+    "time" : "2026-07-21 22:57"
+  }, {
+    "commenter" : "David",
+    "text" : "谢谢 我和chatGPT聊的时候，这个\"系统指令意图\"不太清晰，现在明白了。",
+    "time" : "2026-07-21 23:04"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "我要成为黑流树海糕手",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-07-14 16:00",
+  "content" : "提问 1.从技术人的视角怎么去看待需求呢？ 比如想给开源项目做贡献的时候，怎么去看待这个issue是否合理？是否真的有这个需求呢？ 2.作为一个开发者，到底是技术更重要，还是对于业务的思考更重要呢？ 个人的想法是在这个ai时代，一个好的idea比好的技术更重要。技术最终都是为了业务在服务，空谈技术毫无价值？ 不知道这个想法是否正确。 3.写简历的时候是突出业务价值多一些还是技术价值多一些好？ [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "涿野夕凉丶" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "1. 关于怎么看待需求，一定是有相关的功能考量或者痛点才会有需求，不以用户实际维度做的需求一般都是伪需求。至于 Issue 是否合理，最核心就是发布 Issue 说明你对于功能的理解，以及项目相关成员讨论后，最终定性是否需要。 2. 我个人认为，绝大部分同学刚工作1-3年，很难真的理解有难度的需求，比如举一反三。所以这个阶段更多是提升通用技术能力，随着不断积累，深耕业务。现在大多技术都被平权了，未来想走的更远，有壁垒的业务（比如订单、支付、搜广推等）才能让程序员走的更远。 3. 有什么突出什么，尽自己所能写就好了。对于99.99%的人来说，还达不到说业务和技术价值多的简历放不下的层次。",
+    "time" : "2026-07-14 22:45"
+  }, {
+    "commenter" : "我要成为黑流树海糕手",
+    "text" : "谢谢马哥解答！",
+    "time" : "2026-07-15 13:23"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "超人不会飞",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-07-01 21:51",
+  "content" : "马哥，想请教个问题，面试的时候面试官质疑12306用户注册缓存穿透的业务场景。 他问我说实际业务中你觉得大概并发是多少量级的？我说差不多可能有万级，后来也发现好像不对，之前也一直没思考过这个问题。 面试官说铁路软件用户注册普及率很高，新增注册流量很低，该场景核心痛点不是注册缓存穿透，而是黄牛刷票。（但是12306也应该没有黄牛吧） 所以这个业务场景该如何说呢[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDE9A12306问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "关于接口设计，我们的思路是，既要保证正常流程，也要考虑到异常情况下的处理。所以加这个穿透兜底是合理的，而且从技术实现上看，复杂度并不高，是可以做的。 至于黄牛刷票，这确实是个实际问题，但目前我们还没有做，因为这个功能需要单独的风控系统来支撑。后续有时间了迭代 12306 时，可以再考虑单独引入风控模块。",
+    "time" : "2026-07-01 23:36"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "微信用户",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-06-27 21:43",
+  "content" : "马哥，如果面试官问我项目有没有上线我该怎么说（ragent和12306）[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482) [#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDE9A12306问答", "\uD83D\uDCA1RagentAI" ],
+  "likeUsers" : [ "小甜护符", "微信用户" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "12306 有提供完整上线流程，如果看了 12306 的，Ragent 部署上线也没问题。相当于如果你买了服务器，是能够自主上线的。 如果不想操作上线，也不想回答的太难看。可以说之前买过个按月的服务器，操作过上线流程，但是服务器到期了。这个时候说清楚上线的过程就好。说的过程中，可以详细了解下部署上线的细节。",
+    "time" : "2026-06-28 10:39"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "邪王真眼",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-06-27 16:10",
+  "content" : "想问一下，这也是我第一次收到面试，因学习时间和精力受限，项目用的短链接（是看着视频除去微服务架构改造从头写到尾了），牛券是看的文档结合debug进行学习了，代码没敲，这份面试我应该怎么准备呢[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "framework" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/FpN7iI1KAnALsBEx4r6G8U59hgV1?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:TA3Qp49n4angCjvdmSxBCHj_p8Q=", "https://images.zsxq.com/FkU6VyTWwVhrVq5r8OXpVG7o64QM?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:XIbfWL1O4V75D3Ubt3GzeXk2rKk=" ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "核心策略就是挑你熟悉的短链接去和面试官讲，然后像上面提到的架构相关的事情，可以先使用 ClaudeCode 或者 Codex，通过场景模拟的形式，告诉他你正在准备面试，然后把上面的信息给出来，让 AI 帮助你梳理，这样等到面试官要让你改某个模块的时候，你就能清楚知道代码所在位置。 至于二面和三面，我理解就是 vibe coding 的范畴，根据里面提到的关键点，和 AI 交互先了解业务知识，然后让 AI 输出一份 Markdown 文档，梳理出核心范畴。拿安全文档举例，提示词可以类似于：我正在准备面试，可能会问安全相关的问题，帮我详细梳理下这个系统需要考虑安全设计的内容有哪些？当前已经实现的以及未实现的，按照优先级排列，并详细说明相关的安全设计的必要性是什么。",
+    "time" : "2026-06-28 10:35"
+  }, {
+    "commenter" : "邪王真眼",
+    "text" : "ok，谢谢马哥的回复",
+    "time" : "2026-06-28 11:32"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "Les choue*",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-06-18 11:52",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥你好，我是211本科，春招侥幸拿到了offer（水平差不多是类似亚信那种有点知名度的小厂）。我的所有技术都是突击，基本上停留在苍穹外卖的水平，项目也是背文档居多，没有正规的开发经验。很怕过不了试用期，距离入职还有半个月的时间，想问问可以准备些什么？",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83C\uDF08面试相关" ],
+  "likeUsers" : [ "去码头整点金条", "NGC2237", " " ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "NGC2237",
+    "text" : "兄弟，太理的嘛",
+    "time" : "2026-06-19 11:57"
+  }, {
+    "commenter" : "Les  choue*",
+    "text" : "是",
+    "time" : "2026-06-19 16:52"
+  }, {
+    "commenter" : "马丁",
+    "text" : "第一件事，赶紧问HR或直属领导，你们组用的具体技术栈是什么（Spring Boot版本、是不是微服务、ORM用啥），以及你进去大概率负责哪个模块。问清楚再补，别瞎看。 你现在苍穹外卖的水平，短链接或牛券项目挑一个快速过一遍就行，重点看并发、缓存、分库分表、消息队列这些场景怎么设计的，不用敲，能画出核心流程图、讲清关键点就够。 工具链一定要练熟：Git常用命令（rebase、cherry-pick、解决冲突）、GitLab提交代码、创建分支等流程、数据库连接工具、Postman调试等。这些低级操作卡壳特别减分，但练两天就能搞定。 重点用 AI工具，比如 ClaudeCode 和 Codex 这些现在很多公司都默认用了。你不需要手写每一行，核心是理解业务需求，能拆解成指令让AI生成初稿，你再检查和修bug，这比死记硬背代码实用得多。 另外，入职前根据公司业务自己画个简单数据流转图，想想边界异常，接需求时能复述一遍\"我理解是要做XXX，涉及哪几个表，边界情况是XXX对吧\"，显得你理解到位。",
+    "time" : "2026-06-21 17:21"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "烟雨",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-06-16 13:03",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥我是本硕末流211计算机，现在研0之前没学过Java同时还是0实习，对技术栈这些很陌生，请问未来找开发这些的还是先Javase+MySQL+springboot这些吗",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "花开富贵" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "如果说咱之前做过一些项目，比如黑马的外卖或者点评，是可以尝试跟着做的。如果 JavaSE 这些也不是很清楚，可以先结合黑马的 SE、SpringBoot、MyBatis、Redis、MySQL 这些都学学，不需要学的很深入，先有广度再考虑深度，然后做一个点评项目。整体看代码不陌生，自己也能写出来，最后来看星球的项目会好很多。",
+    "time" : "2026-06-16 20:43"
+  }, {
+    "commenter" : "烟雨",
+    "text" : "好的谢谢马哥，我先去补补基础",
+    "time" : "2026-06-16 21:50"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "生鱼忧患死鱼安乐",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-06-15 09:18",
+  "content" : "[#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥，学习ragentAi项目的时候，先把项目跑起来大致了解完项目后，开始看文档，发现看文档的进度真的好慢。很多ai的基础知识一点点的看，一点点的挖。后期再做项目时可不可以同时录视频，以视频为主，文档为辅的学习是不是会效果更好点",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "Feg", "苏三" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "生鱼忧患死鱼安乐",
+    "text" : "发现看视频15分钟的内容，看文档需要2～3个小时。",
+    "time" : "2026-06-15 09:19"
+  }, {
+    "commenter" : "Flying",
+    "text" : "其实文档更好，边看边思考，反复看，随时看。先过基础文档，后面的项目文档和代码结合着看，再反哺基础的内容，会有更深的理解。最后再带着问题清单去问自己，说明白才证明你真的懂了",
+    "time" : "2026-06-15 17:07"
+  }, {
+    "commenter" : "马丁",
+    "text" : "我也更倾向于文档。如果你看视频15分钟，文档2-3小时，那只能证明视频没讲透。后续的视频更新更倾向于演示，比如重点测评内容，演示执行等。",
+    "time" : "2026-06-15 22:03"
+  }, {
+    "commenter" : ".......",
+    "text" : "个人感觉还是文档更好点，视频的信息密度太低了，浪费时间",
+    "time" : "2026-06-17 16:22"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "超人不会飞",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-06-15 01:28",
+  "content" : "马哥好，我看文档的时候有个问题没搞清楚，望解答 在双路召回和重排序之间，是不是没有进行RRF，只是将两路的结果简单合并（这里又有疑惑就是两种检索的结果参数都不一样是如何排序的？），然后再去重后重排序。 如果进行了RRF，得到的排名就不会有重复的chunk，不用去重，直接去重排序，这样是不是更好呢 [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDCA1RagentAI" ],
+  "likeUsers" : [ "J_DX", "双非菜狗" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/Ftt83Y5lftjA0WIjVN1VWZBpivg6?imageMogr2/auto-orient/thumbnail/750x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:wv0gnZxoT6cWlIBd6QFtmXwTGEQ=" ],
+  "replies" : [ {
+    "commenter" : "双非菜狗",
+    "text" : "群u好强，我好喜欢",
+    "time" : "2026-06-15 21:01"
+  }, {
+    "commenter" : "马丁",
+    "text" : "目前是没有加入 RRF 的，最近会把关键词和知识图谱加上后，一并排名。",
+    "time" : "2026-06-15 22:01"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "Wuyhhh",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-06-11 22:40",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥好，之前拿到了得物的offer，岗位是搜广推系统工程，应该是整个搜广推系统的工程侧，想问下您是否了解这个岗位，发展前景如何呢",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83C\uDF08面试相关" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "仅从搜广推的角度来看，这确实是很不错的业务。关键在于入职后具体要做什么，技术栈以及所负责的内容，综合评估这对自身能力提升有多大帮助。",
+    "time" : "2026-06-13 18:49"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "胖胖乎乎",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-06-09 15:46",
+  "content" : "[#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥，我想了一个需求，就是我们公司（5万人）的知识库，每个人都可以建自己的知识库，并且给对应的人或者部门等开权限，只有管理员可以维护意图树。这种意图识别 + Collection 要怎么组织呀？不可能一个人建一个 Collection 把？我的想法是全部只建一个共享的 Collection ，然后意图识别抽象成一个条件进行搜索，用户如果将自己的知识库绑定上意图树，就按照他自己的id 作为默认的一个条件，例如下面这样子 用户问题: \"年假怎么申请\" │ ├─ ① resolveIntents: 意图分类 │ → \\[NodeScore(group-hr, 0.92)\\] │ → extractKbIds: \\[\"kb_dept_hr\", \"kb_group_hr_1\"\\] │ ├─ ② resolvePermission: 权限查询，查这个人员具体有拥有哪些知识库权限 │ → accessibleKbIds: \\[kb_user_001, kb_dept_hr, kb_company_public, ...\\] │ ├─ ③ intersect: 意图 ∩ 权限 = 最终检索范围（意图识别不成就查全量有权限的） │ → effectiveKbIds: \\[kb_dept_hr\\] (kb_group_hr_1 没权限，被过滤 │ └─ ④ Milvus 检索: search( collection: \"rag_knowledge_base\", vector: question_embedding, filter: \"kb_id IN \\['kb_dept_hr'\\]\", ← 仅一个 KB topK: 10 ) 你觉得这个方案是否可行，会不会有什么问题？或者有更好的方案？ 查询权限这一步可能有点耗时和复杂",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "放一个知识库里，然后元数据里面加上个用户所属的筛选条件是不是就好了？",
+    "time" : "2026-06-09 20:38"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "胖胖乎乎",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-06-08 17:24",
+  "content" : "[#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥有个问题，用 Tika 对文件进行读取，比如 word 或者pdf 里面存在图片或者表格，或者柱状图等等，我看现在是直接忽略的，这样就会有比较大的问题，业界有什么成熟的方案处理这种情况吗？后期能否把这块内容完善一下？",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "Seven", "吴和磊" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "马上更新，v2会加入多模态和 PDF 复杂情况识别。",
+    "time" : "2026-06-08 21:27"
+  }, {
+    "commenter" : "胖胖乎乎",
+    "text" : "什么时候出来呀，可以先讲一下思路不，常见的应该就是 pdf 扫描版（ocr，或者多模态识别），excel 数据怎么处理，work 里面有图片，或者表格，甚至架构图怎么办",
+    "time" : "2026-06-12 19:19"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "音波",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-06-06 03:40",
+  "content" : "马哥，我最近在研究dubbo，rocketmq等开源中间件的源码，并且给这两个项目都pr了几次并且merge了。 这一点应该如何在简历上展示呢？ [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/Fuje1ABGPJhdiecR24Pc4sH5haRP?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:A7WQf_nWEnnTFDRi3dto9QiFOsU=" ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "咱们星球里的简历教程里，有个示例，供参考。",
+    "time" : "2026-06-07 11:28"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "。",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-06-06 00:40",
+  "content" : "马哥，我实习要从0到1做一个查数据库生成报表的agent项目，请问用Python做好还是Java做好，之前学的Java，正在学Python那一套框架，公司是工业自动化和机器视觉这一块的，部门主管也不懂这方面的技术，只提需求。这个项目应该就我和另一个老员工做，感觉特草台班子，本人也是第一次工作，没有经验，求请教。",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "目前我了解到的 DataAgent 相关框架有两个： 1. [DataAgent 快速开始 \\| Spring AI Alibaba](https://java2ai.com/agents/dataagent/quick-start/ \"DataAgent%20%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20%7C%20Spring%20AI%20Alibaba\") 2. [https://github.com/dataease/SQLBot/](https://github.com/dataease/SQLBot/ \"https%3A%2F%2Fgithub.com%2Fdataease%2FSQLBot%2F\") 建议可以基于这两个都试试效果。一般来说，在技术选型时，第一个的效果基本能达到，第二个则需要具备持续可运维的能力------比如效果达不到预期时，是否具备二次开发的能力？ 我们团队是参考 DataAgent 的思路自研的，因为要满足两个硬性要求：一是数据准确率要达到 95% 甚至 100%，二是生成 SQL 及报表的速度要快，控制在 5-10 秒内。上面两个方案都搞不定，所以最终选择了自研。",
+    "time" : "2026-06-07 11:27"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "何必归星辰",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-05-28 20:07",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥，简历上的项目需要提供一个在线访问的链接吗，像Ragent这个项目如果要提供链接的话是不是就需要创建一个成员账号，然后用这个成员账号来访问？或者需要注意些什么？",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "花开富贵" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "如果说能提供的话最好了，展现自己服务器部署一条龙，也比较有极客精神。注意用户问答前面做一层风控，拦截xxx非法请求等。",
+    "time" : "2026-05-28 22:29"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "超人不会飞",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-05-25 20:37",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482) 马哥马哥我想问个问题，为什么要拆分出令牌的问题。 \"对于传统秒杀架构，如果发生类似情况，当某个商品库存为 0 时，可以通过定时任务或异步任务检查数据库与缓存的库存是否一致，不一致时同步更新缓存。但这也带来了一些潜在风险。\"这里为什么需要定时任务呢，不可以也像用令牌的方案那样，为0时去数据库更新一次就可以了吗。这不是也挺方便的吗",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDE9A12306问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "在传统秒杀架构中，单纯依赖缓存扣减库存可能会引发数据不一致的问题。例如，当 Redis 扣减成功后，如果应用服务突然宕机，会导致后续的异步同步或定时任务无法被触发。若此时库存恰好被扣减至零，前端因无票可抢将不再发起请求，这使得后端失去了通过后续流量触发数据修复的机会，最终导致缓存与数据库之间的库存数据出现长时间不一致。",
+    "time" : "2026-05-25 23:20"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "NULL",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-05-25 18:11",
+  "content" : "请教一下马哥和各位大佬，我之前实习的时候做了一个根据错误日志找解决方案的rag系统，这个每次面试都答的感觉不好，因为我自己当时做的时候也不是很懂，我现在在用gpt帮我编一个故事，现在有个问题，对于向量库存的向量，是用清理后的原始错误片段，还是对这个错误片段的描述+根因，哪个更合适，另外，我简历里面写了原始错误输入的时候，用一个agent对这个错误处理，我现在在想要不要这样写，要不要直接搜索错误片段，不知道哪种从技术上更优[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "实话实说，我没太理解咱的问题是什么，可以再详细地描述一下，并且举点例子之类的吗",
+    "time" : "2026-05-25 23:07"
+  }, {
+    "commenter" : "NULL",
+    "text" : "我现在主要的一个问题就是，在根据错误日志召回解决方案的场景下，向量数据库存错误日志还是存错误描述+错误原因，哪种好。 具体例子 错误日志（查询输入）： Connection to database timed out after 30000ms. 方案A：直接存错误日志 · 库中一条记录：\"Connection to database timed out after 30000ms.\" → 对应解决方案：\"增加超时参数、检查网络带宽\" 方案B：存错误描述+错误原因 · 库中一条记录： · 错误描述：\"数据库连接超时\"（标准化后的文本） · 错误原因：\"网络延迟过高或超时设置过短\" · 解决方案：同上 这是我让ai生成的例子，上面例子的日志太短了，实际应该是更长的，而且可能有的日志格式混乱",
+    "time" : "2026-05-25 23:53"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "邪王真眼",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-05-20 21:28",
+  "content" : "请教一下马哥和大佬们，双非本非计科0实习，只完整敲过大街项目，点评外卖之类的，想补一些项目先找个日常实习，日平均学习时长差不多可以在9h左右，补个短链接和agent项目怎样，应付中小厂够吗[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#提问](https://wx.zsxq.com/tags/提问/28882555481851)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "提问" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "可以先尝试跟着 AI 学学咱们的 Ragent AI，如果发现很难，跟不上的话，再学短链接。如果 Ragent AI 学习还好，业务系统就可以上牛券。",
+    "time" : "2026-05-20 23:32"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : "id_vrrigrbw3tnf",
+  "sourceUrl" : "https://articles.zsxq.com/id_vrrigrbw3tnf.html",
+  "author" : "我要成为黑流树海糕手",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-05-20 15:34",
+  "content" : "# rag为什么不做@功能的疑问\n\n有一个问题想请教一下。\n\n对于rag知识问答助手，为什么不设置可以@对应知识库的方式来实现锁定问题对应的知识库？就像claude code那些编码助手一样，可以手动指定对应的文件进行修改/读取。\n\n这背后是怎么样的一个考虑？大部分情况下知识库命名足够规范，能够做到见名知意，锁定对应的知识库能提高召回的质量吧。\n\n如果要做的话能让我尝试下吗（应该不算难的功能吧？）\uD83E\uDD7A",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : " ",
+    "text" : "你是一个用户，智能客服场景下，你还能知道对话框后边使用了哪些知识库？",
+    "time" : "2026-05-20 19:21"
+  }, {
+    "commenter" : "我要成为黑流树海糕手",
+    "text" : "像飞书的知识问答就可以有@功能呀，也是基于知识库回答的，我想的场景是飞书这种",
+    "time" : "2026-05-20 22:28"
+  }, {
+    "commenter" : "我要成为黑流树海糕手",
+    "text" : "正常来说应该要返回引用数据，作为兜底，防止ai幻觉。这时候用户照样也可以看到引用的数据呀。",
+    "time" : "2026-05-20 22:37"
+  }, {
+    "commenter" : "我要成为黑流树海糕手",
+    "text" : "就是把自动路由改成手动路由了，在部分情况下可以提高回答质量。更适合用户了解自己的问题对应的知识库是哪些。普通的话自动路由就够了。比如说用户想了解a产品退货相关的，知识库有a产品手册，b产品手册，通用退货手册。如果自动路由没有配置好意图树，可能会把通用手册的召回，引入噪音。",
+    "time" : "2026-05-20 22:43"
+  }, {
+    "commenter" : "马丁",
+    "text" : "场景不同吧，如果是考虑做这种题材的，可以考虑。但是目前Ragent更多是面向企业内部的智能体，或者面向C端智能客服场景。",
+    "time" : "2026-05-20 23:31"
+  }, {
+    "commenter" : "金角大王",
+    "text" : "我现在在搞内部的知识库，像你这样说的我也尝试过，但是领导不让搞。这样搞毫无疑问的检索效果会更好，相当于人工帮AI做意图识别了，但是用户根本不可能知道你背后有哪些知识库。即使你@后自动弹出来可选选项，还涉及权限问题，即每个用户能看什么不能看什么，这一部分极其复杂，从知识库的权限到具体单个文档的权限、甚至某个具体内容的权限。所以让用户选知识库没什么意义，即使选了也不一定能百分百答对，还可能有权限问题。",
+    "time" : "2026-05-21 10:03"
+  }, {
+    "commenter" : "我要成为黑流树海糕手",
+    "text" : "感谢解答！",
+    "time" : "2026-05-21 10:09"
+  }, {
+    "commenter" : "我要成为黑流树海糕手",
+    "text" : "好的，了解了，谢谢马哥",
+    "time" : "2026-05-21 10:09"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "习嗯哼",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-05-18 18:12",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 本人现在大二下，简历上有两个项目，一个传统后端，另一个就是马哥的agent项目。传统后端只有一个简单的项目，没有涉及到分库分表，中间件的集群，也没有微服务，这学期学了马哥Rag相关的，都过了一遍，项目也跟着过了一遍，五月中旬开始投实习，基本都是送达未读，我想问问，是先停掉投实习，接着学类似牛券这样的更庞大完整的传统后端项目，替换我之前的简单项目，还是就这样一直投实习，但是好像约不到面试",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "坑边的小墩墩",
+    "text" : "马哥这个ragent含金量很高，简历上把这个当成主要项目能约到的面其实挺多的，大二再有个传统后端找实习应该不难，我建议写完ragent就投吧，后续有时间再把传统后端换成牛卷之类的就好",
+    "time" : "2026-05-18 18:25"
+  }, {
+    "commenter" : "习嗯哼",
+    "text" : "好的谢谢",
+    "time" : "2026-05-18 19:06"
+  }, {
+    "commenter" : "吉拉",
+    "text" : "我拿ragent去问别人都说是个老的问答项目，服了",
+    "time" : "2026-05-19 20:12"
+  }, {
+    "commenter" : "111",
+    "text" : "谁说的，面试官还是学生",
+    "time" : "2026-05-19 21:49"
+  }, {
+    "commenter" : "吉拉",
+    "text" : "在职的",
+    "time" : "2026-05-19 22:23"
+  }, {
+    "commenter" : "马丁",
+    "text" : "现阶段大二找实习还是有点早，主要还是27届，28届可能要在9、12月份可能才会机会多一点。同时，这个主题里的简历优化事项，同样可以参考。 [27届，简历如图，求马哥帮我看...](https://t.zsxq.com/S5MNT \"27%E5%B1%8A%EF%BC%8C%E7%AE%80%E5%8E%86%E5%A6%82%E5%9B%BE%EF%BC%8C%E6%B1%82%E9%A9%AC%E5%93%A5%E5%B8%AE%E6%88%91%E7%9C%8B...\")",
+    "time" : "2026-05-19 22:32"
+  }, {
+    "commenter" : "吉拉",
+    "text" : "都有，应该没认真看吧",
+    "time" : "2026-05-21 00:36"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "图图~",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-05-09 16:43",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥，28届想7，8月找日常实习。想问一下牛卷项目如果是为了应付面试，没有时间手敲，该怎么做。是看文档把业务理解了，然后针对写在简历上的点仔细打磨回答同时在面试中改进。这样的方式可以吗。",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "zcs" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "可以的。如果从一个宏观角度上说，如何算把牛券系统理解透，我理解应该是这样的： ▪ 首先理解优惠券核心链路，比如用户领券后是怎么做库存扣减和幂等控制的？优惠券的状态流转（未使用 → 已使用 → 已过期）是如何管理的？ ▪ 分库分表策略是如何设计的，商家维度和用户维度的分片键如何选择？跨库查询的性能问题是怎么解决的？ ▪ 高并发领券是如何实现的，Redis 预扣减 + 异步落库的模式是怎么工作的？库存超卖问题是如何通过 Lua 脚本保证原子性的？ ▪ 优惠券模板的创建和管理是怎么做的，模板的有效期、使用规则、发放总量等配置是如何校验和存储的？ ▪ 用户领券记录如何管理，如何通过分库分表 + 索引优化实现快速查询？领券限制（每人限领、每日限领）是怎么控制的？ ▪ 优惠券核销流程是怎么设计的，订单系统如何调用核销接口？核销的幂等性和事务一致性是如何保证的？ ▪ 缓存策略是如何设计的，热点优惠券的缓存预热和缓存穿透、击穿、雪崩问题是怎么解决的？ ▪ 异常处理和监控是怎么做的，参数校验、业务异常、系统异常是如何分层处理的？全链路日志追踪是如何实现的？ 当你把这些关键问题通过文档和代码掌握后，牛券系统也就掌握了。",
+    "time" : "2026-05-09 22:51"
+  }, {
+    "commenter" : "图图~",
+    "text" : "明白了，谢谢马哥",
+    "time" : "2026-05-10 08:31"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "何必归星辰",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-05-04 17:44",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥，我是普通二本，非科班，想投中小厂的AI应用开发岗的话，简历上的项目除了Ragent之外是不是应该还需要再写一个AI应用的项目，只有这一个项目是不是不太行？",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "NGC2237" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "我的建议是再写个轮子或者并发项目（比如牛券），因为本质上不管是 Java 还是 AI 岗位，这两者的内容都要掌握。如果只是会 AI，没有并发的基础，你写的代码将完全不可控。因为相对于会用 AI 写代码，更重要的是能够审核 AI 写的代码符合预期且不存在隐患。这就需要你本身具备这种能力。",
+    "time" : "2026-05-06 21:58"
+  }, {
+    "commenter" : "何必归星辰",
+    "text" : "明白了，谢谢马哥",
+    "time" : "2026-05-06 22:40"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "ymf",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-05-02 20:06",
+  "content" : "[#\uD83D\uDD17短链接问答](https://wx.zsxq.com/tags/\uD83D\uDD17短链接问答/28824285241241) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 最近又梳理了一下项目，使用Sentinel做限流和使用消息队列做流量削峰设计上是不是存在一定矛盾呢？我了解到Sentinel的限流算法用的是滑动窗口，设置的TPS阈值应该能够使得后台消费者长期上能够处理完吧，那么这一定程度上限制了高流量短链跳转的出现，那这样的话，是不是不太需要流量削峰？",
+  "topicTags" : [ "\uD83D\uDD17短链接问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "ymf" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "这里有个误解：消息队列和限流一般不会同时加在同一个接口上。像短链跳转，瓶颈在消费者的吞吐能力，靠 MQ 削峰扛住流量就行，没必要再限流；而限流更适合放在直接打数据库的接口上，比如下单、注册这种。",
+    "time" : "2026-05-06 21:39"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "ymf",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-29 06:31",
+  "content" : "请问短链到长链的映射信息为什么要存到redis，而不是本地缓存中，现在的单体应用好像用不到分布式缓存？[#\uD83D\uDD17短链接问答](https://wx.zsxq.com/tags/\uD83D\uDD17短链接问答/28824285241241) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDD17短链接问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "本地缓存一般只有在单体和超高并发时有用，常规来说还是用分布式缓存。因为本地缓存存在常见的几个问题： 1. 如果线上有多个实例，每个实例都要存一份。 2. 如果要更新value，集群间存在较大可能不一致。 3. 存储不了海量数据。",
+    "time" : "2026-04-30 23:06"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "Yml",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-28 21:40",
+  "content" : "offer求助，目前暑期拿了一个美团的offer，业务说的主要做什么数据库传输相关的，想问一问这个业务含金量高吗？对后续秋招以及自我提升方面帮助大吗？希望马哥或者有懂这方面的可以解答一下 [#\uD83E\uDD29晒个offer](https://wx.zsxq.com/tags/\uD83E\uDD29晒个offer/15558228542422) [#\uD83D\uDD25自我介绍](https://wx.zsxq.com/tags/\uD83D\uDD25自我介绍/28885124581521) [#\uD83E\uDDD0技术分享](https://wx.zsxq.com/tags/\uD83E\uDDD0技术分享/51118514558554) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83E\uDD29晒个offer", "\uD83D\uDD25自我介绍", "\uD83E\uDDD0技术分享", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "再具体点呢，比如哪个业务线，这个数据库传输大概是个什么样的功能，为哪块业务服务之类的。技术栈是什么样的，你进去后主要做哪些事情，这些最好能够调研清楚，方便你能有个全局认识。",
+    "time" : "2026-04-28 21:57"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "生鱼忧患死鱼安乐",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-27 09:35",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥可不可以出一期，你vibeCoding的使用经验，用什么ide，工具的使用，怎么用好spec或者提示词等。",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "Dam", "。", "。", "吉拉", "知我", "L", "睡觉时间到", "\uD83D\uDC79", "一加一等于三", "WFf×nG" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "P_",
+    "text" : "顶",
+    "time" : "2026-04-27 18:23"
+  }, {
+    "commenter" : "马丁",
+    "text" : "这么多同学感兴趣，那等Ragent更完，高低得安排上",
+    "time" : "2026-04-27 22:23"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "西内",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-25 16:17",
+  "content" : "[#\uD83C\uDF0A牛券问答](https://wx.zsxq.com/tags/\uD83C\uDF0A牛券问答/51158541152124) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥，面试官问了我很多发散性的问题，加上我对牛券的一些业务的了解，综合了一下，有些问题想问你： 1.牛券创建模板的时候，会有延迟消息存rocketmq里，以便到期将状态设置为\"已结束\"，如果消息没投上或者中途丢了怎么办？延迟消息可以扛得住百万级，如果很多商家设置的结束时间是1年后或者半年，消息堆到亿级呢（有的商家会提前策划优惠活动）？或者是双11等大促节日，很多商家想搞活动，消息也短时间堆到千万级甚至亿级的情况怎么办？ 2.如果消费者接收到消息，但是状态修改没成功，怎么解决？ 3.我们是提前预估了优惠券的规模，如果超出预期了，可以考虑再分表，如果分表后数据量依旧庞大，查询慢，怎么解决？ 4.如果采用补偿的策略，不能依据状态和时间进行查表，可以用什么方式解决补偿问题？",
+  "topicTags" : [ "\uD83C\uDF0A牛券问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "麦兜" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "无人",
+    "text" : "2 可以使用事务消息吧，我记得ragent有讲这个。",
+    "time" : "2026-04-25 16:33"
+  }, {
+    "commenter" : "马丁",
+    "text" : "1. 这里有个很大的问题就是面试官在混淆一部分概念，那就是即使堆积了消息，也是存储在磁盘里，对于 RocketMQ 来说并没有压力。其次，消费者也不是同时消费的，因为优惠券创建是个低频的逻辑，所以这种并不会有问题的。 2. 这个很简单的，RocketMQ 有默认重试，如果重试不成功会到死信队列，监听死信队列告警就好。但是默认16次有点太迟了，一般重试个2-3次，还是有问题，就不需要再重试了，直接告警人工排查是哪里的问题。 3. 一般对容量进行评估的时候，都是5-10年的运行周期。如果过程中能靠技术解决并且不考虑成本，那就继续扩容，比如扩它个5-10倍。不过一般来说，可能会有点过度设计，会有些软件设计方式，比如：冷热分离等逻辑。 4. 没理解这个问题是什么。",
+    "time" : "2026-04-26 23:54"
+  }, {
+    "commenter" : "混完3个月就算成功",
+    "text" : "实际上我看到过MQ生产堆积了1亿条消息的场景",
+    "time" : "2026-04-27 00:40"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "陈陈久久",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-24 12:19",
+  "content" : "[#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马丁哥，你好 在获取乘车人这里时，key是和username绑定的，也就是说它防止的是一个用户对乘车人信息的多次查询，对应缓存击穿问题； 但是实际情况中，面临的问题应该是不同用户对自己的乘车人信息的查询，也即缓存雪崩问题， 这时候不还是会将所有请求全部打到数据库上吗，应该怎么解决？？",
+  "topicTags" : [ "\uD83D\uDE9A12306问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/FjLOAlTLp7jAJwZ0Qqc7gjLFcZnd?imageMogr2/auto-orient/thumbnail/750x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:ZbftzzChGx_4kUPJEbdYXRcQU6Y=" ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "从实际场景中，查询乘车人并不是高频操作，查询是分散的，所以不存在缓存雪崩问题。而且数据库从查询场景也没那么脆弱。 一般来说，分为两块： 1. 对于这种场景，读写分离查询就好，查询从库的数据。 2. 分库，通过数据库实例横向扩展，提高整体并发能力。相对于方案1更消耗资源，但是不存在主从同步延迟和不一致问题。",
+    "time" : "2026-04-26 21:41"
+  }, {
+    "commenter" : "陈陈久久",
+    "text" : "好的，明白了，谢谢马哥",
+    "time" : "2026-04-26 21:48"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "陈陈久久",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-22 23:25",
+  "content" : "[#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马丁哥你好，在查询车票流程中的请求参数校验TrainTicketQueryParamVerifyChainFilter中，这个CACHE_DATA_ISNULL_AND_LOAD_FLAG是否有必要； 用条件distributedCache.hasKey(QUERY_ALL_REGION_LIST)就可以表示缓存已经加载；emptyCount == 2L就可以表示两个车站是不存在的；",
+  "topicTags" : [ "\uD83D\uDE9A12306问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "&" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/Fi7I5pyKq2HPhAACx1r1kRPbZYBq?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:ZOpUOav0-gGTdj99iANCzdZYyH8=", "https://images.zsxq.com/Fv-jq8bEHTMMQqCqhht9QTOf2aGr?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:MnJkXLj_MayXtmZaFQ1wntp7d5I=", "https://images.zsxq.com/FtN_F5gbDh4fzmT11oL075IM08AR?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:g1RM-eGI2-s6acdxh5LdA2lVmNE=", "https://images.zsxq.com/Fj-cxX4PTk4EFHYZTlgEmRp47tzP?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:IxFqNBkUv-Wk5pI8FIn8S8wpK5k=" ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "分析下来，可能就是一些极端场景可能会有用，但是作用没有太大。可去可留那种。",
+    "time" : "2026-04-23 21:39"
+  }, {
+    "commenter" : "陈陈久久",
+    "text" : "能细说一下是哪些极端场景吗",
+    "time" : "2026-04-24 10:43"
+  }, {
+    "commenter" : "马丁",
+    "text" : "代码我优化了下，现在符合一直被攻击，能节省非必要的Redis查询问题。咱也可以一起Review下",
+    "time" : "2026-04-24 12:23"
+  }, {
+    "commenter" : "陈陈久久",
+    "text" : "大概明白了，相当于是将一次redis查询，变成本地内存的一次变量查询？",
+    "time" : "2026-04-24 21:13"
+  }, {
+    "commenter" : "马丁",
+    "text" : "是的",
+    "time" : "2026-04-24 22:49"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "超人不会飞",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-22 14:18",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482) 马丁哥你好，幂等组件的token令牌问题，看了你的评论还是有一些疑惑想请教： 如果是为了防止用户误触和网络问题，前端置灰＋token为什么能解决呢？比如你说的手机端网络卡顿导致用户多次点击，也就是前端置灰失效了，然后靠token解决，但是多次请求发的token是不一样的，无法防止多次请求呀。 如果为了解决这个问题，用你说的为了防止恶意攻击的方案，将token的获取与业务动作绑定，也就是同一个用户买同一个商品发的是同一个token，这样确实可以解决。但是又有一个问题，如果这样的话，正常情况下，一个用户就是想重复购买一件商品不久不行了吗？",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDE9A12306问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/Fuf8X9H8NhVofGFg63h5mrd1cucC?imageMogr2/auto-orient/thumbnail/750x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:5TZMcl-nswPcChdnptNauCgJYQk=" ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "Token 的生命周期是一次下单流程（比如用户进入下单确认页 → 页面加载时就向后端申请 Token，前端把 Token 暂存在内存/隐藏字段中，带到请求里），而不是一个商品或一个用户。 用户每次重新进入下单流程都会获得新 Token，所以正常的重复购买完全不受影响。幂等防的是同一个意图的重复提交，而不是不同意图的相同操作。",
+    "time" : "2026-04-22 22:44"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "普通男孩",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-19 00:18",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) 马哥，我刚上手这个项目一周，用ai学习了项目。评估vibe coding做的程序自动化跑，用的是第一版的模型。但是数据集用的是SciFact（[Datasets available · beir-cellar/beir Wiki · GitHu...](https://github.com/beir-cellar/beir/wiki/Datasets-available \"Datasets%20available%20%C2%B7%20beir-cellar%2Fbeir%20Wiki%20%C2%B7%20GitHu...\")）。我直接按句分块，也看见分进去了，感觉好低。不知道怎么进行评估，感觉写的很混乱。这种文章分块的数据集怎么做，纯人工感觉也不行。感觉没有系统学习，自己做的又慢又找不到方向。",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDCA1RagentAI" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/FiTJ_yYB--jUxEX0_6daEhZnFAxX?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:LlAlVUzAknEog__244iIw3dmUFE=", "https://images.zsxq.com/FiCg19p3Nv4ANvjlO8dJ9O4t_xFP?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:tS9Gw9EZRmrs5nsfzlQXKKqJqwQ=", "https://images.zsxq.com/FngTOyEnbQdmtw0DoZv_1-Plx--p?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:6FWWZ-AVKc6sAJr_QD9y4wo3YRo=", "https://images.zsxq.com/FpS28h6f9BV4rl5uqO8lng4vTCmx?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:UF0pw4jyM9zF7-ySqYRgZ_Qbck8=" ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "这个我在后面会基于一些场景，比如企业内部助手、电商智能客服类似的角度上，进行效果评估。可以等等我的文章",
+    "time" : "2026-04-19 22:52"
+  }, {
+    "commenter" : "普通男孩",
+    "text" : "今天改了一版，希望马哥能出个教程，教教怎么改",
+    "time" : "2026-04-20 02:20"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "范特西",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-13 22:16",
+  "content" : "马哥，牛券的task出发的分发逻辑中，这个链路是不是有点问题，在distribution/src/main/java/com/nageoffer/onecoupon/distribution/service/handler/excel/ReadExcelDistributionListener.java 这个类的invoke方法，批量发送是5000，那么当发送一个批量消息时，5000个redis的coupon_template的stock已经扣减了5000，此时进入CouponExecuteDistributionConsumer消费逻辑，进入时先递归扣减库存，这里假设只能扣减3000，剩余2000被其他事务扣减，那么从redis的set队列弹出3000用户，进入批量插入mysql逻辑，这3000个user可能有1000个通过其他渠道领取了这张优惠券那么肯定报错唯一索引异常，这样会导致userCouponDOList实际只有2000个user，然后将这2000user进行redis写入，在后续补偿时，这里只设计了1000个通过其他渠道领取了这张优惠券的用户补偿，但是方法进入时因为库存不足，只能能扣减3000，导致剩下的2000优惠券库存，没有补偿回redis的stock。[#\uD83C\uDF0A牛券问答](https://wx.zsxq.com/tags/\uD83C\uDF0A牛券问答/51158541152124) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83C\uDF0A牛券问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "YU", "鹤望兰", "范特西" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "不对吧，能进入到消息队列的消费者的，已经在前置缓存里验证过是明确有库存的，怎么会有咱上面提到的情况呢。",
+    "time" : "2026-04-14 23:15"
+  }, {
+    "commenter" : "范特西",
+    "text" : "马哥这里我还是有点不懂，我的想法是，这里Redis扣减库存成功才会走批次发送到Consumer这里是正确的，那么既然明确验证有库存，这里做递归扣减是不是多余的？因为在用户兑换优惠券中的逻辑也是先直接扣减Redis，Redis中Stock不足直接抛异常，那么用户自己领取优惠券是不会造成跳过Redis去扣减MySQL的，所以这个MySQL中的Stock按理说就不会出现扣减5000库存不足的情况。例子：6000个Redis和MySQL库存，这里批量先扣减5000Redis，Consumer准备消费时，用户自己最多就只能领取1000剩下的Stock，因为继续领取Redis库存已经不足了，直接就抛异常返回了，那么扣减到MySQL中的Stock还剩5000，那么此时Consumer消费肯定能成功扣减这5000个库存。所以这里和我上面提问的问题其实是对立的，假如不会出现我说的那种情况，按理说这里就不应该做递归扣减，做递归扣减那么上面那种情况就是有可能发生的。",
+    "time" : "2026-04-15 19:33"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "D~D",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-13 15:59",
+  "content" : "4.11拼多多一面 短链接布隆过滤器相关问题 [#\uD83D\uDD17短链接问答](https://wx.zsxq.com/tags/\uD83D\uDD17短链接问答/28824285241241) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDD17短链接问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "岂可再", "阳zero", "luoni", "马丁", "麦兜", "ymf", "27届Byte选手", "云来云往", "-墨明奇妙-" ],
+  "starMasterReplied" : false,
+  "imageUrls" : [ "https://images.zsxq.com/Fu2makJRt1pfQyImVvxiJOTJC_xY?imageMogr2/auto-orient/thumbnail/750x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:bsk1Q9vTgI3c004wgDT5v0JDb5o=" ],
+  "replies" : [ {
+    "commenter" : "斯特里克兰德",
+    "text" : "能看一下你的短链接简历吗",
+    "time" : "2026-04-23 12:48"
+  }, {
+    "commenter" : "斯特里克兰德",
+    "text" : "你是什么背景能问一下吗",
+    "time" : "2026-04-23 12:50"
+  }, {
+    "commenter" : "D~D",
+    "text" : "单2硕，都是一面挂",
+    "time" : "2026-04-23 13:39"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "D~D",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-13 15:59",
+  "content" : "4.1美团测开一面 [#\uD83D\uDD17短链接问答](https://wx.zsxq.com/tags/\uD83D\uDD17短链接问答/28824285241241) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDD17短链接问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "。", "马丁", "麦兜", "27届Byte选手", "云来云往" ],
+  "starMasterReplied" : false,
+  "imageUrls" : [ "https://images.zsxq.com/Fosy_Oz1puFt73jdxUeA1WGEe_ng?imageMogr2/auto-orient/thumbnail/750x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:VPuvlF_8DFaNABWj04CIq-xIhaA=" ],
+  "replies" : [ ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "D~D",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-13 15:57",
+  "content" : "3.26字节一面 [#\uD83D\uDD17短链接问答](https://wx.zsxq.com/tags/\uD83D\uDD17短链接问答/28824285241241) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDD17短链接问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "马丁", "27届Byte选手", "云来云往", "-墨明奇妙-" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/FuE-9Cf3uvv_NMp40sWnLtbUcfvi?imageMogr2/auto-orient/thumbnail/750x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:3GKMIIh9ChUqmr8NwMc2i_hSPJg=" ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "感谢分享高质量面经\uD83D\uDC4D",
+    "time" : "2026-04-14 23:12"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "kk",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-12 22:29",
+  "content" : "《AI大模型Ragent项目》第13小节：MCP协议入门与实践中 为什么使用 Streamable HTTP 方式的时候，Client 配置改为： {\"mcpServers\": {\"enterprise-assistant\": {\"url\": \"http://localhost:8080/mcp\"}}} 为什么url是http://localhost:8080/mcp，而不是http://localhost:8080 mcp serve中好像没有端点为mcp路径的接口呀[#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "因为在写的时候，当时 MCP 底层没有发布稳定版本，这个是参考文档手搓的。等到我写到交互问答 MCP 那一块的时候，会引用框架把当前代码重构下。",
+    "time" : "2026-04-13 09:57"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "超人不会飞",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-12 14:40",
+  "content" : "马哥你好，想问一下12306中注册缓存穿透的问题： \"如果布隆过滤器中存在该用户名，但 Redis Set 结构中不存在，说明该用户名已被使用且尚未被注销，因此不可用。\" 布隆过滤器判断存在的情况可能误判，误判情况下，不存在该用户，所以不会去注销，redis set中也自然不存在，这种情况不会导致未注册的用户名不可用的情况吗[#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDE9A12306问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "会有的。从业务角度上说，误判出现用户名不可用对用户来说也没什么，假如我申请用户名 AAA 不可用，我完全可以在原名称上再加一个A。 但是针对于没有用户 Token 的场景，比如这个用户注册，就需要比较强的防攻击手段。所以是不太可能查询数据库的，算是用户体验和稳定性的取数吧。",
+    "time" : "2026-04-13 09:56"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "kk",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-12 12:43",
+  "content" : "有人知道RAG项目中，类似function calling 的这些大模型交互格式协议是在哪里看的吗，之前在openai的官网没有找到，类似下面这个\"把函数执行结果返回给模型\"格式： {\"model\": \"Qwen/Qwen2.5-7B-Instruct\",\"messages\": \\[{\"role\": \"user\",\"content\": \"我还剩几天年假\"},{\"role\": \"assistant\",\"content\": null,\"tool_calls\": \\[{\"id\": \"call_abc123\",\"type\": \"function\",\"function\": {\"name\": \"getUserAnnualLeave\",\"arguments\": \"{\\\\\"userId\\\\\": \\\\\"12345\\\\\"}\"}}\\]},{\"role\": \"tool\",\"tool_call_id\": \"call_abc123\",\"content\": \"{\\\\\"remainingDays\\\\\": 5, \\\\\"totalDays\\\\\": 10, \\\\\"usedDays\\\\\": 5}\"}\\]} 这些交互格式应该都是统一的吧，在哪里查看呢 [#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "我看访问好像 403 了，不知道是不是我的问题。[https://developers.openai.com/api/docs](https://developers.openai.com/api/docs \"https%3A%2F%2Fdevelopers.openai.com%2Fapi%2Fdocs\")",
+    "time" : "2026-04-13 09:51"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "leo",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-10 09:56",
+  "content" : "马哥，可以分享一下压测的思路吗？压测是只需要压测高并发接口吗？想做压测，但是不太会。项目基本熟悉了。以短链接项目为例，压测只需要压测几个可能高并发接口即可吗？",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "想系统看下压测的话，可以看看黑马这个课程：[https://www.bilibili.com/video/BV1ty4y1q72g](https://www.bilibili.com/video/BV1ty4y1q72g \"https%3A%2F%2Fwww.bilibili.com%2Fvideo%2FBV1ty4y1q72g\") 从系统层面，压测的话一般来说关注点是两方面，一个是高并发接口，一个是可能成为瓶颈的接口（比如直接访问数据库性能一般的，这种一般都需要配备限流策略）。面试中一般关注前者即可。",
+    "time" : "2026-04-11 22:19"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "谭冬",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-07 22:26",
+  "content" : "[#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 请问在12306项目中，如何区分不同时间的座位的。 我测试当我买了10号的票，11号的票也不能买了。 我查看座位表中数据的时间和现在时间也对不起来，请问这里的逻辑是怎样的",
+  "topicTags" : [ "\uD83D\uDE9A12306问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "是这样的，为了避免大家运行时通过定时任务生成每天最新的座位，我在代码里仅写了列车概念，把时间维度 Key 去掉了，所以咱测试的效果是正常的。 如果要区分时间，在 Redis key 的设计上，把列车 ID 和时间维度拼接上去即可。",
+    "time" : "2026-04-07 22:41"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "Jäger",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-04-06 21:44",
+  "content" : "马丁哥，我对向量检索有个问题，就是假设有这种情况：文件当中文本向量化的时候默认的模型可用，但是在请求进行向量化的时候降级了；我看retrieve代码是直接调用embed方法的。不同向量化模型计算的向量是不通用的，再结合上面的情况，我们的请求向量化的降级策略的价值是什么呢？你调用其他模型向量化即使成功了也没有办法正常检索[#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "阿白",
+    "text" : "配置文件里面是云端的qwen-emb-8b降到本地ollama的qwen，应该要保证这两个模型一致吧",
+    "time" : "2026-04-07 14:27"
+  }, {
+    "commenter" : "马丁",
+    "text" : "要保证所有提供向量的大模型，都支持指定向量维度，并且所有维度要保持一致。",
+    "time" : "2026-04-07 20:53"
+  }, {
+    "commenter" : "Jäger",
+    "text" : "emm，保持维度一致是什么方面一致呢？即使维度个数一致，不同模型的向量化结果还是没有很大的可比性吧（计算的方式不太一样）；",
+    "time" : "2026-04-07 21:00"
+  }, {
+    "commenter" : "马丁",
+    "text" : "向量维度；使用不同平台的相同模型不就好了。",
+    "time" : "2026-04-07 22:27"
+  }, {
+    "commenter" : "Jäger",
+    "text" : "OKOK，懂了，谢谢马丁哥",
+    "time" : "2026-04-07 22:47"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "再多一点运气",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-03-27 17:08",
+  "content" : "小红书暑期实习 1.自我介绍 2.项目或者实习结合AI的点 3.harness engineering 了解过吗 4.vibe coding 5.怎么保证出码质量 6.MCP 7.hashmap的数据结构 8.哈希表是什么 是数组吗？ 数组里面存储的是什么 9.hashmap 存或取的流程 10.hashmap怎么才能线程安全 11.说说concurrent hashmap怎么保证线程安全的 12.讲讲CAS 13.CAS的unsafe 14.其他锁的情况 15.说说ReentrantLock 16.https 中TLS的握手过程 17.中间人攻击了解过吗？ 18.有客户端开发或前端开发的经验吗 手撕： 岛屿数量 [#\uD83C\uDF08面试相关](https://wx.zsxq.com/tags/\uD83C\uDF08面试相关/15581145155842) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83C\uDF08面试相关", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "qdd", "马丁", "范特西", "。", "鹅是开哥", "灰", "小满", "麦兜", "luoni", "cz" ],
+  "starMasterReplied" : false,
+  "imageUrls" : [ ],
+  "replies" : [ ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "再多一点运气",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-03-27 17:06",
+  "content" : "腾讯csig 腾讯会议部门 一面 1.问会不会go 2.自我介绍 3.问项目难点 4.缓存过期时间 5.布隆过滤器的作用 6.布隆过滤器能过滤不存在的数据吗 7.redisson读写锁 8.redis 实现分布式锁的命令 9.redis实现分布式锁的缺点 10.redis 是多线程的吗？ 11.redis 热key了解过吗？ 12.redis 大key了解过吗？ 13.慢查询如何排查和解决 14.索引失效的场景 15. 知道零拷贝吗？ 16.redis 的数据类型以及具体实现的数据结构 17.Kafka 消息队列为什么处理数据快 手撕LRU，讲实现逻辑 反问： 具体的业务，是不是要转go，涉不涉及ai业务 【当天过约二面】 二面 1.自我介绍 2.介绍下短链接项目 3.市面上有哪些公司做短链接相关的，分别有什么优势或劣势 4.短链接的生成和跳转的过程 5.项目受到恶意攻击怎么办 6.sentinel是针对接口的限流，要针对单个用户怎么办 7.布隆过滤器是用作干嘛的 8.消息队列用来干嘛的 9.除java外其他语言有没有了解过 10.hashmap的底层数据结构 和 get、put的流程 11.布隆过滤器和hash map 相比，各自的 优缺点，为什么不用hashmap 去过滤 12.问实习 13.spec coding 出来之后，你实习中所作的那个工作放到现在你如何去实现？ 14.之前用过AI 工具吗？ 15.问实习 16. 工作场景题 17.反问 无手撕 【当天过约HR面】 隔天hr面，面完当天状态变为 \"录用评估中\"，扫正式工的伯乐码告诉我 \"offer 报批中\"，但是隔一段时间看官网状态已经挂了。 真的是力竭了，它可以在一面挂、二面挂，甚至HR面挂 ，都可以的。但是就是要在HR面完，官网状态从HR面 -\\> \"录用评估中\"后挂，真的非常搞人心态。 [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDD17短链接问答](https://wx.zsxq.com/tags/\uD83D\uDD17短链接问答/28824285241241) [#\uD83C\uDF08面试相关](https://wx.zsxq.com/tags/\uD83C\uDF08面试相关/15581145155842)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDD17短链接问答", "\uD83C\uDF08面试相关" ],
+  "likeUsers" : [ "劉文軒", "D~D", "马丁", "。", "程序员俊达", "leo", "灰", "麦兜", "luoni", "chy" ],
+  "starMasterReplied" : false,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "ymf",
+    "text" : "大佬，请问\"有哪些市面公司短链系统\"这个问题你是怎么回答？面试官接下来容易问咱们做的项目与之相比，解决了哪些问题？但我看美团字节做的短链服务技术架构上更加复杂完善，不太好与之对比",
+    "time" : "2026-04-29 06:37"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "leo",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-03-26 19:50",
+  "content" : "马哥，还有各位大佬们能分享一下学微服务的经验吗？只跟着Saas短链接项目做了微服务，理解起来挺快的，还有看了一些微服务和中间件的八股，没有系统的学过微服务，简历上想写微服务，所以想快速系统学一下，请大佬们指点一下，给点建议。",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "微服务的话，我感觉看下黑马或者尚硅谷的 SpringCloud 或者 SpringCloud Alibaba 应该挺快入门的。主要围绕以下问题： 1. 为什么微服务，单体有什么问题？ 2. 跨服务集群如何做服务发现？ 3. 项目配置如何在配置中心集中管理？ 4. 项目运行时如何动态修改配置？ 5. 分布式限流、熔断、降级 6. 分布式链路追踪 SkyWalking 7. 日志采集、展示 当然还会有其他，这些是比较重要的。",
+    "time" : "2026-03-31 22:49"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "leo",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-03-20 11:15",
+  "content" : "马哥，想请问一下现在vibe coding盛行的情况下，学习类似短链接这些项目的时候，学习模式需要如何转变？可以更好的提高效率和学习；以及您认为现在编程学习应该侧重什么？",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDD17短链接问答" ],
+  "likeUsers" : [ "leo", "花开富贵", "车里及", "独城", "\uD83C\uDDED.", "-" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "独城",
+    "text" : "同问",
+    "time" : "2026-03-20 14:02"
+  }, {
+    "commenter" : "阿白",
+    "text" : "我自己是先对整个项目让AI做个总结，了解完整个项目架构之后再看马丁这里的文档针对每个部分来学的",
+    "time" : "2026-03-20 16:07"
+  }, {
+    "commenter" : "马丁",
+    "text" : "可以参考下这个：[有了AI程序员如何更好找工作？](https://t.zsxq.com/BKc4U \"%E6%9C%89%E4%BA%86AI%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A6%82%E4%BD%95%E6%9B%B4%E5%A5%BD%E6%89%BE%E5%B7%A5%E4%BD%9C%EF%BC%9F\") 除此之外，可以借助 Claude Code 或者 Codex，再或者 Qoder 等工具更好理解源码设计，以及让 AI 提出代码的各种问题，并且加以优化，这些都会是写到简历上自己独有的亮点。",
+    "time" : "2026-03-20 22:12"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "D~D",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-03-20 00:12",
+  "content" : "腾讯wxg一面，短链接项目的一些提问，欢迎大家解答。[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDD17短链接问答](https://wx.zsxq.com/tags/\uD83D\uDD17短链接问答/28824285241241)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDD17短链接问答" ],
+  "likeUsers" : [ "云来云往", "....", "马丁", "折木", "独城", "厂厂一", "溪头卧剥莲蓬", "涿野夕凉丶", "leo", "-墨明奇妙-" ],
+  "starMasterReplied" : false,
+  "imageUrls" : [ "https://images.zsxq.com/FggQMrY1EyiS54hB3gdBybNBZUSu?imageMogr2/auto-orient/thumbnail/750x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:3g-hLohN-PomA9pT82vbyIKSwcw=" ],
+  "replies" : [ {
+    "commenter" : "阿白",
+    "text" : "最后那个是不是写出来dp推到式就可以了",
+    "time" : "2026-03-20 16:08"
+  }, {
+    "commenter" : " 风轻云淡",
+    "text" : "请问一下QPS的瓶颈和突破时怎么回答的？",
+    "time" : "2026-03-20 16:43"
+  }, {
+    "commenter" : "D~D",
+    "text" : "面试直接问的，当时没反应过来啥意思",
+    "time" : "2026-03-20 16:53"
+  }, {
+    "commenter" : "D~D",
+    "text" : "随便说了些redis集群，分库，感觉好像答的不是很好",
+    "time" : "2026-03-20 16:54"
+  }, {
+    "commenter" : " 风轻云淡",
+    "text" : "这个应该是经典DP了，看最后一列是怎么填的，要么竖着放填了一块儿，要么横着放填了两块儿，那么就是f(n)=f(n-1)+f(n-2)，应该是个斐波那契数列，或者说是走楼梯？",
+    "time" : "2026-03-20 17:47"
+  }, {
+    "commenter" : "D~D",
+    "text" : "是这个思路",
+    "time" : "2026-03-20 18:40"
+  }, {
+    "commenter" : "阿白",
+    "text" : "很厉害了",
+    "time" : "2026-03-22 14:36"
+  }, {
+    "commenter" : "月桂树",
+    "text" : "老哥进去了吗？",
+    "time" : "2026-04-11 22:04"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : "id_txh04ktbom6w",
+  "sourceUrl" : "https://articles.zsxq.com/id_txh04ktbom6w.html",
+  "author" : "马丁",
+  "authorRole" : "星主",
+  "publishedAt" : "2026-03-18 22:13",
+  "content" : "# 有了AI程序员如何更好找工作？\n\n很多同学跟我说，AI 出来之后感觉面试变难了，岗位也少了。这种焦虑我理解，但说句实话，好和坏是共存的------关键看你能不能用好 AI，把它变成自己的杠杆。\n\n接下来我从几个方面聊聊，校招生在实习和春秋招的时候，怎么借助 AI 在面试中展现出不一样的一面。\n\n氛围编程\n----\n\n说到 Vibe Coding，不管对应届生还是社招来说真是一个巨大的红利窗口。能展开的太多了，这里先说三个最实用的场景。\n\n### 1. 代码优化 {#1}\n\n大家学习开源项目的时候，一定要带着审视的眼光去看，而不是照着敲一遍就完事了。现在你完全可以把一段代码丢给 AI（比如 Codex、Claude Code），问它：这个功能实现有没有什么不足？请结合实际案例说明。\n\nAI 分析出来的结果不一定全对，有时候也会胡说。但没关系，结合它给的案例你自己判断一下是否靠谱。确认之后，就可以让它给出优化或者重构思路，再配合功能验证跑通------这就是你和别人不一样的地方了。\n\n这里抛砖引玉提一个点：秒杀项目里，大家都知道用 MySQL 扣减库存会有锁竞争，吞吐量上不去。那能不能换个思路，把原来 SKU 的一条库存记录拆成 N 条？比如原来一条记录存 100 库存，拆成 10 条，每条放 10 个。这样数据库层面的并发能力直接提升了 10 倍。\n\n这个时代不只是看努力，更看方法。你敢想，AI 就能帮你验证，你比别人多走一步的机会就大了一些。\n\n### 2. 前端个性化 {#2}\n\n如果说后端优化还需要比较深的知识积累和大量测试来印证结果，那前端的个性化改造真的是门槛最低、效果最明显的事情。\n\n你学的开源项目，是不是可以部署到云服务器上，挂个域名让人能直接访问？然后用 AI 帮你优化一下前端的排版和布局，让你的项目在视觉上就跟其他同学拉开差距。\n\n以前想做这些太难了，后端同学调前端本身就费劲，时间成本也高。现在有了 AI，快的话几个小时搞定，慢的话也就一两天，不会有特别大的精力消耗。\n\n但你通过这些细节展现出来的独立思考能力，恰恰是面试官想看到的。\n\n### 3. 用 AI 创造新项目 {#3-ai}\n\n以前在校生因为缺乏真实的企业工作经验和高并发场景，只能被动学习网上的开源项目，大家做的东西大同小异。现在有了 AI，这个短板被大幅拉平了。\n\n举个例子，你现在只需要有一个想法，就能让 AI 帮你落地。比如你突然想到：做个 AI 简历分析网站有没有搞头？把提示词写好，不出几个小时，前后端代码的雏形可能就生成了。\n\n然后在里面加上一些实际场景中常见的并发处理、海量数据存储、缓存策略、消息队列等设计，这不就是你和其他同学项目经历拉开差距的地方吗？\n\n开源经历\n----\n\n机会是留给有准备的人。大家都知道，简历上能拉开差距的无非就三样东西：**学校、实习、项目经历**（算法竞赛等特殊经历另说，这里只说绝大多数同学的情况）。学校改不了，实习很大程度上也取决于学校和已有项目。\n\n那除了这三个，还有没有别的加分项？有------**开源经历**。\n\n马哥之前开源的 Hippo4j（GitHub 6k Star）参加过开源之夏，这是一种途径，但每年只有一次机会，名额也有限。对大部分同学来说不太现实。\n\n还有一条路：借助 AI 深入学习某个开源项目，在这个过程中去挖掘项目的问题或者可优化的点。找到之后，提几个有质量的 PR，简历上就能多写一段开源经历，这就是实实在在的差异化。\n\n但有一点必须提醒大家：**不要纯靠 AI 提交个 PR 就觉得完事了**。你还是得真正理解这个项目，不然面试的时候一问就露馅。反过来说，如果你能对答如流，讲清楚自己在贡献过程中的思考和收获，面试官眼里你就是一个好苗子。\n\n选择开源项目的时候，几个建议：\n\n*  \n找自己感兴趣的、**持续更新**的项目，看看最近的代码提交频率，别提了 PR 结果没人合并  \n*  \n提交 PR 时把上下文写清楚：为什么提这个 PR？为什么这么实现？功能介绍是什么？本地测试跑过了没有？  \n*  \n  这些都交代清楚了，作者合并的速度会快很多\n\n> 关于开源贡献这块，后面我可以单独写一篇详细聊聊里面的门道。毕竟我同时也是 Apache 顶级开源项目 ShardingSphere 的核心开发者，这方面的经验还是有一些的。\n\n拥抱 AI {#ai}\n-----------\n\n对于 Java/Go 方向的同学来说，现在 AI 这块绑定最紧的就是 RAG、Agent、MCP、Skills 这些概念。如果你的简历上能写上一段 RAG 或 Agent 相关的项目经验，而且不是那种跑了个 Demo 就写上去的------是真正有思考、能经得起面试官追问的那种，那绝对是加分项。\n\n毕竟现在风向变了，越来越多的面试官会问 AI 相关的内容，你有准备和没准备，差距一下就出来了。这里直接看星球的 Ragent AI：从 0 到 1 纯手工打造的一套 Agentic RAG 系统，真正能落地、经得起推敲。\n\n技术学习\n----\n\n以前学技术，满世界找文档、找视频，还得自己甄别质量------讲得不好的、讲错的，踩坑成本很高。现在用一些顶级模型，比如 Claude Opus，分分钟帮你把技术点梳理得明明白白。\n\n以前初学者学一项技术，大多数只能学到皮毛。现在你可以直接问模型：\"面试官喜欢问 Netty 哪些问题？往深了挖\"。然后你就看 AI 给不给你上一课就完了。\n\n把深度问题收集完，反手开个新窗口让 AI 逐个回答------原汤化原食，属于是。这一套下来，谁敢说自己的技术理解没有加深？\n\n模拟面试\n----\n\n把你的简历发给 AI，让它按照不同模块，挑出最可能被面试官追问的问题。\n\n拿到问题之后，别直接打字回答------用语音说出来。说的时候想象自己正坐在面试官对面，你会明显感觉到一些紧张，这就对了。很多同学技术其实掌握得不错，但一开口就卡壳，本质上就是缺少这种开口练的过程。\n\n回答完让 AI 点评：哪些地方说得不够清楚、哪些地方可以更深入、怎么组织语言更有条理。然后针对薄弱点再来一轮。\n\n多轮练下来，两个东西会有明显提升：一是你对简历上每个点的掌握深度，二是现场表达的流畅度。这两样在真实面试里都是实打实的加分项。\n\n关于工具选择\n------\n\n从我个人的角度出发，不太在意模型贵不贵，更看重它能不能达到我要的效果。目前公认对程序员最友好的模型就是 Claude 系列，写代码用 Claude Code 体验很好。非编程类的问题，偶尔也会问下 GPT 或者国内的模型。\n\n如果大家对费用比较敏感，可以考虑 MiniMax 或者 GLM 系列作为备选，不同场景下大概能达到 60%～80% 的效果。毕竟效果和费用很难兼得，根据自己的情况选就好。",
+  "topicTags" : [ "\uD83C\uDF08面试相关", "\uD83D\uDCC3技术问答", "\uD83E\uDDD0技术分享" ],
+  "likeUsers" : [ "愿.", "白玉汤", "星轨", "96", "NGC2237", "zscdA*id", "麦兜", "吨叽会长大", "The comm*", "offer小助手" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "甜梦守护者",
+    "text" : "马哥，能不能出一期 vibecoding 教程？\uD83E\uDD7A",
+    "time" : "2026-03-27 08:15"
+  }, {
+    "commenter" : "马丁",
+    "text" : "有这个计划，不过还是想更有体系的输出。等我 Ragent 更新完吧。",
+    "time" : "2026-04-20 22:36"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "椒盐西米露_",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-03-17 21:50",
+  "content" : "[#\uD83D\uDCA1RagentAI](https://wx.zsxq.com/tags/\uD83D\uDCA1RagentAI/88284825581252) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥！求问 ！ 文档中关于意图识别和路由的内容我都看过了，但是我发现我搭起来后，只能做一些基于知识库的回答，闲聊内容和mcp（比如演示的天气预报）都没反应，得到的答案只有\"未检索到与问题相关的文档内容\"，想请问这部分的内容是需要单独进行一些配置吗或是什么情况？最近看文档感觉一切顺利，但是具体项目的代码实在是一头雾水",
+  "topicTags" : [ "\uD83D\uDCA1RagentAI", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/FodG7ASo8daD4sopMmj00M3XpFmq?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:pzB3M9Z0SGOqCxmtBRaGZbHg4ZE=" ],
+  "replies" : [ {
+    "commenter" : "椒盐西米露_",
+    "text" : "看明白了！这里需要自己来手动配置意图树，但是文档中似乎没有关于意图树的讲解，这块感觉有些抽象，等马哥更新！",
+    "time" : "2026-03-17 22:35"
+  }, {
+    "commenter" : "马丁",
+    "text" : "咱可以看看在这里的意图识别树配置，加上后就好了，能够实现闲聊、MCP 以及情绪化回复。 链接：[RAG 智能问答](http://ragent.nageoffer.com/admin/intent-tree \"RAG%20%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94\")",
+    "time" : "2026-03-17 22:56"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "七音",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-03-06 16:38",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482) 我想问问各位大佬们，余票缓存一致性我想采用延时双删，但是我一直找不到原来的业务代码在哪，导致没法修改，有人知道这个位置吗",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDE9A12306问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "是想看下余票缓存一致性怎么做的么？",
+    "time" : "2026-03-06 22:40"
+  }, {
+    "commenter" : "七音",
+    "text" : "对，马哥，除了你的监听Binlog策略，我还想采用一下延时双删的策略，但是没找到你这段逻辑的代码，因此没法改。",
+    "time" : "2026-03-07 01:54"
+  }, {
+    "commenter" : "马丁",
+    "text" : "Binlog策略和延迟双删只能使用一种，并且流量大的 key 不能删缓存呀，删了不就缓存击穿和雪崩了么？ Binlog 代码：org.opengoofy.index12306.biz.ticketservice.mq.consumer.CanalCommonSyncBinlogConsumer",
+    "time" : "2026-03-07 10:04"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "LUCA",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-03-02 21:51",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482) 复合分片完美解决了 C 端用户查自己订单的问题。但是，如果现在系统有一个 **B 端对账需求** ，或者数据分析需求，需要\"查询昨天 北京-上海 G123 次列车的所有已支付订单\"来进行结算。此时查询条件里**既没有 UserId 也没有 OrderId** 。如果直接查，ShardingSphere 会触发**全库全表广播路由（扫全表）**，直接把数据库打挂。这种脱离了分片键的多维查询需求怎么解决呢",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDE9A12306问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "这种场景可以通过建立汇总表或中间表（按业务维度预聚合数据），或者使用 ElasticSearch / OLAP 数仓类型的系统做数据同步和查询。业务层面 MySQL 专注核心查询和事务，统计类下沉至数仓查询。",
+    "time" : "2026-03-02 22:43"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "对方正在输入...",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-02-26 17:16",
+  "content" : "[@马丁](https://wx.zsxq.com/footprint/111821842118582?group_id=51121244585524) 马哥，动态线程池/12306 这两个项目，哪个面试官看了更有兴趣一些呢？",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "NOSu" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "T",
+    "text" : "两个项目侧重点不同，一个偏业务，一个偏轮子",
+    "time" : "2026-02-26 19:27"
+  }, {
+    "commenter" : "对方正在输入...",
+    "text" : "如果作为初级工程师，是不是一般不需要考虑造轮子",
+    "time" : "2026-02-26 20:38"
+  }, {
+    "commenter" : "T",
+    "text" : "有一个轮子类项目是加分项",
+    "time" : "2026-02-26 20:53"
+  }, {
+    "commenter" : "马丁",
+    "text" : "一般简历上推荐是业务+轮子或者业务+AI，这样在面试问的时候才会多问一些。如果针对咱初级工程师，建议学习业务，因为轮子系统可能得有一定业务积累再学，效果会好一些。",
+    "time" : "2026-02-26 23:06"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "啦啦啦",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-01-18 12:48",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥您好，很感谢马哥的牛券项目，9月份找到了自己的第一段实习，在\uD83C\uDF4A厂做go开发，目前已经实习三个多月了，现在在找新的机会，感觉面了几次下来感觉都是ai相关的问题没答满意，但是我简历上也没ai相关的项目，为此特别苦恼，想改善下简历，想问下马哥对传统业务开发和agent相关的岗位有什么看法，对于目前找工作形势，简历上要不要准备个ai相关的项目呢，各位友友有什么建议吗",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83C\uDF08面试相关" ],
+  "likeUsers" : [ "NGC2237", "l", "氡影RadonEnd*" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "我个人建议简历可以补一个 AI 相关项目（RAG 或 Agent 方向），主要是为了适应当前面试热点，不一定代表长期职业一定走AI。 传统业务开发和 Agent 岗位我认为差异在于：业务开发属于长期建设型工作，技术沉淀（工程能力、稳定性、性能、业务抽象）可迁移性更强；而很多 Agent 项目偏\"短平快\"，目标多是内部提效或MVP验证，招聘时更看重能否快速落地，项目生命周期相对不稳定。 从我接触的情况看，目前不少 Agent 项目更多是工具化和流程优化，真正带来业务创新收益的案例相对少，长期价值取决于是否能深度嵌入业务链路。 如果想长期发展，我更建议以传统业务后端能力为主线，同时补充 RAG/Agent 的工程化实践（检索、工具调用、可观测、部署等），这样既能应对当下的面试趋势，也不会牺牲长期竞争力。 如果真想深耕AI研发方向，则可能需要进一步走向模型训练、微调、蒸馏等更偏算法/模型体系的能力，这与纯后端路线会有所不同。",
+    "time" : "2026-01-19 23:17"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "T",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-01-16 17:12",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥你好，我是2027届的一名双非一本学生，目前做完了牛券和一个网上另找的项目（比外卖好一点），目前马上要大三下了，还没找到实习（已经投了半个月了，但没有收到过面试），这段时间有点乏力了，想着把线程池做一下开年再开始投，在秋招前找到实习。秋招想去中大厂，但是学历又不够，想者要不要考研走算法岗。目前比较纠结的是，我因为一些原因中间耽误了两年（比同届学生大两岁），研究生毕业的话已经27岁了，最近一直在纠结该走哪条路，希望马哥能给个建议",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83C\uDF08面试相关" ],
+  "likeUsers" : [ "&" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "我给你一个比较明确的建议：不建议考研，更不建议现在转算法。 原因很现实：考研有成功率问题，而且三年后行情什么样谁也说不准；你现在最该做的是走一条确定性更高的路------先把后端基础和履历做扎实。 具体做法就是：别死磕中大厂，先从中小厂实习上车，把0 实习这个短板补掉。只要能接触真实业务、能写出可量化的产出，对你后面冲更好的公司帮助很大。 你说的动态线程池可以做，而且挺值的：并发、调度、监控治理这些是后端硬通货，面试也很好讲。等你有了实习 + 两三个能讲清楚的亮点，再去冲暑期/秋招会顺很多。 年龄这块别太内耗，真正决定你能不能进中大厂的还是：有没有实习 + 项目深度能不能讲明白。先把这两件事做好。",
+    "time" : "2026-01-17 00:05"
+  }, {
+    "commenter" : "T",
+    "text" : "好的，我心里有数了，感谢马哥",
+    "time" : "2026-01-17 00:37"
+  }, {
+    "commenter" : "老实的牛马",
+    "text" : "老哥是因为休学耽误的吗？",
+    "time" : "2026-01-21 21:32"
+  }, {
+    "commenter" : "T",
+    "text" : "复读and转专业",
+    "time" : "2026-01-23 19:06"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "范特西",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-01-13 19:12",
+  "content" : "马哥，rag项目有没有具体上线的时间，并且用的springAi还是langchain4j，提前说一下方便学习前置知识。[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "mhlsky孟" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "可以参考这个回答哈 [马哥，有两个问题1.新项目Ag...](https://t.zsxq.com/37t6W \"%E9%A9%AC%E5%93%A5%EF%BC%8C%E6%9C%89%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%981.%E6%96%B0%E9%A1%B9%E7%9B%AEAg...\")",
+    "time" : "2026-01-14 00:30"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "嗷~呜~",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-01-11 00:05",
+  "content" : "[#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)马哥您好 我今天在做12306的手摸手之列车余票如何保障缓存数据库一致性的时候 发现更新余座的时候 rocketmq里面有两个一模一样的消息（除了Message ID不一样）里面的JSON数据也是一样的 而且这两个消息rocketmq都显示CONSUMED 请问这个是为什么",
+  "topicTags" : [ "\uD83D\uDE9A12306问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "&" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/FiYhfxV2vGRx5CNyMmohdthsxpcB?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:-VtYY_CJ-yR6FDyIxkNgmpSg-uo=", "https://images.zsxq.com/FjluClQt-8pMc0iWV99ase2bEShZ?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:MElmYIQ0cuwsyMGmzVxwEBeIQNE=" ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "有可能是生产者在发送阶段发生了重试导致的重复消息：比如当时网络抖动、Broker 的 ACK 超时、连接短暂中断等，生产者端会认为\"发送未成功\"从而再次发送，于是出现两条内容完全一致、只是在 Message ID 不同的消息；而 RocketMQ 默认语义是至少一次投递，因此这两条消息都会被正常投递并显示 CONSUMED。从你看到的存储时间几乎一致也符合这种短时间内重试/重复发送的特征。 可以看下这是一个常态，还是仅极端偶现呢。",
+    "time" : "2026-01-11 23:45"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "拉扯",
+  "authorRole" : "星友",
+  "publishedAt" : "2026-01-02 11:13",
+  "content" : "马哥，想问问大厂是怎么写代码的，跑代码的。 目前我在一家普通公司，入职后发笔记本，然后组里面给你在公司内服务器加一个云端虚拟机(Windows系统，连接不了外网) 我们流程是，在自己笔记本上，远程桌面连接上虚拟机，在虚拟机上才能拉代码，写代码，推代码。本地笔记本就约等于一个客户端。 完整运行项目的话，靠Jenkins流水线，最后会在一个几百g内存配置很好的Linux服务器部署好。 感觉自己公司这样开发有点笨笨的。想学习了解一下大厂是咋做的，非常感谢。[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "看你们的描述，这更像是一种偏小众的研发模式，通常出现在项目涉密等级较高、需要严格控制信息传播的场景下。 更常见的流程（中大型公司基本都差不多）一般是：产品经理明确需求 → 组织评审。评审节奏会因管理方式不同而有差异：有的项目比较紧急，需要随时评；有的则按双周迭代等固定节奏推进。 评审通过后进入排期开发：开发完成先自测；如果涉及前端则进行联调；随后提交测试同学在 Test 环境验证。验收无误后发布到预发/UAT，再走灰度上线，最后线上验收闭环。",
+    "time" : "2026-01-03 22:36"
+  }, {
+    "commenter" : "拉扯",
+    "text" : "马哥，我想问的是正常的公司，是把代码git clone到公司发的电脑上，再直接在本地写代码吗？ 我们这公司发的电脑上都clone不了代码，只能在内网虚拟机上clone。",
+    "time" : "2026-01-04 18:31"
+  }, {
+    "commenter" : "马丁",
+    "text" : "一般都是 clone 到本地电脑开发",
+    "time" : "2026-01-05 08:48"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "Isabellae",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-12-23 22:27",
+  "content" : "[#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 马哥，这个12306压测这里你的压测计划不是用同一个passenger 然后取消幂等性测试的qps26左右吗 我自己这里跑也是差不多 然后我重新做了一个一次可以生成5000用户不同passenger的跑压测然后五辆车总共9000个座位 qps大概120多这样 然后我感觉比你测的高很多 我就问ai他说 为什么原版 QPS 只有 26？ 同一个乘客重复购同一趟车 2000 个请求都用同一个 passengerId 业务逻辑：同一乘客同一车次只能买一张票 第 1 次成功，后续请求可能需要检查\"是否已购票\" 座位锁竞争极其激烈 同一乘客抢座，锁冲突严重 大量请求在等待锁释放 即使关闭幂等性也没用 幂等性是防重复提交 但业务层面的\"同乘客不能重复购票\"检查仍然存在 为什么我们 QPS 更高？ 每个请求用不同的用户/乘客 没有\"重复购票\"的业务检查 锁竞争分散到不同乘客 真正的并行 5000 个不同用户同时买票 不会互相阻塞 结论：原版的压测设计有问题，不是真实的高并发场景！ 真实场景应该是：不同用户同时抢票，而不是同一用户重复买票 但是后来我多次比对测试发现这个都不对然后我就发现列车车厢数量不一样 于是我也生成了20个列车然后车厢数量跟g35一致是15个车厢 大概9600个座位 这次测试出来是36qps 但是仍然高于用单用户单passenger测试的26qps 不知道是什么原因呢？[@马丁](https://wx.zsxq.com/footprint/111821842118582?group_id=51121244585524)",
+  "topicTags" : [ "\uD83D\uDE9A12306问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/Fh36ZA_ymAI1ZwLAUr6HVo3MFctB?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:t9aH5dhj0ZK2l7_Rwk5V4wbgmno=" ],
+  "replies" : [ {
+    "commenter" : "Isabellae",
+    "text" : "这是最新的一次 是 2000个不同用户 然后 测试数据是同样的20个车 15个车厢 然后 票段随机 是 45qps 仍然高于原来的",
+    "time" : "2025-12-23 22:29"
+  }, {
+    "commenter" : "马丁",
+    "text" : "和这位同学的问题确实有点类似：v2 接口主要面向低峰期的常规购票场景，整体并发会随着可购列车数量增加而上升，但通常不会很高。 原因在于我们在核心分配链路里引入了分布式锁做一致性保障： 1. 同一座位类型同一时刻只允许单用户操作，从源头避免多个请求同时抢同一资源导致的冲突。 2. 这样可以确保同一个座位不会被重复分配（杜绝\"一座多卖\"）。 3. 同时也能兼顾业务体验：当用户一次购买多乘车人时，在锁保护下按同一批次进行分配，尽量满足尽量坐在一起的需求。 同时可查看：[#\uD83D\uDE9A12306问答#马哥你好，...](https://t.zsxq.com/0fAHN \"%23%2012306%E9%97%AE%E7%AD%94%23%E9%A9%AC%E5%93%A5%E4%BD%A0%E5%A5%BD%EF%BC%8C...\")",
+    "time" : "2025-12-25 22:04"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "5.14",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-12-23 18:02",
+  "content" : "马哥，我看了传统秒杀架构那一篇文章，我想的技术架构是sentinel网关限流+Guava RateLimiter接口限流+Redisson分布式锁接口幂等+Lua原子（判断＋扣减）+异步下单+（RocketMQ延时信息+XXL-Job兜底扫描）可靠关单 我的问题是1.为什么网关接口不都用sentinel限流 2.你的文章说redis更新成功时系统宕机会导致数据不一致，而你列出异步和定时任务解决，你说都会有问题，我想知道这种传统的没有比较完美的解决方案嘛 3.我这个技术架构有没有非常大的错误",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "1. 网关限流和业务系统限流我都遇到过。一般来说，网关更偏\"纯基础设施\"，业务属性少，所以兜底手段通常也没那么丰富。到底放在网关还是业务侧，关键还是看接口的定位和容灾/兜底诉求来决定。 2. 暂时还没碰到特别理想的方案。但网上有看到一些缓存实现会提供偏向 CAP 的支持，只是性能可能会弱一些；如果能接受性能折损，这类方案在需求上可能是能满足的。 3. 网关限流和接口限流在我理解里基本是一回事（更多是落点不同：在网关还是在服务内部）。其他方面就还好。",
+    "time" : "2025-12-25 12:41"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "洛城使徒",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-12-23 17:00",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482) 请问支付成功后 但是收不到支付宝回调的请求是什么原因 以及现在nacos访问为什么是404",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDE9A12306问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : false,
+  "imageUrls" : [ "https://images.zsxq.com/Fpdfxgda5WvmWIVd023TFRgEAMr7?imageMogr2/auto-orient/thumbnail/750x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:NIBrOPI6mJSbuXuxiCojR5yNq2c=" ],
+  "replies" : [ {
+    "commenter" : "且听风吟丶",
+    "text" : "你的服务内网穿透暴露在公网上没，然后还要改一下配置文件的回调地址",
+    "time" : "2025-12-24 01:34"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "kk",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-12-07 19:58",
+  "content" : "求好书推荐 想问下小马哥后台开发有没有一些比较经典的书籍推荐，现在大四上已经找到工作，但是之前学习都是快速过视频，导致基础很不牢固，想用这半年牢固一下基础，前段时间看了《Mysql是怎么运行的》感觉收获挺多，想问下大家还有没有什么后台技术栈的好书推荐 [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "我看书算比较\"野路子\"。一般学习一个技术时，我会一次性买 3-5 本相关书，再配合找几个高质量视频，对照着做查缺补漏。这样不容易陷在单一作者的视角里，也能更快拼出一个完整的知识图谱。 如果说让我真心觉得特别不错、对我帮助比较大的书，主要有这几本： 1. 《重构：既有代码的设计》 2. 《MySQL 是怎么运行的》 3. 《Redis 深度历险》 4. 《大话设计模式》",
+    "time" : "2025-12-07 21:46"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "々阳",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-11-27 16:12",
+  "content" : "马哥好 1.在你们那开发代码如何保证质量，比如单元测试覆盖率，数据复杂场景测试，保证测试场景全覆盖，提高上线质量 ，您有好的工具推荐吗？ 2.上线之前可能涉及比如配置文件修改、数据库脚本修改，有啥好办法保证集测和生产一致吗，以免上线缺失信息，想要一套可保证上线质量的一套工具，有啥好的办法吗？",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "eraser" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "开发代码保障质量： 1. 单元测试 2. 代码扫描，比如SonarQube 3. 代码 Review，比如 AI 和人工 保障配置文件、SQL 变更：一般来说研发平台里在指定，测试环境修改也会带到生产。只不过有些是提示作用，有些会对接 Nacos、Apollo 等，自动创建、修改和删除配置等。",
+    "time" : "2025-11-27 22:06"
+  }, {
+    "commenter" : "々阳",
+    "text" : "SonarQube这个工具在公司里都用吗",
+    "time" : "2025-11-28 14:00"
+  }, {
+    "commenter" : "马丁",
+    "text" : "部分，是一个增强代码质量的工具",
+    "time" : "2025-11-28 22:22"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "载物",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-10-29 13:34",
+  "content" : "马哥 被拷打了我，短链接项目 为了维护数据一致性，我们使用了先更新数据库，然后删除缓存对吧，然后面试官说：如果数据库更新完成了，但是同步到缓存的时候失败了，怎么办，我说我们这个地方加锁了，没有完成的话，会抛出异常，然后消息队列没有收到ACK的时候会重试，他又问我 消息队列也宕机了怎么办？ 这个问题从哪里去解决呢？[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83D\uDD17短链接问答](https://wx.zsxq.com/tags/\uD83D\uDD17短链接问答/28824285241241) \uD83C\uDF08面试相关",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDD17短链接问答" ],
+  "likeUsers" : [ "执拗i", "D~D", "leo", "Ricardo" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "我理解这个描述其实包含两个问题： 1. 更新数据库后删除缓存，但同步缓存失败怎么办？ 通过 binlog 监听 的方式捕获数据变更事件，写入 消息队列，由消费者异步更新或删除缓存；即便同步失败，也能通过重试机制保证最终一致性。 或者，在操作缓存失败时，发送一条延迟消息到消息队列，用于后续重试删除缓存。 2. 消息队列宕机怎么办？ 高可用部署：消息队列多主多从，提高容灾能力； 异地多活：在不同机房部署多套消息系统，实现跨区域容灾； 兜底策略：在 RocketMQ 后增加一层如 Redis Stream 的缓冲层，作为临时通道保障消息可靠传递。",
+    "time" : "2025-10-30 00:09"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "张恒",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-10-12 22:07",
+  "content" : "马哥，mysql的多表join(复杂sql)查询效率远不如postgreSQL，所以能不能用mysql做主库，postgreSql做从库，复杂查询走postgreSql？ 这样做是不是太复杂，没必要呀。牛券的search模块，我自己包装的\uD83D\uDE05",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "张恒" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "不太符合常规逻辑，如果做搜索直接使用 ElasticSearch 就好了，PgSQL 主要还是做 OLTP 数据库的。而且，如果用 PgSQL 做从库，数据格式不兼容等都是问题，搜索效果还没有 ElasticSearch 好。",
+    "time" : "2025-10-14 23:14"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "叠叠",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-10-06 21:55",
+  "content" : "[#\uD83D\uDE9A12306问答](https://wx.zsxq.com/tags/\uD83D\uDE9A12306问答/15541452418482) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 请问令牌桶和余票这两个缓存的过期时间为什么没有设置呢？不设置的话手动删除的时机应该是当天发车结束后吗？",
+  "topicTags" : [ "\uD83D\uDE9A12306问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "这种缓存一般是不设置过期时间的，因为考虑到 Redis 淘汰策略可能会从带过期时间的 Key 中淘汰，等到车次结束后，定时任务删除下就好。",
+    "time" : "2025-10-08 23:44"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "\uD83D\uDCAA",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-10-06 20:16",
+  "content" : "[#\uD83C\uDF0A牛券问答](https://wx.zsxq.com/tags/\uD83C\uDF0A牛券问答/51158541152124) 1.请问使用redis预扣减后，使用MQ同步到数据库，数据库还要再同步到缓存吗，如果需要同步到缓存，这里的缓存和预扣减的缓存是同一个吗 ，此时保证缓存一致性的策略就是删缓存更新数据吗。 2.如果用预扣减异步同步数据库还需要底层悲观行锁吗，预扣减已经能保证不超卖了吧 3.防止少卖是不是暂时没有好的方法，就是防止宕机和持久化[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83C\uDF0A牛券问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "辈" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ "https://images.zsxq.com/FrO88TWWqJ49Pcmz4jVCj0WQvhBT?imageMogr2/auto-orient/thumbnail/380x/format/jpg/blur/1x0/quality/75&e=1793462399&s=ytjvyjvjvvytjtt&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:UzxGkgY22rCS8zVXJhMgVr_PMh0=" ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "1. Redis 已经扣减过了，MQ 消费者逻辑中数据库扣减后不需要再同步 Redis 扣减。 2. 预扣减也保证不了，因为 Redis 会有极端情况，详情查看截图。 3. 参考 12306 中的技术方案，如果 Redis 中值等于 0，触发个延迟任务，刷新下数据库和缓存的数据。",
+    "time" : "2025-10-08 23:38"
+  }, {
+    "commenter" : "\uD83D\uDCAA",
+    "text" : "好的谢谢马哥",
+    "time" : "2025-10-09 00:06"
+  }, {
+    "commenter" : "\uD83D\uDCAA",
+    "text" : "那此时如果查数据的话 能保证缓存和数据库的一致性吗",
+    "time" : "2025-10-09 00:17"
+  }, {
+    "commenter" : "马丁",
+    "text" : "优惠券的库存不会被用户查询，如果从业务上，能保证最终一致性。",
+    "time" : "2025-10-09 00:20"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "烤鱼要放盐",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-09-30 11:49",
+  "content" : "面试官：RocketMQ+canal实现的是数据最终一致性，但是会有延迟，如何保持实时一致性？",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "Starlight", "辉" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "森系",
+    "text" : "？",
+    "time" : "2025-10-04 17:28"
+  }, {
+    "commenter" : "马丁",
+    "text" : "RocketMQ + Canal 本质上是异步的，只能保证最终一致。可以从几个方面减少延时： 1. 缩短 Canal 的延迟：调高 Canal 的解析线程数；部署在就近机器上，减少网络耗时。 2. RocketMQ 优化：使用异步发送消息；消费者扩大线程消费速度等。 如果业务要求实时一致，我会考虑用流式 CDC 框架（如 Flink CDC），或者在核心链路用事务方案来保证强一致，而非依赖 MQ 异步补偿。",
+    "time" : "2025-10-08 22:46"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "章北海",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-09-28 11:31",
+  "content" : "关于项目学习，比如短链接 马哥，我是初学者，平常的学习习惯总是看视频来进行学习， 但是我还是没有掌握正确学习和吃透项目的方法 但是我发现我看完视频以后，只能跟着视频一步一步敲，但是视频关闭以后自己就不会敲了 看完视频懂基本理论，但是敲不出来代码该怎么办？ 然后学透了这个项目？会敲还是有理论输出",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "超级无敌旋风霹雳霸王*", "小混子", "涿野夕凉丶", "小甜护符" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "章北海",
+    "text" : "就是想请教一下高效学习项目的方法",
+    "time" : "2025-09-28 13:02"
+  }, {
+    "commenter" : "JI.",
+    "text" : "看着文档试试能不能敲出来",
+    "time" : "2025-09-28 13:31"
+  }, {
+    "commenter" : "马丁",
+    "text" : "你这个情况其实挺常见的，很多人刚开始都是\"看得懂，但自己写不出来\"。原因也很简单：看视频的时候，大脑是\"被动输入\"的，你在跟着别人走流程，但没有经历\"自己思考怎么做\"的过程。 给几点建议，都是我自己踩过坑之后总结出来的： 1. 先不要急着敲代码 第一次看视频的时候，把重点放在理解思路上：这个项目要解决什么问题？大概分几步实现？每一部分是干嘛的？先在脑子里有个框架。 第二遍，不看视频，照着记忆写一遍 这一步一定要做。就算写不出来，也不要马上去看视频。先想想这里该怎么写、方法名是什么、流程是啥。实在不行再去查。 这个过程会比较考验人，但是是\"转化为自己能力\"的关键时刻。 2. 多加\"复盘\"环节 写完一部分代码后，想一想：如果让我重新实现，我还记得逻辑吗？能不能画个简单的流程图？比如短链接项目，你能不能说清楚\"长链接 → 生成短码 → 存储 → 重定向\"这一整套流程？ 3. 关于\"学透\" 学透一个项目不只是能敲出来，更重要的是你能讲出来、能改出来、能举一反三。比如别人问你\"不用 Base62 转短码还能怎么做？\"，你能说出思路，这就算学透了。",
+    "time" : "2025-10-08 22:38"
+  }, {
+    "commenter" : "马丁",
+    "text" : "总结下就是： 1. 看视频是\"知道别人怎么做\"； 2. 自己写是\"知道我能不能做\"； 3. 改项目、讲原理是\"我真的懂了\"。",
+    "time" : "2025-10-08 22:43"
+  }, {
+    "commenter" : "章北海",
+    "text" : "谢谢马哥",
+    "time" : "2025-10-10 15:16"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "37",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-09-22 18:12",
+  "content" : "[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) [#\uD83E\uDDF1oneThread问答](https://wx.zsxq.com/tags/\uD83E\uDDF1oneThread问答/15581112521182) 上周五面某私企，被狠狠拷打了线程池的优雅关闭，面试官质疑说这个优雅关闭的意义是什么，只是增加了等待时间和打印日志吗？如果现在有一个场景，我提交了一个不响应中断的死循环任务到线程池里，我们作为使用这个动态线程池组件的开发人员，能否用现在提供的优雅关闭接口解决这个问题，关闭异常运行的线程池？如果可以中断线程池，是一个什么逻辑？ 我没答好，我说是调用了jdk原生线程池的shutdown接口，然后源码就是通过检测中断标志来进行中断。那个面试官又问处理中断的是jvm还是操作系统，谁去检测的这个中断？是线程池自己吗？被问懵了",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83E\uDDF1oneThread问答" ],
+  "likeUsers" : [ "果子", "eraser", "长踏海", "SaySaySEE", "Perceptron", "R*amancy.", "辉", "佩奇绿乔治", "37" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "这个问题可以类比 Dubbo：即便有线程池，依然可能出现慢请求。原因在于，很多技术方案只是在合适场景下有效，而不是能够解决所有问题。 至于面试官提出的\"在线程池中放一个不响应中断的死循环任务\"的情况，本身逻辑上就存在漏洞。正常情况下，线程应当能够识别中断信号，否则即便线程池或服务要关闭，该线程仍在执行任务，就会导致系统异常。类似的死循环任务并不适合动态线程池的使用场景，通常只需要通过优雅关闭来处理：例如在项目停机时，向线程发送关闭信号，让其正常退出即可。 至于原理调用原理，再仔细看下文档：[《基建oneThread动态线程池设计》第23小节：通过回调函数实现线程池任务防丢失功能](https://t.zsxq.com/m5TpC \"%E3%80%8A%E5%9F%BA%E5%BB%BAoneThread%E5%8A%A8%E6%80%81%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%AE%BE%E8%AE%A1%E3%80%8B%E7%AC%AC23%E5%B0%8F%E8%8A%82%EF%BC%9A%E9%80%9A%E8%BF%87%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%E4%BB%BB%E5%8A%A1%E9%98%B2%E4%B8%A2%E5%A4%B1%E5%8A%9F%E8%83%BD\") 如果面试官是比较戏谑的聊，他可能是在拷打你，看你是否掌握了原理；如果是很认真质疑，不得不说，真low啊。",
+    "time" : "2025-09-23 23:20"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "失眠的狒狒",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-09-08 11:55",
+  "content" : "马哥，我想问一下，整个12306项目，关于日期问题是怎么考虑的。 12306，支持提前买15天的票，所以列车相关的表比如座位表按道理应该是每天生成一批，保存15天的。车票查询接口、购票接口，查询redis缓存时，一些key的设置也没有考虑日期因素，搞的比较糊涂。#\uD83D\uDE9A12306问答[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答", "\uD83D\uDE9A12306问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "正常情况下应该带上时间维度，但这里没有这样做。原因在于如果加入时间，就需要有一个定时任务不断生成数据，而这会引入额外复杂度。为了简化实现，这里采用了固定的车次。",
+    "time" : "2025-09-10 00:00"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "111",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-09-06 17:56",
+  "content" : "马哥你好，我在公司代码中看到一个接口优化，想请教下。 一个千万级的表，要根据一个时间范围以及其他过滤条件查询总的数据量（非分页）以及分页列表。 优化前：先count\\*查询时间范围内的数据量，然后limit pageSize\\*(pageNo-1) pageSize分页查询。 优化后：将时间范围划分成每一天的小区间，然后用stream并行流查询每一天的记录数累加起来。分页查询采用预取然后内存中分页，limit pageSize\\*(pageNo-1)+offset(固定值200), 然后在将结果列表用steam.skip.limit得到分页结果。 想请教下面试时该从哪些点讲这个优化呢？这个优化确实已经上线了。自己已经结合ai分析过了，但还是有点没底，想听听马哥的想法。[#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "yy", "eraser", "Cola" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "听你的描述，大致思路是结合 并发编程 和 分而治之 来实现的，其实如果从并发编程的角度去讲，可能会更容易让人理解。 不过整体逻辑稍显复杂。像这种 统计总量 的场景，其实完全可以通过一个 全局缓存 来简化：在数据新增或删除时，分别对缓存中的总量进行自增或自减操作，就能保证统计结果的实时性，同时实现逻辑也更清晰。",
+    "time" : "2025-09-07 21:21"
+  }, {
+    "commenter" : "111",
+    "text" : "这个接口的查的是一个日期范围内的数据总量以及当前的分页结果，比如可能会查询一个月，这样应该不能用缓存吧。 还有这个接口的调用量很低，一天就几百次。这种我可以说就从切片+并发的角度，降低了p95/p99么，简历上具体指标该怎么写合适一些呢？以及按每一天切片，是否会更好地利用索引（日期）",
+    "time" : "2025-09-07 22:38"
+  }, {
+    "commenter" : "马丁",
+    "text" : "写用了什么技术，提升了多少时效",
+    "time" : "2025-09-07 23:04"
+  }, {
+    "commenter" : "111",
+    "text" : "实现xx接口优化，采用\"按日分片 + 并行聚合\"替代单次大范围 count(\\*) 查询，P95 下降约 40%--60%，P99 下降约 45%--70%。 请问这样写合理吗？不太清楚这种指标怎么写真实点\uD83D\uDE02",
+    "time" : "2025-09-08 01:53"
+  }, {
+    "commenter" : "Forever.",
+    "text" : "马哥我现在也遇到了这种情况亿级数据量的表不考虑分库分表的情况下，每次页面每次的分页查询都会去count()总数，我现在是想采用并发编程的方式去分段处理在聚合计算每次的count,在操作的时候有什么需要注意的吗",
+    "time" : "2025-09-11 17:48"
+  }, {
+    "commenter" : "111",
+    "text" : "老哥，开个新帖子问问吧，我也挺感兴趣的。感觉如果qps高的话，要考虑线程池的参数设置。我这个接口没啥qps，所以直接用的stream并行流处理。还有我想问问优化效果这块大概怎么写靠谱。",
+    "time" : "2025-09-12 00:22"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "红红火火",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-09-05 09:30",
+  "content" : "马哥，你好，本人 25 届，当时进了星球，学习了短链、12306 项目，也早已拿到不错的薪资并入职俩月了。但是因为本人当时其实加上八股和 java 学习，就一年不到，总感觉自己技术不行，平常看大家总会去说看源码，深入了解框架什么的，我想问一下，这些都应该怎么学，就比如看源码，我是去一步一步看吗，看不懂的话去 AI 一下，又应该从何入手。 [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "NGC2237", "阿宝", "Lemon" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "每个人学习的方式不一样，我是比较喜欢成体系学习。比如学习 JUC，只会看其相关的，会买书、看B站视频以及Debug源码，学习应该是先有宏观逻辑，然后再去看设计底层细节。 可以参考下这个回答：[两个问题：如何在公司站稳脚跟，...](https://t.zsxq.com/u4R8k \"%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98%EF%BC%9A%E5%A6%82%E4%BD%95%E5%9C%A8%E5%85%AC%E5%8F%B8%E7%AB%99%E7%A8%B3%E8%84%9A%E8%B7%9F%EF%BC%8C...\")",
+    "time" : "2025-09-07 20:33"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "拧发条鸟",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-09-04 17:34",
+  "content" : "感谢马哥的牛券 想请教下offer选择，背景27届985本日常实习 滴滴 vs 虾皮 滴滴是做海外业务，主要是机器学习系统的周边支持 虾皮是纯做中间件 考虑的点是这两的活都是类似于内部工具开发的，不知道谁更有优势 对比滴滴title更大，对后续暑期会更有帮助？ 虾皮给的多，快是滴滴的两倍 马哥怎么看，哪个实习会更好一些\uD83E\uDD70 [#\uD83E\uDD29晒个offer](https://wx.zsxq.com/tags/\uD83E\uDD29晒个offer/15558228542422) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551)",
+  "topicTags" : [ "\uD83E\uDD29晒个offer", "\uD83D\uDCC3技术问答", "\uD83C\uDF08面试相关" ],
+  "likeUsers" : [ "马丁" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "我个人的看法是，滴滴的机器学习系统在周边支持方面相对一般，整体水平大概算是中等偏下，所以我并不太看好。 相比之下，虾皮的中间件如果确实是偏向常用的技术中间件或基础组件的维护与开发，那么价值要比滴滴的更高。因为这种基础建设类的工作，对个人能力的要求通常更全面、更深入。 当然，刚进入团队时，实习生一般不会直接负责特别复杂或核心的任务，但这也正是一个学习和积累的机会。只要保持积极态度，多去看、多去学，能够掌握的东西最终都会沉淀为自己的能力。",
+    "time" : "2025-09-04 23:46"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "111",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-09-04 16:28",
+  "content" : "马哥，我在实习简历上包装了一个慢sql优化，只对解决方案的代码比较熟悉。想问下针对慢sql优化，面试时还会问到的其他问题该如何回答？比如排查、数据指标这种。",
+  "topicTags" : [ "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "111",
+    "text" : "想知道企业中实际解决慢sql的流程",
+    "time" : "2025-09-04 16:37"
+  }, {
+    "commenter" : "马丁",
+    "text" : "在实际场景中，我们通常会这样分析和处理慢 SQL： 1. 发现问题：先确认 SQL 是否存在性能瓶颈，比如通过数据库平台的慢查询日志监控。 2. 收集信息：查看目标表的数据量大小、当前 SQL 的执行耗时。 3. 分析原因：使用 EXPLAIN 等工具分析执行计划，判断是否走了全表扫描，是否缺少合适的索引，或者语句本身存在问题。 4. 优化手段：根据分析结果进行针对性处理，例如： 5. 调整或重写 SQL 语句； 6. 为查询条件添加合适的索引； 7. 进一步优化表结构或修复潜在的数据问题。 8. 验证效果：再次执行 SQL，观察优化后的查询耗时是否明显下降。 在大多数企业环境中，慢 SQL 的发现和处理流程就是上述这种模式，核心思路是\"先定位，再分析，最后优化和验证\"。",
+    "time" : "2025-09-04 23:42"
+  } ],
+  "topicKey" : null,
+  "authorityScore" : 0.0
+}, {
+  "column" : "技术问答",
+  "postId" : null,
+  "sourceUrl" : null,
+  "author" : "爱吃猪大肠",
+  "authorRole" : "星友",
+  "publishedAt" : "2025-08-28 22:50",
+  "content" : "[#\uD83C\uDF0A牛券问答](https://wx.zsxq.com/tags/\uD83C\uDF0A牛券问答/51158541152124) [#\uD83D\uDCC3技术问答](https://wx.zsxq.com/tags/\uD83D\uDCC3技术问答/28851428881551) 佬们，牛券13小节：**通过线程池和延时队列优化接口响应时间** 这一块，里面不是通过线程池来异步解析excel行数么，我看评论说 1. \"多线程是处理不同商家创建优惠券分发任务中的Excel，每个商家的Excel由一个线程处理。\" 2.\"线程池中的每一个线程是分配给每一个Tomcat请求的\" 我有点困惑啊，求佬讲解一下",
+  "topicTags" : [ "\uD83C\uDF0A牛券问答", "\uD83D\uDCC3技术问答" ],
+  "likeUsers" : [ "Eternal" ],
+  "starMasterReplied" : true,
+  "imageUrls" : [ ],
+  "replies" : [ {
+    "commenter" : "马丁",
+    "text" : "纠正下，应该是平台工作人员分发，普通商家是没有权限获取这种 Excel 的。第一个说法是对的，第二个不对。因为 Excel 解析中的线程池是新创建的，和 Tomcat 里是两套体系。",
+    "time" : "2025-08-29 09:34"
   } ],
   "topicKey" : null,
   "authorityScore" : 0.0
